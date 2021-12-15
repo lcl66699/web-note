@@ -1,7 +1,7 @@
 module.exports = {
   base: '/blog-note/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
-  title: "学习小木屋",
-  description: "欢迎来到随风飞的技术小木屋",
+  title: "小木屋",
+  description: "欢迎来到numb的笔记小木屋",
   head: [
     ['link', {
       rel: 'icon',
@@ -64,18 +64,44 @@ module.exports = {
     algolia: {},
     // logo: '/img/yy.png',//导航栏log
     nav: [
-      { text: '指南q22', link: '/guide/', ariaLabel: '指南' },
-      { text: 'Github', link: 'https://github.com/openHacking/vuepress-template' },
-      { text: 'sidebar', link: '/views/sidebar/' },
-      { text: 'sidebar', link: '/views/sidebargroup/' }
+      { text: '个人空间', link: 'http://39.106.5.96/' },
+      { text: '算法', link: '/views/Algorithm/' },
+      { text: 'http', link: '/views/Http/' },
+      { text: 'vue原理', link: '/views/Principle/' },
+      { text: 'sidebar', link: '/views/sidebargroup/' },
+      { text: '其他', link: '/views/other/', ariaLabel: '其他' },
     ],
     sidebar: {
+      //算法
+      '/views/Algorithm/': [
+        '',
+      ],
+      '/views/Http/': [
+        '',
+      ],
+      '/views/Principle/': [
+        '',
+      ],
+      '/views/other/': [
+        '',
+        'webpack',
+        'guide',
+        'installUse'
+        // {
+        //   title: 'webpack',
+        //   collapsable: true,
+        //   children: [
+        //     'webpack',
+        //     'guide',
+        //     'installUse'
+        //   ]
+        // },
+      ],
       '/guide/': [
         '',
         'theme',
         'plugin'
       ],
-      '/zh/resource/': [],
       '/views/sidebar/': [
         '',
         'bar1',
