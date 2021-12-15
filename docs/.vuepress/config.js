@@ -8,15 +8,42 @@ module.exports = {
       href: `/favicon.ico`
     }]
   ],
+  // plugins: [
+  //   '@vuepress/back-to-top',
+  //   ['qrcode', {
+  //     // "/" and "/zh/" correspond to the path set by locales
+  //     labelText: {
+  //       "/": "二维码",
+  //     },
+  //     size: 'small',
+  //     channel: true
+  //   }]
+  // ],
   plugins: [
-    '@vuepress/back-to-top',
-    ['qrcode', {
-      // "/" and "/zh/" correspond to the path set by locales
-      labelText: {
-        "/": "二维码",
-      },
-      size: 'small',
-      channel: true
+    ['@vuepress-reco/vuepress-plugin-bulletin-popover', {
+      body: [
+        {
+          type: 'title',
+          content: '欢迎加入QQ交流群 🎉🎉🎉',
+          style: 'text-aligin: center;'
+        },
+        {
+          type: 'image',
+          src: '/rvcode_qq.png'
+        }
+      ],
+      footer: [
+        {
+          type: 'button',
+          text: '打赏',
+          link: '/donate'
+        },
+        {
+          type: 'button',
+          text: '打赏',
+          link: '/donate'
+        }
+      ]
     }]
   ],
   themeConfig: {
@@ -38,8 +65,9 @@ module.exports = {
     // logo: '/img/yy.png',//导航栏log
     nav: [
       { text: '指南q22', link: '/guide/', ariaLabel: '指南' },
-      { text: '学习2', link: 'https://lwebapp.com', ariaLabel: '学习' },
-      { text: 'Github', link: 'https://github.com/openHacking/vuepress-template' }
+      { text: 'Github', link: 'https://github.com/openHacking/vuepress-template' },
+      { text: 'sidebar', link: '/views/sidebar/' },
+      { text: 'sidebar', link: '/views/sidebargroup/' }
     ],
     sidebar: {
       '/guide/': [
@@ -48,7 +76,78 @@ module.exports = {
         'plugin'
       ],
       '/zh/resource/': [],
+      '/views/sidebar/': [
+        '',
+        'bar1',
+        'bar2'
+      ],
+      '/views/sidebargroup/': [
+        {
+          title: '基础',
+          collapsable: true,
+          children: [
+            '',
+            'bar1'
+          ]
+        },
+        {
+          title: '进阶',
+          collapsable: true,
+          children: [
+            'bar2'
+          ]
+        },
+      ]
     },
+
+    type: 'blog',
+    // 博客设置
+    blogConfig: {
+      category: {
+        location: 2, // 在导航栏菜单中所占的位置，默认2
+        // text: 'Categories' // 默认 “分类”
+      },
+      tag: {
+        location: 3, // 在导航栏菜单中所占的位置，默认3
+        // text: 'Tags' // 默认 “标签”
+      },
+      socialLinks: [
+        { icon: 'reco-github', link: 'https://github.com/recoluan' },
+        { icon: 'fa-camera', link: 'https://www.npmjs.com/~reco_luan' }
+      ]
+    },
+    // 搜索设置
+    search: true,
+    searchMaxSuggestions: 10,
+    // 自动形成侧边导航
+    subSidebar: 'auto',
+    sidebarDepth: 4,
+    // 最后更新时间
+    // lastUpdated: 'Last Updated',
+    // 作者
+    author: 'numb',
+    record: 'xxxx',//ICP备案号
+    recordLink: 'http://www.baidu.com',//备案指向的链接
+    cyberSecurityRecord: '2222',//公安部备案文案
+    cyberSecurityLink: 'http://www.baidu.com',//公安部备案指向链接
+    // 项目开始时间
+    startYear: '2020',
+    //该属性是用于设置友链的
+    friendLink: [
+      {
+        title: '午后南杂',
+        desc: 'Enjoy when you can, and endure when you must.',
+        email: '1156743527@qq.com',
+        link: 'https://www.recoluan.com'
+      },
+      {
+        title: 'vuepress-theme-reco',
+        desc: 'A simple and beautiful vuepress Blog & Doc theme.',
+        avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
+        link: 'https://vuepress-theme-reco.recoluan.com'
+      },
+    ],
+
   },
 
 }
