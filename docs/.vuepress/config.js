@@ -64,12 +64,30 @@ module.exports = {
     algolia: {},
     // logo: '/img/yy.png',//导航栏log
     nav: [
-      { text: '个人空间', link: 'http://39.106.5.96/' },
       { text: '算法', link: '/views/Algorithm/' },
       { text: 'http', link: '/views/Http/' },
-      { text: 'vue原理', link: '/views/Principle/' },
+      {
+        text: 'Vue',
+        items: [
+          { text: 'vue原理', link: '/views/Principle/' },
+          { text: 'vue基础', link: '/views/Vue/' }, // 可不写后缀 .md
+        ]
+      },
+      {
+        text: 'React',
+        items: [
+          { text: 'React基础', link: '/views/React/' }, // 可不写后缀 .md
+        ]
+      },
+
       { text: 'sidebar', link: '/views/sidebargroup/' },
-      { text: '其他', link: '/views/other/', ariaLabel: '其他' },
+      { text: '个人空间', link: 'http://39.106.5.96/' },
+      {
+        text: '其他',
+        items: [
+          { text: '乱', link: '/views/other/', ariaLabel: '其他' }
+        ],
+      },
     ],
     sidebar: {
       //算法
@@ -79,8 +97,18 @@ module.exports = {
       '/views/Http/': [
         '',
       ],
+      // 原理
       '/views/Principle/': [
         '',
+      ],
+      // vue
+      '/views/Vue/': [
+        '',
+        'easy',
+      ],
+      // react
+      '/views/React/': [
+        'easy',
       ],
       '/views/other/': [
         '',
@@ -149,7 +177,7 @@ module.exports = {
     subSidebar: 'auto',
     sidebarDepth: 4,
     // 最后更新时间
-    // lastUpdated: 'Last Updated',
+    lastUpdated: 'Last Updated',
     // 作者
     author: 'numb',
     record: 'xxxx',//ICP备案号

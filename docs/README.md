@@ -1,6 +1,5 @@
 ---
 home: true
-# heroImage: /assets/wechat.jpg
 heroImage: /userl.jpg
 # heroText: VuePress模板
 # tagline: 模板 · 主题 · 插件
