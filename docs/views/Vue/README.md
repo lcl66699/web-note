@@ -1,6 +1,6 @@
-#vue 基础
+# vue 基础
 
-##安装
+## 安装
 
 1. 全局安 Vue 脚手架工具
 
@@ -51,7 +51,10 @@ vue 中的组件一般由 3 部分组成，template(页面结构),script(页面�
 
 - 模板语法：
 
-语法：<div>{{单行表达式}}</div>
+语法：
+```html 
+<div>{{单行表达式}}</div>
+```
 注意：模板语法渲染的永远是一个字符串
 
 - 组件中定义变量
@@ -208,7 +211,7 @@ vue 中的组件一般由 3 部分组成，template(页面结构),script(页面�
   - 添加：\$set(target,key,value)
   - 删除：\$delete(target,key)
 
-##  动态绑定 class 类名和 style 行内样式
+## 动态绑定 class 类名和 style 行内样式
 
 ### 动态绑定 class 类名
 
@@ -421,27 +424,26 @@ this.\$emit('xxx',data)xxx 写自己在父级写的事件名
 }
 ```
 
-## class
+## 动态绑定class和style
 
-### 动态绑定  class  和  style
-
-- class 动态绑定
+### class 动态绑定
 
   1. 数组语法
 
   `<div :class='["box1",{"box2":c===d},myclass]'></div>`
 
   2. 对象语法
+     -  :class='{key:value}' key 代表的就是类名,value 控制 key 是否要被添加，如果返回 true 则添加，否则不添加
      `<div :class='{"box1":true,"box2":a>b}'></div>`
 
-- 动态绑定 style
+### 动态绑定 style
 
 1. 数组语法
 
 `<div :style='[{fontWeight:"500",mystyle}]'></div>`
 
 - 对象语法：
-              `<div :style='{color:"red",fontSize:"20px"}'></div>`
+   `<div :style='{color:"red",fontSize:"20px"}'></div>`
   注意：
 
 ```html
@@ -643,7 +645,7 @@ keep-alive 的专用生命周期函数
 
 4. 多个组件的过渡
 
-- 使用动态组件  <component :is='cur' />
+- 使用动态组件  ```<component :is='cur' />```
 - 可以使用路由
 
 5. 列表过渡
@@ -959,7 +961,7 @@ axios.get('/user/12345', {
 - 对比 vue-router  和  react-router
 
     1. vue-router  通过配置添加路由的;react-router 通过标签加载路由
-    2. vue-router  展示路由的内容时需要使用  <router-view>  标签;react-router 不需要
+    2. vue-router  展示路由的内容时需要使用 ``` <router-view> ``` 标签;react-router 不需要
     3. vue-router  的配置更集中一些，全部在 new VueRouter()时配置;react-router 更多是在标签上配置
     4. vue-router  有更高阶的用法，路由守卫; react-router 是没有。
 
@@ -1155,192 +1157,190 @@ constFoo=()=>import(/_webpackChunkName:"group-foo"_/'./Foo.vue')
 
 ## vuex 介绍
     Vuex  是一个专为  Vue.js  应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
-#  回顾常用数据传递方式
-    props  :  父传子
-     自定义事件：  子传父
-    provide ， inject:  适合两个组件层级比较多时
-    $root : 能直接获取到跟实例对象(new Vue()创建的)
-    $parent :  直接获取当前组件的父级组件
-    ref :  获取子级组件或 DOM 元素
-    EventBus :  使用 new Vue 传递数据
 
-#  安装
-1.  创建项目时安装
-2.  手动安装
-    1.  下载安装:npm install vuex -S
-    2.  挂载到 Vue 上：
-        import Vuex from 'vuex'
-        Vue.use(Vuex)
-    3.  让 store 生效
-        new Vue({
-            store:mystore
-        })
+### 回顾常用数据传递方式
+- props  :  父传子
+- 自定义事件：  子传父
+- provide ， inject:  适合两个组件层级比较多时
+- $root : 能直接获取到跟实例对象(new Vue()创建的)
+- $parent :  直接获取当前组件的父级组件
+- ref :  获取子级组件或 DOM 元素
+- EventBus :  使用 new Vue 传递数据
 
-#  使用
+### 安装
+1. 创建项目时安装
+2. 手动安装
+   1. 下载安装:npm install vuex -S
+   2. 挂载到 Vue 上：import Vuex from 'vuex'  Vue.use(Vuex)
+   3. 让 store 生效
+           new Vue({
+               store:mystore
+           })
+
+### 使用
+
 1.  创建仓库
+```js
     let store = new Vuex.Store({
-        state,
+        state,
         mutations,
         actions,
         getters,
         modules
     })
+```
 
-2. state
-    1.  仓库中存放的公共状态,类似于 data
-        state:{
-            count:1
-        }
-3.  在组件中使用 state
+### state
+- 仓库中存放的公共状态,类似于 data
+```js
+  state:{
+    count:1
+  }
+```
+3. 在组件中使用 state
+
 import { mapState, mapMutations,mapActions} from 'vuex'
-        1.  直接访问：this.\$store.state
-        2. mapState  辅助函数
-         computed:{
-            ...mapState(['count'])
-
+   1. 直接访问：this.$store.state
+   2. mapState  辅助函数,要放在计算属性中
+```js
+// 数组语法:mapState(['count']) ,不能修改 state 中的名称
+computed:{
+  ...mapState(['count'])
 },
-            1.  要放在计算属性中
-            2.  数组语法:mapState(['count']) ,不能修改 state 中的名称
-            3.  对象语法:mapState({
- count,
- mycont:'count',
- count2:state=>state.count,
- getCount(state){
-     return state.count + this.ds
- }
-            })
-
-3. mutation
-    1.  更改  Vuex  的  store  中的状态的唯一方法是提交  mutation,Vuex  中的  mutation  非常类似于事件：每个  mutation  都有一个字符串的   事件类型  (type)  和   一个   回调函数  (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受  state  作为第一个参数,第二个参数就是用户调用时传递进来的数据
-    2.  定义
+//对象语法:
+ mapState({
+   count,
+   mycont:'count',
+   count2:state=>state.count,
+   sideTheme: (state) => state.settings.sideTheme,
+    sidebar: (state) => state.app.sidebar,
+    device: (state) => state.app.device,
+   getCount(state){
+       return state.count + this.ds
+   }
+})
+```
+    
+### mutation
+1. 更改Vuex的store中的状态的唯一方法是提交mutation,Vuex中的mutation非常类似于事件：每个mutation都有一个字符串的事件类型  (type)和一个回调函数  (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受  state  作为第一个参数,第二个参数就是用户调用时传递进来的数据
+2. 定义
+```js
     new Vuex.Store({
-       mutations:{
-           setcount(state,payload){
-state.count += payload
+      mutations:{
+        setcount(state,payload){
+          state.count += payload
            }
-       }
-   })
-   3.  使用
+         }
+     })
+```
+3. 使用
    commit 作用就是触发 mapMutations
-    1.  直接调用：this.\$store.commit('setcount',payload)  可写事件里
 
-2. mapMutations  辅助函数
-        1.  放在 methods 属性中
-        2.  数组语法
-        3.  对象语法
-    3.  让 action 触发 mutation 执行
+- 直接调用：this.$store.commit('setcount',payload) 
 
-4. Action
+- mapMutations  辅助函数
+  * 放在 methods 属性中
+  * 数组语法
+  ```js
+  import {mapMutations} from 'vuex'
+  methods:{
+    ...mapMutations(['add','del'])
+  }
+  ```
+  * 对象语法
+  * 让 action 触发 mutation 执行
 
-1. Action  提交的是  mutation，而不是直接变更状态。
-        Action  可以包含任意异步操作。
-    2.  定义
+### Action
+
+- Action提交的是  mutation，而不是直接变更状态。Action可以包含任意异步操作
+- 定义
+```js
         new Vuex.Store({
             actions:{
- increment (context,payload) {
-     context.commit('setcount',payload)
- }
+               increment (context,payload) {
+                   context.commit('setcount',payload)
+               }
             }
         })
-    3.  调用
-        1.  直接调用：store.dispatch('increment',payload)
-this.\$store.dispatch('addn',2)
-        2. mapActions 辅助函数
-            1.  放在 methods 中，蓝色字
+```
+- 调用
+  * 直接调用：store.dispatch('increment',payload)
+  * mapActions 辅助函数放在 methods 中
+```js
 import { mapstate, mapMutations,mapActions} from 'vuex'
-            2.  数组语法写在 methods ...mapActions(['jian1','jiann']),//相当于变成了自己的事件
- <button @click="yibujian">异步-1-</button>
-使用的时候直接 this.shijian(n)j 就可
-第二种<button @click="jiann(100)">异步-n-</button>
-            3.  对象语法
-
-5. getters
-    1.  就是 vuex 中的计算属性，包装作用，不会修改原数据，store 变化，getters 也变
-2.  定义
-
+  methods: {
+   ...mapActions(["setTeamStyle"]),
+}
+```
+### getters
+- 就是 vuex 中的计算属性，包装作用，不会修改原数据，store 变化，getters 也变
+- 定义
+```js
 new Vuex.Store({
-            getters:{
- fn(){
-     return xxx;
- }
-            }
-        })
-    3.  调用
-        1.  直接调用：this.\$store.getters.fn
-        2. mapGetters  辅助函数
-            1.  放在 computed 中   
- computed:{
-            ...mapGetters(['tostr'])
-        },
-
+  getters:{
+    fn(){
+      return xxx;
+    }
+  }
+})
+```
+- 调用
+  * 直接调用：this.\$store.getters.fn
+  * mapGetters  辅助函数,放在 computed 中   
+```js
+import { mapGetters, mapState } from "vuex";
+computed: {
+  ...mapGetters(["sidebarRouters", "sidebar"]),
+}
 <h3>{{tostr}}</h3>
-            2. 数组语法
-            3. 对象语法
+```
+### module
+- Vuex  允许我们将  store  分割成模块（module）。每个模块拥有自己的  state、mutation、action、getter.
+- 定义
+```js
+new Vuex.Store({
+actions,
+modules:{
+  moduleName:{
+    namespaced:true,
+    state,
+    mutations,
+    actions,
+    getters
+    }
+  }
+})
+```
+### namespaced
+- namespaced是命名空间，当 module 中定义 namespaced 为 true，这时是开启命名空间，开启后 mutations,actions,getters 都会变成局部的 module 中的方法如果没有开启命名空间，mutations,actions,getters 相对于直接定义在最外层。
+- 调用
+  * 开启命名空间时,调用 mutations,actions,getters 时，就需要带着命名空间。使用辅助函数所有的辅助函数都有一个可选的第一个参数，这个参数就是命名空间
+  * 没有开启命名空间时除了 state，其他的全部是全局的。在命名空间内访问全局state,getters，命名空间内的 getters：在第三和第四个参数位置放rootState和rootGetters 即可，在 action 中访问：通过 context 来获取  rootState 和  rootGetters
+  * 在命名空间内访问全局  mutations， actions若需要在全局命名空间内分发action或提交  mutation，将  { root: true }  作为第三参数传给  dispatch  或  commit  即可
+  * 让命名空间下的某个 action 变成全局的你可添加  root: true，并将这个action的定义放在函数handler中
 
-6. module
-    1. Vuex  允许我们将  store  分割成模块（module）。每个模块拥有自己的  state、mutation、action、getter.
-    2.  定义
-        new Vuex.Store({
-            actions,
-            modules:{
- moduleName:{
-     namespaced:true,
-     state,
-     mutations,
-     actions,
-     getters
- }
-            }
-        })
-    3. namespaced
-         是命名空间，当 module 中定义 namespaced 为 true，这时是开启命名空间，开启后 mutations,actions,getters 都会变成局部的 module 中的方法
-         如果没有开启命名空间，mutations,actions,getters 相对于直接定义在最外层。
-    4.  调用
-        1.  开启命名空间时
-            1.  调用 mutations,actions,getters 时，就需要带着命名空间
-            2.  使用辅助函数
-  所有的辅助函数都有一个可选的第一个参数，这个参数就是命名空间
+### 严格模式
+- 当不开启严格模式时，state 可以不是 mutation 修改的
+- 开启严格模式时，state 必须由 mutation 修改，否则会报错
 
-2.  没有开启命名空间时
-             除了 state，其他的全部是全局的
-    5.  在命名空间内访问全局 state,getters
-        1.  命名空间内的 getters：在第三和第四个参数位置放  rootState 和  rootGetters 即可
-        2.  在 action 中访问：通过 context 来获取  rootState 和  rootGetters
+#### 表单处理
+- v-model 双向绑定，如果值是 store 中的数据，在严格模式下会报错
+  - 第一种处理方案：把  v-model  拆成  :value+@input  实现
+  - 第二种解决方法：在计算属性中使用 getter 和 setter 功能
 
-6.  在命名空间内访问全局  mutations， actions
-         若需要在全局命名空间内分发  action  或提交  mutation，将  { root: true }  作为第三参数传给  dispatch  或  commit  即可
-    7.  让命名空间下的某个 action 变成全局的
-         你可添加  root: true，并将这个  action  的定义放在函数  handler  中
-
-#  严格模式
-1.  当不开启严格模式时，state 可以不是 mutation 修改的
-2.  开启严格模式时，state 必须由 mutation 修改，否则会报错
-
-#  表单处理
-1. v-model 双向绑定，如果值是 store 中的数据，在严格模式下会报错
-2.  第一种处理方案：
-     把  v-model  拆成  :value+@input  实现
-3.  第二种解决方法：
-     在计算属性中使用 getter 和 setter 功能
-
-#  插件
-Vuex  的  store  接受  plugins  选项，这个选项暴露出每次  mutation  的钩子。
-
-表单组件之间的双向绑定
-
-<!--.sync自定义事件-->
-
-在父类写：<UeditorWrap:desc.sync="form.desc"/>
+### 插件
+Vuex的store接受plugins选项，这个选项暴露出每次mutation的钩子。
+#### 表单组件之间的双向绑定
+.sync自定义事件
+在父类写：```<UeditorWrap:desc.sync="form.desc"/>```
 在子类写
+```html
   <!-- v-model不适用于组件双向绑定  -->
     <vue-ueditor-wrap :config="myConfig" 
     :value='desc'
     @input='changeDesc'
-
 props: ["desc"],
-Update 是必须写的
+//Update 是必须写的
 this.\$emit('update:desc',value)
-
 ```
 
-```

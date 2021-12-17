@@ -104,7 +104,6 @@ module.exports = {
       // vue
       '/views/Vue/': [
         '',
-        'easy',
       ],
       // react
       '/views/React/': [
