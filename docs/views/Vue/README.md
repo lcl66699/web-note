@@ -52,9 +52,11 @@ vue 中的组件一般由 3 部分组成，template(页面结构),script(页面�
 - 模板语法：
 
 语法：
-```html 
+
+```html
 <div>{{单行表达式}}</div>
 ```
+
 注意：模板语法渲染的永远是一个字符串
 
 - 组件中定义变量
@@ -210,44 +212,6 @@ vue 中的组件一般由 3 部分组成，template(页面结构),script(页面�
 - 方法 3:  官方提供的方法
   - 添加：\$set(target,key,value)
   - 删除：\$delete(target,key)
-
-## 动态绑定 class 类名和 style 行内样式
-
-### 动态绑定 class 类名
-
-```html
-<div v-bind:class="box1"></div>
-```
-
-动态绑定 class 类名有两种语法
-
-- 一个是对象语法
-
-  :class='{key:value}'
-  key 代表的就是类名,value 控制 key 是否要被添加，如果返回 true 则添加，否则不添加
-
-- 一个是数组语法：
-
-  :class='["box3",{"box4":1>2}]'
-
-### 动态绑定 style
-
-- 一个是对象语法：
-
-  :style='{color:"red","fontSize":"14px"}'
-
-- 一个是数组语法：
-
-```js
-    :style='[{color:"red"},mystyle]'
-    data(){
-        return {
-            mystyle:{
-                 fontWeight:'400'
-            }
-        }
-    }
-```
 
 ## 表单输入绑定
 
@@ -424,16 +388,22 @@ this.\$emit('xxx',data)xxx 写自己在父级写的事件名
 }
 ```
 
-## 动态绑定class和style
+## 动态绑定 class 和 style
 
-### class 动态绑定
+### 动态绑定 class 类名
 
-  1. 数组语法
+```html
+<div v-bind:class="box1"></div>
+```
 
-  `<div :class='["box1",{"box2":c===d},myclass]'></div>`
+动态绑定 class 类名有两种语法
 
-  2. 对象语法
-     -  :class='{key:value}' key 代表的就是类名,value 控制 key 是否要被添加，如果返回 true 则添加，否则不添加
+1. 数组语法
+
+`<div :class='["box1",{"box2":c===d},myclass]'></div>`
+
+2. 对象语法
+   - :class='{key:value}' key 代表的就是类名,value 控制 key 是否要被添加，如果返回 true 则添加，否则不添加
      `<div :class='{"box1":true,"box2":a>b}'></div>`
 
 ### 动态绑定 style
@@ -441,6 +411,17 @@ this.\$emit('xxx',data)xxx 写自己在父级写的事件名
 1. 数组语法
 
 `<div :style='[{fontWeight:"500",mystyle}]'></div>`
+
+```js
+    :style='[{color:"red"},mystyle]'
+    data(){
+        return {
+            mystyle:{
+                 fontWeight:'400'
+            }
+        }
+    }
+```
 
 - 对象语法：
    `<div :style='{color:"red",fontSize:"20px"}'></div>`
@@ -645,7 +626,7 @@ keep-alive 的专用生命周期函数
 
 4. 多个组件的过渡
 
-- 使用动态组件  ```<component :is='cur' />```
+- 使用动态组件  `<component :is='cur' />`
 - 可以使用路由
 
 5. 列表过渡
@@ -700,8 +681,11 @@ Son.vue 接的时候直接写调用时候记得+this
 ```
 
 ## 自定义指令
+
 1. 自定义指令语法
+
 - 全局指令
+
 ```js
         Vue.directive('name',{
             <!-- 放置钩子函数 bind inserted update componentUpdated unbind -->
@@ -722,7 +706,9 @@ Son.vue 接的时候直接写调用时候记得+this
             }
         })
 ```
+
 - 局部指令
+
 ```js
         directives:{
     "name":{
@@ -736,23 +722,26 @@ Son.vue 接的时候直接写调用时候记得+this
 
 2. 自定义指令的使用用法：
 
-- ``` <div v-name></div>```或 v-outside='blur'
+- `<div v-name></div>`或 v-outside='blur'
+
 3. 函数简写
 
 在很多时候，你可能想在  bind  和  update  时触发相同行为，而不关心其它的钩子,就可以不写对象，直接写一个函数，（功能一样）Vue.directive('name',function(el,binding){})
 
 ## 过滤器
+
 - 语法：
+
 1. 全局过滤器
-        Vue.filter('name',function(value,...rest){})
+           Vue.filter('name',function(value,...rest){})
 2. 局部过滤器
-filters:{'name':function(value){}}
+   filters:{'name':function(value){}}
 3. 使用：模板语法加一个管道封号|name（true）
 
+## axios 网络请求库(ajax)
 
-
-# axios 网络请求库(ajax)
 - 完整语法
+
 ```js
     {
   // `url`  是用于请求的服务器  URL
@@ -859,32 +848,37 @@ filters:{'name':function(value){}}
 
 - 常用数据
 
-    - url:请求的地址
-    - method:'get|post'
-    - params:{}   get 请求的数据
-    - data:{}     post 请求的数据
-    - headers:{}   请求头
-    - transformResponse:  响应拦截
-    - transformRequest:请求拦截
-    - cancelToken ：   取消请求
+  - url:请求的地址
+  - method:'get|post'
+  - params:{}   get 请求的数据
+  - data:{}     post 请求的数据
+  - headers:{}   请求头
+  - transformResponse:  响应拦截
+  - transformRequest:请求拦截
+  - cancelToken ：   取消请求
 
 - 请求写法
-    - 完整写法： 
-``` 
+  - 完整写法：
+
+```
 axios(url,{
     method:'get',
     params:{},
     headers:{}
 })
 ```
+
     - 简写形式：
-get 请求简写axios.get(url,{parmas:{}})对象形式
-post 请求简写axios.post(url,data)
+
+get 请求简写 axios.get(url,{parmas:{}})对象形式
+post 请求简写 axios.post(url,data)
+
 - 携带参数问题
 
 get 请求用对象形式的格式携带数据,post 请用 key=value&key=value 携带数据
 
 - 响应结果
+
 ```js
     {
     config:{},
@@ -897,42 +891,55 @@ get 请求用对象形式的格式携带数据,post 请用 key=value&key=value �
 ```
 
 - 创建实例
+
 ```js
-    let instance = axios.create([config])
-    instance.get(url,{params:{}})
-    instance.post(url,data,{})
+let instance = axios.create([config]);
+instance.get(url, { params: {} });
+instance.post(url, data, {});
 ```
 
 - 直接定义 axios 的全局配置
 
-    ```axios.defaults.baseUrl = '';```
+`axios.defaults.baseUrl = '';`
 
 - 拦截器
 
-    1.  请求拦截
+  1.  请求拦截
+
 ```js
-        axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(
+  function(config) {
     //  在发送请求之前做些什么
-            return config;
-        }, function (error) {
+    return config;
+  },
+  function(error) {
     //  对请求错误做些什么
-            return Promise.reject(error);
-        });
+    return Promise.reject(error);
+  }
+);
 ```
-    2.  响应拦截
+
+2.  响应拦截
+
 ```js
-        axios.interceptors.response.use(function (response) {
-            //  对响应数据做点什么
-            return response;
-        }, function (error) {
-            //  对响应错误做点什么
-            return Promise.reject(error);
-        });
+axios.interceptors.response.use(
+  function(response) {
+    //  对响应数据做点什么
+    return response;
+  },
+  function(error) {
+    //  对响应错误做点什么
+    return Promise.reject(error);
+  }
+);
 ```
+
 - 并发请求
 
-    axios.all()  就是 promise 的 all()方法，
+axios.all()  就是 promise 的 all()方法，
+
 - 取消请求
+
 ```js
 1. CancelToken.source  工厂方法创建  cancel token
         var CancelToken = axios.CancelToken;
@@ -958,29 +965,33 @@ axios.get('/user/12345', {
 ```
 
 ## 路由
+
 - 对比 vue-router  和  react-router
 
-    1. vue-router  通过配置添加路由的;react-router 通过标签加载路由
-    2. vue-router  展示路由的内容时需要使用 ``` <router-view> ``` 标签;react-router 不需要
-    3. vue-router  的配置更集中一些，全部在 new VueRouter()时配置;react-router 更多是在标签上配置
-    4. vue-router  有更高阶的用法，路由守卫; react-router 是没有。
+      1. vue-router  通过配置添加路由的;react-router 通过标签加载路由
+      2. vue-router  展示路由的内容时需要使用 ``` <router-view> ``` 标签;react-router 不需要
+      3. vue-router  的配置更集中一些，全部在 new VueRouter()时配置;react-router 更多是在标签上配置
 
-- this.$route 有哪些属性：
-    * name：路由名称
-    * meta：路由元信息
-    * path:  和定义路由时的 path 对应
-    * hash：路由的哈希值
-    * query：路由上问号携带的数据
-    * params:  动态路由的数据
-    * fullPath：地址栏中完整的路由路径
-    * matched：是一个数组!!!!  包含当前路由以及嵌套的父级及祖先级路由信息
-  
+  4. vue-router  有更高阶的用法，路由守卫; react-router 是没有。
+
+- this.\$route 有哪些属性：
+
+  - name：路由名称
+  - meta：路由元信息
+  - path:  和定义路由时的 path 对应
+  - hash：路由的哈希值
+  - query：路由上问号携带的数据
+  - params:  动态路由的数据
+  - fullPath：地址栏中完整的路由路径
+  - matched：是一个数组!!!!  包含当前路由以及嵌套的父级及祖先级路由信息
+
 - 导航：有两种写法，和定义时有关
-    * 定义子级路由时，子级路由的 path 属性值上最前面不加'/',访问子级路由这样写： /users/profiles
-    *定义子级路由时，子级路由的 path 属性值上最前面加'/',访问子级路由这样写：/profiles
-        ```<router-link to='/users/profiles'></router-link>```
+
+  - 定义子级路由时，子级路由的 path 属性值上最前面不加'/',访问子级路由这样写： /users/profiles \*定义子级路由时，子级路由的 path 属性值上最前面加'/',访问子级路由这样写：/profiles
+            `<router-link to='/users/profiles'></router-link>`
 
 - 编程式导航
+
 ```js
     this.$router.push('/users')
     this.$router.replace('/users')
@@ -989,13 +1000,14 @@ axios.get('/user/12345', {
 
 - 命名路由
 
-     在定义路由时添加 name 属性,路由跳转时可以通过路由的名称跳转
+在定义路由时添加 name 属性,路由跳转时可以通过路由的名称跳转
 编程式导航: \$router.push({name:"details",params:{newsid:12445}})
 
 - 命名视图
 
-    1.  在一个路由下，同时展示多个组件的内容
-    2.  定义路由语法：
+  1.  在一个路由下，同时展示多个组件的内容
+      2.  定义路由语法：
+
 ```js
 {
     path:'/',
@@ -1005,15 +1017,18 @@ axios.get('/user/12345', {
     }
 }
 ```
+
 - 在页面中就需要定义多个 router-view,而且要定义 name
+
 ```js
         <router-view ></router-view>
         <router-view name='body'></router-view>
 ```
 
 - 重定向和别名
-    * 重定向:{ path: '/a', redirect: '/b' }
-    * 别名
+  - 重定向:{ path: '/a', redirect: '/b' }
+  - 别名
+
 ```
         {
             path:'/hello',
@@ -1023,8 +1038,10 @@ axios.get('/user/12345', {
 ```
 
 ### -路由组件传参
+
 - 使用  props  将组件和路由解耦
 - 语法：
+
 ```js
         {
             path:'/details/:id',
@@ -1038,47 +1055,49 @@ axios.get('/user/12345', {
             props: { default: true, sidebar: false }
         }
 ```
-- 调用动态路由参数props:['id'],直接访问 id 即可
+
+- 调用动态路由参数 props:['id'],直接访问 id 即可
 
 - 切换路由模式
 
-    * mode: 'history',  // history 模式
-    * mode: 'hash' , // hash 模式默认是 hash
+  - mode: 'history',  // history 模式
+  - mode: 'hash' , // hash 模式默认是 hash
 
 ### 导航高亮效果
+
 - Router-link 默认携带 class：router-link-active 和 router-link-exact-active
 - 不想使用默认类名，可以进行修改
 
-        1.  单独修改某一个路由的高亮类名
-            ```<router-link activeClass='active' exactActiveClass></router-link>```
+  1.  单独修改某一个路由的高亮类名
+              `<router-link activeClass='active' exactActiveClass></router-link>`
 
-        2.  全局修改
-             全局配置来修改：linkActiveClass 和 linkExactActiveClass
-         优先级：单个>全局的
+  2.  全局修改
+               全局配置来修改：linkActiveClass 和 linkExactActiveClass
+           优先级：单个>全局的
 
 - router-link
+
 ```html
-    <router-link
-     to=''      //实现页面跳转的
-     activeClass='active'//改变类名
-     exactActiveClass='eactive',
+<router-link      to=''      //实现页面跳转的
+     activeClass='active'//改变类名      exactActiveClass='eactive',
      tag='span', //规定 router-link 被解析成什么标签，默认是 a 标签
      replace=true,  //启动替换功能把原来那层替换了原来失效了
-     exact          //精准匹配
-    />
+     exact          //精准匹配 />
 ```
 
 ### 导航守卫
+
 - 全局守卫：
-    * 全局前置守卫 beforeEach()
-    * 全局解析守卫 beforeResolve()
-    * 全局后置守卫 afterEach()
+  - 全局前置守卫 beforeEach()
+  - 全局解析守卫 beforeResolve()
+  - 全局后置守卫 afterEach()
 - 路由独享守卫
-    * beforeEnter()
+  - beforeEnter()
 - 组件级守卫
-    * 进入页面前守卫 beforeRouteEnter()
-    * 页面更新前守卫 beforeRouteUpdate()
-    * 离开页面前守卫 beforeRouteLeave()
+  - 进入页面前守卫 beforeRouteEnter()
+  - 页面更新前守卫 beforeRouteUpdate()
+  - 离开页面前守卫 beforeRouteLeave()
+
 ```
         router.beforeEach((to,from,next)=>{
             //to 到哪个路由去
@@ -1120,10 +1139,15 @@ axios.get('/user/12345', {
     7. beforeRouteLeave
          导航离开该组件的对应路由时调用
 ```
+
 15.  路由元信息
+
 - 定义路由的时候可以配置  meta  字段,在路由访问过程中可以携带这个 meta 字段，供守卫函数使用
+
 ### 过渡动效
-1. 使用  
+
+1. 使用
+
 ```
 <transition>
     <router-view />
@@ -1133,13 +1157,17 @@ axios.get('/user/12345', {
 2. 定义 css 即可
 
 ### 滚动行为
+
 1. 保持原先的滚动位置
+
 ```
     scrollBehavior (to, from, savedPosition) {
         return savedPosition
     }
 ```
+
 2. 页面滚到顶部
+
 ```
     scrollBehavior (to, from, savedPosition) {
         return {y:0}
@@ -1150,58 +1178,65 @@ axios.get('/user/12345', {
 
 1. 定义路由时，要加载的组件是异步加载来的
 2. 优化：
-只需要使用命名 chunk，一个特殊的注释语法来提供 chunkname
-constFoo=()=>import(/_webpackChunkName:"group-foo"_/'./Foo.vue')
-
-
+   只需要使用命名 chunk，一个特殊的注释语法来提供 chunkname
+   constFoo=()=>import(/_webpackChunkName:"group-foo"_/'./Foo.vue')
 
 ## vuex 介绍
-    Vuex  是一个专为  Vue.js  应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
+
+Vuex  是一个专为  Vue.js  应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化
 
 ### 回顾常用数据传递方式
+
 - props  :  父传子
 - 自定义事件：  子传父
 - provide ， inject:  适合两个组件层级比较多时
-- $root : 能直接获取到跟实例对象(new Vue()创建的)
-- $parent :  直接获取当前组件的父级组件
+- \$root :  能直接获取到跟实例对象(new Vue()创建的)
+- \$parent :  直接获取当前组件的父级组件
 - ref :  获取子级组件或 DOM 元素
 - EventBus :  使用 new Vue 传递数据
 
 ### 安装
+
 1. 创建项目时安装
 2. 手动安装
    1. 下载安装:npm install vuex -S
-   2. 挂载到 Vue 上：import Vuex from 'vuex'  Vue.use(Vuex)
+   2. 挂载到 Vue 上：import Vuex from 'vuex' Vue.use(Vuex)
    3. 让 store 生效
-           new Vue({
-               store:mystore
-           })
+              new Vue({
+                  store:mystore
+              })
 
 ### 使用
 
 1.  创建仓库
+
 ```js
-    let store = new Vuex.Store({
-        state,
-        mutations,
-        actions,
-        getters,
-        modules
-    })
+let store = new Vuex.Store({
+  state,
+  mutations,
+  actions,
+  getters,
+  modules,
+});
 ```
 
 ### state
+
 - 仓库中存放的公共状态,类似于 data
+
 ```js
-  state:{
-    count:1
-  }
+state: {
+  count: 1;
+}
 ```
+
 3. 在组件中使用 state
 
 import { mapState, mapMutations,mapActions} from 'vuex'
-   1. 直接访问：this.$store.state
-   2. mapState  辅助函数,要放在计算属性中
+
+1.  直接访问：this.\$store.state
+2.  mapState  辅助函数,要放在计算属性中
+
 ```js
 // 数组语法:mapState(['count']) ,不能修改 state 中的名称
 computed:{
@@ -1220,73 +1255,84 @@ computed:{
    }
 })
 ```
-    
-### mutation
-1. 更改Vuex的store中的状态的唯一方法是提交mutation,Vuex中的mutation非常类似于事件：每个mutation都有一个字符串的事件类型  (type)和一个回调函数  (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受  state  作为第一个参数,第二个参数就是用户调用时传递进来的数据
-2. 定义
-```js
-    new Vuex.Store({
-      mutations:{
-        setcount(state,payload){
-          state.count += payload
-           }
-         }
-     })
-```
-3. 使用
-   commit 作用就是触发 mapMutations
 
-- 直接调用：this.$store.commit('setcount',payload) 
+### mutation
+
+1. 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation,Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的事件类型  (type)和一个回调函数  (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受  state  作为第一个参数,第二个参数就是用户调用时传递进来的数据
+2. 定义
+
+```js
+new Vuex.Store({
+  mutations: {
+    setcount(state, payload) {
+      state.count += payload;
+    },
+  },
+});
+```
+
+3. 使用
+      commit 作用就是触发 mapMutations
+
+- 直接调用：this.\$store.commit('setcount',payload)
 
 - mapMutations  辅助函数
-  * 放在 methods 属性中
-  * 数组语法
+  - 放在 methods 属性中
+  - 数组语法
   ```js
   import {mapMutations} from 'vuex'
   methods:{
     ...mapMutations(['add','del'])
   }
   ```
-  * 对象语法
-  * 让 action 触发 mutation 执行
+  - 对象语法
+  - 让 action 触发 mutation 执行
 
 ### Action
 
-- Action提交的是  mutation，而不是直接变更状态。Action可以包含任意异步操作
+- Action 提交的是  mutation，而不是直接变更状态。Action 可以包含任意异步操作
 - 定义
+
 ```js
-        new Vuex.Store({
-            actions:{
-               increment (context,payload) {
-                   context.commit('setcount',payload)
-               }
-            }
-        })
+new Vuex.Store({
+  actions: {
+    increment(context, payload) {
+      context.commit("setcount", payload);
+    },
+  },
+});
 ```
+
 - 调用
-  * 直接调用：store.dispatch('increment',payload)
-  * mapActions 辅助函数放在 methods 中
+  - 直接调用：store.dispatch('increment',payload)
+  - mapActions 辅助函数放在 methods 中
+
 ```js
 import { mapstate, mapMutations,mapActions} from 'vuex'
   methods: {
    ...mapActions(["setTeamStyle"]),
 }
 ```
+
 ### getters
+
 - 就是 vuex 中的计算属性，包装作用，不会修改原数据，store 变化，getters 也变
 - 定义
+
 ```js
-new Vuex.Store({
-  getters:{
-    fn(){
-      return xxx;
-    }
-  }
-})
+new Vuex.Store({
+  getters: {
+    fn() {
+      return xxx;
+    },
+  },
+});
 ```
+
 - 调用
-  * 直接调用：this.\$store.getters.fn
-  * mapGetters  辅助函数,放在 computed 中   
+  - 直接调用：this.\$store.getters.fn
+  - mapGetters  辅助函数,放在 computed 中
+
 ```js
 import { mapGetters, mapState } from "vuex";
 computed: {
@@ -1294,53 +1340,59 @@ computed: {
 }
 <h3>{{tostr}}</h3>
 ```
+
 ### module
+
 - Vuex  允许我们将  store  分割成模块（module）。每个模块拥有自己的  state、mutation、action、getter.
 - 定义
+
 ```js
-new Vuex.Store({
-actions,
-modules:{
-  moduleName:{
-    namespaced:true,
-    state,
-    mutations,
-    actions,
-    getters
-    }
-  }
-})
+new Vuex.Store({
+  actions,
+  modules: {
+    moduleName: {
+      namespaced: true,
+      state,
+      mutations,
+      actions,
+      getters,
+    },
+  },
+});
 ```
+
 ### namespaced
-- namespaced是命名空间，当 module 中定义 namespaced 为 true，这时是开启命名空间，开启后 mutations,actions,getters 都会变成局部的 module 中的方法如果没有开启命名空间，mutations,actions,getters 相对于直接定义在最外层。
+
+- namespaced 是命名空间，当 module 中定义 namespaced 为 true，这时是开启命名空间，开启后 mutations,actions,getters 都会变成局部的 module 中的方法如果没有开启命名空间，mutations,actions,getters 相对于直接定义在最外层。
 - 调用
-  * 开启命名空间时,调用 mutations,actions,getters 时，就需要带着命名空间。使用辅助函数所有的辅助函数都有一个可选的第一个参数，这个参数就是命名空间
-  * 没有开启命名空间时除了 state，其他的全部是全局的。在命名空间内访问全局state,getters，命名空间内的 getters：在第三和第四个参数位置放rootState和rootGetters 即可，在 action 中访问：通过 context 来获取  rootState 和  rootGetters
-  * 在命名空间内访问全局  mutations， actions若需要在全局命名空间内分发action或提交  mutation，将  { root: true }  作为第三参数传给  dispatch  或  commit  即可
-  * 让命名空间下的某个 action 变成全局的你可添加  root: true，并将这个action的定义放在函数handler中
+  - 开启命名空间时,调用 mutations,actions,getters 时，就需要带着命名空间。使用辅助函数所有的辅助函数都有一个可选的第一个参数，这个参数就是命名空间
+  - 没有开启命名空间时除了 state，其他的全部是全局的。在命名空间内访问全局 state,getters，命名空间内的 getters：在第三和第四个参数位置放 rootState 和 rootGetters 即可，在 action 中访问：通过 context 来获取  rootState 和  rootGetters
+  - 在命名空间内访问全局  mutations， actions 若需要在全局命名空间内分发 action 或提交  mutation，将  { root: true }  作为第三参数传给  dispatch  或  commit  即可
+  - 让命名空间下的某个 action 变成全局的你可添加  root: true，并将这个 action 的定义放在函数 handler 中
 
 ### 严格模式
+
 - 当不开启严格模式时，state 可以不是 mutation 修改的
 - 开启严格模式时，state 必须由 mutation 修改，否则会报错
 
 #### 表单处理
+
 - v-model 双向绑定，如果值是 store 中的数据，在严格模式下会报错
   - 第一种处理方案：把  v-model  拆成  :value+@input  实现
   - 第二种解决方法：在计算属性中使用 getter 和 setter 功能
 
 ### 插件
-Vuex的store接受plugins选项，这个选项暴露出每次mutation的钩子。
-#### 表单组件之间的双向绑定
-.sync自定义事件
-在父类写：```<UeditorWrap:desc.sync="form.desc"/>```
-在子类写
-```html
-  <!-- v-model不适用于组件双向绑定  -->
-    <vue-ueditor-wrap :config="myConfig" 
-    :value='desc'
-    @input='changeDesc'
-props: ["desc"],
-//Update 是必须写的
-this.\$emit('update:desc',value)
-```
 
+Vuex 的 store 接受 plugins 选项，这个选项暴露出每次 mutation 的钩子。
+
+#### 表单组件之间的双向绑定
+
+.sync 自定义事件
+在父类写：`<UeditorWrap:desc.sync="form.desc"/>`
+在子类写
+
+```html
+<!-- v-model不适用于组件双向绑定  -->
+<vue-ueditor-wrap :config="myConfig"      :value='desc'     @input='changeDesc'
+props: ["desc"], //Update 是必须写的 this.\$emit('update:desc',value)
+```

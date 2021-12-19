@@ -414,7 +414,3 @@ console.log(my_instanceof([], Object));
 console.log(my_instanceof([], Array));
 console.log(my_instanceof(213, Number));
 ```
-
-## 算法
-
-二叉树层序遍历

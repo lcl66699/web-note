@@ -154,17 +154,465 @@ obj.size; //3
 链表的 dummy 节点： 1. 作为新链表的头节点 2. 解决链表头部的极端情况
 dummy 节点
 
-## 排序
+### 21.合并两个有序的链表(归并)
+- 思路
+  - 和归并排序很像，将数组替换成链表就可以
+- 步骤
+  - 新建一个链表，作为返回结果
+  - 用指针遍历两个有序链表，并比较两个链表的当前节点，较小者先接入新链表，并将指针像后移一步
+  - 链表遍历结束，返回新链表
+```js
+var mergeTwoLists = function (list1, list2) {
+    let node = new ListNode(0)
+    let p = node //如果不新建一个指针，不知道指到哪里了
+    let p1 = list1//想遍历需要指针
+    let p2 = list2
+    while (p1 && p2) {
+        if (p1.val > p2.val) {
+            p.next = p2
+            p2 = p2.next//用过了，向后移动一位
+        } else {
+            p.next = p1
+            p1 = p1.next
+        }
+        p = p.next
+    }
+    //边界情况
+    if (p1) {
+        p.next = p1
+    }
+    if (p2) {
+        p.next = p2
+    }
+    return node.next
+};
+```
+### 374.猜数字大小
 
-### 搜索排序
+- 解题：
+  - 从数组的中间元素开始，如果中间元素正好是目标值，则搜索过程结束
+  - 如果目标值大于或者小于中间元素，则在数组大于或小于中间的那一半去查找
+  - 
+- 二分搜索
+  - 时间复杂度O(logN)
+    > 凡是分开两半的基本上都是logN
+  - 空间是O1
+```JS
+var guessNumber = function (n) {
+    let low = 1
+    let high = n
+    while (low <= high) {
+        const mid = Math.floor((low+high) / 2)
+        const res = guess(mid)
+        if (res == 0) {
+            return mid
+        } else if (res == 1) {
+            low = mid + 1
+        } else {
+            high = mid - 1
+        }
+    }
+};
+
+
+```
+
+- 分而治之思想，递归
+  - 时间复杂度O(logN)
+  > 凡是分开两半的基本上都是logN
+  - 空间是O(logN)
+```js
+var guessNumber = function (n) {
+    const cur = (low, high) => {
+        if (low > high) { return }
+        const mid = Math.floor((low + high) / 2)
+        const res = guess(mid)
+        if (res == 0) {
+            return mid
+        } else if (res == 1) {
+            return cur(mid + 1, high)
+        } else if (res == -1) {
+            return cur(low, mid - 1)
+        }
+    }
+    return cur(1, n)
+};
+```
+## 算法
+
+二叉树层序遍历
+## 排序算法
+
+- 冒泡排序
+- 选择排序
+- 插入排序
+- 归并排序
+- 快速排序
+- ......
+
+
+[排序可视化演示地址](https://visualgo.net/zh/sorting)
+### 冒泡排序
+
+- 思路
+  * 比较所有相邻元素，如果第一个比第二个大，则交换他们
+  * 一轮下来，可以保证最后一个数是最大的
+  * 执行n-1轮，就可以完成排序
+- 时间复杂度为O(n^2)
+  
+#### code
+
+```js
+var arr = [1, 25, 56, 88, 22, 555, -1, 46, 56, 82, 93, 999, 998]
+  Array.prototype.bubbleSoet = function () {
+      const arr = this
+      for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length - 1; j++) {
+              if (arr[j] > arr[j + 1]) {
+                  // let temp = arr[j]
+                  // arr[j] = arr[j + 1]
+                  // arr[j + 1] = temp
+                  [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]//es6解构
+              }
+          }
+      }
+      return arr
+  }
+  console.log(arr.bubbleSoet());
+```
+
 
 ### 选择排序
 
-时间复杂度
+- 思路
+  * 找到数组中的最小值，选中他并将其放置在第一位
+  * 接着找到第二小的值，选中他并将其放置在第二位
+  * 以此类推，执行n-1轮,类似于扫描,区间不断在缩小
+- 时间复杂度为O(n^2)
+
+#### code
+
+```js
+var arr = [4, 1, 3, 2, 5, 0, 9, 8]
+Array.prototype.selectionSort = function () {
+    /*
+        重复（元素个数-1）次
+            把第一个没有排序过的元素设置为最小值
+            遍历每个没有排序过的元素
+                如果元素 < 现在的最小值
+                将此元素设置成为新的最小值
+            将最小值和第一个没有排序过的位置交换
+    */
+    const arr = this
+    for (let i = 0; i < arr.length - 1; i++) {
+        let indexMin = i
+        for (let j = i; j < arr.length; j++) {
+            if (arr[indexMin] > arr[j]) {
+                indexMin = j//找到这一轮的最小值的下表下标
+            }
+        }
+        const temp = arr[indexMin]
+        arr[indexMin] = arr[i]
+        arr[i] = temp
+    }
+    return arr
+}
+```
+  
 
 ### 插入排序
 
-从第二个数开始往前比，比他大就往后排，直到最后一个数。
+
+
+- 思路
+  * 从第二数开始往前比
+  * 比他大就往后排（把这个数字向后移一位）
+  * 以此类推，进行到最后一个数
+- 时间复杂度为O(n^2)
+
+
+#### code
+
+```js
+var arr = [4, 1, 3, 2, 5, 0, 9, 8]
+  Array.prototype.mergeSort = function () {
+      /*
+          将第一个元素标记为已排序
+          遍历每个没有排序过的元素
+          “提取” 元素 X
+          i = 最后排序过元素的指数 到 0 的遍历
+          如果现在排序过的元素 > 提取的元素
+          将排序过的元素向右移一格
+          否则：插入提取的元素
+      */
+      //第二个数往前比
+      const arr = this
+      for (let i = 1; i < arr.length; i++) {
+          let temp = arr[i]//标记为已排序
+          let j = i//提个变量
+          while (j > 0) {//往前比，能拿到前面所有数的下标
+              if (arr[j - 1] > temp) {//因为初始化是第二个数字，所以是j - 1
+                  arr[j] = arr[j - 1]//向右移一格
+              } else {
+                  break
+              }
+              j--
+          }
+          arr[j] = temp
+      }
+      return arr
+  }
+  console.log(arr.mergeSort());
+
+```
+
+### 归并排序
+
+- 思路
+  * 分：把数组劈开两半，再递归的对子数组进行 分 操作，知道分成一个个单独的数
+  * 合：把两个数组并为有序数组，再对有序数组进行合并，直到全部子数组合并一个完整数组
+  * 以此类推，进行到最后一个数
+
+- 实现
+  * 新建一个空数组res，用于存放最终排序后的数组
+  * 比较两个有序数组的头部，较小者出队并推入res中
+  * 如果两个数组还有值，就重复第二步
+- 时间复杂度为O(n*logN)
+  - 分的时间复杂度 logN
+  - 合的时间复杂度 n
+
+```js
+var arr = [4, 1, 3, 2, 5, 0, 9, 8]
+Array.prototype.insertionSort = function () {
+    /*
+        将每个元素拆分成大小为1的部分,用递归
+        recursively merge adjacent partitions
+        i = 左侧开始项指数 到 右侧最后项指数 的遍历（两端包括）
+        如果左侧首值 <= 右侧首值
+        拷贝左侧首项的值
+        否则： 拷贝右侧部分首值
+        将元素拷贝进原来的数组中
+    */
+    //第二个数往前比
+    const arr = this
+    const cur = (arr) => {
+        if (arr.length == 1) {
+            return arr
+        }
+        // 进行分的操作
+        let mid = Math.floor(arr.length / 2)
+        let leftArr = arr.slice(0, mid)
+        let rightArr = arr.slice(mid, arr.length)
+        const left = cur(leftArr)
+        const right = cur(rightArr)
+        //进行合的操作
+        let res = []
+        while (left.length || right.length) {
+            if (left.length && right.length) {
+                res.push(left[0] > right[0] ? right.shift() : left.shift())
+            } else if (left.length) {
+                res.push(left.shift())
+            } else if (right.length) {
+                res.push(right.shift())
+            }
+        }
+        return res
+    }
+    return cur(arr)
+}
+console.log(arr.insertionSort());
+```
+
+### 快速排序
+
+- 思路
+  * 从数组中任意选择一个元素作为基准，所有比基准小的元素放在基准前面，比基准大的元素放在基准后面
+  * 递归：递归地对基准前后的子数组进行分区操作
+- 时间复杂度为O(n*logN)
+  - 递归的时间复杂度 logN
+  - 分区的时间复杂度 n
+#### code
+```js
+var arr = [4, 1, 3, 2, 5, 10, 9, 8]
+Array.prototype.quickSort = function () {
+    const cur = (arr) => {
+        if (arr.length <= 1) {
+            return arr //递归出口
+        }
+        let left = []
+        let right = []
+        let mid = arr[0]
+        for (let i = 1; i < arr.length; i++) {
+            if (mid > arr[i]) {
+                left.push(arr[i])//放左边
+            } else {
+                right.push(arr[i])//放右边
+            }
+        }
+        return [...cur(left), mid, ...cur(right)]
+    }
+    let res = cur(this)
+    //改变原数组
+    res.forEach((item, index) => {
+        this[index] = item
+    });
+}
+arr.quickSort()
+console.log(arr);
+```
+
+## 搜索
+### 顺序搜索
+
+思路：
+- 遍历数组
+- 找到值返回下标
+- 遍历结束没找到返回-1
+```js
+Array.prototype.sequentialSeach = function (item) {
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] == item) {
+            return i
+        }
+    }
+    return -1
+}
+var arr = [4, 1, 3, 2, 5, 10, 9, 8]
+const res = arr.sequentialSeach(3)
+console.log(res);
+```
+
+
+### 二分搜索
+
+前提 ：数组是有序的
+- 思路
+  * 从数组中的中间元素开始，如果中间元素正好是目标值，搜索结束，返回下标
+  * 如果目标值大于或小于中间元素，则在大于或小于中间元素的那一半数组中搜索
+  * 每次搜索范围都缩小一半，效率提升
+- 时间复杂度为O(logN)
+  - 这种劈开两半的基本都是logN
+  
+```js
+function binary_search(arr, key) {
+    var low = 0,
+        high = arr.length - 1;
+    while (low <= high) {
+        var mid = parseInt((high + low) / 2);
+        if (key == arr[mid]) {
+            return mid;
+        } else if (key > arr[mid]) {
+            low = mid + 1;
+        } else if (key < arr[mid]) {
+            high = mid - 1;
+        } else {
+            return -1;
+        }
+    }
+};
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 23, 44, 86];
+var result = binary_search(arr, 10);
+console.warn(result); // 9 返回目标元素的索引值  
+```
+
+
+
+## 分而治之
+
+- 分而治之是算法设计中的一种方法
+- 它将一个问题<b style="color:red">分</b>成多个和原问题相似的小问题，<b style="color:red">递归解决</b>小问题，再将结果<b style="color:red">合</b>并以解决原来的问题。
+  
+#### 场景
+- 归并排序
+- 快速排序 
+- 374题猜数字大小 二分搜索
+
+### 226.翻转二叉树
+
+- 思路：
+  - 先翻转左右子树，再将子树换个位置
+  - 符合 分、解、合 特性
+  - 考虑分而治之
+- 步骤：
+  - 分：获取左右子树
+  - 解：递归的翻转左右子树
+  - 合：将翻转后的左右子树换个位置放到根节点上
+
+  - 时间复杂度:O(N)
+  - 空间复杂度:O(N)||O(H) H是树的高度
+```js
+var invertTree = function(root) {
+    if(!root){return null}
+    return{
+        val:root.val,
+        left:invertTree(root.right),
+        right:invertTree(root.left)
+    }
+};
+```
+
+### 100.相同的树
+- 思路：
+  - 两个树：根节点的值相同，左子树相同
+  - 符合 分、解、合 特性
+  - 考虑分而治之
+- 步骤：
+  - 分：获取两个树的左右子树
+  - 解：递归的判断两个左子树是否相同，右子树是否相同
+  - 合：将上述结果合并，如果根节点的值也相同，树就相同
+
+  - 时间复杂度:O(N)
+  - 空间复杂度:O(N)
+```js
+var isSameTree = function (p, q) {
+    var cur = (p, q) => {
+        if (!p && !q) {return true}
+        if (p && q && p.val == q.val
+            && cur(p.left, q.left)
+            && cur(p.right, q.right)
+        ) {
+            return true
+        } else {
+            return false
+        }
+    }
+    return cur(p, q)
+};
+```
+
+### 101.对称二叉树
+- 思路：
+  - 转化为：左右子树是否镜像
+  - 分解为：树1的左子树个树2的右子树是否镜像，树1的右子树和树2的右子树是否镜像
+  - 考虑分而治之
+- 步骤：
+  - 分：获取两个树的左右子树
+  - 解：递归的判断是否镜像
+
+、
+  - 时间复杂度:O(N)
+  - 空间复杂度:O(N)
+```js
+var isSymmetric = function (root) {
+    if (!root) { return true }
+    const isMirror = (l, r) => {
+        if (!l && !r) { return true }
+        if (l && r && l.val == r.val
+            && isMirror(l.left, r.right)
+            && isMirror(l.right, r.left)
+        ) {
+            return true
+        } else {
+            return false
+        }
+    }
+    return isMirror(root.left, root.right)
+};
+```
+
+
+
+
 
 ## 贪心算法
 

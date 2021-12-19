@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var invertTree = function (root) {
+            console.log(root.left)
+            var left = root.left
+            var right = root.right
+
+            const cur = (tree) => {
+                return [tree[left], tree[right]] = [tree[right], tree[left]]
+
+                if (tree.left && tree.right) {
+                    return cur()
+                }
+
+            }
+            cur()
+
+        };
+
+
+    </script>
+</body>
+
+</html>

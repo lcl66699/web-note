@@ -47,6 +47,7 @@ module.exports = {
     }]
   ],
   themeConfig: {
+    smoothScroll: true,//页面滚动效果
     // // 多语言下拉菜单的标题
     // selectText: '选择语言',
     // // 该语言在下拉菜单中的标签
