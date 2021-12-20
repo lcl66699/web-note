@@ -614,6 +614,78 @@ var isSymmetric = function (root) {
 
 
 
+
+
+## 动态规划
+
+- 动态规划是算法设计中的一种方法
+- 它将一个问题分解为<b style="color:red">相互重叠</b>的子问题，通过反复求解子问题，来解决原来的问题。
+- 相比分而治之的子问题互不干扰、独立的，动态规划的子问题是相互重叠
+
+#### 场景
+- 斐波那契数列：0 1 1 2 3 5 8 13 21 34
+  - 定义子问题：F(n)=F(n-1)+F(n-2)
+  - 反复执行：从2执行到n，执行上述公式
+
+### 动态规划公式
+
+```js
+const dp = (arr) => {
+  let res = [].concat(arr);
+  let arrLen = arr.length;
+  for (let i = 0; i < arrLen; i++) {
+    for (let j = 0; index < arrLen; index++) {
+      // if (arr[i] > sarr[i-j]+xxx){
+      if (arr[i] > arr[i - j]) {
+        arr[i] = "重新赋值";
+      }
+    }
+  }
+};
+```
+
+### 70.爬楼梯
+
+思路：
+  - 爬到第n阶可以再第n-1阶爬1个台阶，或者在第n-2阶爬2个台阶
+  - F(n)=F(n-1)+F(n-2)
+步骤：
+  - 定义子问题 F(n)=F(n-1)+F(n-2)
+  - 从2循环到n，执行上述公式
+
+```js
+var climbStairs = function (n) {
+    if(n<2){return 1}
+    const dp=[1,1]
+    for(let i=2;i<=n;i++){
+        dp[i]=dp[i-1]+dp[i-2]
+    }
+    return dp[n]
+};
+```
+```js
+var climbStairs = function (n) {
+    if(n<2){return 1}
+    const menu=[]
+    menu[1]=1
+    menu[2]=2
+    for(let i=3;i<=n;i++){
+        menu[i]=menu[i-2]+menu[i-1]
+    }
+    return menu[n]
+};
+```
+
+### 198.打家劫舍
+
+
+思路：
+  - 存数组  
+
+```js
+
+```
+
 ## 贪心算法
 
 期盼通过每个阶段的局部最优选择，从而达到全局的最优
@@ -832,22 +904,7 @@ var findMinArrowShots = function(points) {
 };
 ```
 
-## 动态规划
 
-```js
-const dp = (arr) => {
-  let res = [].concat(arr);
-  let arrLen = arr.length;
-  for (let i = 0; i < arrLen; i++) {
-    for (let j = 0; index < arrLen; index++) {
-      // if (arr[i] > sarr[i-j]+xxx){
-      if (arr[i] > arr[i - j]) {
-        arr[i] = "重新赋值";
-      }
-    }
-  }
-};
-```
 
 # 搜索算法(递归或者栈解决)
 
