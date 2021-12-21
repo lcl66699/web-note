@@ -81,7 +81,7 @@ module.exports = {
         ]
       },
 
-      { text: 'sidebar', link: '/views/sidebargroup/' },
+      { text: 'js', link: '/views/js/' },
       { text: '个人空间', link: 'http://39.106.5.96/' },
       {
         text: '其他',
@@ -93,6 +93,10 @@ module.exports = {
     sidebar: {
       //算法
       '/views/Algorithm/': [
+        '',
+      ],
+      //js
+      '/views/js/': [
         '',
       ],
       '/views/Http/': [
@@ -143,14 +147,7 @@ module.exports = {
             '',
             'bar1'
           ]
-        },
-        {
-          title: '进阶',
-          collapsable: true,
-          children: [
-            'bar2'
-          ]
-        },
+        }
       ]
     },
 
