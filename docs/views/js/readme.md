@@ -155,3 +155,219 @@ new Promise(function(resolve, reject) {
 // 5. 宏任务①中的代码执行完成后，会查找微任务队列，于是输出 children3；然后开始执行宏任务②，即第二个 setTimeout，输出 children5，此时将.then放到微任务队列中。
 // 6. 宏任务②中的代码执行完成后，会查找微任务队列，于是输出 children7，遇到 setTimeout，放到宏任务队列中。此时微任务执行完成，开始执行宏任务，输出 children6;
 ```
+
+## 事件的捕获和冒泡机制
+
+- 捕获是从window到目标元素
+- 冒泡是目标元素到window
+
+```js
+window.addEventListener('click', () => {
+    console.log(12312);
+}, false)
+//false 冒泡阶段
+//true 捕获阶段
+```
+### 事件委托
+
+```js
+const list = document.getElementById('list')
+list.addEventListener('click', function (e) {
+    const target = e.target
+    if (target.tagName.toLowerCase() == 'li') {
+        const lilist = this.querySelectorAll('li')//伪数组
+        // 伪数组不能直接用indexOf
+        const index = Array.prototype.indexOf.call(lilist, target)
+        console.log(`内容为${target.innerHtml},下标是${index}`);
+    }
+})
+```
+- 阻止事件的发生
+```js
+window.addEventListener('click', (e) => {
+    e.stopPropagation()
+}, true)
+```
+
+### addEventListener执行顺序
+
+- addEventListener先从事件捕获开始执行,也就是第三个参数为true,先从window开始,到parent,再到son
+- 紧接着开始执行事件冒泡,也就是默认的false.先从子元素开始执行,然后到parent,最后到window
+
+
+
+## 防抖和节流
+
+函数防抖（debounce）：当持续触发事件时，一定时间段内没有再触发事件，事件处理函数才会执行一次，如果设定的时间到来之前，又一次触发了事件，就重新开始延时。如下图，持续触发 scroll 事件时，并不执行 handle 函数，当 1000 毫秒内没有触发 scroll 事件时，才会延时触发 scroll 事件。 debounce.webp
+
+函数节流（throttle）：当持续触发事件时，保证一定时间段内只调用一次事件处理函数。节流通俗解释就比如我们水龙头放水，阀门一打开，水哗哗的往下流，秉着勤俭节约的优良传统美德，我们要把水龙头关小点，最好是如我们心意按照一定规律在某个时间间隔内一滴一滴的往下滴。
+
+比如，持续触发 scroll 事件时，并不立即执行 handle 函数，每隔 1000 毫秒才会执行一次 handle 函数。
+
+- 适合场景
+  - 节流：resize scroll
+  - 防抖：input 输入框 比如搜索
+
+### 防抖实现
+频繁输入 1s 后触发：
+```html
+<input type="text" oninput="test(event)" />
+<script>
+  var changeinput = (event) => {
+    console.log(event.target.value);
+  };
+  var debounce = (fn, wait) => {
+    var timeout = null;
+    return function() {
+      if (timeout !== null) {
+        clearInterval(timeout);
+      }
+      timeout = setTimeout(() => {
+        fn.apply(this, arguments);
+      }, wait);
+    };
+  };
+
+  var test = debounce(changeinput, 1000);
+</script>
+```
+
+### 节流实现:首节流
+
+```js
+/*
+    节流实现 时间戳的实现，
+    首节流，第一次立即执行。但是最后如果只滚动了一秒，不会再执行了
+*/
+function throttle(fn, delay) {
+  let last = 0;
+  return function() {
+    const now = Date.now();
+    if (now - last >= delay) {
+      last = now;
+      fn.apply(this, arguments);
+    }
+  };
+}
+
+function handle(val = "test") {
+  console.log(val, new Date());
+}
+
+const throttleHander = throttle(handle, 2000);
+window.addEventListener("scroll", throttleHander);
+```
+
+### 节流实现:尾节流
+
+```js
+/*
+    定时器实现，尾节流，不会立刻执行函数，而是再delay之后执行
+    最后一次停止触发后，因为delay的定时器，还会执行一次
+*/
+function throttle(fn, delay) {
+  let timer = null;
+  return function() {
+    if (!timer) {
+      timer = setTimeout(() => {
+        timer = null;
+        fn.apply(this, arguments);
+      }, delay);
+    }
+  };
+}
+
+function handle(val = "test") {
+  console.log(val, new Date());
+}
+
+const throttleHander = throttle(handle, 2000);
+window.addEventListener("scroll", throttleHander);
+```
+
+### 节流实现，兼顾了首节流和尾节流
+
+```js
+var myipy = (val) => {
+  console.log("节流实现，兼顾了首节流和尾节流");
+};
+function throttle(fn, delay) {
+  var last = 0;
+  var timer = null;
+  return function() {
+    const now = Date.now();
+    clearInterval(timer);
+    if (now - last >= delay) {
+      fn.call(this, ...arguments);
+      last = Date.now();
+    } else {
+      timer = setTimeout(() => {
+        fn.call(this, ...arguments);
+        last = Date.now();
+      }, delay);
+    }
+  };
+}
+var mydebouce = throttle(myipy, 2000);
+
+window.addEventListener("scroll", mydebouce);
+```
+
+## Promise
+
+### Promise.all
+
+有一个报错了,其他的Promise还会执行嘛?
+  - 会的,在创建的时候就已经执行了
+
+#### 手写Promise.all
+
+```js
+const PromiseAll = (arr) => {
+    return new Promise((reslove, reject) => {
+        if (!Array.isArray(arr)) { return reject('传入的参数需是数组') }
+        let resArr = []
+        let counter = 0////这个变量用来计数
+        arr.forEach((item, i) => {
+            //检验传来的值是不是promise 这种处理方式得*2 不是很简洁
+            const isPromise = Object.prototype.toString.call(item) === '[object Promise]'
+            //检验传来的值是不是promise,直接Promise.resolve,因为Promise.resolve包裹的参数默认就会转Promise,不需要关注类型了
+            Promise.resolve(item).then((val) => {
+                counter++
+                resArr[i] = val
+                //为何不用resArr.length去判断?是因为执行的可能是异步,
+                //所以在赋值的时候,很可能先赋值到大的下标,这时候数组长度虽然变长,但是其他Promise并未返回
+                if (counter == arr.length) {
+                    reslove(resArr)
+                }
+            }).catch(err => reject(err))
+        })
+    })
+}
+
+const pro1 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res('1')
+    }, 1000)
+})
+const pro2 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res('2')
+    }, 2000)
+})
+const pro3 = new Promise((res, rej) => {
+    setTimeout(() => {
+        res('3')
+    }, 3000)
+})
+
+const pro4 = 123
+
+const peoAll = PromiseAll([pro1, pro2, pro3, pro4])
+    .then((res) => {
+        console.log('3s', res);//3s后打印['1','2','3']
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+```
