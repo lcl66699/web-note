@@ -25,54 +25,9 @@
 
 <body>
     <script>
-        const PromiseAll = (arr) => {
-            return new Promise((reslove, reject) => {
-                if (!Array.isArray(arr)) { return reject('传入的参数需是数组') }
-                let resArr = []
-                let counter = 0////这个变量用来计数
-                arr.forEach((item, i) => {
-                    //检验传来的值是不是promise 这种处理方式得*2 不是很简洁
-                    const isPromise = Object.prototype.toString.call(item) === '[object Promise]'
-                    //检验传来的值是不是promise,直接Promise.resolve,因为Promise.resolve包裹的参数默认就会转Promise,不需要关注类型了
-                    Promise.resolve(item).then((val) => {
-                        counter++
-                        resArr[i] = val
-                        //为何不用resArr.length去判断?是因为执行的可能是异步,
-                        //所以在赋值的时候,很可能先赋值到大的下标,这时候数组长度虽然变长,但是其他Promise并未返回
-                        if (counter == arr.length) {
-                            reslove(resArr)
-                        }
-                    }).catch(err => reject(err))
-                })
-            })
+        class Promise{
+            static async getInfo()
         }
-
-        const pro1 = new Promise((res, rej) => {
-            setTimeout(() => {
-                res('1')
-            }, 1000)
-        })
-        const pro2 = new Promise((res, rej) => {
-            setTimeout(() => {
-                res('2')
-            }, 2000)
-        })
-        const pro3 = new Promise((res, rej) => {
-            setTimeout(() => {
-                res('3')
-            }, 3000)
-        })
-
-        const pro4 = 123
-
-        const peoAll = PromiseAll([pro1, pro2, pro3, pro4])
-            .then((res) => {
-                console.log('3s', res);//3s后打印['1','2','3']
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
 
     </script>
 </body>

@@ -1,8 +1,8 @@
 {
-  "name": "vuepress-template",
+  "name": "vuepress-blog",
   "version": "1.0.6",
-  "description": "vuepress template",
-  "author": "alexliu518@gmail.com",
+  "description": "vuepress-blog",
+  "author": "768206581@qq.com",
   "main": "index.js",
   "keywords": [
     "theme",
@@ -10,10 +10,10 @@
     "plugin",
     "vuepress"
   ],
-  "homepage": "https://github.com/openHacking/vuepress-template",
+  "homepage": "https://gitee.com/numbrun/vuepress-blog",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openHacking/vuepress-template.git"
+    "url": "https://gitee.com/numbrun/vuepress-blog.git"
   },
   "license": "MIT",
   "scripts": {

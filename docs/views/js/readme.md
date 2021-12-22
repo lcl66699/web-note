@@ -318,7 +318,7 @@ window.addEventListener("scroll", mydebouce);
 ### Promise.all
 
 有一个报错了,其他的Promise还会执行嘛?
-  - 会的,在创建的时候就已经执行了
+  - 会的,在实例化的时候就已经执行了
 
 #### 手写Promise.all
 
@@ -371,3 +371,7 @@ const peoAll = PromiseAll([pro1, pro2, pro3, pro4])
         console.log(err);
     })
 ```
+
+#### Promise缓存
+
+## 装饰器

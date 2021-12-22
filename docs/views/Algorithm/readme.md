@@ -213,8 +213,6 @@ var guessNumber = function (n) {
         }
     }
 };
-
-
 ```
 
 - 分而治之思想，递归
@@ -237,6 +235,90 @@ var guessNumber = function (n) {
     }
     return cur(1, n)
 };
+```
+
+
+### 42.接雨水
+
+思路：
+  - 位置 i 能装下多少水，其实和左侧和右侧的高度
+  - Math.min(左侧高度，右侧高度)-自己高度height[i]
+
+暴力破解
+```js
+var trap = function (height) {
+    if (!height.length) return 0
+    let len = height.length
+    let res = 0
+    for (let i = 1; i < len - 1; i++) {
+        let left_max = 0
+        let right_max = 0
+        //左侧最大
+        for (let j = i; j < len; j++) {
+            left_max = Math.max(left_max, height[j])
+        }
+        //右侧最大
+        for (let j = i; j >= 0; j--) {
+            right_max = Math.max(right_max, height[j])
+        }
+        res+=Math.min(left_max,right_max)-height[i]
+    }
+    return res
+};
+```
+动态规划-暴力破解优化
+```js
+var trap = function (height) {
+    if (!height.length) return 0
+    let len = height.length
+    let res = 0
+
+    let l_max = new Array(len)//一个数组存每一个位置上左右的最高
+    let r_max = new Array(len)
+
+    l_max[0] = height[0]//默认值
+    r_max[len - 1]= height[len - 1]
+
+    for (let i = 1; i < len; i++) {
+        l_max[i] = Math.max(l_max[i-1], height[i])
+    }
+    for (let i = len-2; i >= 0; i--) {
+        r_max[i] = Math.max(r_max[i+1], height[i])
+    }
+    for (let i = 1; i < len - 1; i++) {
+        res += Math.min(l_max[i], r_max[i]) - height[i]
+    }
+    return res
+};
+```
+
+双指针
+```js
+var trap = function (height) {
+    if (!height.length) return 0
+    let len = height.length
+    let res = 0
+
+    let left = 0
+    let right = len - 1
+
+    let leftMax = height[0]
+    let rightMax = height[len - 1]
+
+    while (left <= right) {
+        leftMax = Math.max(leftMax, height[left])
+        rightMax = Math.max(rightMax, height[right])
+        if (leftMax < rightMax) {
+            res += leftMax - height[left]
+            left++
+        } else {
+            res += rightMax - height[right]
+            right--
+        }
+    }
+    return res
+};
+
 ```
 ## 算法
 
@@ -680,10 +762,22 @@ var climbStairs = function (n) {
 
 
 思路：
-  - 存数组  
+  - f(k)=从前k个房屋中能偷窃到的中最大数额
+  - Ak= 第k个房屋的钱数
+  - f(k)=max(f(k-2)+Ak,f(k-1))
+  - 考虑使用动态规划
+- 时间复杂度 O(n)
+- 空间复杂度 O(n)
 
 ```js
-
+var rob = function (nums) {
+    if(nums.length===0)return 0
+    let dp = [0,nums[0]]
+    for (let i = 2; i <= nums.length; i++) {
+        dp[i] = Math.max(dp[i-2]+nums[i-1],dp[i-1])
+    }
+    return dp[nums.length]
+};
 ```
 
 ## 贪心算法
@@ -905,6 +999,53 @@ var findMinArrowShots = function(points) {
 ```
 
 
+
+## 回溯算法
+
+- 回溯算法是一种渐进式寻找并构建问题解决方式的策略
+- 回溯算法会先从一个可能的动作开始解决问题，如果不行，就回溯并选择另一个动作，直到将问题解决
+
+### 场景
+- 有很多路。这些路里，有死路，也有出路，通常递归模拟所有路
+- 全排列
+  - 递归模拟所有情况
+  - 遇到包含重复元素，就回溯
+  - 收集所有到达递归重点的情况，并返回
+
+### 46.全排列 
+
+- 时间复杂度 O(n!)
+- 空间复杂度 O(n)
+
+```js
+var permute = function (nums) {
+    let res = []
+    const backtrack = (path) => {
+
+        if (path.length === nums.length) {
+            res.push(path)
+            return
+        }
+        // for (let i = 0; i < nums.length; i++) {
+        //     // console.log(nums[i])
+        //     if (path.includes(nums[i])) return
+        //     backtrack(path.concat(nums[i]))
+        // }
+        nums.forEach(n=>{
+            if(path.includes(n)) return
+            backtrack(path.concat(n))
+        })
+    }
+    backtrack([])
+    return res
+};
+```
+
+### 78.子集
+
+```js
+
+```
 
 # 搜索算法(递归或者栈解决)
 
