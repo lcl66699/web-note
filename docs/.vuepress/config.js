@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/blog-note/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   title: "小木屋",
   description: "欢迎来到numb的笔记小木屋",
   head: [
@@ -111,9 +111,9 @@ module.exports = {
         '',
       ],
       // react
-      '/views/React/': [
-        'easy',
-      ],
+      // '/views/React/': [
+      //   'easy',
+      // ],
       '/views/other/': [
         '',
         'webpack',

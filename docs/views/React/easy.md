@@ -1,6 +1,6 @@
  安个vs的小插件   安好输入rcc  可快捷创建类 rfc快速创建函数
 
-
+```js
 1. React介绍
 Facebook,React主要是用于构建用户界面的JavaScript 库，实现单页面应用。
 单页面应用和多页面应用
@@ -1018,7 +1018,7 @@ function mapDispatchToprops(dispatch){
     }
 }
 
-
+```
         
 
 
