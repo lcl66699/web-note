@@ -1,7 +1,7 @@
 module.exports = {
   base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
-  title: "小木屋",
-  description: "欢迎来到numb的笔记小木屋",
+  title: "橘子海",
+  description: "心向大海，无所畏惧",
   head: [
     ['link', {
       rel: 'icon',
