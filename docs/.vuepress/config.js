@@ -98,6 +98,7 @@ module.exports = {
       //js
       '/views/js/': [
         '',
+        'js模块化'
       ],
       '/views/Http/': [
         '',
