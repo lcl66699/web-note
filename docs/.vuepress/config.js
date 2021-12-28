@@ -65,6 +65,7 @@ module.exports = {
     algolia: {},
     // logo: '/img/yy.png',//导航栏log
     nav: [
+      { text: 'js', link: '/views/js/' },
       { text: '算法', link: '/views/Algorithm/' },
       { text: 'http', link: '/views/Http/' },
       {
@@ -80,13 +81,12 @@ module.exports = {
           { text: 'React基础', link: '/views/React/' }, // 可不写后缀 .md
         ]
       },
-
-      { text: 'js', link: '/views/js/' },
       { text: '个人空间', link: 'http://39.106.5.96/' },
       {
         text: '其他',
         items: [
-          { text: '乱', link: '/views/other/', ariaLabel: '其他' }
+          { text: 'git', link: '/views/other/Git/', ariaLabel: '其他' },
+          // { text: '乱', link: '/views/other/', ariaLabel: '其他' }
         ],
       },
     ],
@@ -116,20 +116,22 @@ module.exports = {
       // '/views/React/': [
       //   'easy',
       // ],
-      '/views/other/': [
-        '',
-        'webpack',
-        'guide',
-        'installUse'
-        // {
-        //   title: 'webpack',
-        //   collapsable: true,
-        //   children: [
-        //     'webpack',
-        //     'guide',
-        //     'installUse'
-        //   ]
-        // },
+      // '/views/other/': [
+      //   '',
+      //   'webpack',
+      //   'guide',
+      //   // {
+      //   //   title: 'webpack',
+      //   //   collapsable: true,
+      //   //   children: [
+      //   //     'webpack',
+      //   //     'guide',
+      //   //     'installUse'
+      //   //   ]
+      //   // },
+      // ],
+      "/views/other/Git/": [
+        ''
       ],
       '/guide/': [
         '',
