@@ -70,165 +70,6 @@ chrome 支持最大 6 个 tcp 连接。
 
 ### 实现一个控制并发量的函数，接收并发量的参数。3，urls=[8]
 
-## 前端的内存处理
-
-内存声明周期：分配，使用，垃圾回收机制回收
-
-### js 的垃圾回收机制
-
-- 引用计数法
-  - 看一个对象是否有指向他的引用。如果没有其他对象指向他了，说明这个对象不再被需要了
-  - 但是如果是循环引用，引用计数法会无法识别，导致内存泄露
-- 标记清除法
-
-  - 标记清除算法将“不再使用的对象”定义为“无法达到的对象”。
-  - 简单来说，就是从根部（在 JS 中就是全局对象）出发定时扫描内存中的对象。 凡是能从根部到达的对象，都是还需要使用的。 那些无法由根部出发触及到的对象被标记为不再使用，稍后进行回收。
-
-    1. 垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。
-    2. 从根部出发将能触及到的对象的标记清除。
-    3. 那些还存在标记的变量被视为准备删除的变量。
-    4. 最后垃圾收集器会执行最后一步内存清除的工作，销毁那些带标记的值并回收它们所占用的内存空间。
-
-### 常见的内存泄露
-
-1. 万恶的全局变量
-2. 未被清理的定时器和回调函数
-3. 闭包
-   一个内部函数，有权访问外部函数的变量
-
-   ```js
-   var theThing = null;
-   var replaceThing = function() {
-     var originalThing = theThing;
-     console.log(originalThing);
-     var unused = function() {
-       //没被用到
-       if (originalThing)
-         // 对于 'originalThing'的引用
-         console.log("hi");
-     };
-     theThing = {
-       longStr: new Array(1000000).join("*"),
-       someMethod: function() {
-         console.log("message");
-       },
-     };
-   };
-   setInterval(replaceThing, 1000);
-   ```
-
-   定时器每次调用 replaceThing 的时候，会得到很长的 longStr 字符串和一个对于新闭包 someMethod 对象
-
-   关键在于，闭包之间是共享作用域的，nused 引用了 originalThing，虽然 unused 可能一直没有被调用，但是 someMethod 可能会被调用，
-   就会导致无法对其内存进行回收。 当这段代码被反复执行时，内存会持续增长。
-
-4. DOM 引用
-
-```js
-var elements = {
-  image: document.getElementById("image"),
-};
-function doStuff() {
-  elements.image.src = "http://example.com/image_name.png";
-}
-function removeImage() {
-  document.body.removeChild(document.getElementById("image"));
-  // 这个时候我们对于 #image 仍然有一个引用, Image 元素, 仍然无法被内存回收.
-}
-```
-
-上述案例中，即使我们对于 image 元素进行了移除，但是仍然有对 image 元素的引用，依然无法对齐进行内存回收。
-
-### 避免内存泄露？
-
-- 尽量减少全局变量，使用严格模式避免意外创建全局变量。
-- 使用完数据后，及时解除引用（闭包中的变量，dom 引用，定时器清除）。
-
-### 实现一个 sizeOf 函数。接收一个对象，计算传入的对象占用的字节数
-
-```js
-function calculator(object) {}
-
-const testObj = {
-  a: 1111,
-  b: "ccc",
-  2222: false,
-};
-
-console.log(calculator(testObj));
-```
-
-> 解答
-
-```js
-var myWeakSet = new WeakSet();
-function objSize(object) {
-  if (object === null) {
-    return 0;
-  }
-  let bytes = 0;
-  let properties = Object.keys(object); //拿到key
-  for (let i = 0; i < properties.length; i++) {
-    const element = properties[i];
-    if (typeof object[element] === "object" && object[element] !== null) {
-      if (myWeakSet.has(object[element])) {
-        continue;
-      }
-      myWeakSet.add(object[element]);
-    }
-    bytes += calculator(object[element]); //value
-    bytes += calculator(element); //key
-  }
-
-  return bytes;
-}
-
-function calculator(object) {
-  /**
-   * string 每个长度占2字节
-   * number 8字节
-   * boolean 4字节
-   * 数组：数组内的元素相加
-   * 对象：分别拿到key和value分别计算 判断value的时候需要判断：
-   *      是不是两个key引用的同一个对象
-   */
-  let objType = typeof object;
-
-  switch (objType) {
-    case "string":
-      return object.length * 2;
-    case "number":
-      return 8;
-    case "boolean":
-      return 4;
-    case "object":
-      if (Array.isArray(object)) {
-        //map中的calculator等于： item => { return calculator(item) }
-        return object.map(calculator).reduce((a, b) => {
-          return a + b;
-        }, 0);
-      } else {
-        return objSize(object);
-      }
-    default:
-      return 0;
-  }
-}
-
-const obj2 = {
-  A: 132,
-  B: [1, 2, 3],
-}; //占用 2+8+2+24=36
-
-const testObj = {
-  a: obj2,
-  b: obj2,
-  c: [1, 0, false],
-};
-
-console.log(calculator(testObj));
-```
-
 ## 闭包
 
 1. 创建私有变量
@@ -596,4 +437,228 @@ var run = async () => {
   run();
 };
 run();
+```
+
+
+## HTTP请求相关
+
+### 解决跨域
+  1. jsonp
+  2. cors
+  3. node正向代理，比如请求/api 可以转接到同域的服务去访问/api，绕过浏览器同源策略，再返回前端
+  4. nginx 反向代理，proxy_pass
+  5. image标签
+
+### 有做过全局的请求处理吗？比如统一请求并设置登录态, 比如报错统一弹toast等
+
+    Axios的request interceptor 和 response interceptor, 单例
+
+### 3. 你能给xhr添加hook, 实现在各个阶段打印日志吗?
+
+    代码题, 实现页面上通过xhr发请求的时候, 在xhr的生命周期里, 能够实现自定义的行为触发。
+```js
+class XhrHook {
+    /**
+     * 构造函数
+     * @param {*} beforeHooks 
+     * @param {*} afterHooks 
+     */
+    constructor(beforeHooks = {}, afterHooks = {}) {
+        // 单例
+        if (XhrHook.instance) {
+            return XhrHook.instance;
+        }
+
+        this.XHR = window.XMLHttpRequest;
+
+        this.beforeHooks = beforeHooks;
+        this.afterHooks = afterHooks;
+        this.init();
+
+        XhrHook.instance = this;
+    }
+
+    /**
+     * 初始化 重写xhr对象
+     */
+    init() {
+        let _this = this;
+
+        window.XMLHttpRequest = function () {
+            this._xhr = new _this.XHR();
+
+            _this.overwrite(this);
+        }
+
+    }
+
+    /**
+     * 处理重写
+     * @param {*} xhr 
+     */
+    overwrite(proxyXHR) {
+        for (let key in proxyXHR._xhr) {
+
+            if (typeof proxyXHR._xhr[key] === 'function') {
+                this.overwriteMethod(key, proxyXHR);
+                continue;
+            }
+
+            this.overwriteAttributes(key, proxyXHR);
+        }
+    }
+
+    /**
+     * 重写方法
+     * @param {*} key 
+     */
+    overwriteMethod(key, proxyXHR) {
+        let beforeHooks = this.beforeHooks;
+        let afterHooks = this.afterHooks;
+
+        proxyXHR[key] = (...args) => {
+            // 拦截
+            if (beforeHooks[key] && (beforeHooks[key].call(proxyXHR, args) === false)) {
+                return;
+            }
+
+            // 执行方法本体
+            const res = proxyXHR._xhr[key].apply(proxyXHR._xhr, args);
+
+            // 方法本体执行后的钩子
+            afterHooks[key] && afterHooks[key].call(proxyXHR._xhr, res);
+
+            return res;
+        };
+    }
+
+    /**
+     * 重写属性
+     * @param {*} key 
+     */
+    overwriteAttributes(key, proxyXHR) {
+        Object.defineProperty(proxyXHR, key, this.setProperyDescriptor(key, proxyXHR));
+    }
+
+    /**
+     * 设置属性的属性描述
+     * @param {*} key 
+     */
+    setProperyDescriptor(key, proxyXHR) {
+        let obj = Object.create(null);
+        let _this = this;
+
+        obj.set = function (val) {
+
+            // 如果不是on打头的属性
+            if (!key.startsWith('on')) {
+                proxyXHR['__' + key] = val;
+                return;
+            }
+
+            if (_this.beforeHooks[key]) {
+
+                this._xhr[key] = function (...args) {
+                    _this.beforeHooks[key].call(proxyXHR);
+                    val.apply(proxyXHR, args);
+                }
+
+                return;
+            }
+
+            this._xhr[key] = val;
+        }
+
+        obj.get = function () {
+            return proxyXHR['__' + key] || this._xhr[key];
+        }
+
+        return obj;
+    }
+
+    /**
+     * 获取实例
+     */
+    getInstance() {
+        return XhrHook.instance;
+    }
+
+    /**
+     * 添加钩子
+     * @param {*} key 
+     * @param {*} value 
+     */
+    add(key, value, execed = false) {
+        if (execed) {
+            this.afterHooks[key] = value;
+        } else {
+            this.beforeHooks[key] = value;
+        }
+        return this;
+    }
+
+    /**
+     * 删除钩子
+     * @param {*} name 
+     */
+    rmHook(name, isExeced = false) {
+        let target = (isExeced ? this.afterHooks : this.beforeHooks);
+        delete target[name];
+    }
+
+    /**
+     * 清空钩子
+     */
+    clearHook() {
+        this.beforeHooks = {};
+        this.afterHooks = {};
+    }
+
+    /**
+     * 取消监听
+     */
+    unset() {
+        window.XMLHttpRequest = this.XHR;
+    }
+
+    /**
+     * 重新监听
+     */
+    reset() {
+        XhrHook.instance = null;
+        XhrHook.instance = new XhrHook(this.beforeHooks, this.afterHooks);
+    }
+}
+
+new XhrHook({
+    open: function () {
+        console.log('open');
+        // return false;
+    },
+    onload: function () {
+        console.log('onload');
+    },
+    onreadystatechange: function () {
+        console.log('onreadystatechange');
+    },
+    onerror: function () {
+        console.log('hook error')
+    }
+});
+
+
+
+var xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https://www.baidu.com', true);
+
+xhr.send();
+
+xhr.onreadystatechange = function (res) {
+    console.log('statechange');
+}
+
+xhr.onerror = function () {
+    console.log('error');
+}
 ```
