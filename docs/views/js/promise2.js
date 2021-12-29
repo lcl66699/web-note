@@ -33,7 +33,9 @@ class MyPromise {
     }
     then(onFulfilled, onRejected) {
         const realOnFulfilled = this.isFun(onFulfilled) ? onFulfilled : (value) => { value }
-        const realOnRejected = this.isFun(onRejected) ? onRejected : (reason) => { reason }
+        const realOnRejected = this.isFun(onRejected) ? onRejected : (reason) => {
+            throw reason
+        }
         // console.log(onFulfilled, onRejected);
         const Promise2 = new MyPromise((resolve, reject) => {
             const realOnFulfilledMicrotask = () => {

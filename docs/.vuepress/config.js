@@ -113,9 +113,9 @@ module.exports = {
         '',
       ],
       // react
-      // '/views/React/': [
-      //   'easy',
-      // ],
+      '/views/React/': [
+        '',
+      ],
       // '/views/other/': [
       //   '',
       //   'webpack',
