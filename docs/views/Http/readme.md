@@ -69,7 +69,96 @@ chrome 支持最大 6 个 tcp 连接。
 多路复用，其实就是一个 TCP 里存在多条流
 
 ### 实现一个控制并发量的函数，接收并发量的参数。3，urls=[8]
+前提
+```js
+const urls = [{
+      info: 'link1',
+      time: 3000
+  },
+  {
+      info: 'link2',
+      time: 2000
+  },
+  {
+      info: 'link3',
+      time: 5000
+  },
+  {
+      info: 'link4',
+      time: 1000
+  },
+  {
+      info: 'link5',
+      time: 1200
+  },
+  {
+      info: 'link6',
+      time: 2000
+  },
+  {
+      info: 'link7',
+      time: 800
+  },
+  {
+      info: 'link8',
+      time: 3000
+  },
+];
 
+// 设置我们要执行的任务
+function loadImg(url) {
+    return new Promise((resolve, reject) => {
+        console.log("----" + url.info + " start!");
+        setTimeout(() => {
+            console.log(url.info + " OK!!!");
+            resolve();
+        }, url.time)
+    })
+};
+
+
+const queue = new PromiseQuene({ count: 3 })
+urls.forEach((url) => {
+    queue.add(() => loadImg(url))
+})
+```
+
+#### code实现
+```js
+//实现控制并发的函数，urls=[8]
+class PromiseQuene {
+    constructor(options = {}) {
+        this.count = options.count || 1
+        this.currentCount = 0//当前进行的任务
+        this.pendingList = []//当前等待的池子
+
+    }
+    add(fn) {
+        this.pendingList.push(fn)
+        this.run()
+    }
+    run(fn) {
+        if (this.pendingList.length == 0 || this.currentCount == this.count) {
+            return
+        }
+        this.currentCount++
+        const onefn = this.pendingList.shift()
+
+        const promise = onefn()
+        promise.then(() => {
+            this.currentCount--
+            this.run()
+        }).catch(() => {
+            this.currentCount--
+            this.run()
+        })
+    }
+}
+```
+
+#### 如果有高优先级需要先执行呢？
+- 可以在插入的时候排序
+- `const onefn = this.pendingList.shift()`也可以在弹出的之前先进行排序在弹出
 ## 闭包
 
 1. 创建私有变量
@@ -267,7 +356,7 @@ class EventEmitter {
     const cbs = this.events[event];
 
     if (!cbs) {
-      console.warn(event, "大咩大咩");
+      console.warn(event, "哒咩这个事件");
       return this;
     }
     cbs.forEach((element) => {
@@ -287,7 +376,7 @@ class EventEmitter {
       return this;
     }
     this.events[event].push(cb);
-    return this;
+    return this;//链式调用 所以return this
   }
   // 只会触发一次
   once(event, cb) {
@@ -451,11 +540,120 @@ run();
 
 ### 有做过全局的请求处理吗？比如统一请求并设置登录态, 比如报错统一弹toast等
 
-    Axios的request interceptor 和 response interceptor, 单例
+Axios的request interceptor 和 response interceptor, 单例
+```js
+import axios from 'axios'
+import { Notification, MessageBox, Message } from 'element-ui'
+import store from '@/store'
+import { getToken } from '@/utils/auth'
+import errorCode from '@/utils/errorCode'
+
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+// 创建axios实例
+const service = axios.create({
+  // axios中请求配置有baseURL选项，表示请求URL公共部分
+  // baseURL: process.env.VUE_APP_BASE_API,
+  // 超时
+  timeout: 10000
+})
+// request拦截器
+service.interceptors.request.use(config => {
+  // 是否需要设置 token
+  const isToken = (config.headers || {}).isToken === false
+  if (getToken() && !isToken) {
+    config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+  }
+  // get请求映射params参数
+  if (config.method === 'get' && config.params) {
+    let url = config.url + '?';
+    for (const propName of Object.keys(config.params)) {
+      const value = config.params[propName];
+      var part = encodeURIComponent(propName) + "=";
+      if (value !== null && typeof (value) !== "undefined") {
+        if (typeof value === 'object') {
+          for (const key of Object.keys(value)) {
+            if (value[key] !== null && typeof (value[key]) !== 'undefined') {
+              let params = propName + '[' + key + ']';
+              let subPart = encodeURIComponent(params) + '=';
+              url += subPart + encodeURIComponent(value[key]) + '&';
+            }
+          }
+        } else {
+          url += part + encodeURIComponent(value) + "&";
+        }
+      }
+    }
+    url = url.slice(0, -1);
+    config.params = {};
+    config.url = url;
+  }
+  return config
+}, error => {
+  console.log(error)
+  Promise.reject(error)
+})
+
+// 响应拦截器
+service.interceptors.response.use(res => {
+  // 未设置状态码则默认成功状态
+  const code = res.data.code || 200;
+  // 获取错误信息
+  const msg = errorCode[code] || res.data.msg || errorCode['default']
+  if (code === 401) {
+    MessageBox.confirm('登录状态已过期，您可以继续留在该页面，或者重新登录', '系统提示', {
+      confirmButtonText: '重新登录',
+      cancelButtonText: '取消',
+      type: 'warning'
+    }
+    ).then(() => {
+      store.dispatch('LogOut').then(() => {
+        location.href = '/index';
+      })
+    }).catch(() => { });
+    return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
+  } else if (code === 500) {
+    Message({
+      message: msg,
+      type: 'error'
+    })
+    return Promise.reject(new Error(msg))
+  } else if (code !== 200) {
+    Notification.error({
+      title: msg
+    })
+    return Promise.reject('error')
+  } else {
+    return res.data
+  }
+},
+  error => {
+    console.log('err' + error)
+    let { message } = error;
+    if (message == "Network Error") {
+      message = "后端接口连接异常";
+    }
+    else if (message.includes("timeout")) {
+      message = "系统接口请求超时";
+    }
+    else if (message.includes("Request failed with status code")) {
+      message = "系统接口" + message.substr(message.length - 3) + "异常";
+    }
+    Message({
+      message: message,
+      type: 'error',
+      duration: 5 * 1000
+    })
+    return Promise.reject(error)
+  }
+)
+
+export default service
+
+```
 
 ### 3. 你能给xhr添加hook, 实现在各个阶段打印日志吗?
+代码题, 实现页面上通过xhr发请求的时候, 在xhr的生命周期里, 能够实现自定义的行为触发。
 
-    代码题, 实现页面上通过xhr发请求的时候, 在xhr的生命周期里, 能够实现自定义的行为触发。
 ```js
 class XhrHook {
     /**
@@ -662,3 +860,4 @@ xhr.onerror = function () {
     console.log('error');
 }
 ```
+

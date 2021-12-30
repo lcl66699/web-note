@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const urls = [{
+            info: 'link1',
+            time: 3000,
+            zoom: 2,//优先级
+        },
+        {
+            info: 'link2',
+            time: 2000,
+            zoom: 1,//优先级
+        },
+        {
+            info: 'link3',
+            time: 5000,
+            zoom: 3,//优先级
+        },
+        {
+            info: 'link4',
+            time: 1000,
+            zoom: 1,//优先级
+        },
+        {
+            info: 'link5',
+            time: 1200,
+            zoom: 1,//优先级
+        },
+        {
+            info: 'link6',
+            time: 2000,
+            zoom: 5,//优先级
+        },
+        {
+            info: 'link7',
+            time: 800,
+            zoom: 1,//优先级
+        },
+        {
+            info: 'link8',
+            time: 3000,
+            zoom: 7,//优先级
+        },
+        ];
+
+        // 设置我们要执行的任务
+        function loadImg(url) {
+            return new Promise((resolve, reject) => {
+                console.log("----" + url.info + " start!");
+                setTimeout(() => {
+                    console.log(url.info + " OK!!!");
+                    resolve();
+                }, url.time)
+            })
+        };
+
+        //实现控制并发的函数，urls=[8]
+        class PromiseQuene {
+            constructor(options = {}) {
+                this.count = options.count || 1
+                this.currentCount = 0//当前进行的任务
+                this.pendingList = []//当前等待的池子
+
+            }
+            add(fn) {
+                this.pendingList.push(fn)
+                this.run()
+            }
+            run(fn) {
+                if (this.pendingList.length == 0 || this.currentCount == this.count) {
+                    return
+                }
+                this.currentCount++
+                const onefn = this.pendingList.shift()
+                const onefn = this.pendingList.sort(a, b)shift()
+
+                const promise = onefn()
+                promise.then(() => {
+                    this.currentCount--
+                    this.run()
+                }).catch(() => {
+                    this.currentCount--
+                    this.run()
+                })
+            }
+        }
+
+        // limitLoad(urls, loadImg, 3)
+
+        const queue = new PromiseQuene({ count: 3 })
+        urls.forEach((url) => {
+            queue.add(() => loadImg(url))
+        })
+    </script>
+</body>
+
+</html>
