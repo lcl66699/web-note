@@ -63,7 +63,7 @@ module.exports = {
     },
     // 当前 locale 的 algolia docsearch 选项
     algolia: {},
-    // logo: '/img/yy.png',//导航栏log
+    logo: '/orange.png',//导航栏log
     nav: [
       { text: 'js', link: '/views/js/' },
       { text: '算法', link: '/views/Algorithm/' },
@@ -86,8 +86,8 @@ module.exports = {
         text: '其他',
         items: [
           { text: 'git', link: '/views/other/Git/', ariaLabel: '其他' },
-          { text: '性能优化', link: '/views/other/性能优化/', ariaLabel: '其他' }
-          // { text: '性能优化', link: '/views/other/', ariaLabel: '其他' }
+          { text: '性能优化', link: '/views/other/性能优化/', ariaLabel: '其他' },
+          { text: 'web安全', link: '/views/other/web安全/', ariaLabel: '其他' }
         ],
       },
     ],
@@ -137,15 +137,8 @@ module.exports = {
       "/views/other/性能优化/": [
         ''
       ],
-      '/guide/': [
-        '',
-        'theme',
-        'plugin'
-      ],
-      '/views/sidebar/': [
-        '',
-        'bar1',
-        'bar2'
+      "/views/other/web安全/": [
+        ''
       ],
       '/views/sidebargroup/': [
         {

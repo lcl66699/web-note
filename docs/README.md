@@ -4,7 +4,7 @@ heroImage: /userl.jpg
 # heroText: VuePress模板
 # tagline: 模板 · 主题 · 插件
 actionText: 快速 上手 →
-actionLink: /guide/
+actionLink: /views/js/
 features:
   - title: 学习总结
     details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。

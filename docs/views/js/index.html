@@ -25,8 +25,39 @@
 
 <body>
     <script>
+        Promise.resolve()//先执行
+            .then(async () => {//执行上行后走微任务
+                console.log(0);
+                setTimeout(() => {
+                    console.log('宏任务');
+                }, 0);
+                return Promise.resolve(4);//当执行栈空的时候 job进队列
+                // return 4
+            })
+            .then((res) => {
+                console.log(res);
+            });
 
 
+        Promise.resolve().then(() => {//回调进入微任务2
+            console.log(1);
+        }).then(() => {
+            console.log(2);
+        }).then(() => {
+            console.log(3);
+        }).then(() => {
+            console.log(5);
+        }).then(() => {
+            console.log(6);
+        }).then(() => {
+            console.log(7);
+        }).then(() => {
+            console.log(8);
+        })
+//return Promise.resolve() 会产生两个微任务
+        /*
+        当前执行栈为空的时候，才会resolve
+        */
 
     </script>
 </body>
