@@ -87,7 +87,8 @@ module.exports = {
         items: [
           { text: 'git', link: '/views/other/Git/', ariaLabel: '其他' },
           { text: '性能优化', link: '/views/other/性能优化/', ariaLabel: '其他' },
-          { text: 'web安全', link: '/views/other/web安全/', ariaLabel: '其他' }
+          { text: 'web安全', link: '/views/other/web安全/', ariaLabel: '其他' },
+          { text: 'typescript', link: '/views/other/typescript/', ariaLabel: '其他' }
         ],
       },
     ],
@@ -138,6 +139,9 @@ module.exports = {
         ''
       ],
       "/views/other/web安全/": [
+        ''
+      ],
+      "/views/other/typescript/": [
         ''
       ],
       '/views/sidebargroup/': [
