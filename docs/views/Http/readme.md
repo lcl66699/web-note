@@ -861,3 +861,160 @@ xhr.onerror = function () {
 }
 ```
 
+
+## ajax 及 fetch API 详解
+
+1. XMLHTTPRequest
+
+2. fetch
+
+- 默认不带cookie
+- 错误不会reject
+- 不支持超时设置
+- 需要借用AbortController中止fetch
+
+
+### 为什么常见的cdn域名和业务域名不一样？
+
+- 安全问题，会携带业务cookie，不想把得到的用户信息抛给cdn厂商
+- 拉取静态资源的时候，如果是同域名也会携带cookie，增加带宽没必要
+- 并发请求数针对http1.1
+
+#### 常见的浏览器请求/响应头/错误码解析
+
+#### request header 请求头
+:method: GET
+:path: 路径
+:scheme: https
+accept: application/json, text/plain, */*
+accept-encoding: gzip, deflate, br
+cache-control: no-cache
+cookie: deviceId=c12;
+origin: 
+referer: 判断当前浏览器来自哪个页面，从哪里来
+user-agent: 判断当前环境（比如判断安卓|ios） Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
+
+#### response header 返回头
+
+access-control-allow-credentials: 限制来的请求，true *表示随便来
+access-control-allow-origin: 
+content-encoding: gzip 压缩
+content-type: application/json;charset=UTF-8|| form表单提交
+date: Thu, 06 Aug 2020 08:15:05 GMT
+set-cookie: userId=xxx; 通过set-cookie种
+status: 200
+
+#### status
+
+* 200	get 成功
+* 201 post 成功
+* 301 永久重定向
+* 302	临时重定向
+* 304 *协商缓存（浏览器和服务器协商） 服务器文件未修改
+    - last-modified 来判断当前文件有被修改，比较时间
+    - etag 通过哈希判断前后两段是否被修改
+* 400	客户端请求有语法错误，不能被服务器识别
+* 403	服务器受到请求，但是拒绝提供服务，可能是跨域
+* 404	请求的资源不存在
+* 405 请求的method不允许
+* 500	服务器发生不可预期的错误
+
+### 强缓存
+expired 代表什么时候过期，不准确
+max-age :1000 代表接收1000ms之后cookie失效
+
+### 常见的单页面应用，针对index.html如果一定要做缓存，适合做什么缓存？
+
+协商缓存。
+
+因为强缓存无法去实时的了，
+js hash
+css hash
+index.html 没有hash
+
+
+## 发送请求的示例，以及封装一个多浏览器兼容的请求函数
+
+看代码
+```ts
+interface IOptions {
+    url: string;
+    type?: "GET" | "POST";
+    data: any;
+    timeout?: number;
+}
+
+function formatUrl(object) {
+    // a=xxx&b=xxxx; querystring
+    let dataArr = [];
+
+    for (let key in object) {
+        dataArr.push(`${key}=${encodeURIComponent(object[key])}`);
+    }
+    return dataArr.join("&");
+}
+
+export function ajax(
+    options: IOptions = {
+        type: "GET",
+        data: {},
+        timeout: 3000,
+        url: "",
+    }
+) {
+    return new Promise((resolve, reject) => {
+        if (!options.url) {
+            return;
+        }
+
+        const queryString = formatUrl(options.data);
+
+        const onStateChange = () => {
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    clearTimeout(timer);
+                    if (
+                        (xhr.status >= 200 && xhr.status < 300) ||
+                        xhr.status === 304
+                    ) {
+                        resolve(xhr.responseText);
+                    } else {
+                        reject(xhr.status);
+                    }
+                }
+            };
+        };
+
+        let timer;
+        let xhr;
+
+        if ((window as any).XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        if (options.type.toUpperCase() === "GET") {
+            xhr.open("GET", `${options.url}?${queryString}`);
+            onStateChange();
+            xhr.send();
+        } else if (options.type.toUpperCase() === "POST") {
+            xhr.open("POST", options.url);
+            xhr.setRequestHeader(
+                "ContentType",
+                "application/x-www-form-urlencoded"
+            );
+            onStateChange();
+            xhr.send(options.data);
+        }
+
+        if (options.timeout) {
+            timer = setTimeout(() => {
+                xhr.abort();//取消掉
+                reject("timeout");
+            }, options.timeout);
+        }
+    });
+}
+
+```

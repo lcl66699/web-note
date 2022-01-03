@@ -1,4 +1,7 @@
+# TypeScript
+(typescript中文手册)[https://typescript.bootcss.com/basic-types.html]
 
+(AST抽象语法树)[https://astexplorer.net/]
 ## 安装 TypeScript
 
 - 命令行运行如下命令，全局安装 TypeScript
@@ -24,7 +27,9 @@ tsc --init  新建tsconfig.json配置文件
 安装yarn全局
 npm install -g yarn
 
-原始类型
+## 基础类型 
+布尔值 数字 字符串 数组 元组 枚举
+### 原始类型
 ```ts
 const a:string='foobar'
 const b:number=Infinity
@@ -33,14 +38,14 @@ const d: null = null
 const e: void = undefined
 const f: symbol = Symbol()
 ```
-数组类型
+### 数组类型
 ```ts
 const arr1: Array<number> = [1, 2, 3]//纯数字组成
 const arr2: number[] = [1, 2, 3]//常见
 //元组属于数组的一种，元组中的元素可以不必全部保持类型一致
 const foo: [number, string] = [1, 'foo']
 ```
-对象类型
+### 对象类型
 ```ts
 let obj: { foo: String, bar: number } = { foo: 'string', bar: 100 }//必须有foo/bar 数据类型正确
 let obj: { foo?: String, bar: number } = { bar: 100 }//foo可有可无
@@ -48,7 +53,7 @@ let obj3：{ [string]: string }
 obj3.key1 = 'value123'
 obj3.key2 = 100//false
 ```
-函数类型
+### 函数类型
 ```ts
  function sum(a: number, n?: number) {
      return a + b
@@ -72,7 +77,7 @@ sum('123',1,2,2,2,2,3,5,5)
 //接受任意参数
 ...rest：number[]
 ```
-特殊类型
+### 特殊类型
 ```ts
 const type: 'success' | 'warn' | 'danger' = 'success'
 type StringOrNumber = string | Number
@@ -80,7 +85,7 @@ const b: StringOrNumber = 'string' //10
 
 mixed/any类型接收任意类型
 //any弱类型 mixed强类型
-// never类型
+// never类型,永不存在的值类型
 //never是任何类型的子类型，可以赋值任何类型。但是没有类型是 never 的子类型或可以赋值给 never 类型， 即使 any 类型也不可以赋值给never。这意味着声明 never 类型的变量只能被 never 类型所赋值。
 function error(): never {
     throw new Error('抛出错误了');
@@ -88,7 +93,8 @@ function error(): never {
 ```
 TypeScript
 
-枚举类型-给一组数值取更好的名字。数据中只会出现固定的值
+###  枚举类型
+- 给一组数值取更好的名字。数据中只会出现固定的值
 ```ts
 enum 枚举名 {
     标识符[= 整型常数/字符串],
@@ -109,11 +115,9 @@ console.log(flag.error);//888
 console.log(flag.loading);//889
 //如果标识符没有赋值，它的值就是下标。
 ```
-作用域
-```ts
-export {} //确保和其他文件没冲突
-```
-Object类型（除了原始类型的其他类型）
+
+### Object类型
+- 除了原始类型的其他类型
 
 隐式类型推断-建议为每个变量初始时赋值类型
 ```ts
@@ -124,14 +128,15 @@ let Cname //any
 Cname='str'
 Cname=true
 ```
-断言
+## 断言
 ```ts
 let nums=[110,200,300]
 let res=nums.find(i=>i>50)//res可能是number|undefind
 let num1=res as number //断言他是number类型，并非转换
 let num2=<number>res //jsx不可使用，与标签冲突
 ```
-### 接口（一种规范，约定结构）最好约束一个规范
+## 接口
+（一种规范，约定结构）最好约束一个规范，约束对象或者函数的类型
 ```ts
 //定义接口
 interface Post {
@@ -162,13 +167,14 @@ console.log(obj);
 ```
 
 
-### 类-用来描述一类具体对象的抽象成员
+## 类
+- 用来描述一类具体对象的抽象成员
+  * public：公有类型，在当前类里面、子类、类外面都可以访问 （默认）
+  * protected：保护类型，在当前类里面、子类里面可以访问，在类外部没法访问
+  * private：私有类型，在当前类里面可以访问，子类、类外部都没法访问
+  * static ： 静态方法，使用的时候类可以访问，比如Promise.all([])
 
-* public：公有类型，在当前类里面、子类、类外面都可以访问 （默认）
-* protected：保护类型，在当前类里面、子类里面可以访问，在类外部没法访问
-* private：私有类型，在当前类里面可以访问，子类、类外部都没法访问
-
-* readonly 只读属性 无法修改
+  * readonly 只读属性 无法修改
 ```ts
 //基本使用
 class Person {
@@ -186,7 +192,7 @@ var P1 = new Person("小名", "男");
 console.log(P1.name);
 P1.personcan("吃饭");
 ```
-#### 类与接口
+### 类与接口
 ```ts
 // 类与接口
 interface Eat {
@@ -205,7 +211,8 @@ class Person implements Eat, Run {
   }
 }
 ```
-abstract抽象类-约束子类当中必须有某一成员
+### abstract抽象类
+- 约束子类当中必须有某一成员
 ```ts
 //定义抽象类
 abstract class Animal {
@@ -225,7 +232,7 @@ var pg = new Pig();
 pg.eat("吃");
 pg.run(566);
 ```
-泛型
+## 泛型
 ```ts
 //泛型 声明这个函数不指定类型 调用在指定
 function createArray<T>(length: number, value: T): T[] {
@@ -239,3 +246,16 @@ console.log(createArray<number>(25, 1326));
 import { camelase } from "lodash";
 declare function camelase(params: string): string;
 ```
+
+## Iterators 和 Generators
+迭代器和生成器
+
+## 装饰器
+
+继承
+多态 子类重写父类的同名方法
+重载 ：同一个类里面，名字是一样的，但是参数有差别（类型||个数）
+重写：发生在父子类里面，方法名和参数也一样
+
+## TS编译原理
+<img src='/userl.jpg'>

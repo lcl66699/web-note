@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://domain/service');//建立连接
+
+        // request state change event
+        xhr.onreadystatechange = function () {
+            // request completed?
+            if (xhr.readyState !== 4) return;//还没完成
+
+            if (xhr.status === 200) {
+                // request successful - show response
+                console.log(xhr.responseText);//返回值
+            } else {
+                // request error
+                console.log('HTTP error', xhr.status, xhr.statusText);
+            }
+        };
+
+        xhr.timeout = 3000; // 3 seconds
+        xhr.ontimeout = () => console.log('timeout', xhr.responseURL);//超时后做xx
+
+        // progress事件可以报告长时间运行的文件上传，监听长时间运行文件的上传
+        xhr.upload.onprogress = p => {
+            console.log(Math.round((p.loaded / p.total) * 100) + '%');//百分比
+        }
+
+        // start request
+        xhr.send();//最后发送
+
+
+        fetch(
+            'http://domain/service', {
+            method: 'GET'
+        }
+        )
+            .then(response => response.json())
+            .then(json => console.log(json))
+            .catch(error => console.error('error:', error));
+
+        // 默认不带cookie
+
+        fetch(
+            'http://domain/service', {
+            method: 'GET',
+            credentials: 'same-origin'//同域的请求会携带cookie
+        }
+        )
+
+        // 错误不会reject
+        // HTTP错误（例如404 Page Not Found 或 500 Internal Server Error）不会导致Fetch返回的Promise标记为reject；.catch()也不会被执行。
+        // 想要精确的判断 fetch是否成功，需要包含 promise resolved 的情况，此时再判断 response.ok是不是为 true
+
+        fetch(
+            'http://domain/service', {
+            method: 'GET'
+        }
+        )
+            .then(response => {
+                if (response.ok) {//表示请求成功
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(json => console.log(json))
+            .catch(error => console.error('error:', error));
+
+        // 不支持直接设置超时, 可以用promise
+        function fetchTimeout(url, init, timeout = 3000) {
+            return new Promise((resolve, reject) => {
+                fetch(url, init)
+                    .then(resolve)
+                    .catch(reject);
+                setTimeout(reject, timeout);
+            })
+        }
+
+        // 中止fetch
+        const controller = new AbortController();//用于fetch中断
+        fetch(
+            'http://domain/service', {
+            method: 'GET',
+            signal: controller.signal
+        })
+            .then(response => response.json())
+            .then(json => console.log(json))
+            .catch(error => console.error('Error:', error));
+
+        controller.abort();//调用中断
+    </script>
+</body>
+
+</html>

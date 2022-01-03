@@ -82,7 +82,7 @@
                 }
                 this.currentCount++
                 const onefn = this.pendingList.shift()
-                const onefn = this.pendingList.sort(a, b)shift()
+                const onefn = this.pendingList.sort(a, b).shift()
 
                 const promise = onefn()
                 promise.then(() => {
