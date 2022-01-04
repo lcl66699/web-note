@@ -29,6 +29,8 @@ npm install -g yarn
 
 ## 基础类型 
 布尔值 数字 字符串 数组 元组 枚举
+<img src='/ts1.png'>
+
 ### 原始类型
 ```ts
 const a:string='foobar'
@@ -114,22 +116,36 @@ console.log(flag.succes);//up
 console.log(flag.error);//888
 console.log(flag.loading);//889
 //如果标识符没有赋值，它的值就是下标。
+
+enum Color {
+  red,
+  blue,
+  green,
+}
+
+let color: Color = Color.red;
 ```
 
 ### Object类型
 - 除了原始类型的其他类型
-
-隐式类型推断-建议为每个变量初始时赋值类型
 ```ts
-let age=18 //number
-age='string'//报错
-
-let Cname //any
-Cname='str'
-Cname=true
+function getObj(options: object|string): object {//联合类型
+  return {};
+}
+console.log(getObj({ xxx: 123 }));
 ```
 ## 断言
+- 类型断言: 可以用来手动指定一个值的类型
+- 类型推断: TS会在没有明确的指定类型的时候推测出一个类型
+有下面2种情况: 
+  1. 定义变量时赋值了, 推断为对应的类型
+  2. 定义变量时没有赋值, 推断为any类型
 ```ts
+/* 
+语法:
+    方式一: <类型>值
+    方式二: 值 as 类型  tsx中只能用这种方式
+*/
 let nums=[110,200,300]
 let res=nums.find(i=>i>50)//res可能是number|undefind
 let num1=res as number //断言他是number类型，并非转换
@@ -211,6 +227,13 @@ class Person implements Eat, Run {
   }
 }
 ```
+### 接口继承接口
+
+```ts
+interface Person extends eat, study {
+
+}
+```
 ### abstract抽象类
 - 约束子类当中必须有某一成员
 ```ts
@@ -232,9 +255,64 @@ var pg = new Pig();
 pg.eat("吃");
 pg.run(566);
 ```
+### 继承
+extends 关键字
+```ts
+class Person {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+class Student extends Person {
+  constructor(name: string) {
+    // 调用父类型构造方法
+    super(name);
+  }
+  go() {
+    // 调用父类型的一般方法
+    // super.run(distance);
+  }
+}
+```
+### get|set
+- 通过 getters/setters 来截取对对象成员的访问。 它能帮助你有效的控制对对象成员的访问。
+```ts
+class Person {
+  firstName: string = "常山";
+  lastName: string = "赵子龙";
+  get fullName() {
+    //获取时触发
+    return this.firstName + "---" + this.lastName;
+  }
+  set fullName(value) {
+    //修改时触发
+    const names = value.split("---");
+    this.firstName = names[0];
+    this.lastName = names[1];
+  }
+}
+
+const p = new Person();
+console.log(p.fullName);
+
+p.firstName = "咏春";
+p.lastName = "叶问";
+console.log(p.fullName);
+
+p.fullName = "篮球---蔡徐坤";
+console.log(p.firstName, p.lastName);
+
+```
+### 多态 
+子类重写父类的同名方法
+### 重载 
+同一个类里面，名字是一样的，但是参数有差别（类型||个数）
+### 重写
+发生在父子类里面，方法名和参数也一样
 ## 泛型
 ```ts
-//泛型 声明这个函数不指定类型 调用在指定
+//泛型 声明这个函数、接口或类的时候不指定具体类型 调用在指定
 function createArray<T>(length: number, value: T): T[] {
   return Array<T>(length).fill(value);
 }
@@ -252,10 +330,8 @@ declare function camelase(params: string): string;
 
 ## 装饰器
 
-继承
-多态 子类重写父类的同名方法
-重载 ：同一个类里面，名字是一样的，但是参数有差别（类型||个数）
-重写：发生在父子类里面，方法名和参数也一样
 
-## TS编译原理
-<img src='/userl.jpg'>
+
+## 编译原理
+Scanner 扫描仪 Parser 解析器 Binder 绑定器 Checker 检查器 Emitter 发射器
+<img style='' src='/ts2.png'>

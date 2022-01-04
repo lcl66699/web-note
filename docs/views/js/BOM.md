@@ -48,33 +48,38 @@ BOM:Browser Object Model 浏览器对象模型，提供了独立于内容的，�
 提供当前窗口中的加载的文档有关的信息和一些导航功能。既是 window 对象属性，也是 document 的对象属性
 
 location 对象的主要属性：
-hash
-host
-hostname
-href
-pathname
-port
-protocol
-search
+- hash
+- host
+- hostname
+- href
+- pathname
+- port
+- protocol
+- search 拿到整体url参数 包括问号
 
-location 的应用场景： 讲课时补充
+location 的应用场景： 比如区分环境用host
 
 
 
 ### Navigation 对象
 navigation 接口表示用户代理的状态和标识，允许脚本查询它和注册自己进行一些活动
 
+isOnline 检测当前网络是否在线
+
 
 ### History 对象
 history 对象保存着用户上网的历史记录，从窗口被打开的那一刻算起，history 对象是用窗口的浏览历史用文档和文档状态列表的形式表示。
 
-go()
-back()
-forword()
-length
+- go()
+- back()
+- forword()
+- length
+
+- pushState
+- onPopState
 
 
-## 事件的捕获和冒泡机制
+## 事件捕获和冒泡机制
 
 - 捕获是从window到目标元素
 - 冒泡是目标元素到window
@@ -129,7 +134,7 @@ e.preventDefault()可以阻止事件的默认行为发生，默认行为是指�
 
 ##  事件委托 绑定事件的运用
 
-大家常见的一个面试题可能是ul + li，点击每个li alert对应的索引，这里就给大家来写一下看看
+常见的一个面试题可能是ul + li，点击每个li alert对应的索引，这里就写一下看看
 
 - 先来给每个li绑定事件
 

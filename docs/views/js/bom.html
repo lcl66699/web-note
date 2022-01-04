@@ -9,7 +9,47 @@
 </head>
 
 <body>
+    <a href="">asdfghjkl</a>
     <script>
+        var aaa = document.querySelector('a')
+        aaa.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            // var xhr = new XMLHttpRequest()
+            // xhr.open('GET', 'http://39.106.5.96/api/')
+            // xhr.onreadystatechange = function () {
+            //     if (xhr.readyState !== 4) return //还没完成
+
+            //     if (xhr.status == 200) {//成功
+            //         console.log(xhr.responseText);
+            //     } else {//失败
+            //         console.log(xhr.status, xhr.statusText);
+            //     }
+
+            // }
+            // xhr.send()//一定要先监听后发送,返回Hello GET
+
+            // xhr.open('GET', 'http://39.106.5.96/api/')
+            const controller = new AbortController()//中止fetch
+            fetch('http://39.106.5.96/api/', {
+                method: 'get',
+                signal: controller.signal
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.text()
+                    }
+                    throw new Error(`请求异常`)
+                }).then((res) => {
+                    console.log(res);
+                }).catch(error => {
+                    console.log(error);
+                })
+            controller.abort()//取消掉
+
+        })
+    </script>
+    <script src="">
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://domain/service');//建立连接
 

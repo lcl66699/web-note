@@ -67,13 +67,13 @@ Promise.then(onFulfilled,onRejected)
 
 6. 返回值
    1. then方法的返回值应该是一个**新的Promise**
+   
     ```js
     const promise1=new Promise()
-
     const promise2=promise.then(cb1,cb2).then().then()
-
     //最后的then是上一个.then返回的promise
     ```
+    
     1. onFulfilled或者onRejected执行结果为x，调用 **resolvePromise()**
     2. onFulfilled或者onRejected执行时报错了，promise2就需要被reject
     3. onFulfilled如果不是一个函数，promise2以promise1的value，触发fulfilled
@@ -84,28 +84,28 @@ Promise.then(onFulfilled,onRejected)
    resolvePromise(promise2, x, resolve, reject)
    ```
 
-    1. 如果 promise2 和 x 相等，以 Tyeperror 作为 reason 去 reject promise。（reject TypeError）
-    2. 如果 x 是一个 promsie
-        - 如果x是pending态，那么promise必须保持pending,直到 x 变成 fulfilled or rejected.
-        - 如果 x 被 fulfilled, 以相同的 value 去 fulfill promise。
-        - 如果 x 被 rejected, 以相同的 reason 去 reject promise。
-    3. 否则，如果 x 是一个 object 或者 是一个 function
-        - let then = x.then
-        - 如果取属性 x.then 会导致抛出异常 e，则以 e 为 reason reject promise。
-        - 如果 then 是一个函数，then.call(x, resolvePromiseFn, rejectPromise)，让 x 作为 this 调用它，第一个参数为 resolvePromise，第二个参数为 rejectPromise，然后：
-            - resolvePromiseFn 的 入参是 y, 执行 resolvePromise(promise2, y, resolve, reject);
-            - rejectPromise 的 入参是 r, reject promise with r.
-            - 如果 resolvePromise 和 rejectPromise 都被调用了，或多次调用同一参数，那么第一个调用优先，其他的调用都会被忽略。
-            - 如果调用then抛出异常e 
-                - 如果 resolvePromise 或 rejectPromise 已经被调用，那么忽略它
-                - 否则， 把 e 作为 reason reject promise
-        - 如果 then 不是一个function. 将 x 作为参数执行 promise。
-    4. 如果 x 不是一个对象或者函数，将 x 作为参数执行 promise。
+ 1. 如果 promise2 和 x 相等，以 Tyeperror 作为 reason 去 reject promise。（reject TypeError）
+ 2. 如果 x 是一个 promsie
+     - 如果x是pending态，那么promise必须保持pending,直到 x 变成 fulfilled or rejected.
+     - 如果 x 被 fulfilled, 以相同的 value 去 fulfill promise。
+     - 如果 x 被 rejected, 以相同的 reason 去 reject promise。
+ 3. 否则，如果 x 是一个 object 或者 是一个 function
+     - let then = x.then
+     - 如果取属性 x.then 会导致抛出异常 e，则以 e 为 reason reject promise。
+     - 如果 then 是一个函数，then.call(x, resolvePromiseFn, rejectPromise)，让 x 作为 this 调用它，第一个参数为 resolvePromise，第二个参数为 rejectPromise，然后：
+         - resolvePromiseFn 的 入参是 y, 执行 resolvePromise(promise2, y, resolve, reject);
+         - rejectPromise 的 入参是 r, reject promise with r.
+         - 如果 resolvePromise 和 rejectPromise 都被调用了，或多次调用同一参数，那么第一个调用优先，其他的调用都会被忽略。
+         - 如果调用then抛出异常e 
+             - 如果 resolvePromise 或 rejectPromise 已经被调用，那么忽略它
+             - 否则， 把 e 作为 reason reject promise
+     - 如果 then 不是一个function. 将 x 作为参数执行 promise。
+ 4. 如果 x 不是一个对象或者函数，将 x 作为参数执行 promise。
 
     
 ###### 结合代码来看会好很多
 
-##  一步步实现一个Promise
+##  一步步实现Promise
 ### 用class来实现
 
 ```js
@@ -139,8 +139,8 @@ class MyPromise {
 
 ### resolve 和 reject 方法
 
-    1. 根据刚才的规范, 这两个方法是要更改status的, 从pending改到fulfilled/rejected.
-    2. 注意两个函数的入参分别是value 和 reason. 
+ 1. 根据刚才的规范, 这两个方法是要更改status的, 从pending改到fulfilled/rejected.
+ 2. 注意两个函数的入参分别是value 和 reason. 
 
 ```js
 class MyPromise {
@@ -204,133 +204,133 @@ class MyPromise {
     
 ### 实现一下关键的then方法
 
-    1. then接收两个参数, onFulfilled 和 onRejected
+ 1. then接收两个参数, onFulfilled 和 onRejected
 
-    ```js
-    then(onFulfilled, onRejected) {}
-    ```
+ ```js
+ then(onFulfilled, onRejected) {}
+ ```
 
-    2. 检查并处理参数, 之前提到的如果不是function, 就忽略. 这个忽略指的是原样返回value或者reason.
+ 2. 检查并处理参数, 之前提到的如果不是function, 就忽略. 这个忽略指的是原样返回value或者reason.
 
-    ```js
-    isFunction(param) {
-        return typeof param === 'function';
-    }
+ ```js
+ isFunction(param) {
+     return typeof param === 'function';
+ }
 
-    then(onFulfilled, onRejected) {
-        const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
-            return value
-        }
-        const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
-            throw reason;
-        };
-    }
-    ```
-    3. then的返回值整体是一个promise, 先用promise来包裹一下，然后返回出去
+ then(onFulfilled, onRejected) {
+     const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
+         return value
+     }
+     const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
+         throw reason;
+     };
+ }
+ ```
+ 3. then的返回值整体是一个promise, 先用promise来包裹一下，然后返回出去
 
-    ```js
-    then(onFulfilled, onRejected) {
-        const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
-            return value
-        }
-        const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
-            throw reason;
-        };
-        const promise2 = new MyPromise((resolve, reject) => {})
-        return promise2
-    }
+ ```js
+ then(onFulfilled, onRejected) {
+     const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
+         return value
+     }
+     const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
+         throw reason;
+     };
+     const promise2 = new MyPromise((resolve, reject) => {})
+     return promise2
+ }
 
-    ```
-    4. 根据当前promise的状态, 调用不同的函数
+ ```
+ 4. 根据当前promise的状态, 调用不同的函数
 
-    ```js
-    then(onFulfilled, onRejected) {
-        const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
-            return value
-        }
-        const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
-            throw reason;
-        };
-        const promise2 = new MyPromise((resolve, reject) => {
-            switch (this.status) {
-                case FULFILLED: {
-                    realOnFulfilled()
-                    break;
-                }
-                case REJECTED: {
-                    realOnRejected()
-                    break;
-                }
-            }
-        })
-        return promise2
+ ```js
+ then(onFulfilled, onRejected) {
+     const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
+         return value
+     }
+     const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
+         throw reason;
+     };
+     const promise2 = new MyPromise((resolve, reject) => {
+         switch (this.status) {
+             case FULFILLED: {
+                 realOnFulfilled()
+                 break;
+             }
+             case REJECTED: {
+                 realOnRejected()
+                 break;
+             }
+         }
+     })
+     return promise2
 
-    }
-    ```
+ }
+ ```
 
-    5. 当前代码在then函数被调用的瞬间就会执行. 那这时候如果status还没变成fulfilled或者rejected怎么办？ 很有可能还是pending的. 所以需要一个状态的监听机制, 当状态变成fulfilled或者rejected后, 再去执行callback.
+ 5. 当前代码在then函数被调用的瞬间就会执行. 那这时候如果status还没变成fulfilled或者rejected怎么办？ 很有可能还是pending的. 所以需要一个状态的监听机制, 当状态变成fulfilled或者rejected后, 再去执行callback.
 
-        1. 那么首先要拿到所有的callback, 然后才能在某个时机去执行他. 新建两个数组, 来分别存储成功和失败的回调, 调用then的时候, 如果还是pending就存入数组.
+     1. 那么首先要拿到所有的callback, 然后才能在某个时机去执行他. 新建两个数组, 来分别存储成功和失败的回调, 调用then的时候, 如果还是pending就存入数组.
 
-        ```js
-        FULFILLED_CALLBACK_LIST = [];
-        REJECTED_CALLBACK_LIST = [];
+     ```js
+     FULFILLED_CALLBACK_LIST = [];
+     REJECTED_CALLBACK_LIST = [];
 
-        then(onFulfilled, onRejected) {
-        const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
-            return value
-        }
-        const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
-            throw reason;
-        };
-        const promise2 = new MyPromise((resolve, reject) => {
-            switch (this.status) {
-                case FULFILLED: {
-                    realOnFulfilled()
-                    break;
-                }
-                case REJECTED: {
-                    realOnRejected()
-                    break;
-                }
-                case PENDING: {
-                    this.FULFILLED_CALLBACK_LIST.push(realOnFulfilled)
-                    this.REJECTED_CALLBACK_LIST.push(realOnRejected)
-                }
-            }
-        })
-        return promise2
+     then(onFulfilled, onRejected) {
+     const realOnFulfilled = this.isFunction(onFulfilled) ? onFulfilled : (value) => {
+         return value
+     }
+     const realOnRejected = this.isFunction(onRejected) ? onRejected : (reason) => {
+         throw reason;
+     };
+     const promise2 = new MyPromise((resolve, reject) => {
+         switch (this.status) {
+             case FULFILLED: {
+                 realOnFulfilled()
+                 break;
+             }
+             case REJECTED: {
+                 realOnRejected()
+                 break;
+             }
+             case PENDING: {
+                 this.FULFILLED_CALLBACK_LIST.push(realOnFulfilled)
+                 this.REJECTED_CALLBACK_LIST.push(realOnRejected)
+             }
+         }
+     })
+     return promise2
 
-        }
-        ```
+     }
+     ```
 
-        1. 当status发生变化的时候, 就执行所有的回调. 这里用一下es6的getter和setter. 这样更符合语义, 当status改变时, 去做什么事情. (当然也可以顺序执行, 在给status赋值后, 下面再加一行forEach)
+     1. 当status发生变化的时候, 就执行所有的回调. 这里用一下es6的getter和setter. 这样更符合语义, 当status改变时, 去做什么事情. (当然也可以顺序执行, 在给status赋值后, 下面再加一行forEach)
 
-        ```js
-        _status = PENDING;
+     ```js
+     _status = PENDING;
 
-        get status() {
-            return this._status;
-        }
+     get status() {
+         return this._status;
+     }
 
-        set status(newStatus) {
-            this._status = newStatus;
-            switch (newStatus) {
-                case FULFILLED: {
-                    this.FULFILLED_CALLBACK_LIST.forEach(callback => {
-                        callback(this.value);
-                    });
-                    break;
-                }
-                case REJECTED: {
-                    this.REJECTED_CALLBACK_LIST.forEach(callback => {
-                        callback(this.reason);
-                    });
-                    break;
-                }
-            }
-        }
-        ```
+     set status(newStatus) {
+         this._status = newStatus;
+         switch (newStatus) {
+             case FULFILLED: {
+                 this.FULFILLED_CALLBACK_LIST.forEach(callback => {
+                     callback(this.value);
+                 });
+                 break;
+             }
+             case REJECTED: {
+                 this.REJECTED_CALLBACK_LIST.forEach(callback => {
+                     callback(this.reason);
+                 });
+                 break;
+             }
+         }
+     }
+     ```
 
 7. then的返回值
    上面只是简单说了下, then的返回值是一个Promise, 那么接下来具体讲一下返回promise的value和reason是什么.

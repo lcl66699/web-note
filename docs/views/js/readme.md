@@ -156,44 +156,41 @@ new Promise(function(resolve, reject) {
 // 6. 宏任务②中的代码执行完成后，会查找微任务队列，于是输出 children7，遇到 setTimeout，放到宏任务队列中。此时微任务执行完成，开始执行宏任务，输出 children6;
 ```
 
-## 事件的捕获和冒泡机制
-
-- 捕获是从window到目标元素
-- 冒泡是目标元素到window
-
 ```js
-window.addEventListener('click', () => {
-    console.log(12312);
-}, false)
-//false 冒泡阶段
-//true 捕获阶段
-```
-### 事件委托
+Promise.resolve()//先执行
+    .then(async () => {//执行上行后走微任务
+        console.log(0);
+        setTimeout(() => {
+            console.log('宏任务');
+        }, 0);
+        return Promise.resolve(4);//当执行栈空的时候 job进队列
+        // return 4
+    })
+    .then((res) => {
+        console.log(res);
+    });
 
-```js
-const list = document.getElementById('list')
-list.addEventListener('click', function (e) {
-    const target = e.target
-    if (target.tagName.toLowerCase() == 'li') {
-        const lilist = this.querySelectorAll('li')//伪数组
-        // 伪数组不能直接用indexOf
-        const index = Array.prototype.indexOf.call(lilist, target)
-        console.log(`内容为${target.innerHtml},下标是${index}`);
-    }
+
+Promise.resolve().then(() => {//回调进入微任务2
+    console.log(1);
+}).then(() => {
+    console.log(2);
+}).then(() => {
+    console.log(3);
+}).then(() => {
+    console.log(5);
+}).then(() => {
+    console.log(6);
+}).then(() => {
+    console.log(7);
+}).then(() => {
+    console.log(8);
 })
+//return Promise.resolve() 会产生两个微任务
+/*
+当前执行栈为空的时候，才会resolve
+*/
 ```
-- 阻止事件的发生
-```js
-window.addEventListener('click', (e) => {
-    e.stopPropagation()
-}, true)
-```
-
-### addEventListener执行顺序
-
-- addEventListener先从事件捕获开始执行,也就是第三个参数为true,先从window开始,到parent,再到son
-- 紧接着开始执行事件冒泡,也就是默认的false.先从子元素开始执行,然后到parent,最后到window
-
 
 
 ## 防抖和节流

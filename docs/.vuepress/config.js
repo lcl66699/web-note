@@ -1,7 +1,7 @@
 module.exports = {
   base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   title: "橘子海",
-  description: "心向大海，无所畏惧",
+  description: "听橘子海，遇心上人",
   head: [
     ['link', {
       rel: 'icon',
@@ -20,31 +20,31 @@ module.exports = {
   //   }]
   // ],
   plugins: [
-    ['@vuepress-reco/vuepress-plugin-bulletin-popover', {
-      body: [
-        {
-          type: 'title',
-          content: '欢迎加入QQ交流群 🎉🎉🎉',
-          style: 'text-aligin: center;'
-        },
-        {
-          type: 'image',
-          src: '/rvcode_qq.png'
-        }
-      ],
-      footer: [
-        {
-          type: 'button',
-          text: '打赏',
-          link: '/donate'
-        },
-        {
-          type: 'button',
-          text: '打赏',
-          link: '/donate'
-        }
-      ]
-    }]
+    // ['@vuepress-reco/vuepress-plugin-bulletin-popover', {
+    //   body: [
+    //     {
+    //       type: 'title',
+    //       content: '欢迎加入QQ交流群 🎉🎉🎉',
+    //       style: 'text-aligin: center;'
+    //     },
+    //     {
+    //       type: 'image',
+    //       src: '/rvcode_qq.png'
+    //     }
+    //   ],
+    //   footer: [
+    //     {
+    //       type: 'button',
+    //       text: '打赏',
+    //       link: '/donate'
+    //     },
+    //     {
+    //       type: 'button',
+    //       text: '打赏',
+    //       link: '/donate'
+    //     }
+    //   ]
+    // }]
   ],
   themeConfig: {
     smoothScroll: true,//页面滚动效果
@@ -88,7 +88,8 @@ module.exports = {
           { text: 'git', link: '/views/other/Git/', ariaLabel: '其他' },
           { text: '性能优化', link: '/views/other/性能优化/', ariaLabel: '其他' },
           { text: 'web安全', link: '/views/other/web安全/', ariaLabel: '其他' },
-          { text: 'typescript', link: '/views/other/typescript/', ariaLabel: '其他' }
+          { text: 'typescript', link: '/views/other/typescript/', ariaLabel: '其他' },
+          { text: '面试题', link: '/views/other/面试题/', ariaLabel: '其他' }
         ],
       },
     ],
@@ -102,7 +103,8 @@ module.exports = {
         '',
         'js模块化',
         'Promise',
-        'BOM'
+        'BOM',
+        'jsBridge'
       ],
       '/views/Http/': [
         '',
@@ -119,20 +121,6 @@ module.exports = {
       '/views/React/': [
         '',
       ],
-      // '/views/other/': [
-      //   '',
-      //   'webpack',
-      //   'guide',
-      //   // {
-      //   //   title: 'webpack',
-      //   //   collapsable: true,
-      //   //   children: [
-      //   //     'webpack',
-      //   //     'guide',
-      //   //     'installUse'
-      //   //   ]
-      //   // },
-      // ],
       "/views/other/Git/": [
         ''
       ],
@@ -143,6 +131,9 @@ module.exports = {
         ''
       ],
       "/views/other/typescript/": [
+        ''
+      ],
+      "/views/other/面试题/": [
         ''
       ],
       '/views/sidebargroup/': [
@@ -156,7 +147,6 @@ module.exports = {
         }
       ]
     },
-
     type: 'blog',
     // 博客设置
     blogConfig: {
@@ -178,7 +168,8 @@ module.exports = {
     searchMaxSuggestions: 10,
     // 自动形成侧边导航
     subSidebar: 'auto',
-    sidebarDepth: 4,
+    // sidebarDepth: 4,
+    sidebarDepth: 2,
     // 最后更新时间
     lastUpdated: 'Last Updated',
     // 作者
@@ -188,22 +179,22 @@ module.exports = {
     cyberSecurityRecord: '2222',//公安部备案文案
     cyberSecurityLink: 'http://www.baidu.com',//公安部备案指向链接
     // 项目开始时间
-    startYear: '2020',
+    startYear: '2021',
     //该属性是用于设置友链的
-    friendLink: [
-      {
-        title: '午后南杂',
-        desc: 'Enjoy when you can, and endure when you must.',
-        email: '1156743527@qq.com',
-        link: 'https://www.recoluan.com'
-      },
-      {
-        title: 'vuepress-theme-reco',
-        desc: 'A simple and beautiful vuepress Blog & Doc theme.',
-        avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-        link: 'https://vuepress-theme-reco.recoluan.com'
-      },
-    ],
+    // friendLink: [
+    //   {
+    //     title: '午后南杂',
+    //     desc: 'Enjoy when you can, and endure when you must.',
+    //     email: '1156743527@qq.com',
+    //     link: 'https://www.recoluan.com'
+    //   },
+    //   {
+    //     title: 'vuepress-theme-reco',
+    //     desc: 'A simple and beautiful vuepress Blog & Doc theme.',
+    //     avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
+    //     link: 'https://vuepress-theme-reco.recoluan.com'
+    //   },
+    // ],
 
   },
 

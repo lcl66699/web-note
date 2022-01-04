@@ -1,4 +1,5 @@
-## 网络和并发
+# 网络和并发
+## http
 
 ### http/1.0/1.1/2.0 在并发请求的主要区别是什么？
 
@@ -159,375 +160,6 @@ class PromiseQuene {
 #### 如果有高优先级需要先执行呢？
 - 可以在插入的时候排序
 - `const onefn = this.pendingList.shift()`也可以在弹出的之前先进行排序在弹出
-## 闭包
-
-1. 创建私有变量
-2. 延长变量的生命周期
-
-## jsBridge
-
-Hybrid 混合开发就是 native + h5 的双向通信
-
-> native <=>jsbridge <=> h5
-
-native 通讯流程有两种方式：
-
-- URL Schema， 客户端通过拦截 webview 请求来完成通讯
-- native 向 webview 中的 js 执行环境, 注入 API, 以此来完成通讯
-
-### 一、URL Schema, 客户端拦截 webview (所谓的 native 提供 h5 的容器)请求
-
-#### 原理
-
-1. 在 webview 中发出的网络请求，都会被客户端监听和捕获到。
-
-2. 定义自己的私有协议
-
-上面说过, 所有网络请求都会被监听到, 网络请求最常见的就是 http 协议, 比如https://a.b.com/fetchInfo, 这是一个很常见的请求。
-
-webview 内的 H5 页面肯定有很多类似的 http 请求, 我们为了区别于业务请求, 需要定制一套 h5 和 native 进行交互的私有协议, 我们通常称呼为 URL Schema。
-
-比如我们现在定义协议头为 mingzi://,
-
-那么随后我们要在 webview 请求中都带上这个私有协议开头, 比如有一个请求是 setLeftButton, 实际发出的请求会是 mingzi://setLeftButton?params1=xxx&params2=xxx.
-
-这里大家记住, 这个协议的名称是我们自定义的, 只要 h5 和 native 协商好即可。
-但是如果公司旗下有多个 app, 对于通用的业务一般会定义一个通用的协议头, 比如 common://；对于每个 app 自己比较独立的业务, 基本每个 app 都会自己定义一套协议, 比如 appa://, appb://, appc://.
-
-3. 请求的发送
-
-对于 webview 请求的发送, 我们一般使用 iframe 的方式。也可以使用 location.href 的方式, 但是这种方式不适用并行发请求的场景。
-
-```js
-const doc = window.document;
-const body = window.document.body;
-const iframe = doc.createElement("iframe");
-
-iframe.style.display = "none";
-iframe.src = "mingzi://setLeftButton?param1=12313123";
-
-body.appendChild(iframe);
-setTimeout(() => {
-  body.removeChild(iframe);
-}, 200);
-```
-
-而且考虑到安全性, 客户端中一般会设置域名白名单, 比如客户端设置了 mingzi.com 为白名单, 那么只有 mingzi.com 域下发出的请求, 才会被客户端处理。
-
-这样可以避免自己 app 内部的业务逻辑, 被第三方页面直接调用。
-
-4. 客户端拦截协议请求
-
-iOS 和 Android 对 webview 请求的拦截方法不太相同。
-
-- iOS: shouldStartLoadWithRequest
-- Android: shouldOverrideUrlLoading
-
-当客户端解析到请求的 URL 协议是约定要的 mingzi://时, 便会解析参数, 并根据 h5 传入的方法名比如 setLeftButton, 来进行相关操作（设置返回按钮的处理逻辑）。
-
-5. 请求处理完成后的回调
-
-因为咱们 webview 的请求本质上还是异步请求的过程, 当请求完成后, 我们需要有一个 callback 触发, 无论是通知 h5 执行结果，还是返回一些数据， 都离不开 callback 的执行。
-
-我们可以使用 Js 自带的事件机制，window.addEventListener 和 window.dispatchEvent 这两个 API。
-
-还是这个例子, 比如咱们现在要调用 setLeftButton 方法, 方法要传入一个 callback 来得知是否执行成功了。
-
-```js
-webview.setLeftButton({ params1: 111 }, (err) => {
-  if (err) {
-    console.error("执行失败");
-    return;
-  }
-  console.log("执行成功");
-  // 业务逻辑
-});
-```
-
-JsBridge 中具体的步骤应该是这样的：
-
-- 在 H5 调用 setLeftButton 方法时, 通过 webview_api 名称+参数 作为唯一标识,注册自定义事件
-
-```js
-const handlerId = Symbol();
-const eventName = `setLeftButton_${handlerId}`;
-const event = new Event(eventName);
-window.addEventListener(eventName, (res) => {
-  if (res.data.errcode) {
-    console.error("执行失败");
-    return;
-  }
-  console.log("执行成功");
-  // 业务逻辑
-});
-
-JsBridge.send(`mingzi://setLeftButton?handlerId=${eventName}&params1=111`);
-```
-
-- 客户端在接收到请求, 完成自己的对应处理后, 需要调用 JsBridge 中的 dispatch, 携带回调的数据触发自定义事件。
-
-```js
-event.data = { errcode: 0 };
-window.dispatchEvent(event);
-```
-
-### 注入 API
-
-上述方式有个比较大的缺点, 就是参数如果太长会被截断。以前用这种方式主要是为了兼容 iOS6， 现在几乎已经不需要考虑这么低的版本了。
-
-所以现在主流的实现是 native 向 js 的执行环境中注入 API.
-
-具体怎么操作呢, 咱们分步骤来看：
-
-1. 向 native 传递信息
-
-由于 native 已经向 window 变量注入了各种 api, 所以咱们可以直接调用他们。
-
-比如现在 window.mingziWebview = { setLeftButton: (params) => {}} 就是 native 注入的对象 api。
-
-我们可以直接这样调用, 就可以传参数给 native 了
-
-```js
-window.mingziWebview["setLeftButton"](params);
-```
-
-但是为了安全性, 或者为了不要乱码等问题, 我们一般会对参数进行编码, 比如转换为 base64 格式。
-
-2. 准备接收 native 的回调
-
-咱们同样可以在 window 上声明接收回调的 api
-
-```js
-window["setLeftButton_Callback_1"] = (errcode, response) => {
-  console.log(errcode);
-};
-```
-
-同样为了安全性和参数传递的准确性, native 也会将回调的数据进行 base64 编码, 咱们需要在回调函数里进行解析。
-
-3. native 调用回调函数
-
-native 怎么知道哪个是这次的回调函数呢? 他们确实不知道, 所以我们需要在调用的时候就告诉 native。
-
-```js
-window.mingziWebview["setLeftButton"](params);
-```
-
-这个 Params 中, 我们会加入一个属性叫做 trigger, 它的值是回调函数的名称, 比如
-
-```js
-const callbackName = "setLeftButton_Callback_1";
-window.mingziWebview["setLeftButton"]({
-  trigger: callbackName,
-  ...otherParams,
-});
-
-window[callbackName] = (errcode, response) => {
-  console.log(errcode);
-};
-```
-
-同时为了保证 callbackName 的唯一性, 我们一般会加入各种 Date.now() + id, 使其保证唯一。
-
-## EventBus-发布订阅模式
-
-比如 Vue 的 event bus, node 的 eventemitter3
-
-### 1. 这种模式, 事件的触发和回调之间是同步的还是异步的?
-
-eventemitter3 是同步的，一般是同步的
-
-### 2. 实现一个简单的 EventEmitter 并设置设置最大监听数?
-
-    包含：
-    on 添加监听
-    emit 触发
-    once 执行一次监听
-    off 解除监听
-
-```js
-class EventEmitter {
-  constructor(options = {}) {
-    this.events = {}; //存  {add：[cb1,cb2]}
-    this.maxListeners = options.maxListeners || Infinity;
-  }
-  // 触发监听
-  emit(event, ...args) {
-    const cbs = this.events[event];
-
-    if (!cbs) {
-      console.warn(event, "哒咩这个事件");
-      return this;
-    }
-    cbs.forEach((element) => {
-      element.call(this, ...args);
-    });
-  }
-  // 订阅监听
-  on(event, cb) {
-    if (!this.events[event]) {
-      this.events[event] = [];
-    }
-    if (
-      this.maxListeners !== Infinity &&
-      this.maxListeners <= this.events[event].length
-    ) {
-      console.warn(event, "超过最大监听数");
-      return this;
-    }
-    this.events[event].push(cb);
-    return this;//链式调用 所以return this
-  }
-  // 只会触发一次
-  once(event, cb) {
-    const func = (...args) => {
-      this.off(event, func);
-      cb.call(this, ...args);
-    };
-    this.on(event, func);
-    return this;
-  }
-  // 关闭监听
-  off(event, cb) {
-    if (!cb) {
-      this.events[event] = null;
-    } else {
-      this.events[event] = this.events[event].filter((item) => item !== cb);
-    }
-    return this;
-  }
-}
-
-const add = (a, b) => console.log(a + b);
-const log = (...args) => console.log(...args);
-const myEvent = new EventEmitter({ maxListeners: 2 });
-
-//测试超过最大监听数
-myEvent.on("test", (val) => {
-  console.log(1, val);
-});
-myEvent.on("test", (val) => {
-  console.log(2, val);
-});
-myEvent.on("test", (val) => {
-  console.log(3, val);
-});
-myEvent.on("test", (val) => {
-  console.log(4, val);
-});
-myEvent.emit("test", "测试最大监听");
-
-myEvent.on("log", log);
-myEvent.emit("add", 1, 2); // 3
-myEvent.emit("log", "hi~"); // 'hi~'
-myEvent.off("add");
-myEvent.emit("add", 1, 2); // Error: add event is not registered.
-myEvent.once("once", add);
-myEvent.emit("once", 1, 2); // 3
-myEvent.emit("once", 1, 2);
-myEvent.emit("once", 1, 2);
-```
-
-## 用 setTimeout 实现 setInterval
-
-```js
-let timer = null;
-function mockSetInterval(fn, time, ...arg) {
-  const recur = function() {
-    timer = setTimeout(() => {
-      fn.call(this, ...arg);
-      recur();
-    }, time);
-  };
-  recur();
-}
-function mockClear() {
-  clearInterval(timer);
-}
-
-//定时器启动
-mockSetInterval(
-  (val) => {
-    console.log("start", val);
-  },
-  1000,
-  999
-);
-
-// 5s后clear定时器
-setTimeout(() => {
-  mockClear(timer);
-}, 5000);
-```
-
-> 另一种实现方法 class
-
-```js
-class MockSet {
-  constructor(fn, time, ...arg) {
-    this.fn = fn;
-    this.time = time;
-    this.arg = arg;
-    this.timer = null;
-    (() => {
-      const recur = () => {
-        this.timer = setTimeout(() => {
-          this.fn.apply(this, this.arg);
-          recur();
-        }, this.time);
-      };
-      recur();
-    })();
-  }
-  clearInterval() {
-    clearInterval(this.timer);
-  }
-}
-
-var myset = new MockSet(
-  (val) => {
-    console.log(132, val);
-  },
-  1000,
-  ["传的参数", 123, 43, 654]
-);
-
-setTimeout(() => {
-  myset.clearInterval();
-}, 4000);
-```
-
-## 实现红绿灯
-
-要求使用一个 div 实现红绿灯效果, 把一个圆形 div 按照绿色 3 秒，黄色 1 秒，红色 2 秒循环改变背景色。
-
-Tips: 同学们可以回去尝试使用 setTimeout 嵌套/promise 链式调用 分别实现一下
-
-```js
-const colorConfig = {
-  green: 3000,
-  yellow: 1000,
-  red: 2000,
-};
-var delay = (time) => {
-  return new Promise((res, rej) => {
-    setTimeout(res, time);
-  });
-};
-var changeColor = async (dom, color, time) => {
-  dom.style.background = color;
-  await delay(time);
-};
-var box = document.getElementById("box");
-var run = async () => {
-  for (const key in colorConfig) {
-    await changeColor(box, key, colorConfig[key]);
-  }
-  run();
-};
-run();
-```
-
 
 ## HTTP请求相关
 
@@ -864,14 +496,79 @@ xhr.onerror = function () {
 
 ## ajax 及 fetch API 详解
 
-1. XMLHTTPRequest
+### XMLHTTPRequest
+   - 非常简易的原生ajax请求
+```js
+var xhr = new XMLHttpRequest()
+xhr.open('GET', 'http://39.106.5.96/api/')
+xhr.onreadystatechange = function () {
+    if (xhr.readyState !== 4) return //还没完成
 
-2. fetch
+    if (xhr.status == 200) {//成功
+        console.log(xhr.responseText);
+    } else {//失败
+        console.log(xhr.status, xhr.statusText);
+    }
+
+}
+
+//超时
+xhr.timeout = 5000
+xhr.ontimeout = function () {
+    console.log('请求超时');
+}
+
+//progress事件可以报告长时间运行的文件上传
+xhr.upload.onprogress = function (p) {
+    console.log(Math.round((p.loaded / p.total) * 100) + '%');
+}
+
+xhr.send()//一定要先监听后发送,返回Hello GET
+```
+
+### fetch
+```js
+fetch('http://39.106.5.96/api/', {
+    method: 'get',
+})
+.then((response) => {
+    if (response.ok) {
+        return response.text()
+    }
+    throw new Error(`请求异常`)
+}).then((res) => {
+    console.log(res);
+}).catch(error => {
+    console.log(error);
+})
+```
+
 
 - 默认不带cookie
 - 错误不会reject
-- 不支持超时设置
+- 不支持超时设置,可以用promise包裹
+  ```js
+  // 不支持直接设置超时, 可以用promise
+  function fetchTimeout(url, init, timeout = 3000) {
+    return new Promise((resolve, reject) => {
+        fetch(url, init)
+            .then(resolve)
+            .catch(reject);
+        setTimeout(reject, timeout);
+    })
+  }
+  ```
 - 需要借用AbortController中止fetch
+  ```js
+  const controller = new AbortController()//创建一个控制器
+
+  fetch('http://39.106.5.96/api/', {
+      method: 'get',
+      signal: controller.signal
+  })//...省略...
+  
+  controller.abort()//取消掉
+  ```
 
 
 ### 为什么常见的cdn域名和业务域名不一样？
@@ -883,26 +580,26 @@ xhr.onerror = function () {
 #### 常见的浏览器请求/响应头/错误码解析
 
 #### request header 请求头
-:method: GET
-:path: 路径
-:scheme: https
-accept: application/json, text/plain, */*
-accept-encoding: gzip, deflate, br
-cache-control: no-cache
-cookie: deviceId=c12;
-origin: 
-referer: 判断当前浏览器来自哪个页面，从哪里来
-user-agent: 判断当前环境（比如判断安卓|ios） Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
+- method: GET
+- path: 路径
+- scheme: https
+- accept: application/json, text/plain, */*
+- accept-encoding: gzip, deflate, br
+- cache-control: no-cache
+- cookie: deviceId=c12;
+- origin: 
+- referer: 判断当前浏览器来自哪个页面，从哪里来
+- user-agent: 判断当前环境（比如判断安卓|ios） Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
 
 #### response header 返回头
 
-access-control-allow-credentials: 限制来的请求，true *表示随便来
-access-control-allow-origin: 
-content-encoding: gzip 压缩
-content-type: application/json;charset=UTF-8|| form表单提交
-date: Thu, 06 Aug 2020 08:15:05 GMT
-set-cookie: userId=xxx; 通过set-cookie种
-status: 200
+- access-control-allow-credentials: 限制来的请求，true *表示随便来
+- access-control-allow-origin: 
+- content-encoding: gzip 压缩
+- content-type: application/json;charset=UTF-8|| form表单提交
+- date: Thu, 06 Aug 2020 08:15:05 GMT
+- set-cookie: userId=xxx; 通过set-cookie种
+- status: 200
 
 #### status
 
@@ -917,11 +614,12 @@ status: 200
 * 403	服务器受到请求，但是拒绝提供服务，可能是跨域
 * 404	请求的资源不存在
 * 405 请求的method不允许
+* 414 请求地址太长
 * 500	服务器发生不可预期的错误
 
 ### 强缓存
-expired 代表什么时候过期，不准确
-max-age :1000 代表接收1000ms之后cookie失效
+* expired 代表什么时候过期，不准确
+* max-age :1000 代表接收1000ms之后cookie失效
 
 ### 常见的单页面应用，针对index.html如果一定要做缓存，适合做什么缓存？
 
@@ -933,9 +631,8 @@ css hash
 index.html 没有hash
 
 
-## 发送请求的示例，以及封装一个多浏览器兼容的请求函数
+## 封装一个多浏览器兼容的请求函数
 
-看代码
 ```ts
 interface IOptions {
     url: string;
