@@ -208,4 +208,81 @@ myEvent.emit("once", 1, 2);
 myEvent.emit("once", 1, 2);
 ```
 
+## 实现lodash中的get函数
+
+```js
+const get = (data, path, defaultValue = void 0) => {
+    const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.');
+    console.log(paths);
+    let result = data
+    for (const path of paths) {
+        result = result[path]
+        console.log(result);
+        if (result == null) {
+            return defaultValue
+        }
+    }
+
+    return result
+}
+console.log(132, get(obj, 'a.b.c', null))
+```
+## 实现add(1)(2)(3)-函数柯里化
+
+- 固定参数版
+  1. 知道原来的函数是需要多少参数的  fn.length
+  2. 每次都要返回一个新的函数
+  3. 每次函数执行的时候，都要把参数收集起来 [...args]
+  4. 终止条件：当收集的参数个数 (args.length === fn.length)
+  5. fn.apply
+```js
+const curry = (fn, ...args) => {
+    // 函数的参数个数可以直接通过函数数的.length属性来访问
+    return args.length >= fn.length // 这个判断很关键！！！
+        // 传入的参数大于等于原始函数fn的参数个数，则直接执行该函数
+        ? fn(...args)
+        /**
+         * 传入的参数小于原始函数fn的参数个数时
+         * 则继续对当前函数进行柯里化，返回一个接受所有参数（当前参数和剩余参数） 的函数
+        */
+        : (..._args) => curry(fn, ...args, ..._args);
+}
+function add1(x, y, z) {
+    return x + y + z;
+}
+
+const add = curry(add1);
+console.log(add(1, 2, 3));
+console.log(add(1)(2)(3));
+console.log(add(1, 2)(3));
+console.log(add(1)(2, 3));
+```
+- 参数不固定
+```js
+
+function add() {
+    let args = [...arguments]
+    let adder = function () {
+        args.push(...arguments)
+        return adder
+    }
+
+    //return一个函数会隐士转换为string类型，所以重写toString方法
+    adder.toString = function () {
+        return args.reduce((a, b) => {
+            return a + b
+        }, 0)
+    }
+    return adder
+}
+
+let a = add(1, 2, 3)
+console.log('A', a);
+let b = add(1)(2)(3)
+console.log('A', b);
+console.log(99, add(1, 2, 3));
+console.log(add(1)(2)(3));
+console.log(add(1)(2, 3));
+```
+
 
