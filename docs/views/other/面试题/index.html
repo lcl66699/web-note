@@ -23,7 +23,7 @@
         }
 
     </script>
-    <script>
+    <script src="">
 
         const add = (...args) => {
             return args.reduce((a, b) => a + b)
@@ -52,7 +52,42 @@
         console.log(curryAdd(1)(2, 3)());
 
     </script>
+    <script>
+        // 实现async await
+        // async await是语法糖，本质还是生成器
+        const sleep = (str) => {
 
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve(str), 1000)
+            })
+        }
+
+        function* test() {
+            console.log('开始了');
+            const res1 = yield sleep('hello 1')
+            console.log('第二部', res1);
+            const res2 = yield sleep('hello 2')
+            console.log('第三步', res2);
+
+        }
+        //启动生成器
+        const gen = test()
+
+        const one = gen.next('这是第一次执行的参数')
+        one.value.then((res) => {
+            console.log(res);
+        })
+
+        console.log(one);
+        const er = gen.next('这是第2次执行的参数')
+        er.value.then((res) => {
+            console.log(res);
+        })
+        console.log(er);
+        const san = gen.next('这是第3次执行的参数')
+
+        console.log(san);
+    </script>
 </body>
 
 </html>

@@ -321,4 +321,126 @@ alert(add(2, 6)(1));//alert会触发隐式转换，console.log不行
 
 ```
 
+## 工程化问题
 
+### 如何优化node镜像制作
+   - DOCKER_BUILDKIT 查看 dockerfile instruction 耗时
+   - FROM YOUR_OLD_DOCK 基于历史最新的业务镜像构建
+   - COPY 等指令，充分利用 cache
+   - 优化 OS 大小，alpine
+   - npm i --only=production 移除 devDependencies
+   - 抽出来放 CDN 
+   - ...
+   - devOps
+
+### webpack热更新原理
+
+
+```javascript
+/**
+ *           内存文件系统
+ *               |
+ *              读写
+ *               |
+ *          webpack compile     - watch -      代码
+ *               |                               |
+ *                ----------------------------change
+ *               |
+ *            server(websocket) --> manifest(hash.hot-update.json / hash.hot-update.js) ｜ hash & chunk
+ *              |
+ *              |
+ *  Browser: hotDownloadManifest(拉 manifest)
+ *              |
+ *              | get hash chunkid
+ *              |
+ *           hotDownloadUpdateChunk(拉 chunkjs 文件)
+ *              |
+ *              |
+ *           hotAddUpdateChunk(update the chunk)
+ *              |
+ *              |
+ *           hotUpdateDownloaded
+ */
+
+// homework： 思考如何让传统的 webpack hmr 更快？
+// 思路：
+// 1. 为什么慢？
+// 2. 跟模块模式有关联吗？ ESM
+// 3. 想想 vite？
+```
+
+### 开放性问题实战
+
+1. `obj.a.b.c` 和 `obj['a']['b']['c']` 哪一个性能更好？
+
+- AST
+- 编译一下，汇编的角度去看
+- 分析源码，V8 JerryScript...
+
+2. 如何突破 `localStorage` 的大小限制？
+
+- 同域 ，破绽：port
+> 127.0.0.1:1000 -> 127.0.0.1:1099
+
+### 算法题实战
+
+1. 最短编辑距离算法问题 难度：🪐
+
+```javascript
+// 给出两个单词word1和word2，计算出将word1 转换为word2的最少操作次数。
+
+// 你总共三种操作方法：
+
+// 插入一个字符
+// 删除一个字符
+// 替换一个字符
+
+// 解答 👇
+
+/**
+ *  [
+ *    [0, 1, 2],
+ *    [1, x, x],
+ *    [2, x, x]
+ *  ]
+ * */
+
+// bai  -  bay  => 1
+const levenshtein = (s1, s2) => {
+  let l1 = s1.length;
+  let l2 = s2.length;
+  
+  const matrix = [];
+
+  for (let i = 0; i <= l1; i++) {
+    matrix[i] = []; // [[], []]
+
+    for (let j = 0; j <= l2; j++) {
+      if (i === 0) {
+        matrix[i][j] = [j]; // [[0, 1, 2]]
+      }
+      else if(j === 0) {
+        matrix[i][j] = i; //  [[0, 1, 2], [1], [2]];
+      }
+      else {
+        // 填写 xxxx
+
+        // 相同为 0  不同为 1
+        let cost = 0;
+        if (s1[i - 1] !== s2[j - 1]) {
+          cost = 1;
+        }
+
+        // 左上角顶点
+        const temp = matrix[i - 1][j - 1] + cost;
+        // 和上，下，左上角，取最小
+        matrix[i][j] = Math.min(temp, matrix[i - 1][j] + 1, matrix[i][j - 1] + 1)
+      }
+    }
+  }
+
+  return matrix[l1][l2];
+}
+
+// homework: 思考 `Levenshtein Distance` 算法和 `React` 千丝万缕的联系.
+```

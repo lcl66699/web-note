@@ -5,39 +5,30 @@
 首先 JavaScript 是一门单线程语言，异步操作都是放到事件循环队列里面，等待主执行栈来执行的，并没有专门的异步执行线程。
 
 ### 宏任务
-    - script( 整体代码)
-    - 计时器
-    - ajax
-    - 读取文件
-    - 事件绑定
-    - 回调函数
-    - Node 中 fs 可以进行异步的 I/O 操作
+  - script( 整体代码)
+  - 计时器
+  - ajax
+  - 读取文件
+  - 事件绑定
+  - 回调函数
+  - Node 中 fs 可以进行异步的 I/O 操作
   
 ### 微任务
-    - Promise.then
-    - Promise.catch
-    - MutaionObserver(前端的回溯)
-    - process.nextTick(Node.js 环境)
+  - Promise.then
+  - Promise.catch
+  - MutaionObserver(前端的回溯)
+  - process.nextTick(Node.js 环境)
 
-start
-//宏set
-children 4
-//宏set
-chcolren 2 
-cjild 3 
-child 5 
-7 
-6
 ### node中的事件循环和浏览器中的事件循环区别
 
 node宏任务执行顺序：
 
-    1. timer定时器
-    2. pending callback 待定回调 执行延迟到下一个循环迭代的I/O回调
-    3. idle prepare 仅系统内部使用
-    4. poll 检索新的I/O事件，执行与I/O相关的回调
-    5. check：执行setImmediate()回调函数
-    6. close callback ：sock.on('close',()=>{})
+  1. timer定时器
+  2. pending callback 待定回调 执行延迟到下一个循环迭代的I/O回调
+  3. idle prepare 仅系统内部使用
+  4. poll 检索新的I/O事件，执行与I/O相关的回调
+  5. check：执行setImmediate()回调函数
+  6. close callback ：sock.on('close',()=>{})
 
 node v10之前：
 1. 执行完一个阶段的所有任务
@@ -52,8 +43,9 @@ node v10以后：
 
 ### 执行顺序
 
+:::tip 
 先执行同步代码，遇到异步宏任务如定时器则将异步宏任务放入宏任务队列中，遇到异步微任务（如 promise.then()之类的）则将异步微任务放入微任务队列中，当所有同步代码执行完毕后，开始释放微任务队列，根据微任务先进先出的原则，把最近放在其队列的微任务依次拿出来运行，微任务执行完毕后再将异步宏任务从队列中调入主线程执行，一直循环直至所有任务执行完毕。
-
+:::
 - 宏任务是主流，当 js 开始被执行的时候，就是开启一个宏任务，在宏任务中执行一条一条的指令；
 - 宏任务可以同时有多个，但会按顺序一个一个执行；
 - 每一个宏任务，后面都可以跟一个微任务队列，如果微任务队列中有指令或方法，那么就会执行；如果没有，则开始执行下一个宏任务，直到所有的宏任务执行完为止，微任务相当于宏任务的小尾巴；
