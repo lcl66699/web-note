@@ -9,31 +9,47 @@
 </head>
 
 <body>
-    <script>
-
-        function add() {
-            let args = [...arguments]
-            let adder = function () {
-                args.push(...arguments)
-                return adder
-            }
-
-            //return一个函数会隐士转换为string类型，所以重写toString方法
-            adder.toString = function () {
-                return args.reduce((a, b) => {
-                    return a + b
-                }, 0)
-            }
-            return adder
+    <script src="">
+        const curry = (fn, ...args) => {
+            // 函数的参数个数可以直接通过函数数的.length属性来访问
+            return args.length >= fn.length // 这个判断很关键！！！
+                // 传入的参数大于等于原始函数fn的参数个数，则直接执行该函数
+                ? fn(...args)
+                /**
+                 * 传入的参数小于原始函数fn的参数个数时
+                 * 则继续对当前函数进行柯里化，返回一个接受所有参数（当前参数和剩余参数） 的函数
+                */
+                : (..._args) => curry(fn, ...args, ..._args);
         }
 
-        let a = add(1, 2, 3)
-        console.log('A', a);
-        let b = add(1)(2)(3)
-        console.log('A', b);
-        console.log(99, add(1, 2, 3));
-        console.log(add(1)(2)(3));
-        console.log(add(1)(2, 3));
+    </script>
+    <script>
+
+        const add = (...args) => {
+            return args.reduce((a, b) => a + b)
+        }
+
+        const curry = (fn) => {
+            let args = []
+            return function curring(..._args) {
+                if (_args.length) {//还有参数
+                    args.push(..._args)
+                    // args = [...args, ..._args]
+                    return curring
+                } else {
+                    let res = fn.apply(this, args)
+                    args = []//如果不清空再次调用的时候，会有残留
+                    return res
+                }
+            }
+        }
+
+        const curryAdd = curry(add)
+
+        console.log(curryAdd(1, 2, 3)());//注意调用的时候，需要()再调用
+        console.log(curryAdd(1)(2)(3)());
+        console.log(curryAdd(1, 2)(3)());
+        console.log(curryAdd(1)(2, 3)());
 
     </script>
 

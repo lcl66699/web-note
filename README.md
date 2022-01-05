@@ -24,7 +24,9 @@ cd vuepress-blog
 yarn # 或者npm i
 ```
 
+## 演示地址
 
+[演示地址](https://numbrun.gitee.io/vuepress-blog/)
 
 打包项目
 

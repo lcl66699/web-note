@@ -229,8 +229,11 @@ console.log(132, get(obj, 'a.b.c', null))
 ```
 ## 实现add(1)(2)(3)-函数柯里化
 
-- 固定参数版
-  1. 知道原来的函数是需要多少参数的  fn.length
+:::tip 柯里化
+英语：Currying，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
+:::
+### 参数固定版
+  1. 知道原来的函数是需要多少参数的  fn.length（函数的length 属性指明函数的形参个数。）
   2. 每次都要返回一个新的函数
   3. 每次函数执行的时候，都要把参数收集起来 [...args]
   4. 终止条件：当收集的参数个数 (args.length === fn.length)
@@ -257,11 +260,44 @@ console.log(add(1)(2)(3));
 console.log(add(1, 2)(3));
 console.log(add(1)(2, 3));
 ```
-- 参数不固定
+### 参数不固定
 ```js
+const add = (...args) => {
+    return args.reduce((a, b) => a + b)
+}
 
+const curry = (fn) => {
+    let args = []
+    return function curring(..._args) {
+        if (_args.length) {//还有参数
+            args.push(..._args)
+            // args = [...args, ..._args]
+            return curring
+        } else {
+            let res = fn.apply(this, args)
+            args = []//如果不清空再次调用的时候，会有残留
+            return res
+        }
+    }
+}
+
+const curryAdd = curry(add)
+
+console.log(curryAdd(1, 2, 3)());//注意调用的时候，需要()再调用
+console.log(curryAdd(1)(2)(3)());
+console.log(curryAdd(1, 2)(3)());
+console.log(curryAdd(1)(2, 3)());
+```
+
+### <span style='color:red'>误人子弟版</span> 
+  
+网上很多说这种toString隐式转换的，但是我认为并不对,特别是用
+`Array.prototype.slice.call(arguments)`这个的，对于新手来说不是特别清晰，花里胡哨搞一堆，下面贴代码。
+```js
 function add() {
+    // 第一次执行时，定义一个数组专门用来存储所有的参数
     let args = [...arguments]
+    // 在内部声明一个函数，利用闭包的特性保存_args并收集所有的参数值
     let adder = function () {
         args.push(...arguments)
         return adder
@@ -271,18 +307,18 @@ function add() {
     adder.toString = function () {
         return args.reduce((a, b) => {
             return a + b
-        }, 0)
+        })
     }
     return adder
 }
 
-let a = add(1, 2, 3)
-console.log('A', a);
-let b = add(1)(2)(3)
-console.log('A', b);
-console.log(99, add(1, 2, 3));
-console.log(add(1)(2)(3));
-console.log(add(1)(2, 3));
+let a = add(1)(2)(3)
+// firefox是直接打印对象，chorme打印的是fn
+console.log(a);
+console.log(add(1, 2, 3)(4));
+console.log(add(1)(2)(3)(4)(5));
+alert(add(2, 6)(1));//alert会触发隐式转换，console.log不行
+
 ```
 
 

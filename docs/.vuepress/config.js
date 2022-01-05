@@ -47,6 +47,7 @@ module.exports = {
     // }]
   ],
   themeConfig: {
+    displayAllHeaders: false, // 显示所有页面的标题链接-默认值：false
     smoothScroll: true,//页面滚动效果
     // // 多语言下拉菜单的标题
     // selectText: '选择语言',
@@ -197,5 +198,7 @@ module.exports = {
     // ],
 
   },
-
+  markdown: {
+    lineNumbers: true//行号
+  }
 }

@@ -29,7 +29,7 @@ npm install -g yarn
 
 ## 基础类型 
 布尔值 数字 字符串 数组 元组 枚举
-<img src='/ts1.png'>
+<img :src="$withBase('/ts1.png')" alt='基础类型'>
 
 ### 原始类型
 ```ts
@@ -334,4 +334,4 @@ declare function camelase(params: string): string;
 
 ## 编译原理
 Scanner 扫描仪 Parser 解析器 Binder 绑定器 Checker 检查器 Emitter 发射器
-<img style='' src='/ts2.png'>
+<img style='' :src="$withBase('/ts2.png')" alt='ts编译原理'>
