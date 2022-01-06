@@ -141,7 +141,7 @@ module.exports = {
 1. add.js 和 multiply.js 都引用common.js
 ```js
 // add.js
-import CommonFn from './common.js';
+import CommonFn from './c ommon.js';
 
 export default function add(a, b) {
     return CommonFn(a + b);

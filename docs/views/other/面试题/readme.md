@@ -289,7 +289,7 @@ console.log(curryAdd(1, 2)(3)());
 console.log(curryAdd(1)(2, 3)());
 ```
 
-### <span style='color:red'>误人子弟版</span> 
+### 误人子弟版
   
 网上很多说这种toString隐式转换的，但是我认为并不对,特别是用
 `Array.prototype.slice.call(arguments)`这个的，对于新手来说不是特别清晰，花里胡哨搞一堆，下面贴代码。
@@ -321,6 +321,8 @@ alert(add(2, 6)(1));//alert会触发隐式转换，console.log不行
 
 ```
 
+### 实现async、await
+....
 ## 工程化问题
 
 ### 如何优化node镜像制作
@@ -369,20 +371,20 @@ alert(add(2, 6)(1));//alert会触发隐式转换，console.log不行
 // 3. 想想 vite？
 ```
 
-### 开放性问题实战
+## 开放性问题实战
 
-1. `obj.a.b.c` 和 `obj['a']['b']['c']` 哪一个性能更好？
+### `obj.a.b.c` 和 `obj['a']['b']['c']` 哪一个性能更好？
 
 - AST
 - 编译一下，汇编的角度去看
 - 分析源码，V8 JerryScript...
 
-2. 如何突破 `localStorage` 的大小限制？
+### 如何突破 `localStorage` 的大小限制？
 
 - 同域 ，破绽：port
 > 127.0.0.1:1000 -> 127.0.0.1:1099
 
-### 算法题实战
+## 算法题实战
 
 1. 最短编辑距离算法问题 难度：🪐
 
@@ -443,4 +445,62 @@ const levenshtein = (s1, s2) => {
 }
 
 // homework: 思考 `Levenshtein Distance` 算法和 `React` 千丝万缕的联系.
+```
+
+## webpack
+
+### webpack中的Module是什么？
+
+前端模块
+wepack支持 ESModule、CommonJs、AMD、Assets(image,font,video,audio,json)
+
+1. ESModule
+
+关键字 export import
+
+1. Commonjs
+   
+关键字 module.exports require
+
+package.json
+
+type:module -> ESM
+type:commonjs -> cjs 强制使用cmj模块
+
+### webpack modules,如何表达自己的各种依赖关系
+* ESM import 语句
+* CommonJS require() 语句
+* AMD define 和 require 语句
+* css/sass/less 文件中的 @import 语句。
+* stylesheet url(...) 或者 HTML `<img src=...> `文件中的图片链接。
+
+### *常说的 chunk和bundle的区别是什么？
+
+1. chunk(过程)
+   chunk是webpack打包过程中Modules的集合，是<span style='color:red'>打包过程中的概念</span>
+   webpack打包从一个入口模块开始，入口模块引用其他模块，其他模块又引用其他模块...
+   通过引用关系逐个打包模块，这些module形成了chunk
+
+   如果有多个入口文件，会产生多个打包路径，每条路径都会形成各自的chunk。
+
+2. bundle(结果)
+  是我们最终输出的一个或多个打包好的文件。
+
+::: warning 区别
+大多数情况下，一个chunk会产生一个bundle，但是也有例外。
+比如当我们开启source-map后, chunk和bundle就不是一对一的关系了。下面代码是一个
+chunk对应两个bundle。chunk是过程中的代码块，bundle是打包结果输出的代码块，chunk在构建完成后就会变成bundle
+::: 
+
+```js
+module.exports = {
+    mode: "production",
+    entry: {
+        index: "./src/index.js"
+    },
+    output: {
+        filename: "[name].js"
+    },
+    devtool: "source-map"
+};
 ```
