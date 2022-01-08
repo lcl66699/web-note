@@ -137,16 +137,16 @@ module.exports = {
       "/views/other/面试题/": [
         ''
       ],
-      '/views/sidebargroup/': [
-        {
-          title: '基础',
-          collapsable: true,
-          children: [
-            '',
-            'bar1'
-          ]
-        }
-      ]
+      // '/views/sidebargroup/': [
+      //   {
+      //     title: '基础',
+      //     collapsable: true,
+      //     children: [
+      //       '',
+      //       'bar1'
+      //     ]
+      //   }
+      // ]
     },
     type: 'blog',
     // 博客设置

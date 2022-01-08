@@ -77,6 +77,7 @@ history 对象保存着用户上网的历史记录，从窗口被打开的那一
 
 - pushState
 - onPopState
+- 利用pushState和replaceState去劫持url的变化从而阻止浏览器刷新， 然后又利用popstate完成前端路由的逻辑。用vue-router时是用router.push()来实现跳转的，不是直接pushstate。router.push里面可以调用pushstate来改变url，然后再手动调用方法来更新页面，这里改变页面不需要监听popstate
 
 
 ## 事件捕获和冒泡机制

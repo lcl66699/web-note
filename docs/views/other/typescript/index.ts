@@ -1,24 +1,23 @@
-class Person {
-  firstName: string = "常山";
-  lastName: string = "赵子龙";
-  get fullName() {
-    //获取时触发
-    return this.firstName + "---" + this.lastName;
+function test(val: any) {
+  console.log("装饰器");
+  console.log(val);
+}
+
+function logVal(target, name, descriptor): void {
+  descriptor.writable = false;
+  return descriptor;
+}
+
+@test
+class A {
+  constructor() {
+    console.log(312312);
   }
-  set fullName(value) {
-    //修改时触发
-    const names = value.split("---");
-    this.firstName = names[0];
-    this.lastName = names[1];
+  @logVal("xxx")
+  getValue() {
+    console.log("获取val");
+    return 123;
   }
 }
 
-const p = new Person();
-console.log(p.fullName);
-
-p.firstName = "咏春";
-p.lastName = "叶问";
-console.log(p.fullName);
-
-p.fullName = "篮球---蔡徐坤";
-console.log(p.firstName, p.lastName);
+new A().getValue();
