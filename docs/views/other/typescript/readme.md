@@ -370,9 +370,94 @@ Scanner 扫描仪 Parser 解析器 Binder 绑定器 Checker 检查器 Emitter �
 
 ### 有哪些类型装饰器？装饰器作⽤？执⾏的顺序是怎样的？
 类的装饰
-方法的装饰
+```ts
+// 类装饰器
+function Log(target: any) {
+  console.log(target);
+  console.log("in log decorator");
+}
 
-类装饰器在没new对象的时候，js就已经执行了类装饰器的方法
+@Log
+class A {
+  constructor() {
+    console.log("constructor");
+    // logger.log('ddd');
+  }
+}
+// new A();类装饰器在没new对象的时候，js就已经执行了类装饰器的方法
+```
+方法的装饰
+```ts
+// 方法装饰器
+function GET(url: string) {
+  console.log("entry GET decorator");
+  return function(
+    target: any,
+    methodName: string,
+    descriptor: PropertyDescriptor
+  ) {
+    console.log("entry GET decorator function");
+    !target.$Meta && (target.$Meta = {});
+    target.$Meta[methodName] = url;
+  };
+}
+
+class HelloService {
+  constructor() {
+    console.log("constructor");
+  }
+  @GET("xx")
+  getUser() {
+    console.log("getUser function called");
+  }
+}
+new HelloService().getUser();
+// console.log((<any>HelloService).$Meta);
+// console.log((new HelloService() as any).$Meta);
+
+```
+方法参数装饰器
+```ts
+function PathParam(paramName: string) {
+  return function(target: any, methodName: string, paramIndex: number) {
+    !target.$Meta && (target.$Meta = {});
+    target.$Meta[paramIndex] = paramName;
+  };
+}
+
+class HelloService {
+  constructor() {}
+  getUser(@PathParam("userId") userId: string) {}
+}
+
+console.log((<any>HelloService).prototype.$Meta); // {'0':'userId'}
+```
+定义属性装饰器
+```ts
+function logProperty(params: any) {
+  // target--->类的原型对象；attr--->传入的参数url
+  // return function(target: any, attr: any) {
+  //   console.log("属性装饰器;", target, attr);
+  //   target[attr] = params;
+  // };
+  return (url: any, trueUrl: string) => {
+    console.log("属性装饰", url, trueUrl);
+  };
+}
+
+class HttpClient {
+  @logProperty("http://www.baidu.com")
+  public url: any | undefined;
+  constructor() {}
+  getUrl() {
+    console.log("getUrl", this.url);
+  }
+}
+
+console.log(new HttpClient().getUrl());
+```
+
+
 #### 执行顺序
 - 有多个参数装饰器时：从最后⼀个参数依次向前执⾏ 
 - ⽅法和⽅法参数中参数装饰器先执⾏。 
