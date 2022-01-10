@@ -20,3 +20,42 @@ class HttpClient {
 }
 
 console.log(new HttpClient().getUrl());
+
+var ttt = (): never => {
+  while (true) {}
+};
+
+let num = [123, 123213, 12321321, 132];
+let res = num.find((i) => i > 30);
+let aaa = res as number;
+let bbb = <number>res;
+
+interface Post {
+  val: string;
+  aa?: number;
+}
+
+var tfun = (options: Post): void => {
+  console.log(options);
+};
+tfun({ val: "123" });
+
+class AS {
+  readonly qqqq: any;
+  ewqwq;
+  constructor(opt: any) {
+    console.log(opt);
+    this.ewqwq = opt;
+  }
+  aa() {}
+  public aas() {}
+  static das() {}
+  protected qwe() {}
+  asdsad() {}
+}
+
+function createArr<t>(length: number, value: t): t[] {
+  return Array<t>(length).fill(value);
+}
+
+console.log(createArr(12, "12312"));

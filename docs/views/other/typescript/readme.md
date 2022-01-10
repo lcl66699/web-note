@@ -1,7 +1,12 @@
 # TypeScript
-(typescript中文手册)[https://typescript.bootcss.com/basic-types.html]
 
-(AST抽象语法树)[https://astexplorer.net/]
+#### 参考链接
+[typescript中文手册](https://typescript.bootcss.com/basic-types.html)
+
+[AST抽象语法树](https://astexplorer.net/)
+
+[在线开发 TypeScript](https://www.typescriptlang.org/zh/play)
+
 ## 安装 TypeScript
 
 - 命令行运行如下命令，全局安装 TypeScript
@@ -13,19 +18,17 @@ npm install -g typescript
 tsc -v 
 ```
 
-ts变量用的let 编译的js修饰符变成了var
+- 运行单独ts文件
+```sh
+ts-node  [文件名.ts]
+```
+- 将ts转换为js文件
+```sh
+tsc  [文件名.ts]
+```
 
-tsc --init  新建tsconfig.json配置文件
+`tsc --init`  新建tsconfig.json配置文件
 
-
-强类型 ：不允许类型随意转换
-弱类型 ：
-允许语言类型隐式转换  eg：’100‘-50
-不需要编译 等待运行时看是否报错
-
-
-安装yarn全局
-npm install -g yarn
 
 ## 基础类型 
 布尔值 数字 字符串 数组 元组 枚举
@@ -88,15 +91,18 @@ const b: StringOrNumber = 'string' //10
 mixed/any类型接收任意类型
 //any弱类型 mixed强类型
 // never类型,永不存在的值类型
-//never是任何类型的子类型，可以赋值任何类型。但是没有类型是 never 的子类型或可以赋值给 never 类型， 即使 any 类型也不可以赋值给never。这意味着声明 never 类型的变量只能被 never 类型所赋值。
+//never是任何类型的子类型，可以赋值任何类型。但是没有类型是 never 的子类型或可以赋值给 never 类型，
+// 即使 any 类型也不可以赋值给never。这意味着声明 never 类型的变量只能被 never 类型所赋值。
 function error(): never {
     throw new Error('抛出错误了');
 }
+var test = (): never => {//永远拿不到返回值
+  while (true) {}
+};
 ```
-TypeScript
 
 ###  枚举类型
-- 给一组数值取更好的名字。数据中只会出现固定的值
+给一组数值取更好的名字。数据中只会出现固定的值
 ```ts
 enum 枚举名 {
     标识符[= 整型常数/字符串],
@@ -330,62 +336,60 @@ declare function camelase(params: string): string;
 
 ## 装饰器
 
+:::tip 概念
+它是一个表达式,该表达式被执行后，返回一个函数,函数的入参分别为 target、name 和 descriptor
+,执行该函数后，可能返回 descriptor 对象，用于配置 target 对象
+::: 
 
-
-## 编译原理
-Scanner 扫描仪 Parser 解析器 Binder 绑定器 Checker 检查器 Emitter 发射器
-<img style='' :src="$withBase('/ts2.png')" alt='ts编译原理'>
-
-
-## 面试题
-
-### 类型推论 & 可赋值性
-
-类型推论:没给标志，ts系统推导出来的，声明的应该是什么类型
-
-可赋值性：数组，布尔，数字，对象，函数，类、字符串，字面量类型，满足以下任⼀条件时，A类型可以赋值给B类型。 
-  - A是B的⼦类型 
-  - A是any类型
-
-### 什么是类型断⾔？
-
-可以用来手动指定一个值的类型，定义变量时赋值了, 推断为对应的类型
-  - 方式一: <类型>值
-  - 方式二: 值 as 类型  tsx中只能用这种方式
-  
-缺点：运行时可能才报错
-
-### type 和 interface的异同
-
-- type（类型别名）侧重于描述类型
-- interface侧重于描述数据结构，这个结构该有哪些类型的变量
-
-相同点：
-- 都可以描述⼀个对象或者函数
-- interface和type都可以拓展，interface可以extends type, type也可以extends interface. 效果差不多，语法不同。
-不同点：
-  - 类型别名可以⽤于其它类型 （联合类型、元组类型、基本类型（原始值）），interface不⽀持
-  - interface 可以多次定义 并被视为合并所有声明成员 type 不⽀持
-  - type 能使⽤ in 关键字⽣成映射类型，但 interface 不⾏。
-
-### 有哪些类型装饰器？装饰器作⽤？执⾏的顺序是怎样的？
-类的装饰
+装饰器的分类
+### 类装饰器（Class decorators）
 ```ts
 // 类装饰器
 function Log(target: any) {
-  console.log(target);
-  console.log("in log decorator");
+console.log(target);
+console.log("in log decorator");
 }
 
 @Log
 class A {
-  constructor() {
-    console.log("constructor");
-    // logger.log('ddd');
-  }
+constructor() {
+  console.log("constructor");
+  // logger.log('ddd');
+}
 }
 // new A();类装饰器在没new对象的时候，js就已经执行了类装饰器的方法
 ```
+### 属性装饰器（Property decorators）
+定义属性装饰器，用来装饰类的属性。它接收两个参数：
+- target: Object - 被装饰的类
+- propertyKey: string | symbol - 被装饰类的属性名
+
+```ts
+function logProperty(params: any) {
+  // target--->类的原型对象；attr--->传入的参数url
+  return function(target: any, attr: any) {
+    console.log("属性装饰器;", target, attr);
+    target[attr] = params;
+  };
+}
+
+class HttpClient {
+  @logProperty("http://www.baidu.com")
+  public url: any | undefined;
+  constructor() {}
+  getUrl() {
+    console.log("getUrl", this.url);
+  }
+}
+
+console.log(new HttpClient().getUrl());
+```
+### 方法装饰器（Method decorators）
+用来装饰类的方法。它接收三个参数：
+- target: Object - 被装饰的类
+- propertyKey: string | symbol - 方法名
+- descriptor: TypePropertyDescript - 属性描述符
+
 方法的装饰
 ```ts
 // 方法装饰器
@@ -406,6 +410,7 @@ class HelloService {
   constructor() {
     console.log("constructor");
   }
+  //使用
   @GET("xx")
   getUser() {
     console.log("getUser function called");
@@ -416,7 +421,11 @@ new HelloService().getUser();
 // console.log((new HelloService() as any).$Meta);
 
 ```
-方法参数装饰器
+### 参数装饰器（Parameter decorators）
+装饰函数参数，它接收三个参数：
+- target: Object - 被装饰的类
+- propertyKey: string | symbol - 方法名
+- parameterIndex: number - 方法中参数的索引值
 ```ts
 function PathParam(paramName: string) {
   return function(target: any, methodName: string, paramIndex: number) {
@@ -432,31 +441,45 @@ class HelloService {
 
 console.log((<any>HelloService).prototype.$Meta); // {'0':'userId'}
 ```
-定义属性装饰器
-```ts
-function logProperty(params: any) {
-  // target--->类的原型对象；attr--->传入的参数url
-  // return function(target: any, attr: any) {
-  //   console.log("属性装饰器;", target, attr);
-  //   target[attr] = params;
-  // };
-  return (url: any, trueUrl: string) => {
-    console.log("属性装饰", url, trueUrl);
-  };
-}
+## 编译原理
+Scanner 扫描仪 Parser 解析器 Binder 绑定器 Checker 检查器 Emitter 发射器
+<img style='' :src="$withBase('/ts2.png')" alt='ts编译原理'>
 
-class HttpClient {
-  @logProperty("http://www.baidu.com")
-  public url: any | undefined;
-  constructor() {}
-  getUrl() {
-    console.log("getUrl", this.url);
-  }
-}
 
-console.log(new HttpClient().getUrl());
-```
+## 面试题
 
+### 类型推论 & 可赋值性
+
+类型推论：没给标志，ts系统推导出来的，声明的应该是什么类型
+
+可赋值性：数组，布尔，数字，对象，函数，类、字符串，字面量类型，满足以下任⼀条件时，A类型可以赋值给B类型。 
+  - A是B的⼦类型 
+  - A是any类型
+
+### 什么是类型断言？
+
+可以用来手动指定一个值的类型，定义变量时赋值了, 推断为对应的类型
+  - 方式一: <类型>值
+  - 方式二: 值 as 类型  tsx中只能用这种方式
+  
+缺点：运行时可能才报错
+
+### type 和 interface的异同
+
+- type（类型别名）侧重于描述类型
+- interface侧重于描述数据结构，这个结构该有哪些类型的变量
+
+相同点：
+- 都可以描述⼀个对象或者函数
+- interface和type都可以拓展，interface可以extends type, type也可以extends interface. 效果差不多，语法不同。
+不同点：
+  - 类型别名可以⽤于其它类型 （联合类型、元组类型、基本类型（原始值）），interface不⽀持
+  - interface 可以多次定义 并被视为合并所有声明成员 type 不⽀持
+  - type 能使⽤ in 关键字⽣成映射类型，但 interface 不⾏。
+
+### 有哪些类型装饰器？执行的顺序是怎样的？
+
+类装饰器、属性装饰器、方法装饰器、参数装饰器
 
 #### 执行顺序
 - 有多个参数装饰器时：从最后⼀个参数依次向前执⾏ 
@@ -464,13 +487,12 @@ console.log(new HttpClient().getUrl());
 - 类装饰器总是最后执⾏。 
 - ⽅法和属性装饰器，谁在前⾯谁先执⾏。因为参数属于⽅法⼀部分，所以参数会⼀直紧紧挨着⽅法 执⾏。
 
-### 接⼝类型有哪些种类
-属性类接⼝ 函数类接⼝ 可索引接⼝ 类类型接⼝ 扩展接⼝
+### 接口类型有哪些种类
+属性类接口 函数类接口 可索引接口 类类型接口 扩展接口
 
 
 ### TypeScript和JavaScript的区别
 - 更规范，ts是js的超集，即你可以在ts中使用原生js语法。
-- ts在开发时能给出编译错误，js需要运行时暴露
-- ts为强类型语言，代码可读性强
-- TypeScript提供了类、模块和接口，更易于构建组件和维护。
-- ts是面向对象的编程语言，包含类和接口的概念
+- ts在开发时能给出编译错误，js是弱类型语言需要运行时暴露
+- ts为强类型语言，代码可读性强，不允许类型随意转换，对值所具有的结构进行类型检查
+- TypeScript是面向对象的编程语言，提供了类、模块和接口，更易于构建组件和维护
