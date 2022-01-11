@@ -67,8 +67,8 @@ module.exports = {
     logo: '/orange.png',//导航栏log
     nav: [
       { text: 'js', link: '/views/js/' },
-      { text: '算法', link: '/views/Algorithm/' },
       { text: 'http', link: '/views/Http/' },
+      { text: '工程化', link: '/views/工程化/' },
       {
         text: 'Vue',
         items: [
@@ -82,6 +82,7 @@ module.exports = {
           { text: 'React基础', link: '/views/React/' }, // 可不写后缀 .md
         ]
       },
+      { text: '算法', link: '/views/Algorithm/' },
       { text: '个人空间', link: 'http://39.106.5.96/' },
       {
         text: '其他',
@@ -108,6 +109,9 @@ module.exports = {
         'jsBridge'
       ],
       '/views/Http/': [
+        '',
+      ],
+      '/views/工程化/': [
         '',
       ],
       // 原理

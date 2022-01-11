@@ -446,61 +446,20 @@ const levenshtein = (s1, s2) => {
 
 // homework: 思考 `Levenshtein Distance` 算法和 `React` 千丝万缕的联系.
 ```
+### ajax请求放在vue的哪个生命周期里
 
-## webpack
+为什么不在 created 里去发ajax？created 可是比 mounted 更早调用啊，更早调用意味着更早返回结果，那样性能不是更高？
+首先，一个组件的 created 比 mounted 也早调用不了几微秒，性能没啥提高；
+而且，等到异步渲染开启的时候，created 就可能被中途打断，中断之后渲染又要重做一遍，想一想，在 created 中做ajax调用，代码里看到只有调用一次，但是实际上可能调用 N 多次，这明显不合适。
+相反，若把发ajax 放在 mounted，因为 mounted 在第二阶段，所以绝对不会多次重复调用，这才是ajax合适的位置.
 
-### webpack中的Module是什么？
+在created的时候，视图中的dom并没有被渲染出来，所以此时如果直接去操作dom节点，无法找到相关元素。
+在mounted中，由于此时的dom元素已经渲染出来了，所以可以直接使用dom节点。
+一般情况下，都放在mounted中，保证逻辑的统一性。因为生命周期是同步执行的，ajax是异步执行的。
+服务端渲染不支持mounted方法，所以在服务端渲染的情况下统一放在created中。
 
-前端模块
-wepack支持 ESModule、CommonJs、AMD、Assets(image,font,video,audio,json)
+如果是一开始进入一个页面需要显示的数据放在created里，
+如果是后续和页面交互需要的请求放在mounted里
 
-1. ESModule
-
-关键字 export import
-
-1. Commonjs
-   
-关键字 module.exports require
-
-package.json
-
-type:module -> ESM
-type:commonjs -> cjs 强制使用cmj模块
-
-### webpack modules,如何表达自己的各种依赖关系
-* ESM import 语句
-* CommonJS require() 语句
-* AMD define 和 require 语句
-* css/sass/less 文件中的 @import 语句。
-* stylesheet url(...) 或者 HTML `<img src=...> `文件中的图片链接。
-
-### *常说的 chunk和bundle的区别是什么？
-
-1. chunk(过程)
-   chunk是webpack打包过程中Modules的集合，是<span style='color:red'>打包过程中的概念</span>
-   webpack打包从一个入口模块开始，入口模块引用其他模块，其他模块又引用其他模块...
-   通过引用关系逐个打包模块，这些module形成了chunk
-
-   如果有多个入口文件，会产生多个打包路径，每条路径都会形成各自的chunk。
-
-2. bundle(结果)
-  是我们最终输出的一个或多个打包好的文件。
-
-::: warning 区别
-大多数情况下，一个chunk会产生一个bundle，但是也有例外。
-比如当我们开启source-map后, chunk和bundle就不是一对一的关系了。下面代码是一个
-chunk对应两个bundle。chunk是过程中的代码块，bundle是打包结果输出的代码块，chunk在构建完成后就会变成bundle
-::: 
-
-```js
-module.exports = {
-    mode: "production",
-    entry: {
-        index: "./src/index.js"
-    },
-    output: {
-        filename: "[name].js"
-    },
-    devtool: "source-map"
-};
-```
+建议都放在mounted，放在created相当于data里面的数据从空到有，
+watch第一次会检测不到，数据类可以都放在mounted，没毛病的，别看网上都放在created

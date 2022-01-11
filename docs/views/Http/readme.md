@@ -283,7 +283,7 @@ export default service
 
 ```
 
-### 3. 你能给xhr添加hook, 实现在各个阶段打印日志吗?
+### 给xhr添加hook, 实现在各个阶段打印日志
 代码题, 实现页面上通过xhr发请求的时候, 在xhr的生命周期里, 能够实现自定义的行为触发。
 
 ```js
@@ -493,6 +493,25 @@ xhr.onerror = function () {
 }
 ```
 
+
+### qs.stringify序列化问题总结
+
+曾经的疑惑:为什么有的项目请求参数需要qs.stringify转一下而有的却不需要呢?
+```js
+axios.defaults.headers["Content-Type"] = "application/json;charset=utf-8";
+const service = axios.create({
+  baseURL: '', // url = base url + request url
+  timeout: 1000 * 20, // 响应时间
+  transformRequest: [function (data) {
+    return qs.stringify(data)
+  }]
+})
+```
+#### 总结
+前后台在对接的时候，约定好入参格式：
+
+- 如果约定为纯JSON格式入参，即Content-Type=application/json。后台使用@RequestBody注解，接收前端传递的参数，前台直接使用axios.post即可，不再需要使用QS序列化。
+- 如果约定为纯表单格式入参，即Content-Type=application/x-ww-form-urlencoder。后台使用@RequestParam注解，接收前端传递的参数，前台使用axios.post提交参数，需要对data进行QS序列化操作。
 
 ## ajax 及 fetch API 详解
 

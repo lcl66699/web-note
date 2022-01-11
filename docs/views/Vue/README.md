@@ -4,24 +4,24 @@
 
 1. 全局安 Vue 脚手架工具
 
-```
+```sh
 npmi-g@vue/cli
 ```
 
 1.2 创建项目
 
-```
-vuecreatemy-project
+```sh
+vue create my-project
 ```
 
 2. 目录结构
 
--src
--assets:放静态资源
--static:也是放静态资源的
--components:放置公共组件
--App.vue:入口组件
--main.js:入口 js 文件
+- src
+- assets:放静态资源
+- static:也是放静态资源的
+- components:放置公共组件
+- App.vue:入口组件
+- main.js:入口 js 文件
 
 3. Vue 项目是怎么添加到页面中的 main.js
 

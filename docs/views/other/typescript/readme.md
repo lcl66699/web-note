@@ -472,6 +472,7 @@ Scanner 扫描仪 Parser 解析器 Binder 绑定器 Checker 检查器 Emitter �
 相同点：
 - 都可以描述⼀个对象或者函数
 - interface和type都可以拓展，interface可以extends type, type也可以extends interface. 效果差不多，语法不同。
+
 不同点：
   - 类型别名可以⽤于其它类型 （联合类型、元组类型、基本类型（原始值）），interface不⽀持
   - interface 可以多次定义 并被视为合并所有声明成员 type 不⽀持
