@@ -116,9 +116,22 @@ module.exports = {
     在插件中，可以拿到 Compile 和 Compilation 的引用对象，使用它们广播事件，这些事件可以被其他插件监听到，或者对他们做出一定修改，其他插件拿到的也是变化的对象。
 ## 文件指纹
 
-加hash  在chunk上
+文件指纹是在chunk上加hash 值,主要针对每个在使用cdn的时候,缓存问题,有了文件名+hash文件名更改,
+不会再走缓存
+
+|  占位符   | 解释  |
+|  ----  | ----  |
+| ext  |文件后缀名|
+|path	|文件相对路径|
+|folder	|文件所在文件夹|
+|hash	|每次构建生成的唯一 hash 值|
+|chunkhash	|根据 chunk 生成 hash 值|
+|contenthash	|根据文件内容生成hash 值|
 
 
+- hash ：任何一个文件改动，整个项目的构建 hash 值都会改变；
+- chunkhash：文件的改动只会影响其所在 chunk 的 hash 值；
+- contenthash：每个文件都有单独的 hash 值，文件的改动只会影响自身的 hash 值；
 ## 函数式编程理论
 
 ### 特点
