@@ -102,9 +102,12 @@ module.exports = {
 - Loader 
     一句话描述：模块转换器(翻译官)，将非js模块转化为webpack能识别的js模块,并且一个文件可以链式的经过多个loader进行翻译
 
+    module   resolve
+
     loader 让 webpack 能够去处理那些非 JavaScript 文件.
     loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块,然后你就可以利用 webpack 的打包能力,对它们进行处理。
     本质上,webpack loader 将所有类型的文件,转换为应用程序的依赖图（和最终的 bundle）可以直接引用的模块。
+
 - pligun
 
     一句话描述：扩展插件，在webpack运行的各个阶段，都会广播出去相对应的事件，插件可以监听到这些事件的发生，在特定的时机做相对应的事情
@@ -114,19 +117,68 @@ module.exports = {
 
     在 webpack 运行的生命周期中会广播出各种事件，Plugin 可以监听这些事件，在触发时通过 webpack 提供的 API 改变输出结果。
     在插件中，可以拿到 Compile 和 Compilation 的引用对象，使用它们广播事件，这些事件可以被其他插件监听到，或者对他们做出一定修改，其他插件拿到的也是变化的对象。
+
+### 如何本地项目去做一些多端口服务的代理转发 
+
+proxy多写几个就行了
+```js
+
+module.exports = {
+  dev: {
+    proxyTable: {
+      './': {
+        target: ''
+      }
+    },
+  }
+}
+```
+
+### 如何利用webpack去做依赖锁定？锁版本
+锁依赖固定板本 script标签写死
+```js
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true
+    })
+  ]
+```
+
+###  静态文件的移动&赋值,用哪个plugin
+```js
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.dev.assetsSubDirectory,//移动到指定位置
+        ignore: ['.*']
+      }
+    ])
+```
+
+### 性能优化
+- 视图渲染
+- 网络层 减少请求
+- 代码 | 结构
+  - tree shaking 引入包的按需引入
+  - 模块懒加载 vue-router+trunk|noparse
+  - 文件指纹 消除缓存
+分chunk 性能优化
+路由懒加载
 ## 文件指纹
 
 文件指纹是在chunk上加hash 值,主要针对每个在使用cdn的时候,缓存问题,有了文件名+hash文件名更改,
 不会再走缓存
 
-|  占位符   | 解释  |
-|  ----  | ----  |
-| ext  |文件后缀名|
-|path	|文件相对路径|
-|folder	|文件所在文件夹|
-|hash	|每次构建生成的唯一 hash 值|
-|chunkhash	|根据 chunk 生成 hash 值|
-|contenthash	|根据文件内容生成hash 值|
+| 占位符      | 解释                       |
+| ----------- | -------------------------- |
+| ext         | 文件后缀名                 |
+| path        | 文件相对路径               |
+| folder      | 文件所在文件夹             |
+| hash        | 每次构建生成的唯一 hash 值 |
+| chunkhash   | 根据 chunk 生成 hash 值    |
+| contenthash | 根据文件内容生成hash 值    |
 
 
 - hash ：任何一个文件改动，整个项目的构建 hash 值都会改变；
