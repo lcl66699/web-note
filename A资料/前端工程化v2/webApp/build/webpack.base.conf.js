@@ -4,7 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -75,36 +75,37 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
+      //自定义loader
       {
         test: /\.js$/,
         loader: path.resolve(__dirname, 'loaders', 'loaderA')
       },
-      {
-        test: /\.js$/,
-        loader: path.resolve(__dirname, 'loaders', 'loaderB')
-      },
-      {
-        test: /\.js$/,
-        // loader: path.resolve(__dirname, 'loaders', 'loaderC'),
-        use: [
-          {
-            loader: 'loaderC',
-            options: {
-              name: 'loaderKing',
-              size: 1000
-            }
-          }
-        ]
-      },
-      {
-        test: /\.js$/,
-        loader: 'babelLoader',
-        options: {
-          presets: [
-            '@babel/preset-env'
-          ]
-        }
-      }
+      // {
+      //   test: /\.js$/,
+      //   loader: path.resolve(__dirname, 'loaders', 'loaderB')
+      // },
+      // {
+      //   test: /\.js$/,
+      //   // loader: path.resolve(__dirname, 'loaders', 'loaderC'),
+      //   use: [
+      //     {
+      //       loader: 'loaderC',
+      //       options: {
+      //         name: 'loaderKing',
+      //         size: 1000
+      //       }
+      //     }
+      //   ]
+      // },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babelLoader',
+      //   options: {
+      //     presets: [
+      //       '@babel/preset-env'
+      //     ]
+      //   }
+      // }
     ]
   },
   // loader统一管理

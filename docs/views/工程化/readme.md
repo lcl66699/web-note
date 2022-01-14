@@ -102,7 +102,7 @@ module.exports = {
 - Loader 
     一句话描述：模块转换器(翻译官)，将非js模块转化为webpack能识别的js模块,并且一个文件可以链式的经过多个loader进行翻译
 
-    module   resolve
+    module   resolve loader 过程中添油加醋
 
     loader 让 webpack 能够去处理那些非 JavaScript 文件.
     loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块,然后你就可以利用 webpack 的打包能力,对它们进行处理。
@@ -165,7 +165,6 @@ module.exports = {
   - 模块懒加载 vue-router+trunk|noparse
   - 文件指纹 消除缓存
 分chunk 性能优化
-路由懒加载
 ## 文件指纹
 
 文件指纹是在chunk上加hash 值,主要针对每个在使用cdn的时候,缓存问题,有了文件名+hash文件名更改,
@@ -184,37 +183,104 @@ module.exports = {
 - hash ：任何一个文件改动，整个项目的构建 hash 值都会改变；
 - chunkhash：文件的改动只会影响其所在 chunk 的 hash 值；
 - contenthash：每个文件都有单独的 hash 值，文件的改动只会影响自身的 hash 值；
+
 ## 函数式编程理论
+
+## 手写Loader
+## 手写Plugin
+
 
 ### 特点
 - vue3 react 16.8 全面化函数的推动
-- 函数式编程使代码单元测试更独立 tree shaking过程流畅 方便做ut
-- 减少对this依赖
+- 函数式编程使代码单元测试更独立 tree shaking过程流畅 方便做UT
+- 减少对this依赖,减轻了开发人员对于指向问题的困惑
 - js天生友好的函数式编程 ramda loadsh
 
 ### 概念
 
 - 抽象运算过程
-- 并非过程运算 是一种函数的映射
+- 函数式的函数并非对于过程运算，是一种函数的映射
 - 幂等 相同的输入始终得到相同的输出 
 
 ### 纯函数
-
-### 数组长度未知，取最后一项
+纯函数指没有副作用的函数。相同的输入有相同的输出，就跟我们上学的函数一样。
+  - 仅取决于提供的输入，而不依赖于任何在函数求值或调用间隔时可能变化的隐藏状态和外部状态。
+  - 不会造成超出作用域的变化，例如修改全局变量或引用传递的参数。
 ```js
-let first=arr=>arr[0]
-let reverse=>arr=>arr.reverse()
+let arr = [1, 2, 3, 4, 5];
 
-let last=compose(first,reverse)
+arr.slice(0, 3); // [1, 2, 3]
+arr.slice(0, 3); // [1, 2, 3]
+
+arr.splice(0, 3); // [1, 2, 3]
+arr.splice(0, 3); // [4, 5]
 ```
+对于系统的改造
+```js
+// 不纯的
+let min = 18;
+let limit = age => age > min;
 
-module.exports.pitch
+// 纯函数
+let limit = age => age > 18;
+```
+对于大型系统来说，对于外部状态的依赖，会大大的提高系统复杂性
+* 问题：
+18被硬编码到了函数内部的，造成了功能拓展的局限
 
-babel
+### 高阶函数
+1. 函数作为参数被传递到另一个函数中
+2. 函数作为返回值被另外一个函数返回
+```js
+    let fn = arg => {
+        let outer = "outer";
+        let innerFn = () => {
+            console.log(outer);
+            console.log(arg);
+        }
+        return innerFn;
+    }
+
+    let closure = fn(18);
+    // 闭包
+```
+### 函数柯里化
+1. 传递给函数一部分参数用于功能调用，让他返回一个函数去处理剩下的函数
+```js
+// let add = (x, y) => x + y;
+// 柯里化后
+let add = x => (y => x + y);
+let add2 = add(2)(10);
+console.log(add2);//12
+
+// // 回到上面的limit， 纯函数化
+let limit = min => {
+    return age => age > min;
+}
+console.log(limit(18)(12));
+```
+> 是一种预加载方式
+* 问题
+包心菜代码的产生h(g(f(x)));
+
+
+### 升级->组合
+> 通过更优雅的方式实现纯函数的解耦
+
+```js
+let compose = (f, g) => (x => f(g(x)));
+
+let add1 = x => x + 1;
+let mul5 = x => x * 5;
+
+compose(mul5, add1)(2); // 15
+
+// 面试题 - 数组长度未知的情况下，拿到最后一项
+let first = arr => arr[0];
+let reverse = arr => arr.reverse();
+
+let compose = (first, reverse) => (x) => first(reverse(x))//实现
+let last = compose(first, reverse)([1, 2, 3, 4, 5]);
+console.log(last) // 5
+```
  
-
- loader过程中添油加醋
-
- plugin     
- - loader提供的方法 是动词 翻译馆
- - plugins 插件 是类class
