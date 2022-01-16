@@ -164,11 +164,18 @@ class PromiseQuene {
 ## HTTP请求相关
 
 ### 解决跨域
-  1. jsonp
-  2. cors
-  3. node正向代理，比如请求/api 可以转接到同域的服务去访问/api，绕过浏览器同源策略，再返回前端
-  4. nginx 反向代理，proxy_pass
-  5. image标签
+1. jsonp
+    原理：动态创建一个script标签。利用script标签的src属性不受同源策略限制。因为所有的src属性和href属性都不受同源策略限制。可以请求第三方服务器数据内容。
+    步骤：
+    1. 去创建一个script标签
+    2. script的src属性设置接口地址
+    3. 接口参数,必须要带一个自定义函数名 要不然后台无法返回数据。
+    4. 通过定义函数名去接收后台返回数据
+2. cors
+3. node正向代理，比如请求/api 可以转接到同域的服务去访问/api，绕过浏览器同源策略，再返回前端
+4. nginx 反向代理，proxy_pass
+5. image标签
+6. document.domain + iframe：主域名相同，子域名不通，设置document.domain为主域名解决
 
 ### 有做过全局的请求处理吗？比如统一请求并设置登录态, 比如报错统一弹toast等
 

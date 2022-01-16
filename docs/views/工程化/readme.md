@@ -184,17 +184,39 @@ module.exports = {
 - chunkhash：文件的改动只会影响其所在 chunk 的 hash 值；
 - contenthash：每个文件都有单独的 hash 值，文件的改动只会影响自身的 hash 值；
 
-## 函数式编程理论
 
-## 手写Loader
+
+## Loader
+
+### 常用loaders 
+- es6->es5  babel-loader
+- css  css-loader style-loader
+- less  less-loader
+- 图片  url-loader
+- 把图片换成路径  file-loader
+
 
 //weback提供的 顺序
 module.exports.pitch = function () {
     console.log('pitch A');
 }
-## 手写Plugin
+## Plugin
+- mini-css-extract-plugin
+分离CSS 将CSS提取到单独的文件中。
+- postcss-loader autoprefixer
+处理CSS3属性前缀 
+- 压缩JS和CSS
+  用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6
 
 
+## noParse
+
+module.noParse 字段，可以用于配置哪些模块文件的内容不需要进行解析
+不需要解析依赖（即无依赖） 的第三方大型类库等，可以通过这个字段来配置，以提高整体的构建速度
+` noParse: /jquery|lodash/, // 正则表达式`
+
+
+## 函数式编程理论
 ### 特点
 - vue3 react 16.8 全面化函数的推动
 - 函数式编程使代码单元测试更独立 tree shaking过程流畅 方便做UT
