@@ -104,6 +104,7 @@ module.exports = {
       '/views/js/': [
         '',
         'js模块化',
+        'Es6',
         'Promise',
         'BOM',
         'jsBridge'

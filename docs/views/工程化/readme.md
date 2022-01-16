@@ -187,6 +187,11 @@ module.exports = {
 ## 函数式编程理论
 
 ## 手写Loader
+
+//weback提供的 顺序
+module.exports.pitch = function () {
+    console.log('pitch A');
+}
 ## 手写Plugin
 
 

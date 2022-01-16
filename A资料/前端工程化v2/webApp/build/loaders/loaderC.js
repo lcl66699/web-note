@@ -1,8 +1,8 @@
 const { getOptions } = require('loader-utils');
-module.exports = function(content, map, meta) {
+module.exports = function (content, map, meta) {
     const options = getOptions(this);
 
-    console.log('im' + options.name);
+    console.log('loaderC' + options.name);
 
     return content;
 }

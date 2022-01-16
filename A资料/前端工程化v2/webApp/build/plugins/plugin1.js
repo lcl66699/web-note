@@ -10,7 +10,7 @@ class Plugin1 {
         compiler.hooks.afterEmit.tap('Plugin1', Compilation => {
             console.log('hooks.afterEmit.tap');
         })
-        // 不同的函数
+        // 相同的生命周期可以处理不同的函数
         // 处理异步函数
         compiler.hooks.emit.tap('Plugin1', (Compilation, cb) => {
             setTimeout(() => {

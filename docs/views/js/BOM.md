@@ -2,7 +2,7 @@
 
 BOM:Browser Object Model 浏览器对象模型，提供了独立于内容的，可以与浏览器窗口进行滑动的对象结构，浏览器提供的API
 
-主要对象：
+## 主要对象
 1. window 对象 BOM核心，js访问浏览器的接口，也是es规定的global对象
 2. location 对象 提供当前窗口中加载的文档有关的信息和一些导航功能，即是window也是document属性
 3. navigation 对象 获取浏览器系统信息
@@ -14,7 +14,7 @@ BOM:Browser Object Model 浏览器对象模型，提供了独立于内容的，�
 - alert()
 - confirm()
 - prompt()
-- open()
+- open() 可用于打开新浏览器窗口
 - onerror()
   - 监听一些全局的监控
   - addEventListener('error')
@@ -22,26 +22,32 @@ BOM:Browser Object Model 浏览器对象模型，提供了独立于内容的，�
 - setInterval()
 
 
-### 窗口位置
+#### 窗口位置
 
-- screenLeft 窗口相对于左边的位置 适用于Chrome、IE、Safari
+- screenLeft 窗口相对于左边的屏幕左侧位置 适用于Chrome、IE、Safari
 - screenTop
 - screenX	窗口相对于左边的位置 适用于FireFox
 - screenY	
-- moveBy(x,y) 在水平和垂直方向上移动的像素
+- moveBy(x,y) 在水平和垂直方向上移动的像素|移动窗口
 - moveTo(x,y) 接收的是新位置的x和y坐标值
 
 
-### 窗口大小
+#### 窗口大小
 
-- innerWidth 获取可视窗口大小，视图区
+- innerWidth 获取可视窗口大小，视图区(不包含浏览器边框和工具栏)
 - innerHeight	
 
-- outerWidth 返回页面视图容器大小
+- outerWidth 返回浏览器自身的大小
 - outerHeight	
 
 - resizeTo(width, height) 接收浏览器窗口的新宽度和新高度
 - resizeBy(width, height)
+
+#### 视口位置
+
+- scroll()
+- scrollTo()
+- scrollBy()
 
 
 ### Location 对象
@@ -49,22 +55,26 @@ BOM:Browser Object Model 浏览器对象模型，提供了独立于内容的，�
 
 location 对象的主要属性：
 - hash
-- host
-- hostname
-- href
-- pathname
-- port
-- protocol
+- host 服务器及端口号
+- hostname 服务器名
+- href 当前加载页面完整url
+- pathname url路径或文件名
+- port 请求的端口
+- protocol 页面使用的协议
 - search 拿到整体url参数 包括问号
+- origin url源地址
 
 location 的应用场景： 比如区分环境用host
 
 
 
 ### Navigation 对象
-navigation 接口表示用户代理的状态和标识，允许脚本查询它和注册自己进行一些活动
+navigation 接口表示用户代理的状态和标识，允许脚本查询它和注册自己进行一些活动,包括各种当前浏览器的信息
 
 isOnline 检测当前网络是否在线
+
+### screen 对象
+浏览器窗口外面的客户端显示器信息,比如像素宽度,像素高速.
 
 
 ### History 对象

@@ -78,37 +78,43 @@ module.exports = {
       //自定义loader
       {
         test: /\.js$/,
-        loader: path.resolve(__dirname, 'loaders', 'loaderA')
+        loader: path.resolve(__dirname, 'loaders', 'loaderA'),
+        // loader: 'loaderA',
+        //调用多个loader
+        // use: [
+        //   'loaderA'
+        // ]
       },
-      // {
-      //   test: /\.js$/,
-      //   loader: path.resolve(__dirname, 'loaders', 'loaderB')
-      // },
-      // {
-      //   test: /\.js$/,
-      //   // loader: path.resolve(__dirname, 'loaders', 'loaderC'),
-      //   use: [
-      //     {
-      //       loader: 'loaderC',
-      //       options: {
-      //         name: 'loaderKing',
-      //         size: 1000
-      //       }
-      //     }
-      //   ]
-      // },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'babelLoader',
-      //   options: {
-      //     presets: [
-      //       '@babel/preset-env'
-      //     ]
-      //   }
-      // }
+      {
+        test: /\.js$/,
+        loader: path.resolve(__dirname, 'loaders', 'loaderB')
+      },
+      {
+        test: /\.js$/,
+        // loader: path.resolve(__dirname, 'loaders', 'loaderC'),
+        use: [
+          //使用多个loader
+          {
+            loader: 'loaderC',
+            options: {
+              name: 'loaderKing',
+              size: 1000
+            }
+          }
+        ]
+      },
+      {
+        test: /\.js$/,
+        loader: 'babelLoader',
+        options: {
+          presets: [
+            '@babel/preset-env'
+          ]
+        }
+      }
     ]
   },
-  // loader统一管理
+  // loader统一管理 使用多个loader
   resolveLoader: {
     modules: [
       'node_modules',

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 基础类型解构
+        var [a, b, c] = [1, 2, 3]
+        console.log(a, b, c) // 1, 2, 3
+        // 对象数组解构
+        var [a, b, c] = [{ name: '1' }, { name: '2' }, { name: '3' }]
+        console.log(a, b, c) // {name: '1'}, {name: '2'}, {name: '3'}
+        // ...解构
+        var [head, ...tail] = [1, 2, 3, 4]
+        console.log(head, tail) // 1, [2, 3, 4]
+        // 嵌套解构
+        var [a, [b], d] = [1, [2, 3], 4]
+        console.log(a, b, d) // 1, 2, 4
+        // 解构不成功为undefined
+        var [a, b, c] = [1]
+        console.log(a, b, c) // 1, undefined, undefined
+        // 解构默认赋值
+        var [a = 1, b = 2] = [3]
+        console.log(a, b) // 3, 2
+
+    </script>
+    <script src="">
+        const obj = {
+            name: '小米',
+            getName1: function () {
+                console.log('普通函数:', this.name);
+                return this.name
+            },
+            getName2: () => {
+                console.log('箭头函数:', this.name);
+                return this.name
+            }
+        }
+        obj.getName1()
+        obj.getName2()
+
+        console.log('aa', aa);
+        if (true) {
+            const aa = '12321'
+        }
+
+
+    </script>
+    <script src="">
+
+
+        const arr = [1, 2, 3]
+        Object.freeze(arr)//冻结
+
+        arr[0] = '改变'
+
+        console.log(arr);//冻结了 改不了
+
+        const obj = {
+            question: '你回家吃饭吗',
+            answerList: ['不回家去你家吃啊', '嗯？']
+        }
+        Object.freeze(obj)//冻结
+
+        obj.answerList[0] = '回家'
+        console.log(obj);//还是修改成了
+
+        //freeze只能冻结根层，嵌套引用类型需要遍历递归
+        //面试题目
+        function deepFreeze(obj) {
+            Object.freeze(obj);//冻结
+            //逐级遍历
+            (Object.keys(obj) || []).forEach(key => {
+                let innerObj = obj[key]
+                if (typeof innerObj === 'object') {
+                    //递归
+                    deepFreeze(innerObj)
+                }
+            });
+        }
+
+        deepFreeze(obj)
+
+    </script>
+</body>
+
+</html>

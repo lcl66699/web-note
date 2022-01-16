@@ -4,17 +4,18 @@
 //     return content;
 // }
 
+//顺序
 module.exports.pitch = function () {
     console.log('pitch B');
 }
 
 // 异步方式
-module.exports = function(content, map, meta) {
-    console.log('im loaderB');
-    
+module.exports = function (content, map, meta) {
+    console.log('im loaderB',);
+
     const callback = this.async();
 
     setTimeout(() => {
         callback(null, content);
-    }, 1000);
+    }, 3000);
 }
