@@ -7,10 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 
 <body>
-    <div id="btn">asdsadsad</div>
     <script>
+        function* getData() {
+            for (const iterator of [1, 2, 3]) {
+                yield iterator
+            }
+        }
+        let g = getData()
+        console.log(g.next());//{value: 1, done: false}
+        console.log(g.return(88));//{value: 88, done: true}
+        console.log(g.next());//{value: undefined, done: true}
+
+    </script>
+    <script src="">
         // String
         let str = 'test'
         let iterFun = str[Symbol.iterator]
@@ -108,6 +120,47 @@
         console.log(isIterable(new Set())); // true
         console.log(isIterable(new WeakMap())); // false
         console.log(isIterable(new WeakSet())); // false
+        console.log('*******');
+
+        class Counter {
+            constructor(limit) {
+                this.limit = limit
+            };
+            [Symbol.iterator]() {
+                let count = 1
+                let limit = this.limit
+                return {
+                    next() {
+                        if (count <= limit) {
+                            return {
+                                done: false,
+                                value: count++
+                            }
+                        } else {
+                            return {
+                                done: true,
+                                value: undefined
+                            }
+                        }
+
+                    },
+                    return() {
+                        //终止了
+                        console.log('终止了');
+                        return {
+                            done: true,
+                        }
+                    }
+                }
+            }
+        }
+        let myCounter = new Counter(3)
+        for (const iterator of myCounter) {
+            if (iterator > 2) {
+                break
+            }
+            console.log(iterator);//1 2 3
+        }
 
 
 

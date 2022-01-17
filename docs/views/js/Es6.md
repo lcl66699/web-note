@@ -222,7 +222,7 @@ const Animal = class { }
 ### 静态类方法 static
 
 用于执行不特定于实例的操作，也不要求存在类的实例，在使用中 static作为前缀关键字，
-比如 Promise.resolve()等。
+比如`Promise.resolve()`等。
 
 - 可以使用set和get函数
 
@@ -268,7 +268,7 @@ const str = render(template)({ year, month, day });
 console.log(str) // 2022-1-16
 ```
 
-## 遍历器 Iterator接口
+## 迭代器Iterator接口
 
 Iterator是一种接口，为各种不一样的数据解构提供统一的访问机制。任何数据解构只要有Iterator接口，就能通过遍历操作，依次按顺序处理数据结构内所有成员。ES6中的for of的语法相当于遍历器，会在遍历数据结构时，自动寻找Iterator接口。
 
@@ -287,15 +287,153 @@ Iterator作用：
 
 #### 可迭代对象
 
-::: tip 仅仅是协议
+::: tip 协议
 可迭代协议：对象必须实现iterator方法。即对象或其原型链上必须有一个名叫Symbol.iterator的属性。该属性的值为无参函数，函数返回迭代器协议。
 
 迭代器协议：定义了标准的方式来产生一个有限或无限序列值。其要求必须实现一个next()方法，该方法返回对象有done(boolean)和value属性。
 value表示具体的返回值，done 是布尔类型的，表示集合是否遍历完成或者是否后续还有可用数据，没有可用数据则返回 true，否则返回 false。
 :::
 
+每个迭代器都表示对可迭代对象的一次性有序遍历，不同迭代器之间不影响
 
+```js
+class Counter {
+    constructor(limit) {
+        this.limit = limit
+    };
+    [Symbol.iterator]() {
+        let count = 1
+        let limit = this.limit
+        return {
+            next() {
+                if (count <= limit) {
+                    return {
+                        done: false,
+                        value: count++
+                    }
+                } else {
+                    return {
+                        done: true,
+                        value: undefined
+                    }
+                }
 
+            }
+        }
+    }
+}
+let myCounter = new Counter(3)
+for (const iterator of myCounter) {
+    console.log(iterator);//1 2 3
+}
+```
+
+::: danger 注意
+迭代器维护着一个指向可迭代对象的引用，因此迭代器会阻止垃圾回收程序回收可迭代对象
+:::
+
+### 提前终止迭代器
+可选的return方法用于提前关闭
+
+return()方法必须返回一个有效的InteratorResult对象，可以只返回`{done:true}`.
+注意：数组的代码不能关闭，上面代码增加代码如下：
+
+```js
+...
+return() {
+    //终止了
+    console.log('终止了');
+    return {
+        done: true,
+    }
+}
+...
+
+let myCounter = new Counter(3)
+for (const iterator of myCounter) {
+    if (iterator > 2) {
+        break
+    }
+    console.log(iterator);//1 2 3
+}
+```
+
+## Generator生成器
+
+Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同,使用生成器可以自定义迭代器和实现协程
+
+形式上，Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。
+
+::: danger 注意
+箭头函数不能用来定义生成器函数
+ 
+:::
+```js
+function* generator() {
+    yield 'status one'         // yield 表达式是暂停执行的标记  
+    yield 'hello world1'
+}
+var aa = generator()
+console.log(aa);//产生生成器对象，处于暂停执行的状态 generator {<suspended>}
+console.log(aa.next());//{value: 'status one', done: false}
+console.log(aa.next());//{value: 'hello world1', done: false}
+console.log(aa.next());//{value: undefined, done: true}
+```
+#### yield 表达式
+
+由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志。
+
+遍历器对象的next方法的运行逻辑如下。
+
+- 遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。
+- 下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。
+- 如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。
+```js
+function* getData() {
+    yield http();
+    yield getLog();
+}
+function getLog() {
+    console.log("我是网络请求后的执行函数");
+}
+function http() {
+    return $.ajax({
+        url: "http://39.106.5.96:3000/api",
+        type: "get",
+        success: function (data) {
+            console.log(data);
+        },
+    })
+}
+
+var gd = getData();
+gd.next();
+gd.next();
+```
+
+### 场景
+
+1. 生成器对象作为可迭代对象  然后for of遍历
+2. 使用yield实现输入和输出
+3. 产生可迭代对象
+   1. 用`yield*`让他能迭代一个可迭代的对象，从而一次产出一个值。eg：`   yield* [1, 2, 3]`
+4. 使用yield*实现递归算法
+
+生成器可作为默认迭代器
+
+### 提前终止生成器
+return()方法强制生成器进入关闭状态，提供给return括号里的值 就是终止迭代器返回对象的值
+```js
+function* getData() {
+    for (const iterator of [1, 2, 3]) {
+        yield iterator
+    }
+}
+let g = getData()
+console.log(g.next());//{value: 1, done: false}
+console.log(g.return(88));//{value: 88, done: true}
+console.log(g.next());//{value: undefined, done: true}
+```
 ## 字符串的新增方法
 - includes()：返回布尔值，表示是否找到了参数字符串。
 - startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。
@@ -346,57 +484,6 @@ new Array(3).fill(7)// [7, 7, 7]
 ## 对象扩展
 - Object.is() 比较两个值是否相等`Object.is({}, {})  // true`
 
-## Generator
-
-Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同
-
-形式上，Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。
-```js
-function* getData() {
-    yield http();
-    yield getLog();
-}
-// Generator函数
-function* generator() {
-    yield 'status one'         // yield 表达式是暂停执行的标记  
-    return 'hello world'
-}
-
-let iterator = generator()   // 调用 Generator函数，函数并没有执行，返回的是一个Iterator对象
-iterator.next()              // {value: "status one", done: false}，value 表示返回值，done 表示遍历还没有结束
-iterator.next()              // {value: "hello world", done: true}，value 表示返回值，done 表示遍历结束
-```
-yield 表达式
-
-由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志。
-
-遍历器对象的next方法的运行逻辑如下。
-
-- 遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。
-- 下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。
-- 如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。
-```js
-function* getData() {
-    yield http();
-    yield getLog();
-}
-function getLog() {
-    console.log("我是网络请求");
-}
-function http() {
-    return $.ajax({
-        type: "get",
-        url: "http://iwenwiki.com/api/blueberrypai/getIndexChating.php",
-        success: function (data) {
-            console.log(data);
-        }
-    })
-}
-
-var gd = getData();
-gd.next();
-gd.next();
-```
 
 ## proxy
 proxy在目标对象的外层搭建了一层拦截，外界对目标对象的某些操作，必须通过这层拦截
@@ -412,10 +499,7 @@ new Proxy()表示生成一个Proxy实例，target参数表示所要拦截的目�
 - 降低函数或类的复杂度
 - 在复杂操作前对操作进行校验或对所需资源进行管理
 
-```js
-```
-```js
-```
+
 
 
 
