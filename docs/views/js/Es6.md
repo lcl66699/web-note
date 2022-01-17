@@ -21,6 +21,11 @@ JavaScript的创造者Netscape公司，将JavaScript提交给国际标准化组�
 
 ## Babel转码器
 
+报错 token SyntaxError: Unexpected token '=='
+是解析的时候。。。
+
+词法解析 语法解析
+
 Babel 是一个广泛使用的 ES6 转码器，可以将 ES6 代码转为 ES5 代码，从而在现有环境执行。
 
 安装 Babel 
@@ -405,3 +410,8 @@ new Proxy()表示生成一个Proxy实例，target参数表示所要拦截的目�
 ```
 ```js
 ```
+
+
+
+
+
