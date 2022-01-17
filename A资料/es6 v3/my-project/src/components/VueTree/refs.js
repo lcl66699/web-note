@@ -23,7 +23,7 @@ class Ref {
 let refs = {};
 
 // 初始化工厂生产实例
-let init = function(opts, tree) {
+let init = function (opts, tree) {
     let name = opts.name;
     if (!refs[name]) {
         return new Ref(opts, tree);
@@ -32,17 +32,17 @@ let init = function(opts, tree) {
 }
 
 // 销毁实例
-let destroy = function(name) {
+let destroy = function (name) {
     refs[name] && delete refs[name];
 }
 
 // 获取
-let get = function(name, cid) {
+let get = function (name, cid) {
     return refs[name] && refs[name].get(cid);
 }
 
 // 设置
-let set = function(name, vm) {
+let set = function (name, vm) {
     refs[name] && refs[name].set(vm);
 }
 

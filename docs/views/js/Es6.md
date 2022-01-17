@@ -152,30 +152,26 @@ a // "h"b // "e"c // "l"d // "l"e // "o"
 let {length : len} = 'hello';
 len // 5
 ```
-### 解构赋值用途
+### 解构赋值使用场景
 1. 一句代码，交换变量的值
 ```js
 let x = 1;let y = 2;
 [x, y] = [y, x];
 ```
-2. 提取 JSON 数据.
+2. 提取 JSON 数据，ajax返回值等
 3. 函数参数的默认值
+4. 函数形参结构
+5. 遍历Map结构
+
+### 基本原理
+解构是ES6提供的语法糖，其实内在是针对可迭代对象的Iterator接口，通过遍历器按顺序获取对应的值进行赋值。
+这里需要提前懂得ES6的两个概念： - Iterator - 可迭代对象
+
+参考资料：
+[ES6之解构赋值及其原理](https://zhuanlan.zhihu.com/p/60207680)
 
 
-
-
-```js
-```
-```js
-```
-
-```js
-```
-```js
-```
-```js
-```
-### 箭头函数
+## 箭头函数
 
 ```js
 const test = (a, b) => {
@@ -183,20 +179,16 @@ const test = (a, b) => {
 }
 const test = (a, b) => a + b
 ```
-
 #### 使用箭头函数应注意什么？
-- 箭头函数并不会形成独立上下文，内部this指向window
-函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象。普通函数里的this是使用的时候决定的
+- 箭头函数并不会形成独立上下文,函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象。普通函数里的this是使用的时候决定的
 - 不可以当做构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
 - 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以使用rest参数代替
 - 不可以使用yield命令，因此箭头函数不能用作Genertor函数。
 #### 场景
-1. dom操作cb
+1. dom操作cb,`tn.addEventListener('click', () => {}`
 2. 类操作
    1. 箭头函数不能用作构造函数
    2. 箭头函数无法构造原型方法，没prototype属性
-
-#### 箭头函数的参数特性，无法使用arguments
 
 
 ## class 类
@@ -212,10 +204,7 @@ const Animal = class { }
 - 函数声明可以提升，但是类不行。
 - 函数受函数作用域限制，而类受块作用域限制
 
-
-
-### 类的构成
-::: tips
+::: tip 类的构成
 包含构造函数方法、实例方法、获取函数get、设置函数set和静态类方法staic。
 :::
 
@@ -250,14 +239,7 @@ class Person {
 }
 console.log(typeof Person);//function
 ```
-#### class的prototype有区分 但和本质相同
-- 函数对象 属性hasOwnP
-
-//js如何建立只读变量 用get 
-
-私有变量 #xx
-static
-
+#### class的prototype和函数有区分，但和本质相同
 ## 模板字符串
 ```js
 const a = `汉字汉字${value}汉字汉字`;
@@ -286,9 +268,33 @@ const str = render(template)({ year, month, day });
 console.log(str) // 2022-1-16
 ```
 
-## 遍历 Iterator接口
+## 遍历器 Iterator接口
 
-ES6 为字符串添加了遍历器接口，使得字符串可以被for...of循环遍历。
+Iterator是一种接口，为各种不一样的数据解构提供统一的访问机制。任何数据解构只要有Iterator接口，就能通过遍历操作，依次按顺序处理数据结构内所有成员。ES6中的for of的语法相当于遍历器，会在遍历数据结构时，自动寻找Iterator接口。
+
+Iterator作用： 
+  - 为各种数据解构提供统一的访问接口 
+  - 使得数据解构能按次序排列处理 - 
+  - 可以使用ES6最新命令 for of进行循环遍历
+
+原生具备 Iterator 接口的数据结构如下。
+  - Array
+  - Map
+  - Set
+  - String
+  - 函数的 arguments 对象
+  - NodeList 对象（伪数组）
+
+#### 可迭代对象
+
+::: tip 仅仅是协议
+可迭代协议：对象必须实现iterator方法。即对象或其原型链上必须有一个名叫Symbol.iterator的属性。该属性的值为无参函数，函数返回迭代器协议。
+
+迭代器协议：定义了标准的方式来产生一个有限或无限序列值。其要求必须实现一个next()方法，该方法返回对象有done(boolean)和value属性。
+value表示具体的返回值，done 是布尔类型的，表示集合是否遍历完成或者是否后续还有可用数据，没有可用数据则返回 true，否则返回 false。
+:::
+
+
 
 ## 字符串的新增方法
 - includes()：返回布尔值，表示是否找到了参数字符串。

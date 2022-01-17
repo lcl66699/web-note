@@ -9,30 +9,106 @@
 </head>
 
 <body>
+    <div id="btn">asdsadsad</div>
     <script>
+        // String
+        let str = 'test'
+        let iterFun = str[Symbol.iterator]
+        let iterator = str[Symbol.iterator]()
+        // var first = // 等效于 let [first] = 'test'
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        // 打印
+        // [Function: [Symbol.iterator]], {}, { value: 't', done: false }
 
-        let aaa = 1
+        // Array
+        let arr = ['a', 'b', 'c'];
+        let iter = arr[Symbol.iterator]();
+        console.log(112345678);
+        // 以下等效于 let [first, second, third, four] = ['a', 'b', 'c']
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+        console.log(iter.next());
+        var first = iter.next() // { value: 'a', done: false }
+        let second = iter.next() // { value: 'b', done: false }
+        let third = iter.next() // { value: 'c', done: false }
+        let four = iter.next() // { value: undefined, done: true }
+        console.log('-----------------------');
 
-    </script>
-    <script src="">
-        const obj = {
-            name: '小米',
-            getName1: function () {
-                console.log('普通函数:', this.name);
-                return this.name
-            },
-            getName2: () => {
-                console.log('箭头函数:', this.name);
-                return this.name
+
+
+        let obj = {
+            a: 1,
+            b: 2,
+            c: 3,
+            d: 4,
+            e: 99,
+            length: 5,
+            [Symbol.iterator]() {
+                return {
+                    next: () => {
+                        obj.a++
+                        if (obj.a > 4) {
+                            return {
+                                done: true
+                            }
+                        } else {
+                            return {
+                                done: false,
+                                value: obj.a
+                            }
+                        }
+                    }
+                }
             }
         }
-        obj.getName1()
-        obj.getName2()
-
-        console.log('aa', aa);
-        if (true) {
-            const aa = '12321'
+        for (const iterator of obj) {
+            console.log(iterator);
         }
+
+        console.log('-----------------------');
+        function getIterator(list) {
+            var i = 0;
+            return {
+                next: function () {
+                    var done = (i >= list.length);
+                    var value = !done ? list[i++] : undefined;
+                    return {
+                        done: done,
+                        value: value
+                    };
+                }
+            };
+        }
+        var it = getIterator(['a', 'b', 'c']);
+        console.log(it.next()); // {value: "a", done: false}
+        console.log(it.next()); // {value: "b", done: false}
+        console.log(it.next()); // {value: "c", done: false}
+        console.log(it.next()); // "{ value: undefined, done: true }"
+        console.log(it.next()); // "{ value: undefined, done: true }"
+        console.log(it.next()); // "{ value: undefined, done: true }"
+        console.log('*******');
+        var arr1 = [100, 200, 300];
+
+        for (var o of arr1) {
+            console.log(o);
+        }
+
+        function isIterable(object) {
+            return typeof object[Symbol.iterator] === "function";
+        }
+        console.log(isIterable('abcdefg')); // true
+        console.log(isIterable([1, 2, 3])); // true
+        console.log(isIterable("Hello")); // true
+        console.log(isIterable(new Map())); // true
+        console.log(isIterable(new Set())); // true
+        console.log(isIterable(new WeakMap())); // false
+        console.log(isIterable(new WeakSet())); // false
+
 
 
     </script>
