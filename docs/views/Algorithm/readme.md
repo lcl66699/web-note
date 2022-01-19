@@ -126,6 +126,32 @@ obj.size; //3
 解题：
 新建一个栈，遍历字符串，遇到左括号入栈，遇到右括号与栈顶括号匹配，就出栈。
 最后空了就合法，否则不合法。该题时间和空间复杂度都是 On
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    var stack = []
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+            stack.push(s[i])
+        } else {
+            let top = stack[stack.length - 1]
+            if (
+                (top === "(" && s[i] === ')')
+                || (top === "{" && s[i] === '}')
+                || (top === "[" && s[i] === ']')
+            ) {
+                stack.pop()
+            } else {
+                return false
+            }
+        }
+    }
+    return stack.length === 0
+};
+```
 
 ### 144.二叉树的前序遍历
 
@@ -150,11 +176,79 @@ obj.size; //3
 
 ### 1.两数之和
 
-### 704 二分搜索
+### 704. 二分查找
+
+#### 二分查找
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function (nums, target) {
+    let left = 0
+    let right = nums.length - 1
+    while (left <= right) {
+        let mid = Math.floor((right - left) / 2 + left)//+low防止整数溢出
+        if (nums[mid] === target) {
+            return mid //出口 返回下标
+        } else if (nums[mid] < target) {
+            left = mid + 1//砍掉左半边
+        } else {
+            right = mid - 1//砍掉右半边
+        }
+    }
+    return -1
+};
+```
 
 链表的 dummy 节点： 1. 作为新链表的头节点 2. 解决链表头部的极端情况
 dummy 节点
+### 278. 第一个错误的版本
+#### 二分查找
+```js
+var solution = function (isBadVersion) {
+    /**
+     * @param {integer} n Total versions
+     * @return {integer} The first bad version
+     */
+    return function (n) {
+        let low = 1
+        let high = n
+        while (low < high) {
+            let mid = Math.floor(low+(high - low) / 2 )
+            let val = isBadVersion(mid)
+            if (val) {
+                high = mid
+            } else {
+                low = mid + 1
+            }
+        }
+        return low
 
+    };
+};
+```
+### 35. 搜索插入位置
+
+#### 二分查找
+```js
+var searchInsert = function(nums, target) {
+    let left=0
+    let right=nums.length-1
+    while(left<=right){
+        let mid=Math.floor((right-left)/2+left)
+        if(nums[mid]===target){
+            return mid
+        }else if(nums[mid]<=target){
+            left =mid+1
+        }else{
+            right=mid-1
+        }
+    }
+    return left
+};
+```
 ### 21.合并两个有序的链表(归并)
 - 思路
   - 和归并排序很像，将数组替换成链表就可以
@@ -1188,7 +1282,7 @@ var permute = function (nums) {
 
 ```
 
-# 搜索算法(递归或者栈解决)
+## 搜索算法(递归或者栈解决)
 
 ```js
 const dfs = (arr) => {
@@ -1213,5 +1307,50 @@ const bfs = () => {
       }
     }
   }
+};
+```
+
+## 双指针
+
+### 977. 有序数组的平方
+#### 暴力破解
+```js
+var sortedSquares = function(nums) {
+    return nums.map(num=>num*num).sort((a,b)=>a-b)
+};
+```
+
+#### 双指针
+```js
+var sortedSquares = function (nums) {
+    let ans = new Array(nums.length)
+    let left = 0, right = nums.length - 1, f = nums.length - 1
+
+    while (left <= right) {
+        if (nums[left] * nums[left] > nums[right] * nums[right]) {
+            ans[f] = nums[left] * nums[left]
+            left++
+        } else {
+            ans[f] = nums[right] * nums[right]
+            right--
+        }
+        f--
+    }
+    return ans
+
+};
+```
+### 189. 轮转数组
+#### 傻瓜解法
+```js
+var rotate = function (nums, k) {
+    const n=nums.length
+    let newArr = []
+    for (let i = 0; i < n; i++) {
+        newArr[(i+k)%n]=nums[i]
+    }
+    for(let i=0;i<n;i++){
+        nums[i]=newArr[i]
+    }
 };
 ```
