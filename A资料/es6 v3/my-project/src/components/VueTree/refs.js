@@ -24,6 +24,7 @@ let refs = {};
 
 // 初始化工厂生产实例
 let init = function (opts, tree) {
+    // console.log(opts, tree);
     let name = opts.name;
     if (!refs[name]) {
         return new Ref(opts, tree);

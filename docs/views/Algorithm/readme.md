@@ -1354,3 +1354,59 @@ var rotate = function (nums, k) {
     }
 };
 ```
+### 283. 移动零
+#### 暴力破解（巧妙利用变量）
+```js
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function (nums) {
+    //思路：新建一个数组，遍历原数组，
+    //如果不是0 就给新数组push进去
+    //遍历结束之后，再次遍历原数组，直接赋值，如果没有值 就取0
+    var newArr = []
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== 0) {
+            newArr.push(nums[i])
+        }
+    }
+    for (let i = 0; i < nums.length; i++) {
+        nums[i]=newArr[i]||0
+    }
+    /**
+        另一种骚操作：只需要新建一个变量j，省空间。
+        1. 循环遍历数组，如果数组元素不是0，就给j先赋值后再++（所以是后++）
+        2. 遍历结束之后，j表示当前数组非0的个数，while循环，j后++赋值剩下的值为0
+     */
+
+    let j = 0
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== 0) {
+           nums[j++]=nums[i]
+        }
+    }
+    while(j<nums.length){
+        nums[j++]=0
+    }
+};
+```
+
+#### 双指针
+两个指针都从左侧出发，
+，左指针指向当前已经处理好的序列的尾部，右指针指向待处理序列的头部。
+
+右指针不断向右移动，每次右指针指向非零数，则将左右指针对应的数交换，同时左指针右移。
+
+```js
+var moveZeroes = function (nums) {
+    let len = nums.length,left = 0,right = 0
+    while (right < len) {
+        if (nums[right]) {//非零数
+            [nums[left], nums[right]] = [nums[right], nums[left]]
+            left++
+        }
+        right++
+    }
+};
+```

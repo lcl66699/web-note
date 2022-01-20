@@ -47,6 +47,28 @@ export default {
               value: 8,
               text: "no.8",
             },
+            {
+              value: 9,
+              text: "二级后加1",
+              children: [
+                {
+                  value: 38,
+                  text: "no.8",
+                },
+                {
+                  value: 39,
+                  text: "三级后加1",
+                },
+                {
+                  value: 30,
+                  text: "三级后加1",
+                },
+              ],
+            },
+            {
+              value: 10,
+              text: "二级后加2",
+            },
           ],
         },
         {

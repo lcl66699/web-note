@@ -28,12 +28,7 @@ export default {
   created() {
     // 初始化
     let name = this.name;
-    refs.init(
-      {
-        name,
-      },
-      this
-    );
+    refs.init({ name }, this);
   },
   destroy() {
     let name = this.name;
@@ -49,6 +44,7 @@ export default {
         <div>我是tree</div>
         <ul class="vue-tree">
           {this.options.map((itemData, index) => {
+            console.log(itemData, this.name);
             return (
               <item
                 option={itemData}
