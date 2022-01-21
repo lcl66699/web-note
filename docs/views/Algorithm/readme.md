@@ -1410,3 +1410,86 @@ var moveZeroes = function (nums) {
     }
 };
 ```
+
+### 344. 反转字符串
+
+困难题我唯唯诺诺，简单题我重拳出击
+
+思路：
+
+当 left < right：交换 s[left] 和 s[right]；left 指针右移一位，即 left = left + 1；
+right 指针左移一位，即 right = right - 1。
+
+当 left >= right，反转结束，返回字符数组即可。
+
+```js
+var reverseString = function (s) {
+    let left = 0, right = s.length-1
+    while (left < right) {
+        [s[right], s[left]] = [s[left], s[right]]
+        left++;
+        right--
+    }
+};
+```
+
+###  反转
+
+```js
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    
+   const nums = [];         //定义新的数组用来存放字符串
+   let i = 0;
+   while(i < s.length){
+       let start = i;   
+        while(i < s.length && s.charAt(i) != ' '){      //遍历一段字符串，查出这个单词的长度
+           i++;
+       }
+       for(let p = start;p < i;p++){                    // 循环将字符串倒序存入数组当中
+           nums.push(s.charAt(start + i - p - 1));
+       }
+       while(i < s.length && s.charAt(i) == ' '){       //在倒序之后的数组中加上一个空格字符串
+           nums.push(' ');
+           i++;
+       }
+   }
+    return nums.join('');               //将数组连接成为一个字符串
+
+};
+```
+
+    第一次进入 i < s.length 循环
+			i = 0
+			start = 0
+			第一个 while 循环之后            //  遍历一段字符串，查出这个单词的长度
+			i = 5
+			进入for循环                       // 循环将字符串倒序存入数组当中
+			p = start = 0    p < i ( 5 )    p++
+			此时的nums数组是["s","'","t","e","L"]
+			进入第二个while循环中              //给nums数组后加上了一个空格字符串
+			此时nums为 ["s","'","t","e","L"," "]
+            i = 6
+    
+    第二次进入 i < s.length 循环
+            i = 6
+			start = 6
+			第一个 while 循环之后            //  遍历一段字符串，查出这个单词的长度
+			i = 10
+			进入for循环                       // 循环将字符串倒序存入数组当中
+			p = start = 6    p < i ( 10 )    p++
+			此时的nums数组是["s","'","t","e","L"," ","e","k","a","t"]
+			进入第二个while循环中              //给nums数组后加上了一个空格字符串
+			此时nums为 ["s","'","t","e","L"," ","e","k","a","t"," "]
+            此时 i= 10
+    
+
+
+    **对于为什么for循环内存入字符串的时候表达式为start + i - p - 1
+当进入到第二次循环时，i- p - 1 = 3  所以要加上前面已经占用的位置 6
+此时才是从下标为 9 时开始存入字符串
+
+最后的join（）  作用是:将数组连接成为一个字符串**
