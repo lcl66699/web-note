@@ -1,7 +1,7 @@
 module.exports = {
   base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   title: "橘子海",
-  description: "听橘子海，遇心上人",
+  description: "听橘子海，炫沙糖桔",
   head: [
     ['link', {
       rel: 'icon',
@@ -72,8 +72,9 @@ module.exports = {
       {
         text: 'Vue',
         items: [
-          { text: 'vue原理', link: '/views/Principle/' },
-          { text: 'vue基础', link: '/views/Vue/' }, // 可不写后缀 .md
+          { text: 'vue基础', link: '/views/Vue/vue2.0基础' }, // 可不写后缀 .md
+          { text: 'Vue高级用法', link: '/views/Vue/Vue高级用法' },
+          { text: 'vue原理', link: '/views/Vue/原理篇/' },
         ]
       },
       {
@@ -115,14 +116,19 @@ module.exports = {
       '/views/工程化/': [
         '',
       ],
+      //vue 开始
       // 原理
-      '/views/Principle/': [
+      '/views/Vue/原理篇/': [
         '',
       ],
-      // vue
-      '/views/Vue/': [
+      '/views/Vue/vue2.0基础/': [
         '',
       ],
+      '/views/Vue/Vue高级用法/': [
+        '',
+      ],
+      //vue 结束
+
       // react
       '/views/React/': [
         '',

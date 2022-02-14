@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //bind
+        /*
+        bind位置 挂载原型
+        返回一个函数
+        返回原函数执行结果 传参不变
+        */
+
+        function sum(a, b, c) {
+            console.log('sum', this);
+            return a + b + c
+        }
+
+        Function.prototype.newBind = function () {
+            const _this = this
+            //拿到实际传参
+            const args = Array.prototype.slice.call(arguments)
+            const newThis = args.shift()
+            return function () {
+                return _this.apply(newThis, args)
+            }
+        }
+
+        Function.prototype.newApply = function (content) {
+            content = content || window
+            content.fn = this
+
+            let result;
+
+
+            return result
+
+        }
+    </script>
+</body>
+
+</html>
