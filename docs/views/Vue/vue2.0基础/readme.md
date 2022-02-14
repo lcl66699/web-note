@@ -213,6 +213,14 @@ vue 中的组件一般由 3 部分组成，template(页面结构),script(页面�
   - 添加：\$set(target,key,value)
   - 删除：\$delete(target,key)
 
+## 常用指令
+- v-bind：我们能将 data 中的值绑定到当前属性中，可简写为 :
+- v-on：能够绑定实例中配置的事件，可简写为 @
+- v-for：列表级别渲染，迭代渲染所有子元素
+- v-if/v-else/v-show：控制子元素视图显隐
+- v-model：应用于表单，创建与元素的双向绑定
+- v-html：将最终值的结果渲染为 html
+- v-text：等同于直接在文本处使用 {{xx}}
 ## 表单输入绑定
 
 1. v-model 指令：
@@ -245,12 +253,12 @@ vue 中的组件一般由 3 部分组成，template(页面结构),script(页面�
 2. 语法：
 
 ```js
-    computed:{
-        dxstr(){
-            console.log('1111111')
-            return this.str.split('').reverse().join('')
-        }
-    }
+computed:{
+  dxstr(){
+      console.log('1111111')
+      return this.str.split('').reverse().join('')
+  }
+}
 ```
 
 3. 调用
@@ -311,7 +319,7 @@ template 定义的时候可以写在哪?
 
 - 在 template 标签中
 - template 属性中
-- render(){}函数中
+- render(createElement){}函数中，createElement是一个函数，包括react的jsx最后通过babel的转化也和这个类似。
 
 优先级：template 标签  > render(){}  > template 属性的
 
@@ -437,32 +445,33 @@ this.\$emit('xxx',data)xxx 写自己在父级写的事件名
 
 ## 插槽
 
-1. Vue 实现了一套内容分发的  API,定义时不知道具体要显示什么，只是留出来显示的位置，在组件调用时写具体内容，能展现在预留的位置上。
+1. Vue 实现了一套内容分发的API,定义时不知道具体要显示什么，只是留出来显示的位置，在组件调用时写具体内容，能展现在预留的位置上。
 2. 定义：使用`<slot>`标签预留位置双标签`<slot name='default'></slot>`
 3. 调用组件时，写具体的要呈现的内容，要显示在`<slot>`标签中
 4. 匿名插槽
    - 定义时： `<slot name='default'></slot> / <slot></slot>`
    - 调用时不需要写具体的标识，都可以显示在匿名插槽中
-5. 具名插槽各个组件的作用域是独立的
+5. 具名插槽各个组件的作用域是独立的，以name标识，从而可区分
 
 - 定义时： `<slot name='head'></slot>`
 - 调用时：  有些具体内容想放在  name='head'的插槽中，必须有特殊的标识，特殊标识是：
   `<template v-slot:head></template>`
 
-6. 作用域插槽
-
+6. 作用域插槽： 实现在作用域下 外部做结构描述勾勒，内部做传参
+scope-slot 2.6before 
+v-slot(after)
 - 作用：让插槽内容能够访问子组件中才有的数据
 - 语法：
   - 定义`<slot :count='count'>`把数据传递出去
   - 写插槽内容时，`<template v-slot:default='obj'></template>`obj 是一个对象，对象中保存了定义 slot 传出来的所有数据
   - 使用数据 obj.count
 
-7. 动态插槽名
+1. 动态插槽名
 
 - 在调用插槽时，可以指定变量名
 - 语法：
 
-```js
+```html
 <template v-slot:[curSlotName]></template>
     data(){
         return {
@@ -1396,3 +1405,7 @@ Vuex 的 store 接受 plugins 选项，这个选项暴露出每次 mutation 的�
 <vue-ueditor-wrap :config="myConfig"      :value='desc'     @input='changeDesc'
 props: ["desc"], //Update 是必须写的 this.\$emit('update:desc',value)
 ```
+
+
+无状态组件：纯ui组件,直接渲染
+有状态组件：比如需要ajax得到数据的组件

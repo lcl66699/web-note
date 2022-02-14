@@ -447,6 +447,7 @@ const levenshtein = (s1, s2) => {
 // homework: 思考 `Levenshtein Distance` 算法和 `React` 千丝万缕的联系.
 ```
 ## ajax请求放在vue的哪个生命周期里
+我个人建议在mounted上进行获取。
 
 为什么不在 created 里去发ajax？created 可是比 mounted 更早调用啊，更早调用意味着更早返回结果，那样性能不是更高？
 首先，一个组件的 created 比 mounted 也早调用不了几微秒，性能没啥提高；
@@ -456,7 +457,7 @@ const levenshtein = (s1, s2) => {
 在created的时候，视图中的dom并没有被渲染出来，所以此时如果直接去操作dom节点，无法找到相关元素。
 在mounted中，由于此时的dom元素已经渲染出来了，所以可以直接使用dom节点。
 一般情况下，都放在mounted中，保证逻辑的统一性。因为生命周期是同步执行的，ajax是异步执行的。
-服务端渲染不支持mounted方法，所以在服务端渲染的情况下统一放在created中。
+服务端渲染不支持mounted方法，所以在服务端渲染的情况下统一放在created中。在mounted里面不会冲突。
 
 如果是一开始进入一个页面需要显示的数据放在created里，
 如果是后续和页面交互需要的请求放在mounted里
