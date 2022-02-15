@@ -24,7 +24,7 @@ new Vue({
 
 // 拓展一个构造器
 let _baseOptions = {
-  data: function() {
+  data: function () {
     return {
       course: 'zhaowa',
       session: 'vue',

@@ -72,8 +72,8 @@ module.exports = {
       {
         text: 'Vue',
         items: [
-          { text: 'vue2.0基础', link: '/views/Vue/vue2.0基础/' }, // 可不写后缀 .md
-          { text: 'Vue高级用法', link: '/views/Vue/Vue高级用法/' },
+          { text: 'vue2基础', link: '/views/Vue/vue2基础/' }, // 可不写后缀 .md
+          { text: 'vue2进阶', link: '/views/Vue/vue2进阶/' },
           { text: 'vue原理', link: '/views/Vue/原理篇/' },
         ]
       },
@@ -121,10 +121,10 @@ module.exports = {
       '/views/Vue/原理篇/': [
         '',
       ],
-      '/views/Vue/vue2.0基础/': [
+      '/views/Vue/vue2基础/': [
         '',
       ],
-      '/views/Vue/Vue高级用法/': [
+      '/views/Vue/vue2进阶/': [
         '',
       ],
       //vue 结束
