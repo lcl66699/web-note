@@ -1,4 +1,4 @@
-# this
+# this指针-闭包-作用域
 
 ## 创建
 作用域链：当前变量、所有父级变量
@@ -14,19 +14,32 @@ content：this
 
 ## 作用域 + 上下文
 
-1. 对于作用域链我们直接通过创建态来定位作用域链
-2. 手动取消全局，使用块级作用域，比如立刻执行函数
+对于作用域链,其实就是向上找爹的一个过程
+
+1. 对于作用域链我们直接通过创建时的层级结构来定位作用域链
+2. 我们可以通过一些方式手动取消全局作用域，使用块级作用域，比如立刻执行函数,let等
 
 ### this 上下文context
 
 - this是在执行时动态读取上下文决定的，而不是创建时
 
 考察重点
-#### 函数直接调用中。this指向的是window => 变种 函数表达式、匿名函数、嵌套函数
 
-#### 隐式绑定 - this指向的是调用堆栈的上一级
-=> 变种  对象、数组等引用关系逻辑（找到最后谁激活的我）
+## this指向
+::: tip this指向
+1. 函数直接调用,不管放在哪里,函数内部this指向的都是window => 变种方式(函数表达式、匿名函数、嵌套函数)
+2. 在隐式绑定中,this指向的是调用堆栈的上一级 => 变种方式(对象、数组等引用关系逻辑（找到最后谁激活的我）)
+:::
+### 默认直接调用
+```js
+    function foo() {
+        console.log('函数内部this', this);//window
+    }
 
+    foo();
+```
+### 隐式绑定(函数被谁调用)
+隐式绑定的 this 指的是调用堆栈的上一级（.前面一个）->被谁调用就指向谁
 ```js
     function fn(){
         console.log(this.a)
@@ -34,7 +47,7 @@ content：this
     const  obj={
         a:1
     }
-    obj.fn=fn
+    obj.fn=fn //引用
     obj.fn()//调用的时候 fn的上一级是obj
 ```
 
@@ -43,19 +56,53 @@ content：this
 const foo = {
     bar: 10,
     fn: function () {
-        console.log(this.bar);
-        console.log(this);
+        console.log(this.bar);//undefined
+        console.log(this);//window
     }
 }
 
 let fn = foo.fn
 fn()//指向window
-```
 
+// 追问1，输出结果 如何改变指向?
+const o1 = {
+    text: 'o1',
+    fn: function() {
+        // 直接使用上下文 - 传统分活
+        return this.text;
+    }
+}
+
+const o2 = {
+    text: 'o2',
+    fn: function() {
+        // 呼叫领导执行 - 部门协作
+        return o1.fn();
+    }
+}
+
+const o3 = {
+    text: 'o3',
+    fn: function() {
+        // 直接内部构造 - 公共人
+        let fn = o1.fn;
+        return fn();
+    }
+}
+
+//输出
+console.log('o1fn', o1.fn());//this指向o1 -> o1
+console.log('o2fn', o2.fn());//this指向o1 -> o1
+console.log('o3fn', o3.fn());//this指向window -> undefined
+
+/*
+总结:
 1. 在执行函数时。函数被上一级调用，上下文指向上一级
 2. 直接变成共有函数（重新赋值给变量） 指向window
+*/
+```
 
-追问：讲log（02.fn）输出02
+#### 追问:将console.log('o2fn', o2.fn())的结果是o2,怎么改?
 - 人为干涉 call apply bind
 - 不改变this指向
 - this指向的是最后调用它的对象

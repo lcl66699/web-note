@@ -107,8 +107,9 @@ module.exports = {
         'js模块化',
         'Es6',
         'Promise',
+        'this指针-闭包-作用域',
         'BOM',
-        'jsBridge'
+        'jsBridge',
       ],
       '/views/Http/': [
         '',

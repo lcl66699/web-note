@@ -207,7 +207,7 @@ Vue.use(MyPlugin, _options)
 
 ### 组件的高级引用
 * 1. 递归组件 - eg： vue-tree*
-* 2. 动态组件 - <component :is='name'></component>
+* 2. 动态组件 - `<component :is='name'></component>`
 * 3. 异步组件 - vue-router的import的懒加载
 
 $set $nextTick keep-alive

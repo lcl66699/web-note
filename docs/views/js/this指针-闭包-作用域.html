@@ -10,38 +10,34 @@
 
 <body>
     <script>
-        //bind
-        /*
-        bind位置 挂载原型
-        返回一个函数
-        返回原函数执行结果 传参不变
-        */
-
-        function sum(a, b, c) {
-            console.log('sum', this);
-            return a + b + c
-        }
-
-        Function.prototype.newBind = function () {
-            const _this = this
-            //拿到实际传参
-            const args = Array.prototype.slice.call(arguments)
-            const newThis = args.shift()
-            return function () {
-                return _this.apply(newThis, args)
+        const o1 = {
+            text: 'o1',
+            fn: function () {
+                // 直接使用上下文 - 传统分活
+                return this.text;
             }
         }
 
-        Function.prototype.newApply = function (content) {
-            content = content || window
-            content.fn = this
-
-            let result;
-
-
-            return result
-
+        const o2 = {
+            text: 'o2',
+            fn: function () {
+                // '呼叫领导执行 - 部门协作'
+                return o1.fn();
+            }
         }
+
+        const o3 = {
+            text: 'o3',
+            fn: function () {
+                // 直接内部构造 - 公共人
+                let fn = o1.fn;
+                return fn();
+            }
+        }
+        //输出
+        console.log('o1fn', o1.fn());//this指向o1
+        console.log('o2fn', o2.fn());//this指向o1
+        console.log('o3fn', o3.fn());//this指向window
     </script>
 </body>
 
