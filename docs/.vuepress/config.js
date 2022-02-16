@@ -1,5 +1,6 @@
 module.exports = {
-  base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  base: '', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  // base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   title: "橘子海",
   description: "听橘子海，炫沙糖桔",
   head: [
