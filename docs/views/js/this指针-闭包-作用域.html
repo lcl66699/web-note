@@ -10,34 +10,21 @@
 
 <body>
     <script>
-        const o1 = {
-            text: 'o1',
-            fn: function () {
-                // 直接使用上下文 - 传统分活
-                return this.text;
+        class Course {
+            constructor(name) {
+                this.name = name;
+                console.log('构造函数中的this:', this);//指向 实例 
+            }
+            test() {
+                console.log('异步方法外:', this);//指向 实例
+                setTimeout(function () {
+                    console.log('异步方法内:', this);//Windowf
+                })
             }
         }
 
-        const o2 = {
-            text: 'o2',
-            fn: function () {
-                // '呼叫领导执行 - 部门协作'
-                return o1.fn();
-            }
-        }
-
-        const o3 = {
-            text: 'o3',
-            fn: function () {
-                // 直接内部构造 - 公共人
-                let fn = o1.fn;
-                return fn();
-            }
-        }
-        //输出
-        console.log('o1fn', o1.fn());//this指向o1
-        console.log('o2fn', o2.fn());//this指向o1
-        console.log('o3fn', o3.fn());//this指向window
+        const course = new Course('this');
+        course.test();
     </script>
 </body>
 

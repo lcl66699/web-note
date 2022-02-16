@@ -140,7 +140,7 @@
     foo();
 
     // 使用
-    foo.call({a: 1});
+    foo.call({a: 1});//第一个参数为null||undefined的时候指向全局
     foo.apply({a: 1});
 
     const bindFoo = foo.bind({a: 1});

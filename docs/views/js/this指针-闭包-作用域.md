@@ -29,6 +29,11 @@ content：this
 ::: tip this指向
 1. 函数直接调用,不管放在哪里,函数内部this指向的都是window => 变种方式(函数表达式、匿名函数、嵌套函数)
 2. 在隐式绑定中,this指向的是调用堆栈的上一级 => 变种方式(对象、数组等引用关系逻辑（找到最后谁激活的我）)
+3. call、apply时，this是第一个参数。bind要优与call/apply哦，call参数多，apply参数少
+4. 在构造函数中，类中(函数体中)出现的this.xxx=xxx中的this是当前类的一个实例
+5. 箭头函数没有自己的this，需要看其外层的是否有函数，如果有，外层函数的this就是内部箭头函数的this，如果没有，则this是window
+
+#1、默认绑定（函数直接调用）
 :::
 ### 默认直接调用
 ```js
@@ -105,26 +110,87 @@ console.log('o3fn', o3.fn());//this指向window -> undefined
 #### 追问:将console.log('o2fn', o2.fn())的结果是o2,怎么改?
 - 人为干涉 call apply bind
 - 不改变this指向
-- this指向的是最后调用它的对象
+```js
+const o1 = {
+    text: 'o1',
+    fn: function() {
+        return this.text;
+    }
+}
+
+const o2 = {
+    text: 'o2',
+    fn: o1.fn
+}
+
+console.log('o2fn', o2.fn());
+// this指向最后调用他的对象，在fn执行时，o1.fn抢过来挂载在自己o2fn上即可
+```
 
 ### 显示绑定 bind apply call
 使用方式
-* call apply bind区别
+```js
+    function foo() {
+        console.log('函数内部this', this);
+    }
+    foo();
 
-call 和apply区别是传参是不一样的，第一个都是改变的this。
-apply是依次传入，bind是数组传入
+    // 使用，更改this指向
+    foo.call({a: 1},[1,2,3]);//源码会使用大量的call
+    foo.apply({a: 1},1,2,3);//第一个参数为null||undefined的时候指向全局
 
-bind直接返回不同，需要再次调用
+    const bindFoo = foo.bind({a: 1},[1,2,3]);
+    bindFoo();
+```
+#### apply call bind区别
 
-#### new - this指向的是new之后得到的实例
+:::tip call apply bind区别
+1. call 和apply区别是传参是不一样的，第一个参数都是改变的this。
+   第二个参数传参：apply是依次传入，call是数组传入
 
+2. bind返回原函数的拷贝,先改变了作用域，没被执行，需要再次调用
 
-构造函数的this指向 实例 
-类方法的this指向 实例
+:::
 
-追问 ，类中异步方法，this有区别吗
-异步方法内，指向的是window，效果和全局执行函数效果相同
-如何解决？改成箭头函数
+### new 创建实例
+- this指向的是new之后得到的实例
+```js
+    class Course {
+        constructor(name) {
+            this.name = name;
+            console.log('构造函数中的this:', this);//指向 实例 
+        }
+
+        test() {
+            console.log('类方法中的this:', this);//指向 实例
+        }
+    }
+
+    const course = new Course('this');
+    course.test();
+```
+
+#### 追问：类中使用异步方法，this有区别吗
+
+有，异步方法内，指向的是window，效果和全局执行函数效果相同
+```js
+class Course {
+    constructor(name) {
+        this.name = name;
+        console.log('构造函数中的this:', this);//指向 实例 
+    }
+    test() {
+        console.log('异步方法外:', this);//指向 实例
+        setTimeout(function () {
+            console.log('异步方法内:', this);//Window
+        })
+    }
+}
+
+const course = new Course('this');
+course.test();
+```
+如何解决??? => 改成箭头函数
 
 ### bind的原理 手写bind
 1. 说明原理，写下注释
