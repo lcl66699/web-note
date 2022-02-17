@@ -10,11 +10,19 @@
 
 <body>
     <script>
-
         function Course() { };
-        const course = new Course();
+        const course1 = new Course();
+        const course2 = new Course();
 
-        console.log(course.__proto__, Course.prototype);
+        console.log(course1.__proto__, Course.prototype);
+        console.log(course1.__proto__, Course.__proto__);
+        console.log(Object.getPrototypeOf(course1));
+        console.log(course1.isPrototypeOf(Course));
+
+        var obj = {}
+        console.log(obj,);
+        console.log(obj.__proto__);
+        console.log(obj.prototype);
     </script>
 </body>
 

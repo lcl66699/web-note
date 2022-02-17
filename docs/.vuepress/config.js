@@ -109,6 +109,7 @@ module.exports = {
         'Es6',
         'Promise',
         'this指针-闭包-作用域',
+        '面向对象与原型,原型链',
         'BOM',
         'jsBridge',
       ],

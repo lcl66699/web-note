@@ -350,7 +350,7 @@
     increment();
     increment();
     increment();
-    log();
+    log();// 打印输出？
 ```
 
 #### 实现私有变量

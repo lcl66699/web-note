@@ -10,21 +10,123 @@
 
 <body>
     <script>
-        class Course {
-            constructor(name) {
-                this.name = name;
-                console.log('构造函数中的this:', this);//指向 实例 
+        // function mail() {
+        //     let content = '信';
+        //     return function () {
+        //         console.log(content);
+        //     }
+        // }
+        // const envelop = mail();
+        // envelop();
+        // envelop();
+        // envelop();
+
+
+        function createIncrement() {
+            let count = 0;
+
+            function increment() {
+                count++;
             }
-            test() {
-                console.log('异步方法外:', this);//指向 实例
-                setTimeout(function () {
-                    console.log('异步方法内:', this);//Windowf
-                })
+
+            let message = `count is ${count}`;
+
+            function log() {
+                console.log(message, count);
+            }
+
+            return [increment, log];
+        }
+        const [increment, log, count] = createIncrement();
+
+        increment();
+        increment();
+        increment();
+        log();
+
+
+        function createStack() {
+            return {
+                items: [],
+                push(item) {
+                    this.item.push(item);
+                }
             }
         }
 
-        const course = new Course('this');
-        course.test();
+        const stack = {
+            items: [],
+            push: function () { }
+        }
+        //做成私有的
+        function createStack() {
+            const items = [];
+            return {
+                push(item) {
+                    items.push(item);
+                }
+            }
+        }
+
+        let a = createStack()
+        console.log(a.push(123));
+
+
+
+
+    </script>
+    <script src="">
+        function sum(a, b, c) {
+            console.log('sum', this, a, b, c);
+            return a + b + c;
+        }
+        function add() {
+            console.log(this);
+            return this.a
+        }
+
+        const obj = {
+            a: 111
+        }
+        //手写bind => bind位置（挂在那里） => Function.prototype
+        Function.prototype.myBind = function () {
+            //此时的this，指向调用的这个函数
+            const _this = this
+            //调用数组原型方法变成真数组
+            let args = Array.prototype.slice.call(arguments)
+            //args特点，第一项是新的this，第二项~最后一项函数传参，将第一项从数组弹出
+            let newThis = args.shift()
+            // a. 返回一个函数
+            return function () {
+                // b. 返回原函数执行结果 c. 传参不变
+                return _this.apply(newThis, args)
+            }
+        }
+
+        //手写apply
+        Function.prototype.myApply = function (context) {
+            //边缘监测
+            if (typeof this !== 'function') {
+                throw new TypeError(this + 'is not a function')
+            }
+            // 参数检测
+            context = context || window
+            // 挂载执行函数
+            context.fn = this
+            // 执行函数，如果有参数就执行带参数的，否则直接调用
+            let result = arguments[1] ? context.fn(...arguments[1]) : context.fn()
+            //用后销毁临时挂载
+            delete context.fn
+            //结果返回出去
+            return result
+        }
+
+
+        console.log(add.myApply(obj, [1, 2, 3]));
+
+
+
+
     </script>
 </body>
 
