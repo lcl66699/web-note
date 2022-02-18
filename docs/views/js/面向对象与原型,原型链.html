@@ -10,19 +10,32 @@
 
 <body>
     <script>
-        function Course() { };
-        const course1 = new Course();
-        const course2 = new Course();
+        function Game(arg) {
+            this.name = 'lol';
+            this.skin = ['s'];
+        }
+        Game.prototype.getName = function () {
+            return this.name;
+        }
 
-        console.log(course1.__proto__, Course.prototype);
-        console.log(course1.__proto__, Course.__proto__);
-        console.log(Object.getPrototypeOf(course1));
-        console.log(course1.isPrototypeOf(Course));
+        function Store() {
+            this.shop = 'steam';
+        }
+        Store.prototype.getPlatform = function () {
+            return this.shop;
+        }
 
-        var obj = {}
-        console.log(obj,);
-        console.log(obj.__proto__);
-        console.log(obj.prototype);
+        function LOL(arg) {
+            Game.call(this, arg);
+            Store.call(this, arg);
+        }
+        LOL.prototype = Object.create(Game.prototype);//组合寄生
+        Object.assign(LOL.prototype, Store.prototype);//两位父亲都得有
+        LOL.prototype.constructor = LOL;
+
+        // LOL继承两类
+        const game3 = new LOL();
+
     </script>
 </body>
 
