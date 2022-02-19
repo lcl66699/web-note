@@ -5,8 +5,8 @@ call npm run build
 git status
 git add .
 git commit -m %msg%
-git pull
-git push
+git pull origin master
+git push origin master
 echo 推送成功：【%msg%】
 echo "--------End!--------"
 pause

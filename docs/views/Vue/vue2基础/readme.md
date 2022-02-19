@@ -5,7 +5,7 @@
 1. 全局安 Vue 脚手架工具
 
 ```sh
-npmi-g@vue/cli
+npm i -g @vue/cli
 ```
 
 1.2 创建项目

@@ -12,7 +12,12 @@
     <div id="box" onclick="chaoge({id:123123321})">dasdasdas</div>
 
     <script>
-
+        const stack = new Map([
+            ["}", "{"],
+            ["]", "["],
+            [")", "("],
+        ])
+        console.log(stack);
 
     </script>
 </body>

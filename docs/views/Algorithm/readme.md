@@ -16,17 +16,54 @@
 
 ## 栈
 
-    后进先出的数据结构，类似蜂窝煤，js可以用array实现栈所有功能，入栈push，出栈pop
+后进先出的数据结构，类似蜂窝煤，js可以用array实现栈所有功能，入栈push，出栈pop
 
 - 查看栈顶元素，stack［stack-1］
 
 - 10 进制转 2 进制
   - 比如 35，用 35 除 2，得到得到 17 继续除，最后拿到所有余数，倒叙输出就是二进制。
 
+#### 实现栈
+```js
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  // 添加新元素到栈
+  push(element) {
+    this.items.push(element);
+  }
+
+  // 移出栈顶元素
+  pop() {
+    return this.items.pop();
+  }
+
+  // 获取栈顶元素
+  peek() {
+    return this.items[this.items.length - 1];
+  }
+
+  // 判断空
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  clear() {
+    this.items = [];
+  }
+
+  size() {
+    return this.items.length;
+  }
+}
+```
+
 ## 队列 
 queue
 
-    先进先出的数据结构。
+先进先出的数据结构。
 
 ## 链表
 
@@ -93,6 +130,41 @@ obj.size; //3
 - （数组转树）
 - left right val
 
+遍历查找：深度优先、广度优先
+
+- 前序遍历：中左右
+- 中序遍历：左中右
+- 后序遍历：左右中
+
+```js
+// 树结构
+// 前序中序后序遍历
+const PreOrder = function(node) {
+  if(node !== null) {
+    console.log(node.val);
+    PreOrder(node.left);
+    PreOrder(node.right);
+  }
+}
+
+const InOrder = function(node) {
+  if(node !== null) {
+    InOrder(node.left);
+    console.log(node.val);
+    InOrder(node.right);
+  }
+}
+
+const PostOrder = function(node) {
+  if(node !== null) {
+    PostOrder(node.left);
+    PostOrder(node.right);
+    console.log(node.val);
+  }
+}
+```
+
+
 #### 完全二叉树 complete binary tree
 
 除了最后一层，每一个节点都有两个孩子，第 h 层，都需要集中在最左面。
@@ -116,7 +188,8 @@ obj.size; //3
 ...
 
 ## 堆
-
+堆可以放大东西，里面放对象，数组等。
+stack栈放基础类型string、number等。
 ...
 
 ## leetcode 算法题解题思路
@@ -152,7 +225,36 @@ var isValid = function (s) {
     return stack.length === 0
 };
 ```
-
+- hash Map
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+    if (s.length % 2 === 1) { return false; }
+    const map = new Map([
+        ['(', ')'],
+        ['[', ']'],
+        ['{', '}']
+    ]);
+    const stack = []
+    for (let i = 0; i < s.length; i++) {
+        const c = s[i]
+        if (map.has(c)) {
+            stack.push(c)
+        } else {
+            const t = stack[stack.length-1]
+            if (map.get(t) === c) {
+                stack.pop()
+            } else {
+                return false
+            }
+        }
+    }
+    return stack.length === 0
+};
+```
 ### 144.二叉树的前序遍历
 
 ### 933.最近的请求次数 时间和空间复杂度都是 On
