@@ -68,7 +68,7 @@ module.exports = {
     logo: '/orange.png',//导航栏log
     nav: [
       { text: 'js', link: '/views/js/' },
-      { text: 'http', link: '/views/Http/' },
+      { text: '网络', link: '/views/Http/' },
       { text: '工程化', link: '/views/工程化/' },
       {
         text: 'Vue',
@@ -94,9 +94,10 @@ module.exports = {
           { text: '性能优化', link: '/views/other/性能优化/', ariaLabel: '其他' },
           { text: 'web安全', link: '/views/other/web安全/', ariaLabel: '其他' },
           { text: 'typescript', link: '/views/other/typescript/', ariaLabel: '其他' },
+          { text: '微前端', link: '/views/other/micro-web/', ariaLabel: '其他' },
           { text: '面试题', link: '/views/other/面试题/', ariaLabel: '其他' },
           { text: '网络面试题', link: '/views/other/网络面试题/', ariaLabel: '其他' },
-          { text: 'CSDN', link: 'https://blog.csdn.net/qq_38594056' },
+          { text: '我的CSDN', link: 'https://blog.csdn.net/qq_38594056?type=blog' },
         ],
       },
     ],
@@ -152,6 +153,10 @@ module.exports = {
         ''
       ],
       "/views/other/typescript/": [
+        ''
+      ],
+      //微前端
+      "/views/other/micro-web/": [
         ''
       ],
       "/views/other/面试题/": [
