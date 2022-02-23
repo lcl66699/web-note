@@ -15,3 +15,5 @@
 
 init初始化会做
 run
+
+<img style='' :src="$withBase('/vue-cli.png')" alt='vue-cli'>
