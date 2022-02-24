@@ -54,6 +54,7 @@ module.exports = {
           { text: 'React基础', link: '/views/React/' }, // 可不写后缀 .md
         ]
       },
+      { text: 'nodejs', link: '/views/nodejs/' },
       { text: '算法', link: '/views/Algorithm/' },
       { text: '个人空间', link: 'http://39.106.5.96/' },
       {
@@ -73,6 +74,9 @@ module.exports = {
     sidebar: {
       //算法
       '/views/Algorithm/': [
+        '',
+      ],
+      '/views/nodejs/': [
         '',
       ],
       //js

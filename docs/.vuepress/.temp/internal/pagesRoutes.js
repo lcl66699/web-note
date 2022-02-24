@@ -13,6 +13,7 @@ const routeItems = [
   ["v-bca6fbe8","/views/js/",{"title":"事件循环"},["/views/js/index.html","/views/js/readme.md"]],
   ["v-783d2c5c","/views/js/this%E6%8C%87%E9%92%88-%E9%97%AD%E5%8C%85-%E4%BD%9C%E7%94%A8%E5%9F%9F.html",{"title":"this指针-闭包-作用域"},["/views/js/this指针-闭包-作用域.html","/views/js/this%E6%8C%87%E9%92%88-%E9%97%AD%E5%8C%85-%E4%BD%9C%E7%94%A8%E5%9F%9F","/views/js/this指针-闭包-作用域.md","/views/js/this%E6%8C%87%E9%92%88-%E9%97%AD%E5%8C%85-%E4%BD%9C%E7%94%A8%E5%9F%9F.md"]],
   ["v-c66d7ba6","/views/js/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8E%9F%E5%9E%8B,%E5%8E%9F%E5%9E%8B%E9%93%BE.html",{"title":"面向对象及原型和原型链"},["/views/js/面向对象与原型,原型链.html","/views/js/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8E%9F%E5%9E%8B,%E5%8E%9F%E5%9E%8B%E9%93%BE","/views/js/面向对象与原型,原型链.md","/views/js/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8E%9F%E5%9E%8B,%E5%8E%9F%E5%9E%8B%E9%93%BE.md"]],
+  ["v-37b6ec6c","/views/nodejs/",{"title":"nodejs"},["/views/nodejs/index.html","/views/nodejs/readme.md"]],
   ["v-d2a54114","/views/other/guide.html",{"title":"vuepress-theme-reco"},["/views/other/guide","/views/other/guide.md"]],
   ["v-32a37759","/views/other/",{"title":""},["/views/other/index.html","/views/other/readme.md"]],
   ["v-683d3365","/views/other/webpack.html",{"title":"webpack 基础知识整理"},["/views/other/webpack","/views/other/webpack.md"]],

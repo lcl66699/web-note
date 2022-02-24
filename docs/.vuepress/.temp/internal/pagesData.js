@@ -23,6 +23,8 @@ export const pagesData = {
   "v-783d2c5c": () => import(/* webpackChunkName: "v-783d2c5c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/js/this指针-闭包-作用域.html.js").then(({ data }) => data),
   // path: /views/js/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8E%9F%E5%9E%8B,%E5%8E%9F%E5%9E%8B%E9%93%BE.html
   "v-c66d7ba6": () => import(/* webpackChunkName: "v-c66d7ba6" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/js/面向对象与原型,原型链.html.js").then(({ data }) => data),
+  // path: /views/nodejs/
+  "v-37b6ec6c": () => import(/* webpackChunkName: "v-37b6ec6c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/nodejs/index.html.js").then(({ data }) => data),
   // path: /views/other/guide.html
   "v-d2a54114": () => import(/* webpackChunkName: "v-d2a54114" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/guide.html.js").then(({ data }) => data),
   // path: /views/other/

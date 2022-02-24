@@ -52,6 +52,10 @@ export const themeData = {
       ]
     },
     {
+      "text": "nodejs",
+      "link": "/views/nodejs/"
+    },
+    {
       "text": "算法",
       "link": "/views/Algorithm/"
     },
@@ -106,6 +110,9 @@ export const themeData = {
   ],
   "sidebar": {
     "/views/Algorithm/": [
+      ""
+    ],
+    "/views/nodejs/": [
       ""
     ],
     "/views/js/": [
