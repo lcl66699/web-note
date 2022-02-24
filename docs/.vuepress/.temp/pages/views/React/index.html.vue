@@ -1,0 +1,1070 @@
+<template><h1 id="react" tabindex="-1"><a class="header-anchor" href="#react" aria-hidden="true">#</a> React</h1>
+<p>安个vs的小插件   安好输入rcc  可快捷创建类 rfc快速创建函数</p>
+<h2 id="react介绍" tabindex="-1"><a class="header-anchor" href="#react介绍" aria-hidden="true">#</a> React介绍</h2>
+<p>Facebook,React主要是用于构建用户界面的JavaScript 库，实现单页面应用。</p>
+<ul>
+<li>单页面应用和多页面应用
+<ul>
+<li>多页面应用:页面跳转时跳转的都是完整的html页面</li>
+<li>单页面应用:只有1个html页面，所有内容都在这个页面中展示，通过“路由”来加载不同内容。全部是通过js来控制显示的。</li>
+</ul>
+</li>
+<li>单页面应用的优缺点:
+<ul>
+<li>优点:用户体验比较好，加载比较流畅</li>
+<li>缺点:不利于seo(网站优化，能影响搜索排名)</li>
+</ul>
+</li>
+<li>特点:声明式设计(采用声明范式)、高效、灵活、JSX语法、组件、单向响应的数据流
+创建项目,脚手架：下载别人写好的配置
+<code>npm i -g yarn</code>先安这个 再安下面的更快</li>
+</ul>
+<p><code>npx create-react-app my-app</code></p>
+<p>安装时还可以先把脚手架下载好，再通过脚手架下载项目</p>
+<p><code>npm i -g create - react -app</code>
+<code>create -react- app my- appcreate -react- app my- app</code></p>
+<p>npx: npm中的个功能，
+    npx的执行分3步，第一步:下载脚手架，第二步: 使用脚手架安装项目。第三步:下载好项目后删除脚手架。</p>
+<h2 id="目录结构" tabindex="-1"><a class="header-anchor" href="#目录结构" aria-hidden="true">#</a> 目录结构</h2>
+<ul>
+<li>项目依赖的包</li>
+<li>pubic：静态文件</li>
+<li>src ：前台文件代码的文件夹
+<ul>
+<li>index.js 入口</li>
+<li>app.js 入口文件渲染的页面</li>
+<li>App.test.js测试文件 不用管</li>
+<li>serviceWorker.js PWA配置文件 不用管</li>
+</ul>
+</li>
+<li>.gitignore git上传时的忽略配置</li>
+<li>package.json
+        &quot;scripts&quot;: {
+            &quot;start&quot;: &quot;react-scripts start&quot;,//启动开发阶段服务器
+            &quot;build&quot;: &quot;react-scripts build&quot;,//打包
+            &quot;test&quot;: &quot;react-scripts test&quot;,//运行测试
+            &quot;eject&quot;: &quot;react-scripts eject&quot;//显示隐藏的配置
+        },</li>
+<li>运行npm run eject 时， 提示: Are you sure you want to eject? This action is permanent .(这个)
+<code>npm run eject</code>
+运行eject后会多出config文件夹和scripts文件夹
+<ul>
+<li>config:里面是webpack的配置</li>
+<li>scripts:是启动命令的配置</li>
+</ul>
+</li>
+</ul>
+<h2 id="jsx语法" tabindex="-1"><a class="header-anchor" href="#jsx语法" aria-hidden="true">#</a> jsx语法</h2>
+<ol>
+<li>在js中可以直接写html
+<ul>
+<li>HTML部分:直接写html标签</li>
+<li>JS部分:写在{}内</li>
+<li>babel会把j sx转成React. createElement( )</li>
+<li>React. createElement()方法是创建react元素(虚拟DOM)的方法</li>
+<li>ReactDOM. render()的第一 个参数，需要的就是react元素</li>
+</ul>
+</li>
+<li>jsx的特点
+<ul>
+<li>
+<p>大括号中写的js表达式,注意，大括号中不能直接渲染对象，能渲染数组(不能有普通对象)</p>
+</li>
+<li>
+<p>JSX属性：写在标签的属性上</p>
+<ul>
+<li>改名<code>&lt;div className=''&gt;&lt;/div&gt;</code>  <code>&lt;label htmlfor=''&gt;&lt;/label&gt;</code></li>
+<li>标签上添加行内样式时，需要使用对象形式</li>
+<li><code>&lt;div id={uid}  style={color:'red',fontSize:'14px'}&gt;&lt;/div&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>react元素是不可变的,如果需要更新页面显示，就需要创建新的react元素</p>
+</li>
+</ul>
+</li>
+<li>元素渲染
+ReactDOM.render(react元素)
+react元素写法:
+<ul>
+<li>直接使用jsx语法: <code>&lt;div&gt;{uname}&lt;/div&gt;</code></li>
+<li>使用 <code>React. createElement()</code></li>
+</ul>
+</li>
+<li>使用组件<code>&lt;App /&gt;</code>
+<code>ReactDOM.render(&lt;Home/&gt;,document.getElementById('root'))</code></li>
+</ol>
+<h2 id="组件" tabindex="-1"><a class="header-anchor" href="#组件" aria-hidden="true">#</a> 组件</h2>
+<ol>
+<li>概念:从概念上类似于JavaScript 函数。它接受任意的入参(即&quot;props&quot;) ，并返回用于描述页面展示内容的React元素。组件允许你将UI拆分为独立可复用的代码片段，并对每个片段进行独立构思。</li>
+<li>创建方式
+<ul>
+<li>函数式组件</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div>函数组件不用hook语法时，功能弱j，有hook语法后 替代类形式组件。
+<ul>
+<li>类形式组件</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token punctuation">{</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token function">componentWillMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    states<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li>
+</ol>
+<p>前期使用类组件，会学习类组件中的state,生命周期函数。不管什么组件 必须引入react7</p>
+<h3 id="类形式组件" tabindex="-1"><a class="header-anchor" href="#类形式组件" aria-hidden="true">#</a> 类形式组件</h3>
+<h4 id="创建组件rcc" tabindex="-1"><a class="header-anchor" href="#创建组件rcc" aria-hidden="true">#</a> 创建组件rcc</h4>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>    <span class="token keyword">class</span> <span class="token class-name">Home</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token punctuation">{</span>
+        <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token template-punctuation string">`</span></span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string"> 
+说明：
+   1. 组件名称首字母要求大写
+   2. 需要继承React.Component这个类
+   3. 必须有一个render函数，render必须return，return后写的是jsx语法
+#### 导出组件
+    </span><span class="token template-punctuation string">`</span></span><span class="token keyword">export</span> <span class="token punctuation">{</span>Home<span class="token punctuation">}</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+    </span><span class="token template-punctuation string">`</span></span><span class="token keyword">export</span> <span class="token keyword">default</span> Home<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+#### 导入组件
+    </span><span class="token template-punctuation string">`</span></span><span class="token keyword">import</span> <span class="token punctuation">{</span>Home<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+    </span><span class="token template-punctuation string">`</span></span><span class="token keyword">import</span> AppHome <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+#### 使用组件,当成标签使用
+    </span><span class="token template-punctuation string">`</span></span><span class="token operator">&lt;</span>Home <span class="token operator">/</span><span class="token operator">></span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+    </span><span class="token template-punctuation string">`</span></span><span class="token operator">&lt;</span>Home<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>Home<span class="token operator">></span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+### 组件复用
+把页面中的某一块UI拆分出去，做成一个组件，在原来的位置调用组件即可。
+## props
+- 当React元素为用户自定义组件时，它会将JSX 所接收的属性(attributes) 转换为单个对象传递给组件，这个对象被称之为“props”。
+- 调用组件时可以通过属性的形式定义传递数据
+</span><span class="token template-punctuation string">`</span></span><span class="token operator">&lt;</span>Item data<span class="token operator">=</span><span class="token string">'string'</span> arr<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">}</span>  <span class="token operator">/</span><span class="token operator">></span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+</span><span class="token template-punctuation string">`</span></span><span class="token operator">&lt;</span>Item picurl<span class="token operator">=</span><span class="token punctuation">{</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>picurl<span class="token punctuation">}</span> title<span class="token operator">=</span><span class="token punctuation">{</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>title<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+在Item组件可以通过props对象，获取到用户调用组件时传入的数据
+
+</span><span class="token template-punctuation string">`</span></span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token template-punctuation string">`</span></span>js
+<span class="token keyword">class</span> <span class="token class-name">Item</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">)</span> <span class="token comment">// {data:'string ' ,arr:[1,2,3,4]</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><ul>
+<li>传递数据时，多个组件调用定义的属性名要一致。</li>
+<li>可以使用 ... 扩展运算符</li>
+<li>还可以遍历时传递数据</li>
+<li>props是只读属性</li>
+</ul>
+<h2 id="jsx中的循环" tabindex="-1"><a class="header-anchor" href="#jsx中的循环" aria-hidden="true">#</a> JSX中的循环</h2>
+<p>不能使用for循环,使用map()方法遍历对象或数组
+<code>arr/obj.map(function(item,index){     return item })</code></p>
+<h2 id="state" tabindex="-1"><a class="header-anchor" href="#state" aria-hidden="true">#</a> state</h2>
+<ul>
+<li>state是定义组件内部自己使用的数据</li>
+<li>在类组件中有两种定义方式
+<ul>
+<li>第一种：在constructor方法中定义</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>            <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+                    count<span class="token operator">:</span><span class="token number">1</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul>
+<li>第二种：直接在组件中定义</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>            state <span class="token operator">=</span> <span class="token punctuation">{</span>
+                count<span class="token operator">:</span><span class="token number">2</span>
+            <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li>
+<li>使用state数据
+<code>this.state.xx</code></li>
+<li>修改state数据,必须！this.setState()方法
+<ul>
+<li>用法1：对象形式的<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">count</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span> state <span class="token punctuation">.</span> count <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li>
+<li>用法2：函数形式的<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token operator">=</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">count</span><span class="token operator">:</span>state<span class="token punctuation">.</span>count<span class="token operator">+</span><span class="token number">1</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li>
+</ul>
+</li>
+<li>this.setState()方法有批量更新功能</li>
+</ul>
+<p><code>this.setState({count:this.state.count+1})</code></p>
+<ul>
+<li>this.setState()方法 可能是异步的</li>
+</ul>
+<p><code>this.setState({},()=&gt;{})</code></p>
+<p>什么时候是异步的：不放在其他宏任务或微任务中 当setState直接放在事件的宏任务中执行时，是异步的</p>
+<p>什么时候是同步的：setState又被放在别的宏任务中,或者其他的微任务中</p>
+<p>- setState的函数形式：</p>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token operator">=</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">count</span><span class="token operator">:</span>state<span class="token punctuation">.</span>count<span class="token operator">+</span><span class="token number">1</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>函数中有一个参数state,这个state是谁?</p>
+<p>state是上一次操作完state的结果(永远是最新的数据)
+加this不累加,算最后一个;不加this的话,就累加加的多</p>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">page</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>page<span class="token operator">+</span><span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">page</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>page<span class="token operator">+</span><span class="token number">2</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span><span class="token operator">=></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">page</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>page<span class="token operator">+</span><span class="token number">3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">++</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h2 id="生命周期函数" tabindex="-1"><a class="header-anchor" href="#生命周期函数" aria-hidden="true">#</a> 生命周期函数</h2>
+<p>又叫钩子函数，在组件运行的过程会在某些指定的条件下自动触发执行。
+组件有三个生命周期函数一生只触发一次：</p>
+<ul>
+<li>componentWillMount</li>
+<li>componentDidMount</li>
+<li>componentWillUnMount</li>
+</ul>
+<h3 id="生命周期函数作用" tabindex="-1"><a class="header-anchor" href="#生命周期函数作用" aria-hidden="true">#</a> 生命周期函数作用</h3>
+<ul>
+<li>componentWillMount 组件渲染前，可能会放网络请求(不太建议)</li>
+<li>componentDidMount 组件渲染完成，网络请求，全局事件绑定</li>
+<li>shouldComponentUpdate(){return false;} 是否允许组件更新，优化使用</li>
+<li>componentWillUpdate(){} 更新前，一般不做任何处理
+- componentDidUpdate(){} 组件更新完成，新网络请求
+- componentWillReceiveProps(){}props改变了 接收新的props，一般不做任何处理</li>
+<li>componentWillUnmount(){} 组件销毁前，把全局绑定的事件、网络请求等有副作用的全部清除</li>
+</ul>
+<h3 id="事件系统" tabindex="-1"><a class="header-anchor" href="#事件系统" aria-hidden="true">#</a> 事件系统</h3>
+<ul>
+<li>react中自己重新定义事件系统，react绑定事件不需要获取到DOM元素，而是把事件绑定定义在虛拟DOM上了</li>
+<li>语法:
+<code>&lt;div on+事件名={EventFunction}&gt;&lt;/div&gt;</code>
+说明：</li>
+</ul>
+<ol>
+<li>js的事件，驼峰命名法</li>
+<li>EventFunction:对应的事件功能，编写的形式
+<ol>
+<li>直接定义一个箭头函数</li>
+<li>可以定义函数
+如果是类形式组件，需要使用this.clickme, clickme函数定义在类中</li>
+</ol>
+<div class="language-jsx ext-jsx line-numbers-mode"><pre v-pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token punctuation">{</span>
+    <span class="token function">clickme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>clickme<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    }
+}
+</span></code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li>
+</ol>
+<h3 id="this指向问题" tabindex="-1"><a class="header-anchor" href="#this指向问题" aria-hidden="true">#</a> this指向问题</h3>
+<p>在react中，自定义事件中this默认是指向undefined的。</p>
+<ul>
+<li>在react组件的生命周期函数中，this指向当前组件</li>
+<li>在react class定义的组件中，constructor构造方法中需要通过调用super()方法生成this，这时	this指向当前组件；否则不存在this，使用会报错。</li>
+<li>在react 组件中，自定义function函数中this默认指向undefined）</li>
+</ul>
+<p>如果想让this指向当前组件    I</p>
+<ul>
+<li>方法1:使用bind,改变this指向</li>
+<li>方法2：使用箭头函数</li>
+<li>方法3：在constructor构造方法中通过bind绑定this</li>
+</ul>
+<div class="language-jsx ext-jsx line-numbers-mode"><pre v-pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>clickme <span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token function">constructor</span><span class="token punctuation">(</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span> <span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>clickme <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">clickme</span> <span class="token punctuation">.</span> <span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>如果当函数调用时没有传参，建议使用方法3(constructor中绑定)
+如果函数调用时需要传参，使用直接bind绑定更多一些</p>
+<h3 id="事件对象" tabindex="-1"><a class="header-anchor" href="#事件对象" aria-hidden="true">#</a> 事件对象</h3>
+<ul>
+<li>事件对象不需要传递，直接调用就行，把事件对象方法函数形参的最后y一个位置</li>
+<li>获取坐标信息
+<code>event.pagex / event . pageY</code>获取事件触发者  
+<code>e.preventDefault()</code>阻止冒泡
+<code>e.stopPropagation()</code> 阻止默认事件</li>
+</ul>
+<h3 id="表单" tabindex="-1"><a class="header-anchor" href="#表单" aria-hidden="true">#</a> 表单</h3>
+<ul>
+<li>form标签
+<code>&lt;form action= 'http://xx/xx.php/xx. jsp/xx.asp' method= 'get post' &gt;&lt;/ form&gt;</code></li>
+<li>ajax:不刷新页面，能实现页面的局部更新，有ajax后form用的很少了</li>
+<li>表单:收集用户输入的信息
+<ul>
+<li>
+<p>第一种收集信息的形式：受控组件</p>
+<p>受控组件：表单数据的显示和更改有react控制，具体是由react的state的控制。使 React 的 state 成为“唯一数据源”。
+<code>&lt;input value={this.state.user} onChange={(e)=&gt;this.setState({user:e.currentTarget.vale})} /&gt;</code>
+特殊的受控组件：单选按钮,多选按钮</p>
+<ul>
+<li>value属性值不能改变</li>
+<li>onChange事件只有在选中时触发</li>
+</ul>
+</li>
+<li>
+<p>第二种收集信息的形式：非受控组件
+允许用户获取到原生DOM，自己来操作数据</p>
+<ul>
+<li>使用非受控组件获取input中值
+<ul>
+<li>创建ref ： React.createRef()</li>
+<li>把创建ref添加到标签上，使用ref属性 ref={this.mref}</li>
+<li>获取DOM，this.myref.current</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="状态提升" tabindex="-1"><a class="header-anchor" href="#状态提升" aria-hidden="true">#</a> 状态提升</h2>
+<ol>
+<li>数据的传递方向：
+父级向子级传递，使用props
+子级向父级传递，状态提升</li>
+<li>用法
+<ol>
+<li>让父级向子级传递一个函数 <code>&lt;Son user= getSonDate={this.getSonDate.bind(this)}/&gt;</code></li>
+<li>在子级组件中调用传递来的这个方法 <code>this.props.getSonDate(this.state.user)</code></li>
+<li>在子级组件中调用这个函数时可以传递实参 <code>this.setState({list:cs})</code></li>
+<li>在父级函数中接收数据</li>
+</ol>
+</li>
+</ol>
+<div class="language-markdown ext-md line-numbers-mode"><pre v-pre class="language-markdown"><code><span class="token title important"><span class="token punctuation">##</span> 组合</span>
+    1. 有些组件无法提前知晓它们子组件的具体内容。在Sidebar (侧边栏)和Dialog (对话框)等展现通用容器(box)的组件中特别容易遇到这种情况。我们建议这些组件使用一个特殊的childrenprop來将他们的子组件传递到渲染结果中
+    2. 用法:
+        1. 定义一个组件，组件中使用特殊的children prop属性
+ 					{this.props.children}
+        2. 使用这个组件，作为双标签使用，在双标签内部定义具体内容
+					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TopBar</span><span class="token punctuation">></span></span>
+        					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>首页<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        					<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>组件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TopBar</span><span class="token punctuation">></span></span>
+        3. 定义组件时使用childrenprop的位置就能显示双标签中的内容
+    3. React.createElement(type,options,children)
+        type :标签类型
+        options:属性集合
+        children:子级元素
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>odiv<span class="token punctuation">'</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>box<span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>ddd<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        React.createElements('div',{id='odiv', className='box'},React.createElements('span',{},'ddd'))
+3. props类型验证
+    1. PropTypes类型检测:父级向子级传递数据时，是否是子级要求的数据类型，如果不是PropTypes会报警告。
+    2. 使用步骤
+        1. 引入验证包
+            import PropTypes from 'prop-types' ;
+        2. 定义需要验证的prop属性
+            类组件中用法：
+            组件名.propTypes={
+                count:propTypes.string //验证单个类型
+                msg：propTypes.oneOfType([//验证多种类型
+                    propTypes.number,
+                    propTypes.string
+                ]),
+                vnode:propTypes.element.isRequired//验证必须项
+            }
+            第二种写法：
+                static propTypes ={}
+    3. 给props定义默认值
+            类名.defaultProps={
+                msg:'hello',
+                obj:{}
+            }
+    4. 执行顺序
+        默认值比验证执行的早
+
+4. fetch网络请求
+    1. 介绍:
+        1. 是es6中提供的一种新的网络请求方式。Fetch API 提供了一个JavaScript接口，用于访问和操纵HTTP管道的部分，不是ajax 了。
+        2. fetch方法是一个全局方法，可以在任意位置使用
+        3. fetch()返回的Promise ，使用. then( )获取请求成功的结果,使用. catch捕获错误信息
+        4. 默认情况下，fetch不会从服务端发送或接收任何cookies, 要发送cookies,必须设置credentials 选项，credentials的默认值是 same-origin
+    2. 语法
+        fetch(url,{
+            method:''get/post',//默认get
+            body:data,//携带的是post数据
+            params:data//携带的是get数据
+            header:{//配置请求头
+                'Content-Type':'application/x-www-form-urlencoded' 
+//post以form data形式传递数据
+            },
+            credentials:'same-origin', //是否允许携带cookie数据(include可携带)
+        })
+    3. 返回值：网络请求的结果 通过promise.then方法接收的
+        不可直接用，fetch提供了对应的解析方法
+        .blob() 把结果解析二进制
+        .text() 把结果解析字符串
+        .json() 把结果解析json对象
+then(data=>data. json())
+then( data=>{ console . log(data)})
+        解析后的json对象格式：key：value
+            {
+                data：{}//真实请求结果
+                status：200，
+                header：{}
+            }
+    4. 请求携带数据
+       1. get
+            1. 问号携带数据
+                携带形式：url?key=value&amp;key=value
+            2. restful数据
+                携带形式：url/value/value2
+                要求后台识别哪些是路径，哪些是数据
+        2. post
+            1. 需要加请求头header，method
+            2. 传递的数据需要放在body上，而且是'key=value&amp;key=value' 的字符串
+    5. 跨域解决
+        1. cors : 后台配置，前台不需要管
+        2. jsonp : 使用 fetch-jsonp插件
+            1. 下载安装 npm i fetch-jsonp
+            2. 引入插件
+            3. 使用插件请求
+    		 getJsonp(){
+       			 fetchJsonp('http://localhost:5000/kuayu')
+       			 .then(data=>data.json())
+       			 .then(data=>console.log(data))
+				}
+
+        3. 代理
+            1. 在package.json中写
+"proxy": "http://localhost:5000"
+
+                1. package.json中有一个字段：proxy,这个字段可以实现一个代理
+                2. 重启前台服务
+                3. 前台调用接口时只需要写接口名称，不写代理地址
+            2. 使用http-proxy-middleware中间件
+                1. 下载安装： npm i http-proxy-middleware
+                2. 在src目录下创建一个setupProxy.js文件
+                3. 编写配置
+let {createProxyMiddleware} = require('http-proxy-middleware');
+module.exports =function(app){
+app.use(createProxyMiddleware('/inex',{
+target:'https://3g.163.com//touch/reconstruct/article/list',
+changeOrigin:true,
+pathRewrite:{
+'/inex':''
+}
+}))
+}
+
+4. 网络请求时：/inex/接口名称
+
+DAY 4
+<span class="token title important"><span class="token punctuation">#</span> router 路由</span>
+1. 路由介绍:react主要实现单页面应用，也有切换内容显示的需求，定义一个可以根据不同的路径加载不同的内容的功能，这个功能就叫路由
+    路由常用的有两种实现方法:
+        1. hash路由，根据路径中的hash值来决定显示页面
+        2. history路由：使用h5中的history对象
+2. 安装:
+    npm i -S react-router-dom
+3. 配置
+    1. 先决定使用哪种路由模式(hash,history)
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HashRouter</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>HashRouter</span><span class="token punctuation">></span></span>  #
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BrowserRouter</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BrowserRouter</span><span class="token punctuation">></span></span> //
+        提供了一个路由容器,在容器中定义具体
+        路由，那么定义的路由就会按照决定好的路由模式来显示。
+    2. 定义具体的路由
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/about<span class="token punctuation">'</span></span> <span class="token attr-name">compoent</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{about}/</span><span class="token punctuation">></span></span>
+        path:是路径，会在浏览器地址栏显示
+        component：要加载的页面
+        exact：精准匹配
+    3. Route的特点:贪婪匹配
+        不想贪婪，想一次加载一个路由，实现方式2种:
+        1. exact精准匹配
+        2. react-router-rom还提供了一个标签,<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Switch</span><span class="token punctuation">></span></span>,作用是显示匹配到的第一个Path
+    4. Link标签，导航
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/<span class="token punctuation">'</span></span> <span class="token attr-name">exact</span> <span class="token punctuation">/></span></span>去哪<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>link</span><span class="token punctuation">></span></span>
+    5. 动态路由
+        1. 定义路由时，规定哪些部分是动态的，如果是动态需要使用:variable 形式定义
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">'</span>/detail/:newsid<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Detail}</span><span class="token punctuation">></span></span>
+        2. 跳转时(Link),需要给动态参加具体的数据
+             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/detail/1<span class="token punctuation">'</span></span>  <span class="token punctuation">/></span></span>去哪<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>link</span><span class="token punctuation">></span></span>
+&lt;Link to={ /detail/${id}^ }>详情<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>L</span> <span class="token attr-name">ink</span><span class="token punctuation">></span></span>
+&lt;Link to={{ 
+pathpame: /detail/${id} |
+}}>
+遍历
+{this.state.arr.map((ele,index)=>(<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{index}</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{`/detail/${ele.id}`}</span><span class="token punctuation">></span></span>{ele.user}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>))}
+        3. 在跳转后的组件中可以获取到动态路由的具体参数值
+            从props.match.params这个对象获取
+
+    6. Route加载的组件的props.上会自动多3个对象(history,match,loaction)
+        history:h5的history对象，里面有push, goBack等常用浏览器的操作方法
+        locatin:经过封装的浏览器的loaction对象
+        match：接受路由参数的
+    7. 路由嵌套
+        1. 路由到的页面中又有其他的路由
+        2. 常见的二层嵌套，多层嵌套
+            1. 两层嵌套
+                外层把组件作为路由标签用，在组件的属性上使用path属性，来定义路径内层被嵌套的组件使用<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span><span class="token punctuation">></span></span>来定义
+                在外层组件内部需要使用props. children来显示子级路由
+                注意:内层路由路径要把父级的路径带上
+  APP.js：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Kemu</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/keyi<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Keyi}/</span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Keer<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Keer}/</span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Kesan<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Kesan}/</span><span class="token punctuation">></span></span>
+              <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Kesi<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Kesi}/</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Kemu</span><span class="token punctuation">></span></span>
+
+Kemu.js
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>驾照考试<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/keyi<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>科111<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>
+          		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Keer<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>科222<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>
+          		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Kesan<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>科333<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>
+          		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Kesi<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>科444<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                    {this.props.children}
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+            2. 多层嵌套
+                1. 不能把组件作为标签使用了
+                2. 定义在组件内部，在组件内部使用<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span><span class="token punctuation">></span></span>来定义路由
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span><span class="token punctuation">></span></span>定义导航
+function Keer(props) {
+  return (<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>科二
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Keer/Daoche<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{Daoche}/</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/kemu/Keer/Daoche<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>倒车<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>)
+}
+
+    8. 路由重定向
+        1. 引入标签<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Redirect</span><span class="token punctuation">/></span></span>
+        2. 用法
+            1. &lt;Route path=' /a' render={()=>{<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Redirect</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/b<span class="token punctuation">'</span></span> <span class="token punctuation">/></span></span>}}>
+            2. 直接作为标签使用
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Redirect</span> <span class="token attr-name">from</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/c<span class="token punctuation">'</span></span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/<span class="token punctuation">'</span></span><span class="token punctuation">/></span></span>
+            3. 在Route双标签内使用
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">'</span>/v<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Redirect</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>/<span class="token punctuation">'</span></span><span class="token punctuation">/></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Route</span> <span class="token punctuation">></span></span>
+    9. 路由高亮
+        1. 引入NavLink标签
+        2. 这个标签在被选中时，能自动添加类名
+        3. 自己添加css样式
+    10. 编程式导航
+        - 就是使用history的导航功能实现的
+        - history.push() //正常的导航，会把这层路径添加到浏览器的历史记录中
+        - history.replace() //替换导航
+        - history.goBack() //返回上一层路径
+        - history.go(number) //前进或后退
+    11. withRouter()
+        - 有些页面访问不到，如果想在这种页面使用编程式导航
+        - withRouter是react-router 提供的一个高阶组件，使用这个函数调用时把不能访问
+        history对象的组件放在实爹位置上，就可以返回一个新组件，这个新组件就具备了history ,loaction，match对象
+import {withRouter} from 'react-router'//引入
+let Newkemu=withRouter(kemu)//引用
+export default Newkemu //导出
+
+        - 除了withRouter,还可以通过props传参形式由父级传递下来
+
+<span class="token title important"><span class="token punctuation">#</span> antd</span>
+- antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品
+- 使用
+    1. 安装：npm install antd --save
+    2. 引入
+        1. 全部引入css
+            优点：不需要考虑css问题，引入任何组件都有css
+            缺点：有很多css用不到
+            import 'antd/dist/antd.css'
+        2. 按需引入
+             用哪个组件，就动态的添加这个组件需要的css
+                第一种方式：craco库
+                第二种方式：
+
+Day5
+<span class="token title important"><span class="token punctuation">#</span> 配置less</span>
+- 使用create-react-app脚手架创建的项目，默认是不支持less。如果想在项目中使用less就需要自己配置
+- 常用的方法：
+    0. 首先下载 less 和 less-loader 
+    1. 直接修改webpack的配置
+        1. 运行 npm run eject ： 把webpack的配置文件显示出来
+        2. 在webpack.config.js中进行修改
+            1. 先搜索rules，直接自己添加loader配置
+                {
+                    test:/\.less/,
+                    use:['style-loader','css-loader','less-loader']
+                }
+            2. 参照sass的配置，搜索sass
+                复制sass的配置，把其中的sass修改为less
+    2. 使用中间件
+        1. craco库，@craco/less插件
+        2. customize-cra react-app-rewired库
+
+2. mock
+    1. 作用：生成随机数据，拦截 Ajax 请求
+    2. 优点：
+        前后端分离   开发无侵入
+    3. 安装及使用
+        npm install mockjs
+    4. 数据模板定义规范：
+        数据模板中的每个属性由 3 部分构成：属性名(name)、生成规则(rule)、属性值(value)
+        语法：'name|rule': value
+        生成规则 有 7 种格式：
+        'name|min-max': value
+        'name|count': value
+        'name|min-max.dmin-dmax': value
+        'name|min-max.dcount': value
+        'name|count.dmin-dmax': value
+        'name|count.dcount': value
+        'name|+step': value
+    5. 数据占位符定义规范：
+        占位符 只是在属性值字符串中占个位置，并不出现在最终的属性值中
+        语法：@占位符 cname
+        @占位符(参数 [, 参数])
+        注意：
+        1.用 @ 来标识其后的字符串是 占位符。
+        2.占位符 引用的是 Mock.Random 中的方法
+        3.通过 Mock.Random.extend() 来扩展自定义占位符。
+        4.占位符 也可以引用 数据模板 中的属性。
+        5.占位符 会优先引用 数据模板 中的属性。
+        6.占位符 支持 相对路径 和 绝对路径
+    6. 拦截网络请求
+        Mock.mock(url,type,template)
+3. 小项目
+
+
+
+Day6
+1. 
+2.
+ 作用：可以不通过props一层一层的传递数据，通过Provider提供数据，在组件树之间可以直接获取数据。
+    1. 数据传递方向有父传子 (props),子传父 (事件)
+        这两种形式都需要一层一层的传递
+    2. 作用：Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法
+    3. 使用
+        1. 创建Context.js
+            import React from 'react'
+              const Mycontext=React.createContext()
+export default Mycontext
+
+        2. Mycontext.Provider : 提供数据
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Mycontext.Provider</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{}</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Comp</span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Mycontext.Provider</span><span class="token punctuation">></span></span>
+        3. Mycontext.Consumer : 获取数据
+             render() {
+        return (
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Mycontext.Consumer</span><span class="token punctuation">></span></span>
+               {(value)=>{
+                   console.log(value);
+                   return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                       item
+                       {value.sun}
+                       {value.pp}
+                   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+               }}
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Mycontext.Consumer</span><span class="token punctuation">></span></span>
+        )
+}
+
+        4. Class.contextType:获取数据
+            Class.contextType = Mycontext;//写在最下
+            在组件内可以使用context属性获取的数据 
+        5. static contextType：获取数据
+            static contextType = Mycontext;//在render的上一行
+            在组件内可以使用context属性获取的数据
+        6. contextType,Consumer 区别
+            contextType 调用多次时，只有最后一次生效
+            Consumer 调用多次，数据不覆盖
+
+
+
+2. 错误边界
+    1. react中一个页面中可能有很多组件，只要其中有一个组件运行出错，react会把页面中所有组件全卸载掉，显示空白屏幕
+    2. 错误边界:当React运行中有错误时，这时显示一个备用的页面，不显示白屏，还可以把报错信息发送到指定的位置
+    3. 用法：
+         错误边界也是一个组件，定义好后包裹其他的组件，这个组件必须是class定义的，同时这个组件中必须有以下两个生命周期函数中的至少一个
+             static getDerivedStateFromError(){
+       		 return {iserror:true}
+   				 }
+        渲染备用 UI
+            componentDidCatch(...rest){
+        console.log(rest);
+}
+        打印错误信息，可以把错误信息发送到指定位置
+render() {
+        if(this.state.iserror){
+            return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>组件报错了<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        }
+        return (
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                {this.props.children}           
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        )  
+}
+
+Day7
+<span class="token title important"><span class="token punctuation">#</span> Refs 转发</span>
+1. ref是什么？允许用户获取到原生DOM
+2. ref放在组件上，这时current的值是谁？
+    就是这个组件
+3. ref放在组件上时，我想获取的是这个组件内部的某个DOM元素
+- react中组件上使用ref属性时，react会把ref从props中删除，根本不会传递到组件内部。
+- refs转发就是解决上面这个问题的
+4. 用法：
+    1. 创建ref 在父类
+      constructor(){
+        super()
+        this.ref1=React.createRef()
+}
+    在父类可以通过事件输出
+     console.log(this.ref1.current);
+    然后在组件中传过去ref <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Sonref</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{this.ref1}</span> <span class="token attr-name">msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>2006<span class="token punctuation">'</span></span><span class="token punctuation">/></span></span> 
+    2. 使用forwardRef来创建组件
+       let Son=React.forwardRef((props,ref)=>{
+        return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{ref}</span><span class="token punctuation">></span></span>son中的div<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+})
+export default Son
+<span class="token title important"><span class="token punctuation">#</span> Fragments</span>
+1. Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
+2. 语法：
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>React.Fragment</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>React.Fragment</span><span class="token punctuation">></span></span>
+简写语法： &lt;>...&lt;/>
+
+<span class="token title important"><span class="token punctuation">#</span> 高阶组件</span>
+- 高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式， 高阶组件本身是一个函数，接收一个组件，返回一个新组件
+  高阶组件是参数为组件，返回值为新组件的函数
+  代码如下
+
+//     // React的api, React.createElement(标签,{属性},children)
+//     // React的api, React.cloneElement(react元素,{属性},children)
+//     // React的api, React.Children.map()
+
+<span class="token title important"><span class="token punctuation">#</span> 性能优化</span>
+- shouldComponentUpdate(nextProps,nextState)
+this.props代表老状态，nextProps代表新状态
+是否允许组件更新
+- PureComponent （export default class Son2 extends PureComponent）
+PureComponent来定义类形式组件，只有当props或state发生改变时才会触发组件更新
+
+- ComponentWillUnmount 组件注销
+  // 组件销毁前，把全局的事件删除了 比如
+        window.removeEventListener('scroll',this.myscroll);
+        clearTimeout(this.state.timer);
+- ComponentDidUpdate(prevProps,prevState)
+ 防止死循环 可以加条件判断
+
+<span class="token title important"><span class="token punctuation">#</span> Render Props</span>
+- 术语 “render prop” 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术，一些组件向外提供数据，不把需要数据的组件硬编程到这个组件内部，通过调用props.上
+的一个方法，把数据提供处理
+<span class="token list punctuation">-</span> 语法
+Data.jsx提供数据的组件
+class Data extends Component {
+state ={count:1}
+render(){
+return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>{this . props. render (this. state)}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+}
+}
+在公共app.js，等于把state传给son
+ &lt;Data render={(state)=>{
+        console.log('ap',state);
+          return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Son1</span> <span class="token attr-name">state</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{state}/</span><span class="token punctuation">></span></span>
+      }}/>  
+Son.jsx在通过this.props接数据
+
+<span class="token title important"><span class="token punctuation">#</span> 懒加载</span>
+- 当组件什么时候使用到了，再动态加载这个组件
+- 使用：
+let About = React.lazy(()=>import('./About'));
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Suspense</span> <span class="token attr-name">fallback</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{&lt;Loading</span> <span class="token punctuation">/></span></span>}>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>About</span> <span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Suspense</span><span class="token punctuation">></span></span>
+
+Day8
+<span class="token title important"><span class="token punctuation">#</span> hooks hook作用：让函数式组件能使用state和生命周期</span>
+1. 介绍：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。 rfc快速创建
+    hook是给函数组件使用的，hook只能在函数组件中使用，不能在class组件中使用
+    没有破坏性改动，100%向后兼容，react版本大于16.8就可以直接使用Hook
+2. State Hook
+    1. 语法：
+        import React,{useState} from 'react'
+        const [count, setCount] = useState(0);
+    2. 调用
+        直接使用变量名 count
+    3. 修改
+        调用setCount方法
+            <span class="token comment">&lt;!-- 第一种用法：在老状态上修改 --></span>
+            setCount((count)=>{
+                //count是老的状态
+                return count + 5//没有批量更新
+            })
+            <span class="token comment">&lt;!-- 第二种用法：设置成固定值 --></span>
+            setCount(2)
+            <span class="token comment">&lt;!-- 第三种用法： --></span>
+            setCount(count+2) //有批量更新功能
+    4. 是否是批量更新
+        setCount(count=>count+1):不批量更新，写几个就执行几次
+    5. 是否是异步
+        在非其他宏任务或微任务中时是异步的， 否则同步执行的
+
+2. Effect Hook
+    1. useEffect 是给函数组件提供 "生命周期" 的一个函数，相当于有3个生命周期
+    2. 语法：
+        1. 引入
+            import React,{useEffect} from 'react'
+        2. 使用：
+            useEffect(()=>{
+                ...
+                return ()=>{}
+            },[])
+            1. 第一个参数位置是函数，作用相当于componentDidMount和componentDidUpdate
+            2. 第二个参数位置是一个数组，可选的。这个数组是对componentDidUpdate优化使用的
+                1. 不写第二个参数时：第一个参数位置的函数，在组件更新时会重新执行
+                2. 第二个参数位置写空数组([])：禁止ComponentDidUpdate执行
+                3. 第二次参数位置数组中有值：只有数组中的参数的值发生改变时，才能执行ComponentDidUpdate
+            3. 第一个参数位置的函数中的返回值(return) : 相当于componentWillUnmount，effect 的清除阶段在每次重新渲染时都会执行，而不是只在卸载组件的时候执行一次。这个设计可以帮助我们创建 bug 更少的组件。
+
+3. Context Hook
+- 在函数组件中使用Context的hook
+- 语法：
+        这是获取数据 const value = useContext(MyContext);
+        提供数据：Context.Provider
+useContext
+    1. 在函数组件中获取Context提供的数据
+    2. 用法：
+        1. 创建Context,提供数据
+            Let Mycontext = React.createContext() //写在export前面
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Mycontext.Provider</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{{}}</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Son</span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Mycontext.Provider</span><span class="token punctuation">></span></span>
+export {Mycontext}
+        2. 在函数组件中调用useContext获取数据
+            function Son(){
+                let value = useContext(Mycontext);
+            }
+        3. 在函数组件中还可以使用Consumer获取数据
+            function Son (){
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Mycontext.Consumer</span><span class="token punctuation">></span></span>
+                {
+                   (value)=>{
+                        console.log(value);
+                        
+                    }
+                }<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Mycontext.Consumer</span><span class="token punctuation">></span></span>
+            }
+
+4. Hook 规则
+    1. 只在最顶层使用 Hook,不要在循环，条件或嵌套函数中调用 Hook
+    2. 只在 React 函数中调用 Hook
+Day9
+<span class="token title important"><span class="token punctuation">#</span> 新知识点</span>
+1.  useReducer 是功能更强大的"useState"
+    1. 语法:
+        const [state, dispatch] = useReducer(reducer, initialArg, init)
+        2. dispatch：是useReducer产生的一个操作方法
+            dispatch执行时需要传递一个对象 {type:'ADD',payload:'data'}
+        3. reducer：提供对数据进行操作的方案
+            function reducer(state,action){
+                switch(action.type){
+                    case 'ADD':
+                        state = state + 1;
+                        return state;
+                    default:
+                        return state;
+                }
+            }
+    3. 使用：
+        直接调用变量名
+    4. 修改：
+        调用dispatch方法
+
+<span class="token title important"><span class="token punctuation">#</span> 注意：&lt;React.StrictMode>严格模式</span>
+- 检测意外的副作用
+    严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下函数来实现的该操作：
+    class 组件的 constructor，render 以及 shouldComponentUpdate 方法
+    class 组件的生命周期方法 getDerivedStateFromProps
+    函数组件体
+    状态更新函数 (即 setState 的第一个参数）
+    函数组件通过使用 useState，useMemo 或者 useReducer
+这仅适用于开发模式。生产模式下生命周期不会被调用两次。
+
+2. useMemo
+    1. 把“创建”函数和依赖项数组作为参数传入 useMemo，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算
+    2. const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+
+3. useRef
+    1. useRef 返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内保持不变。
+    2. 用法：
+         1. 创建ref
+		2. 语法：const myref = useRef()
+		3. 使用
+        		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{myref}</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+		4. refs转发
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Son</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{myref}</span> <span class="token punctuation">/></span></span>
+        Son组件创建时，需要使用 React.forwardRef()创建
+            React.forwardRef((props,ref)=>{
+                return <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{ref}</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+            })
+
+
+4. 自定义hook
+    1. 提取组件中的业务逻辑
+    2. 语法：
+        必须以 'use' 开头，可以使用内置hook
+        function useXx(){
+            const [list,setList] = useState([]);
+            useEffect(()=>{
+            },[])
+            return list
+        }
+    3. 使用：
+        在组件中直接调用即可
+        注意：1. 只能在函数组件中使用
+              2. 不能放在 if,for,普通函数中调用
+
+
+
+Day10 redux
+1. 在react中数据传递方式有几种?
+    1. 父传子： props
+    2. 子传父： 使用事件
+    3. Context：提供公共数据
+
+2. Context的缺点：
+    1. 公共数据特别多
+    2. 组件也特别多时
+    当上面两种情况同时存在时，最好把Context定义在App.js组件上
+    但是都定义App.js上，会造成App.js组件上多很多对App组件来说没用的数据
+    所以会有需求：把公共数据提取出去，单独放在一个存储空间中，使用数据时就从这个空间中取，修改时就修改这个空间中的数据。
+3. redux
+    1. 作用：把公共数据提取出去，单独放在一个存储空间中，使用数据时就从这个空间中取，修改时就修改这个空间中的数据。对数据操作时，redux提供的对应的方法
+    2. 安装：npm install --save redux
+       调试工具：npm install --save-dev redux-devtools
+    3. 三大原则
+        1.单一数据源
+            整个应用的 state 被储存在一棵object tree中，并且这个 object tree 只存在于唯一一个 store 中。
+        2.使用纯函数来执行修改
+            如何改变 state tree ，你需要编写 reducers。它接收先前的 state 和 action，并返回新的 state
+        3.State 是只读的
+       唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。执行上面纯函数。
+
+    4. 核心 store 
+        1. store是存储数据的空间
+        2. 创建存储空间语法：
+            import {createStore} from 'redux'
+            const store = createStore(reducer,init)
+        3. store上会提供操作数据的方法
+            1. 获取数据 getState()
+            2. 修改数据 dispatch()
+            3. 监听方法 subscribe()
+
+    5. 核心2 reducer
+        1. reducer 提供可预测化的状态管理
+        2. reducer 必须是一个纯函数
+            function reducer(state,action){
+                switch(action.type){
+                    case 'ADD':
+                        state = state + 1;
+                        return state;
+                    default:
+                        return state
+                }
+            }
+        3. 这个reducer是放在 createStore 的第一个参数位置
+
+    6. 核心3 action
+        1. 对store数据的具体操作
+        2. 格式：
+            1. 对象形式
+                {
+                    type:'ADD',
+                    payload:'xxxxx'
+                }
+            2. 函数形式
+                function XX(yy){
+                    return {
+                        type:'ADD',
+                        payload:yy
+                    }
+                }
+        3. action也必须是没有副作用的(网络请求，定时器)
+        4. 触发action执行：
+            调用store上的dispatch方法，把action放在dispatch中
+
+    7. reducers合并
+        1. 如果一个store中要存储多个公共数据，这些公共数据的操作又是不一样的
+        2. 需要创建多个reducer,每个reducer中都保存相关的一组数据
+        3. createStore(reducer)中只有第一个参数位置是放reducer的，而且只能放一个
+        4. redux中提供了一个方法，combineReducers ，作用就是把多个reducer合并成一个
+        5. combineReducers语法：
+            import {combineReducers} from 'redux'
+            const all = combineReducers({
+                reducer1:reducer1,
+                reducerA
+            })
+            返回值：all ，也是一个函数
+        6. 把合并后的all放到 createStore(all),
+            1. store中就有多个reducer中的数据了
+            2. store.dispatch()能触发所有reducer中的功能
+    8. 支持异步action
+        1. 需要使用中间件 ： redux-thunk
+        2. 安装：npm i redux-thunk -S
+        3. 配置store支持中间件
+            import {applyMiddle} from 'redux'
+            import thunk from 'redux-thunk'
+            createStore(reducer,applyMiddle(thunk))
+        4. 定义异步action
+            const yibu=(url,data)=>(dispatch, getState)=>{
+                fetch(url).then(data=>data.json()).then(data=>{
+                    dispatch({
+                        type:'ADD',
+                        payload:data
+                    })
+                })
+            }
+        
+        5. 执行异步action
+            dispatch(yibu())
+        
+    9. compose
+        1. 合并applyMiddleware和其他的功能
+        2. 让浏览器插件和中间件同时工作
+const store = createStore(all,window.<span class="token bold"><span class="token punctuation">__</span><span class="token content">REDUX_DEVTOOLS_EXTENSION</span><span class="token punctuation">__</span></span> &amp;&amp; window.<span class="token bold"><span class="token punctuation">__</span><span class="token content">REDUX_DEVTOOLS_EXTENSION</span><span class="token punctuation">__</span></span>())
+         composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||compose
+ const store = createStore(reducer,composeEnhancers(applyMiddleware(thunk,logger)));
+
+3. react关联redux
+    1. 安装一个库，react-redux
+        npm i react-redux -S
+    2. 使用 react-redux 把react项目和redux关联起来
+        import {Provider } from 'react-redux'
+        import store from 'redux3.js'
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Provider</span> <span class="token attr-name">store</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>{store}</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>App</span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Provider</span><span class="token punctuation">></span></span>
+    3. 在组件中使用redux数据
+        import {connect} from 'react-redux'//引入高阶组件
+        export default connect(mapStateToProps,mapDispatchToprops)(Son)
+Connect里面是两个函数可定义
+      1. 把store的存储的数据放到组件的props上
+         function mapStateToProps(state){
+ 	 	console.log('son',state); 
+ 		return {user:state}
+}
+2.把store上的dispatch方法给组件使用
+function mapDispatchToprops(dispatch){
+    return {
+        changeuser:(data)=>dispatch({
+            type:'ADD',
+            payload:'花里胡哨'
+        }),
+        deldel:(data)=>dispatch({
+            type:'DEL'
+
+        })
+}
+}
+
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br><span class="line-number">477</span><br><span class="line-number">478</span><br><span class="line-number">479</span><br><span class="line-number">480</span><br><span class="line-number">481</span><br><span class="line-number">482</span><br><span class="line-number">483</span><br><span class="line-number">484</span><br><span class="line-number">485</span><br><span class="line-number">486</span><br><span class="line-number">487</span><br><span class="line-number">488</span><br><span class="line-number">489</span><br><span class="line-number">490</span><br><span class="line-number">491</span><br><span class="line-number">492</span><br><span class="line-number">493</span><br><span class="line-number">494</span><br><span class="line-number">495</span><br><span class="line-number">496</span><br><span class="line-number">497</span><br><span class="line-number">498</span><br><span class="line-number">499</span><br><span class="line-number">500</span><br><span class="line-number">501</span><br><span class="line-number">502</span><br><span class="line-number">503</span><br><span class="line-number">504</span><br><span class="line-number">505</span><br><span class="line-number">506</span><br><span class="line-number">507</span><br><span class="line-number">508</span><br><span class="line-number">509</span><br><span class="line-number">510</span><br><span class="line-number">511</span><br><span class="line-number">512</span><br><span class="line-number">513</span><br><span class="line-number">514</span><br><span class="line-number">515</span><br><span class="line-number">516</span><br><span class="line-number">517</span><br><span class="line-number">518</span><br><span class="line-number">519</span><br><span class="line-number">520</span><br><span class="line-number">521</span><br><span class="line-number">522</span><br><span class="line-number">523</span><br><span class="line-number">524</span><br><span class="line-number">525</span><br><span class="line-number">526</span><br><span class="line-number">527</span><br><span class="line-number">528</span><br><span class="line-number">529</span><br><span class="line-number">530</span><br><span class="line-number">531</span><br><span class="line-number">532</span><br><span class="line-number">533</span><br><span class="line-number">534</span><br><span class="line-number">535</span><br><span class="line-number">536</span><br><span class="line-number">537</span><br><span class="line-number">538</span><br><span class="line-number">539</span><br><span class="line-number">540</span><br><span class="line-number">541</span><br><span class="line-number">542</span><br><span class="line-number">543</span><br><span class="line-number">544</span><br><span class="line-number">545</span><br><span class="line-number">546</span><br><span class="line-number">547</span><br><span class="line-number">548</span><br><span class="line-number">549</span><br><span class="line-number">550</span><br><span class="line-number">551</span><br><span class="line-number">552</span><br><span class="line-number">553</span><br><span class="line-number">554</span><br><span class="line-number">555</span><br><span class="line-number">556</span><br><span class="line-number">557</span><br><span class="line-number">558</span><br><span class="line-number">559</span><br><span class="line-number">560</span><br><span class="line-number">561</span><br><span class="line-number">562</span><br><span class="line-number">563</span><br><span class="line-number">564</span><br><span class="line-number">565</span><br><span class="line-number">566</span><br><span class="line-number">567</span><br><span class="line-number">568</span><br><span class="line-number">569</span><br><span class="line-number">570</span><br><span class="line-number">571</span><br><span class="line-number">572</span><br><span class="line-number">573</span><br><span class="line-number">574</span><br><span class="line-number">575</span><br><span class="line-number">576</span><br><span class="line-number">577</span><br><span class="line-number">578</span><br><span class="line-number">579</span><br><span class="line-number">580</span><br><span class="line-number">581</span><br><span class="line-number">582</span><br><span class="line-number">583</span><br><span class="line-number">584</span><br><span class="line-number">585</span><br><span class="line-number">586</span><br><span class="line-number">587</span><br><span class="line-number">588</span><br><span class="line-number">589</span><br><span class="line-number">590</span><br><span class="line-number">591</span><br><span class="line-number">592</span><br><span class="line-number">593</span><br><span class="line-number">594</span><br><span class="line-number">595</span><br><span class="line-number">596</span><br><span class="line-number">597</span><br><span class="line-number">598</span><br><span class="line-number">599</span><br><span class="line-number">600</span><br><span class="line-number">601</span><br><span class="line-number">602</span><br><span class="line-number">603</span><br><span class="line-number">604</span><br><span class="line-number">605</span><br><span class="line-number">606</span><br><span class="line-number">607</span><br><span class="line-number">608</span><br><span class="line-number">609</span><br><span class="line-number">610</span><br><span class="line-number">611</span><br><span class="line-number">612</span><br><span class="line-number">613</span><br><span class="line-number">614</span><br><span class="line-number">615</span><br><span class="line-number">616</span><br><span class="line-number">617</span><br><span class="line-number">618</span><br><span class="line-number">619</span><br><span class="line-number">620</span><br><span class="line-number">621</span><br><span class="line-number">622</span><br><span class="line-number">623</span><br><span class="line-number">624</span><br><span class="line-number">625</span><br><span class="line-number">626</span><br><span class="line-number">627</span><br><span class="line-number">628</span><br><span class="line-number">629</span><br><span class="line-number">630</span><br><span class="line-number">631</span><br><span class="line-number">632</span><br><span class="line-number">633</span><br><span class="line-number">634</span><br><span class="line-number">635</span><br><span class="line-number">636</span><br><span class="line-number">637</span><br><span class="line-number">638</span><br><span class="line-number">639</span><br><span class="line-number">640</span><br><span class="line-number">641</span><br><span class="line-number">642</span><br><span class="line-number">643</span><br><span class="line-number">644</span><br><span class="line-number">645</span><br><span class="line-number">646</span><br><span class="line-number">647</span><br><span class="line-number">648</span><br><span class="line-number">649</span><br><span class="line-number">650</span><br><span class="line-number">651</span><br><span class="line-number">652</span><br><span class="line-number">653</span><br><span class="line-number">654</span><br><span class="line-number">655</span><br><span class="line-number">656</span><br><span class="line-number">657</span><br><span class="line-number">658</span><br><span class="line-number">659</span><br><span class="line-number">660</span><br><span class="line-number">661</span><br><span class="line-number">662</span><br><span class="line-number">663</span><br><span class="line-number">664</span><br><span class="line-number">665</span><br><span class="line-number">666</span><br><span class="line-number">667</span><br><span class="line-number">668</span><br><span class="line-number">669</span><br><span class="line-number">670</span><br><span class="line-number">671</span><br><span class="line-number">672</span><br><span class="line-number">673</span><br><span class="line-number">674</span><br><span class="line-number">675</span><br><span class="line-number">676</span><br><span class="line-number">677</span><br><span class="line-number">678</span><br><span class="line-number">679</span><br><span class="line-number">680</span><br><span class="line-number">681</span><br><span class="line-number">682</span><br><span class="line-number">683</span><br><span class="line-number">684</span><br><span class="line-number">685</span><br><span class="line-number">686</span><br><span class="line-number">687</span><br><span class="line-number">688</span><br><span class="line-number">689</span><br><span class="line-number">690</span><br><span class="line-number">691</span><br><span class="line-number">692</span><br><span class="line-number">693</span><br><span class="line-number">694</span><br><span class="line-number">695</span><br><span class="line-number">696</span><br><span class="line-number">697</span><br><span class="line-number">698</span><br><span class="line-number">699</span><br><span class="line-number">700</span><br><span class="line-number">701</span><br><span class="line-number">702</span><br><span class="line-number">703</span><br><span class="line-number">704</span><br><span class="line-number">705</span><br><span class="line-number">706</span><br><span class="line-number">707</span><br><span class="line-number">708</span><br><span class="line-number">709</span><br><span class="line-number">710</span><br><span class="line-number">711</span><br><span class="line-number">712</span><br><span class="line-number">713</span><br><span class="line-number">714</span><br><span class="line-number">715</span><br><span class="line-number">716</span><br><span class="line-number">717</span><br><span class="line-number">718</span><br><span class="line-number">719</span><br><span class="line-number">720</span><br><span class="line-number">721</span><br><span class="line-number">722</span><br><span class="line-number">723</span><br><span class="line-number">724</span><br><span class="line-number">725</span><br><span class="line-number">726</span><br></div></div><p></p>
+</template>

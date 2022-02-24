@@ -779,7 +779,7 @@ export function ajax(
 4. TCP/IP参考模型?
 
 TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TCP/IP系列网络协议都归类到4个抽象的“层”中. 
-<img src='./课程/Internet/assets/OSI和TCPIP概念模型.png'/>
+<!-- <img src='./课程/Internet/assets/OSI和TCPIP概念模型.png'/> -->
 
 1. 我们常说的数据包是什么?
 
@@ -795,7 +795,7 @@ TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TC
 网络层 IP包：IP包首部 + (TCP包首部 + 数据)
 数据链路层 以太网包：以太网包首部 + (IP包首部 + (TCP包首部 + 数据))
 
-<img src='./课程/Internet/assets/TCP_IP_数据包.png'/>
+<!-- <img src='./课程/Internet/assets/TCP_IP_数据包.png'/> -->
 1. 每层在接收到数据后除了添加首部, 还要做什么呢?
 
 用户1
@@ -860,7 +860,7 @@ TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TC
 
 11.  TCP协议的一次数据传输, 从建立连接到断开连接都有哪些流程?
 
-<img src='./课程/Internet/assets/TCP数据传输流程.jpeg'/>
+<!-- <img src='./课程/Internet/assets/TCP数据传输流程.jpeg'/> -->
 
 * 第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；
 * 第二次握手：服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；

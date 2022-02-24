@@ -10,67 +10,21 @@
 
 <body>
     <script>
-        // function mail() {
-        //     let content = '信';
-        //     return function () {
-        //         console.log(content);
-        //     }
-        // }
-        // const envelop = mail();
-        // envelop();
-        // envelop();
-        // envelop();
+        const arr = [1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1]
+        let max = arr[0]//最大数
+        let count = 1//最大数个数默认为1
 
-
-        function createIncrement() {
-            let count = 0;
-
-            function increment() {
-                count++;
-            }
-
-            let message = `count is ${count}`;
-
-            function log() {
-                console.log(message, count);
-            }
-
-            return [increment, log];
-        }
-        const [increment, log, count] = createIncrement();
-
-        increment();
-        increment();
-        increment();
-        log();
-
-
-        function createStack() {
-            return {
-                items: [],
-                push(item) {
-                    this.item.push(item);
-                }
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i]
+                count = 1
+            } else if (arr[i] === max) {
+                count++
             }
         }
 
-        const stack = {
-            items: [],
-            push: function () { }
-        }
-        //做成私有的
-        function createStack() {
-            const items = [];
-            return {
-                push(item) {
-                    items.push(item);
-                }
-            }
-        }
-
-        let a = createStack()
-        console.log(a.push(123));
-
+        console.log('最大数', max);
+        console.log('最大数个数', count);
 
 
 

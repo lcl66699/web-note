@@ -1,0 +1,1 @@
+import{o as e,c as r}from"./app.c39d5b3f.js";import{_ as t}from"./plugin-vue_export-helper.21dcd24c.js";const c={};function o(a,n){return e(),r("p",null,"first page in category1")}var f=t(c,[["render",o]]);export{f as default};

@@ -1,61 +1,33 @@
 module.exports = {
-  base: '', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  base: '/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   // base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
-  title: "橘子海",
+  // title: "橘子海",
+  title: "我的前端学习记录",
   description: "听橘子海，炫沙糖桔",
+  footerHtml: true,
   head: [
     ['link', {
       rel: 'icon',
       href: `/favicon.ico`
     }]
   ],
-  // plugins: [
-  //   '@vuepress/back-to-top',
-  //   ['qrcode', {
-  //     // "/" and "/zh/" correspond to the path set by locales
-  //     labelText: {
-  //       "/": "二维码",
-  //     },
-  //     size: 'small',
-  //     channel: true
-  //   }]
-  // ],
   plugins: [
-    // ['@vuepress-reco/vuepress-plugin-bulletin-popover', {
-    //   body: [
-    //     {
-    //       type: 'title',
-    //       content: '欢迎加入QQ交流群 🎉🎉🎉',
-    //       style: 'text-aligin: center;'
-    //     },
-    //     {
-    //       type: 'image',
-    //       src: '/rvcode_qq.png'
-    //     }
-    //   ],
-    //   footer: [
-    //     {
-    //       type: 'button',
-    //       text: '打赏',
-    //       link: '/donate'
-    //     },
-    //     {
-    //       type: 'button',
-    //       text: '打赏',
-    //       link: '/donate'
-    //     }
-    //   ]
-    // }]
+    ['@vuepress/plugin-back-to-top'],
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: '搜索',
+          },
+        },
+      },
+    ],
   ],
   themeConfig: {
+    logo: '/orange.png',//导航栏log Public 文件路径
     displayAllHeaders: false, // 显示所有页面的标题链接-默认值：false
     smoothScroll: true,//页面滚动效果
-    // // 多语言下拉菜单的标题
-    // selectText: '选择语言',
-    // // 该语言在下拉菜单中的标签
-    // label: '简体中文',
-    // // 编辑链接文字
-    // editLinkText: '在 GitHub 上编辑此页',
     // Service Worker 的配置
     serviceWorker: {
       updatePopup: {
@@ -63,25 +35,22 @@ module.exports = {
         buttonText: "刷新"
       }
     },
-    // 当前 locale 的 algolia docsearch 选项
-    algolia: {},
-    logo: '/orange.png',//导航栏log
-    nav: [
+    navbar: [
       { text: 'js', link: '/views/js/' },
       { text: '网络', link: '/views/Http/' },
-      { text: '工程化', link: '/views/工程化/' },
+      { text: '工程化', link: '/views/engineering/' },
       {
         text: 'Vue',
-        items: [
-          { text: 'vue2基础', link: '/views/Vue/vue2基础/' }, // 可不写后缀 .md
-          { text: 'vue2进阶', link: '/views/Vue/vue2进阶/' },
+        children: [
+          { text: 'vue2基础', link: '/views/Vue/vue2-easy/' }, // 可不写后缀 .md
+          { text: 'vue2进阶', link: '/views/Vue/vue2-mid/' },
           { text: 'vue-cli', link: '/views/Vue/vue-cli/' },
-          { text: 'vue原理', link: '/views/Vue/原理篇/' },
+          { text: 'vue原理篇', link: '/views/Vue/vue-hard/' },
         ]
       },
       {
         text: 'React',
-        items: [
+        children: [
           { text: 'React基础', link: '/views/React/' }, // 可不写后缀 .md
         ]
       },
@@ -89,7 +58,7 @@ module.exports = {
       { text: '个人空间', link: 'http://39.106.5.96/' },
       {
         text: '其他',
-        items: [
+        children: [
           { text: 'git', link: '/views/other/Git/', ariaLabel: '其他' },
           { text: '性能优化', link: '/views/other/性能优化/', ariaLabel: '其他' },
           { text: 'web安全', link: '/views/other/web安全/', ariaLabel: '其他' },
@@ -108,37 +77,42 @@ module.exports = {
       ],
       //js
       '/views/js/': [
-        '',
-        'js模块化',
-        'Es6',
-        'Promise',
-        'this指针-闭包-作用域',
-        '面向对象与原型,原型链',
-        'BOM',
-        'jsBridge',
+        // {
+        //   text: '事件循环',
+        //   collapsible: true,
+        //   // link: '事件循环.md'
+        //   children: ['readme.md'],
+        // },
+        'readme.md',
+        'js模块化.md',
+        'Es6.md',
+        'Promise.md',
+        'this指针-闭包-作用域.md',
+        '面向对象与原型,原型链.md',
+        'BOM.md',
+        'jsBridge.md',
       ],
       '/views/Http/': [
-        '',
+        'readme.md',
       ],
-      '/views/工程化/': [
-        '',
+      '/views/engineering/': [
+        'readme.md',
       ],
       //vue 开始
       // 原理
-      '/views/Vue/原理篇/': [
+      '/views/Vue/vue-hard/': [
         '',
       ],
-      '/views/Vue/vue2基础/': [
+      '/views/Vue/vue2-easy/': [
         '',
       ],
-      '/views/Vue/vue2进阶/': [
+      '/views/Vue/vue2-mid/': [
         '',
       ],
       '/views/Vue/vue-cli/': [
         '',
       ],
       //vue 结束
-
       // react
       '/views/React/': [
         '',
@@ -181,55 +155,36 @@ module.exports = {
         '15.JS运行机制',
       ],
     },
-    type: 'blog',
-    // 博客设置
-    blogConfig: {
-      category: {
-        location: 2, // 在导航栏菜单中所占的位置，默认2
-        // text: 'Categories' // 默认 “分类”
-      },
-      tag: {
-        location: 3, // 在导航栏菜单中所占的位置，默认3
-        // text: 'Tags' // 默认 “标签”
-      },
-      socialLinks: [
-        { icon: 'reco-github', link: 'https://github.com/recoluan' },
-        { icon: 'fa-camera', link: 'https://www.npmjs.com/~reco_luan' }
-      ]
-    },
+    darkMode: true,//是否启用切换夜间模式的功能。
+    // type: 'blog',
+    // // 博客设置
+    // blogConfig: {
+    //   category: {
+    //     location: 2, // 在导航栏菜单中所占的位置，默认2
+    //     // text: 'Categories' // 默认 “分类”
+    //   },
+    //   tag: {
+    //     location: 3, // 在导航栏菜单中所占的位置，默认3
+    //     // text: 'Tags' // 默认 “标签”
+    //   },
+    //   socialLinks: [
+    //     { icon: 'reco-github', link: 'https://github.com/recoluan' },
+    //     { icon: 'fa-camera', link: 'https://www.npmjs.com/~reco_luan' }
+    //   ]
+    // },
     // 搜索设置
-    search: true,
-    searchMaxSuggestions: 10,
-    // 自动形成侧边导航
-    subSidebar: 'auto',
-    // sidebarDepth: 4,
-    sidebarDepth: 2,
+    // search: true,
+    // searchMaxSuggestions: 10,
+    // subSidebar: 'auto',// 自动形成侧边导航
+    // editLink: true,
+    sidebarDepth: 2,//设置根据页面标题自动生成的侧边栏的最大深度。
     // 最后更新时间
-    lastUpdated: 'Last Updated',
-    // 作者
-    author: 'numb',
-    record: 'xxxx',//ICP备案号
-    recordLink: 'http://www.baidu.com',//备案指向的链接
-    cyberSecurityRecord: '2222',//公安部备案文案
-    cyberSecurityLink: 'http://www.baidu.com',//公安部备案指向链接
-    // 项目开始时间
-    startYear: '2021',
-    //该属性是用于设置友链的
-    // friendLink: [
-    //   {
-    //     title: '午后南杂',
-    //     desc: 'Enjoy when you can, and endure when you must.',
-    //     email: '1156743527@qq.com',
-    //     link: 'https://www.recoluan.com'
-    //   },
-    //   {
-    //     title: 'vuepress-theme-reco',
-    //     desc: 'A simple and beautiful vuepress Blog & Doc theme.',
-    //     avatar: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-    //     link: 'https://vuepress-theme-reco.recoluan.com'
-    //   },
-    // ],
-
+    lastUpdated: true,
+    lastUpdatedText: '上次更新时间',
+    contributors: true,
+    contributorsText: '贡献者列表',
+    toggleDarkMode: '切换主题',
+    author: '刘成龙',
   },
   markdown: {
     lineNumbers: true//行号

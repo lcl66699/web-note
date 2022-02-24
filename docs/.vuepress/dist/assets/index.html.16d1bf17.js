@@ -1,0 +1,1 @@
+const e={key:"v-4cb3c239",path:"/views/Vue/vue-cli/",title:"vue-cli",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"\u7B80\u4ECB",slug:"\u7B80\u4ECB",children:[]}],git:{updatedTime:1645580115e3,contributors:[{name:"liuchenglong",email:"768206581@qq.com",commits:2}]},filePathRelative:"views/Vue/vue-cli/readme.md"};export{e as data};
