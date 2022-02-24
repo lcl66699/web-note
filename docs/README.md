@@ -18,7 +18,7 @@ features:
   - title: 简洁易懂 
     details: 代码皆有注释和测试，包含ES6、Vuejs、Reactjs、http等前端技术
 footerHtml: true
-footer:  MIT Licensed | Copyright © QQ-768206581 | <a href="beian.miit.gov.cn" target="_blank">黑ICP备20003708号</a>
+footer:  MIT Licensed | Copyright © QQ-768206581 | <a href="https://beian.miit.gov.cn" target="_blank">黑ICP备20003708号</a>
 
 
 ---

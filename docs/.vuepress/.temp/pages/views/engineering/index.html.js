@@ -162,8 +162,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1645685492000,
+    "contributors": [
+      {
+        "name": "liuchenglong",
+        "email": "768206581@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "views/engineering/readme.md"
 }

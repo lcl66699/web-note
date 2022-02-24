@@ -29,13 +29,18 @@ export const data = {
       }
     ],
     "footerHtml": true,
-    "footer": "MIT Licensed | Copyright © QQ-768206581 | <a href=\"beian.miit.gov.cn\" target=\"_blank\">黑ICP备20003708号</a>"
+    "footer": "MIT Licensed | Copyright © QQ-768206581 | <a href=\"https://beian.miit.gov.cn\" target=\"_blank\">黑ICP备20003708号</a>"
   },
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": 1641895685000,
+    "updatedTime": 1645685492000,
     "contributors": [
+      {
+        "name": "liuchenglong",
+        "email": "768206581@qq.com",
+        "commits": 3
+      },
       {
         "name": "liuchenglong",
         "email": "liuchenglong@yoonuu.com",
@@ -43,11 +48,6 @@ export const data = {
       },
       {
         "name": "chenglong",
-        "email": "768206581@qq.com",
-        "commits": 2
-      },
-      {
-        "name": "liuchenglong",
         "email": "768206581@qq.com",
         "commits": 2
       },

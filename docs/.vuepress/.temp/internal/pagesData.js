@@ -3,16 +3,10 @@ export const pagesData = {
   "v-8daa1a0e": () => import(/* webpackChunkName: "v-8daa1a0e" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/index.html.js").then(({ data }) => data),
   // path: /views/Algorithm/
   "v-3fb5c60c": () => import(/* webpackChunkName: "v-3fb5c60c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/index.html.js").then(({ data }) => data),
-  // path: /views/Http/
-  "v-3292d5e6": () => import(/* webpackChunkName: "v-3292d5e6" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Http/index.html.js").then(({ data }) => data),
   // path: /views/engineering/
   "v-b75cd794": () => import(/* webpackChunkName: "v-b75cd794" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/engineering/index.html.js").then(({ data }) => data),
-  // path: /views/other/guide.html
-  "v-d2a54114": () => import(/* webpackChunkName: "v-d2a54114" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/guide.html.js").then(({ data }) => data),
-  // path: /views/other/
-  "v-32a37759": () => import(/* webpackChunkName: "v-32a37759" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/index.html.js").then(({ data }) => data),
-  // path: /views/other/webpack.html
-  "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
+  // path: /views/Http/
+  "v-3292d5e6": () => import(/* webpackChunkName: "v-3292d5e6" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Http/index.html.js").then(({ data }) => data),
   // path: /views/js/BOM.html
   "v-eb100d76": () => import(/* webpackChunkName: "v-eb100d76" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/js/BOM.html.js").then(({ data }) => data),
   // path: /views/js/Es6.html
@@ -29,6 +23,12 @@ export const pagesData = {
   "v-783d2c5c": () => import(/* webpackChunkName: "v-783d2c5c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/js/this指针-闭包-作用域.html.js").then(({ data }) => data),
   // path: /views/js/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8E%9F%E5%9E%8B,%E5%8E%9F%E5%9E%8B%E9%93%BE.html
   "v-c66d7ba6": () => import(/* webpackChunkName: "v-c66d7ba6" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/js/面向对象与原型,原型链.html.js").then(({ data }) => data),
+  // path: /views/other/guide.html
+  "v-d2a54114": () => import(/* webpackChunkName: "v-d2a54114" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/guide.html.js").then(({ data }) => data),
+  // path: /views/other/
+  "v-32a37759": () => import(/* webpackChunkName: "v-32a37759" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/index.html.js").then(({ data }) => data),
+  // path: /views/other/webpack.html
+  "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
   // path: /views/Principle/
   "v-2b4f018d": () => import(/* webpackChunkName: "v-2b4f018d" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Principle/index.html.js").then(({ data }) => data),
   // path: /views/React/easy.html

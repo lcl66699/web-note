@@ -23,7 +23,7 @@
 			}
     </script>
     <link rel="icon" href="/favicon.ico"><title>JavaScript篇（上） | 我的前端学习记录</title><meta name="description" content="听橘子海，炫沙糖桔">
-    <link rel="modulepreload" href="/assets/app.c39d5b3f.js"><link rel="modulepreload" href="/assets/3.JavaScript篇（上）.html.42e0a30f.js"><link rel="modulepreload" href="/assets/3.JavaScript篇（上）.html.0945a588.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper.21dcd24c.js">
+    <link rel="modulepreload" href="/assets/app.f546241b.js"><link rel="modulepreload" href="/assets/3.JavaScript篇（上）.html.42e0a30f.js"><link rel="modulepreload" href="/assets/3.JavaScript篇（上）.html.50fe497b.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper.21dcd24c.js">
     <link rel="stylesheet" href="/assets/style.b29aeafa.css">
   </head>
   <body>
@@ -781,6 +781,6 @@ p1<span class="token punctuation">.</span><span class="token class-name">__proto
 <span class="token comment">//先执行second(),在执行first()</span>
 
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h5 id="_3-创建执行上下文" tabindex="-1"><a class="header-anchor" href="#_3-创建执行上下文" aria-hidden="true">#</a> 3. 创建执行上下文</h5><p>创建执行上下文有两个阶段：<strong>创建阶段</strong>和<strong>执行阶段</strong></p><p><strong>1）创建阶段</strong></p><p>（1）this绑定</p><ul><li>在全局执行上下文中，this指向全局对象（window对象）</li><li>在函数执行上下文中，this指向取决于函数如何调用。如果它被一个引用对象调用，那么 this 会被设置成那个对象，否则 this 的值被设置为全局对象或者 undefined</li></ul><p>（2）创建词法环境组件</p><ul><li>词法环境是一种有<strong>标识符——变量映射</strong>的数据结构，标识符是指变量/函数名，变量是对实际对象或原始数据的引用。</li><li>词法环境的内部有两个组件：<strong>加粗样式</strong>：环境记录器:用来储存变量个函数声明的实际位置<strong>外部环境的引用</strong>：可以访问父级作用域</li></ul><p>（3）创建变量环境组件</p><ul><li>变量环境也是一个词法环境，其环境记录器持有变量声明语句在执行上下文中创建的绑定关系。</li></ul><p><strong>2）执行阶段</strong> 此阶段会完成对变量的分配，最后执行完代码。</p><p><strong>简单来说执行上下文就是指：</strong></p><p>在执行一点JS代码之前，需要先解析代码。解析的时候会先创建一个全局执行上下文环境，先把代码中即将执行的变量、函数声明都拿出来，变量先赋值为undefined，函数先声明好可使用。这一步执行完了，才开始正式的执行程序。</p><p>在一个函数执行之前，也会创建一个函数执行上下文环境，跟全局执行上下文类似，不过函数执行上下文会多出this、arguments和函数的参数。</p><ul><li>全局上下文：变量定义，函数声明</li><li>函数上下文：变量定义，函数声明，<code>this</code>，<code>arguments</code></li></ul><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">上次更新时间: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者列表: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 768206581@qq.com">liuchenglong</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
-    <script type="module" src="/assets/app.c39d5b3f.js" defer></script>
+    <script type="module" src="/assets/app.f546241b.js" defer></script>
   </body>
 </html>
