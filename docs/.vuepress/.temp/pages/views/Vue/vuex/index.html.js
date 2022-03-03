@@ -1,15 +1,15 @@
 export const data = {
   "key": "v-611d6b4c",
   "path": "/views/Vue/vuex/",
-  "title": "vuex",
+  "title": "vuex状态管理",
   "lang": "en-US",
   "frontmatter": {},
   "excerpt": "",
   "headers": [
     {
-      "level": 3,
-      "title": "vue组件传值",
-      "slug": "vue组件传值",
+      "level": 2,
+      "title": "关于状态管理",
+      "slug": "关于状态管理",
       "children": []
     },
     {
@@ -17,6 +17,12 @@ export const data = {
       "title": "vuex介绍",
       "slug": "vuex介绍",
       "children": [
+        {
+          "level": 3,
+          "title": "更改状态",
+          "slug": "更改状态",
+          "children": []
+        },
         {
           "level": 3,
           "title": "辅助函数",
@@ -29,6 +35,49 @@ export const data = {
       "level": 2,
       "title": "vuex 3原理",
       "slug": "vuex-3原理",
+      "children": [
+        {
+          "level": 3,
+          "title": "Step1 - store 注册",
+          "slug": "step1-store-注册",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "Step2 - 响应式",
+          "slug": "step2-响应式",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "Step3 - 衍生数据",
+          "slug": "step3-衍生数据",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "Step4 - Actions/Mutations",
+          "slug": "step4-actions-mutations",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "Step5 - 拆分出多个 Module",
+          "slug": "step5-拆分出多个-module",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "Step6 - 插件机制",
+          "slug": "step6-插件机制",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "SSR",
+      "slug": "ssr",
       "children": []
     },
     {

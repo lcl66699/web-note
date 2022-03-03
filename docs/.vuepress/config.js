@@ -46,6 +46,7 @@ module.exports = {
           { text: 'vue2进阶', link: '/views/Vue/vue2-mid/' },
           { text: 'vue-cli', link: '/views/Vue/vue-cli/' },
           { text: 'vue原理篇', link: '/views/Vue/vue-hard/' },
+          { text: 'vuex原理', link: '/views/Vue/vuex/' },
         ]
       },
       {
@@ -105,6 +106,9 @@ module.exports = {
       //vue 开始
       // 原理
       '/views/Vue/vue-hard/': [
+        '',
+      ],
+      '/views/Vue/vuex/': [
         '',
       ],
       '/views/Vue/vue2-easy/': [
