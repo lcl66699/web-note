@@ -1,5 +1,101 @@
 # nodejs
 
+## 基础
+### express的req传参
+`nodemon .\app.js`
+
+req 接来的传参
+
+req.body 处理post
+req.query 处理get
+
+req.params 针对于 /users/:id
+
+仅针对我的nodejs服务目录架构
+- config 配置文件
+- controller 解析用户
+- model 数据持久层
+- middleware 编写中间件
+- router 路由
+- util 工具模块
+- app.js 入口
+
+
+
+### node.js 常见内置模块
+
+- fs: nodejs的api调用文件系统，能够读取写⼊当前安装系统环境中硬盘的数据
+```js
+//文件系统,使用绝对路径更好
+const fs = require('fs')
+const path = require('path')
+
+const pathToFile = path.resolve(__dirname, 'util')
+
+//异步的
+fs.readFile(pathToFile, 'utf-8', function (err, res) {
+if (err) {
+    console.log(err);
+    return err
+}
+})
+
+//同步的
+const content = fs.readFileSync(pathToFile, 'utf-8')
+```
+- path: 路径系统，能够处理路径之间的问题
+```js
+const path = require('path')
+
+const resolvePath = path.resolve('a', 'b', 'c')//* 返回路径本身,绝对路径
+const joinPath = path.join('a', 'b', 'c')//返回路径
+
+console.log(__dirname);//当前文件夹名称
+console.log(__filename);//当前文件夹名称,包含文件名.xx
+```
+- crypto: 加密相关模块，能够以标准的加密⽅式对我们的内容进行加解密
+- dns: 处理 dns 相关内容，例如我们可以设置 dns 服务器等等
+- http: 设置⼀个 http 服务器，发送 http 请求，监听响应等等
+```js
+const http = require('http')
+
+const proxy = http.createServer((req, res) => {
+    res.end('hello')
+})
+proxy.listen(8888, '127.0.0.1', () => {
+    console.log('server start');
+})
+```
+- readline: 读取 stdin 的⼀行内容，可以读取、增加、删除我们命令行中的内容
+- os: 操作系统层⾯的⼀些 api，例如告诉你当前系统类型及⼀些参数
+- vm: ⼀个专门处理沙箱的虚拟机模块，底层主要来调用 v8 相关 api 进行代码解析。
+  - 把一个字符串变成可执行的代码过程，可以实现类似commonjs
+
+
+#### node.js 版本切换
+在个⼈电脑上，我们可以安装⼀些⼯具，对 node.js 版
+本进行切换，例如 nvm 和 n。
+
+nvm 的全称就是 node version manager，意思就是能够管理 node 版本的⼀个⼯具，它提供了⼀种直接通过shell 执行的⽅式来进行安装。简单来说，就是通过将多个 node 版本安装在指定路径，然后通过 nvm 命令切换时，就会切换我们环境变量中 node 命令指定的实际执行的软件路径。
+```
+curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+```
+
+### node.js 的底层依赖
+
+node.js 的主要依赖⼦模块有以下内容：
+- V8 引擎：主要是 JS 语法的解析，有了它才能识别JS语法
+- libuv: c语言实现的⼀个⾼性能异步非阻塞 IO 库，用来实现 node.js 的事件循环
+- http-parser/llhttp: 底层处理 http 请求，处理报文，解析请求包等内容
+- openssl: 处理加密算法，各种框架运用⼴泛
+- zlib: 处理压缩等内容
+
+#### 包管理⼯具 npm
+
+npx 是 npm@5 之后新增的⼀个命令，它使得我们可以
+在不安装模块到当前环境的前提下，使用⼀些 cli 功能。
+
 
 ## Events
 
@@ -229,7 +325,7 @@ event.js
 
 
 
-## 全局对象解析
+## 全局对象Global
 
 
 JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。
@@ -241,14 +337,14 @@ JavaScript 中有一个特殊的对象，称为全局对象（Global Object）�
 
 ### 全局对象和全局变量
 
-global 最根本的作用是作为全局变量的宿主。按照 ECMAScript 的定义，满足以下条 件的变量是全局变量：
+global 最根本的作用是作为全局变量的宿主。按照 ECMAScript 的定义，满足以下条件的变量是全局变量：
 
-在最外层定义的变量；
-全局对象的属性；
-隐式定义的变量（未定义直接赋值的变量）。
-当你定义一个全局变量时，这个变量同时也会成为全局对象的属性，反之亦然。需要注 意的是，在 Node.js 中你不可能在最外层定义变量，因为所有用户代码都是属于当前模块的， 而模块本身不是最外层上下文。
+- 在最外层定义的变量；
+- 全局对象的属性；
+- 隐式定义的变量（未定义直接赋值的变量）。
+- 当你定义一个全局变量时，这个变量同时也会成为全局对象的属性，反之亦然。需要注 意的是，在 Node.js 中你不可能在最外层定义变量，因为所有用户代码都是属于当前模块的， 而模块本身不是最外层上下文。
 
-注意： 永远使用 var 定义变量以避免引入全局变量，因为全局变量会污染 命名空间，提高代码的耦合风险。
+注意： 永远使用 var 定义变量以避免引入全局变量，因为全局变量会污染命名空间，提高代码的耦合风险。
 
 
 ### __filename
@@ -267,7 +363,7 @@ __dirname 表示当前执行脚本所在的目录。
 console.log( __dirname );
 ```
 
-### setTimeout(cb, ms)
+- setTimeout(cb, ms)
 
 setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。
 
@@ -291,11 +387,12 @@ setTimeout(printHello, 2000);
 
 - console
 
-- process
+### process
 
 process 是一个全局变量，即 global 对象的属性。
 
-它用于描述当前Node.js 进程状态的对象，提供了一个与操作系统的简单接口。通常在你写本地命令行程序的时候，少不了要 和它打交道。下面将会介绍 process 对象的一些最常用的成员方法。
+它用于描述当前Node.js 进程状态的对象，提供了一个与操作系统的简单接口。通常在写本地命令行程序的时候，少不了要和它打交道。
+下面将会介绍 process 对象的一些最常用的成员方法。
 
 1. exit
 当进程准备退出时触发。
@@ -373,7 +470,7 @@ console.log(process.platform);
 
 ### node中的this
 
-
+NodeJS全局范围中的这个是当前模块。导出对象，而不是全局对象。
 ```js
 // this in NodeJS global scope is the current module.exports object, not the global object.
 
@@ -386,6 +483,10 @@ console.log(this);   // { foo:5 }
 
 
 ## node.js 事件循环模型
+
+:::tip 小tips
+这里我在js模块下面，很详细的说了我对事件循环的理解，但是对nodejs一些描述的比较少
+:::
 
 ### 什么是事件循环
 
@@ -431,9 +532,9 @@ Node.js 启动时，它将初始化事件循环，处理提供的输入脚本，
 
 在每次事件循环运行之间，Node.js 会检查它是否正在等待任何异步 I/O 或 timers，如果没有，则将其干净地关闭。
 
-## 各阶段详细解析
+### 各阶段详细解析
 
-### timers 计时器阶段
+#### timers 计时器阶段
 
 计时器可以在回调后面指定时间阈值，但这不是我们希望其执行的确切时间。 计时器回调将在经过指定的时间后尽早运行。 但是，操作系统调度或其他回调的运行可能会延迟它们。-- 执行的实际时间不确定
 
@@ -470,11 +571,11 @@ someAsyncOperation(() => {
 在此示例中，您将看到计划的计时器与执行的回调之间的总延迟为 105ms。
 
 
-### pending callbacks 阶段
+#### pending callbacks 阶段
 
 此阶段执行某些系统操作的回调，例如 TCP 错误。 平时无需关注
 
-### 轮询 poll 阶段
+#### 轮询 poll 阶段
 
 轮询阶段具有两个主要功能：
 
@@ -492,7 +593,7 @@ someAsyncOperation(() => {
 
 
 
-### 检查阶段 check
+#### 检查阶段 check
 
 此阶段允许在轮询 poll 阶段完成后立即执行回调。 如果轮询 poll 阶段处于空闲，并且脚本已使用 setImmediate 进入 check 队列，则事件循环可能会进入 check 阶段，而不是在 poll 阶段等待。
 
@@ -500,7 +601,7 @@ setImmediate 实际上是一个特殊的计时器，它在事件循环的单独�
 
 通常，在执行代码时，事件循环最终将到达轮询 poll 阶段，在该阶段它将等待传入的连接，请求等。但是，如果已使用 setImmediate 设置回调并且轮询阶段变为空闲，则它将将结束并进入 check 阶段，而不是等待轮询事件。
 
-### close callbacks 阶段
+#### close callbacks 阶段
 
 如果套接字或句柄突然关闭（例如 socket.destroy），则在此阶段将发出 'close' 事件。 否则它将通过 process.nextTick 发出。
 
@@ -512,10 +613,11 @@ setImmediate 和 setTimeout 相似，但是根据调用时间的不同，它们�
 * setImmediate 设计为在当前轮询 poll 阶段完成后执行脚本。
 * setTimeout 计划在以毫秒为单位的最小阈值过去之后运行脚本。
 
+:::tip
+计时器的执行顺序将根据调用它们的上下文而有所不同。 如果两者都是主模块中调用的，则时序将受到进程性能的限制.
+::: 
 
-Tips: 计时器的执行顺序将根据调用它们的上下文而有所不同。 如果两者都是主模块中调用的，则时序将受到进程性能的限制.
-
-来看两个例子：
+看两个例子：
 
 1. 在主模块中执行
 
@@ -561,9 +663,10 @@ mainline 执行完开始事件循环，第一阶段是 timers，这时候 timers
 
 在同一微任务队列里，他在微任务里面优先级最高
 
-process.nextTick 从技术上讲不是事件循环的一部分。 相反，无论事件循环的当前阶段如何，都将在当前操作完成之后处理 nextTickQueue
+process.nextTick 从技术上讲不是事件循环的一部分。
+ 相反，无论事件循环的当前阶段如何，都将在当前操作完成之后处理 nextTickQueue
 
-### process.nextTick 和 setImmediate 的区别
+#### process.nextTick 和 setImmediate 的区别
 
 * process.nextTick 在同一阶段立即触发
 * setImmediate fires on the following iteration or 'tick' of the event loop (在事件循环接下来的阶段迭代中执行 - check 阶段)。
@@ -610,7 +713,7 @@ resolved 的 promise.then 回调像微处理一样执行，就像 process.nextTi
 
 优先级： process.nextTick > promise.then
 
-### 看代码输出顺序
+### 代码输出顺序
 
 ```js
 async function async1() {
@@ -645,106 +748,7 @@ console.log('script end')
 
 
 
-
-
-
-
-
-
-
-## nodejs传参
-`nodemon .\app.js`
-
-req 接来的传参
-
-req.body post
-req.query get
-
-req.params 针对于 /users/:id
-
-- config 配置文件
-- controller 解析用户
-- model 数据持久层
-- middleware 编写中间件
-- router 路由
-- util 工具模块
-- app.js 入口
-
-### node.js 版本切换
-在个⼈电脑上，我们可以安装⼀些⼯具，对 node.js 版
-本进行切换，例如 nvm 和 n。
-
-nvm 的全称就是 node version manager，意思就是能够管理 node 版本的⼀个⼯具，它提供了⼀种直接通过shell 执行的⽅式来进行安装。简单来说，就是通过将多个 node 版本安装在指定路径，然后通过 nvm 命令切换时，就会切换我们环境变量中 node 命令指定的实际执行的软件路径。
-```
-curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-
-```
-
-### 包管理⼯具 npm
-
-npx 是 npm@5 之后新增的⼀个命令，它使得我们可以
-在不安装模块到当前环境的前提下，使用⼀些 cli 功能。
-
-
-### node.js 的底层依赖
-
-node.js 的主要依赖⼦模块有以下内容：
-- V8 引擎：主要是 JS 语法的解析，有了它才能识别JS语法
-- libuv: c语言实现的⼀个⾼性能异步非阻塞 IO 库，用来实现 node.js 的事件循环
-- http-parser/llhttp: 底层处理 http 请求，处理报文，解析请求包等内容
-- openssl: 处理加密算法，各种框架运用⼴泛
-- zlib: 处理压缩等内容
-
-### node.js 常见内置模块
-
-- fs: nodejs的api调用文件系统，能够读取写⼊当前安装系统环境中硬盘的数据
-```js
-//文件系统,使用绝对路径更好
-const fs = require('fs')
-const path = require('path')
-
-const pathToFile = path.resolve(__dirname, 'util')
-
-//异步的
-fs.readFile(pathToFile, 'utf-8', function (err, res) {
-if (err) {
-    console.log(err);
-    return err
-}
-})
-
-//同步的
-const content = fs.readFileSync(pathToFile, 'utf-8')
-```
-- path: 路径系统，能够处理路径之间的问题
-```js
-const path = require('path')
-
-const resolvePath = path.resolve('a', 'b', 'c')//* 返回路径本身,绝对路径
-const joinPath = path.join('a', 'b', 'c')//返回路径
-
-console.log(__dirname);//当前文件夹名称
-console.log(__filename);//当前文件夹名称,包含文件名.xx
-```
-- crypto: 加密相关模块，能够以标准的加密⽅式对我们的内容进行加解密
-- dns: 处理 dns 相关内容，例如我们可以设置 dns 服务器等等
-- http: 设置⼀个 http 服务器，发送 http 请求，监听响应等等
-```js
-const http = require('http')
-
-const proxy = http.createServer((req, res) => {
-    res.end('hello')
-})
-proxy.listen(8888, '127.0.0.1', () => {
-    console.log('server start');
-})
-```
-- readline: 读取 stdin 的⼀行内容，可以读取、增加、删除我们命令行中的内容
-- os: 操作系统层⾯的⼀些 api，例如告诉你当前系统类型及⼀些参数
-- vm: ⼀个专门处理沙箱的虚拟机模块，底层主要来调用 v8 相关 api 进行代码解析。
-  - 把一个字符串变成可执行的代码过程，可以实现类似commonjs
-
-## node.js CommonJS
+#### node.js CommonJS
 
 V8 引擎：https://github.com/v8/v8 / 
 https://chromium.googlesource.com/v8/v8.git

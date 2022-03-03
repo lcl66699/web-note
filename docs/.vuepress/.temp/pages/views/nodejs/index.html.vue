@@ -1,4 +1,91 @@
 <template><h1 id="nodejs" tabindex="-1"><a class="header-anchor" href="#nodejs" aria-hidden="true">#</a> nodejs</h1>
+<h2 id="基础" tabindex="-1"><a class="header-anchor" href="#基础" aria-hidden="true">#</a> 基础</h2>
+<h3 id="express的req传参" tabindex="-1"><a class="header-anchor" href="#express的req传参" aria-hidden="true">#</a> express的req传参</h3>
+<p><code>nodemon .\app.js</code></p>
+<p>req 接来的传参</p>
+<p>req.body 处理post
+req.query 处理get</p>
+<p>req.params 针对于 /users/:id</p>
+<p>仅针对我的nodejs服务目录架构</p>
+<ul>
+<li>config 配置文件</li>
+<li>controller 解析用户</li>
+<li>model 数据持久层</li>
+<li>middleware 编写中间件</li>
+<li>router 路由</li>
+<li>util 工具模块</li>
+<li>app.js 入口</li>
+</ul>
+<h3 id="node-js-常见内置模块" tabindex="-1"><a class="header-anchor" href="#node-js-常见内置模块" aria-hidden="true">#</a> node.js 常见内置模块</h3>
+<ul>
+<li>fs: nodejs的api调用文件系统，能够读取写⼊当前安装系统环境中硬盘的数据</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token comment">//文件系统,使用绝对路径更好</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> pathToFile <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'util'</span><span class="token punctuation">)</span>
+
+<span class="token comment">//异步的</span>
+fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>pathToFile<span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">//同步的</span>
+<span class="token keyword">const</span> content <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>pathToFile<span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul>
+<li>path: 路径系统，能够处理路径之间的问题</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> resolvePath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token comment">//* 返回路径本身,绝对路径</span>
+<span class="token keyword">const</span> joinPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token comment">//返回路径</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//当前文件夹名称</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//当前文件夹名称,包含文件名.xx</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul>
+<li>crypto: 加密相关模块，能够以标准的加密⽅式对我们的内容进行加解密</li>
+<li>dns: 处理 dns 相关内容，例如我们可以设置 dns 服务器等等</li>
+<li>http: 设置⼀个 http 服务器，发送 http 请求，监听响应等等</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> proxy <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+proxy<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8888</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'server start'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul>
+<li>readline: 读取 stdin 的⼀行内容，可以读取、增加、删除我们命令行中的内容</li>
+<li>os: 操作系统层⾯的⼀些 api，例如告诉你当前系统类型及⼀些参数</li>
+<li>vm: ⼀个专门处理沙箱的虚拟机模块，底层主要来调用 v8 相关 api 进行代码解析。
+<ul>
+<li>把一个字符串变成可执行的代码过程，可以实现类似commonjs</li>
+</ul>
+</li>
+</ul>
+<h4 id="node-js-版本切换" tabindex="-1"><a class="header-anchor" href="#node-js-版本切换" aria-hidden="true">#</a> node.js 版本切换</h4>
+<p>在个⼈电脑上，我们可以安装⼀些⼯具，对 node.js 版
+本进行切换，例如 nvm 和 n。</p>
+<p>nvm 的全称就是 node version manager，意思就是能够管理 node 版本的⼀个⼯具，它提供了⼀种直接通过shell 执行的⽅式来进行安装。简单来说，就是通过将多个 node 版本安装在指定路径，然后通过 nvm 命令切换时，就会切换我们环境变量中 node 命令指定的实际执行的软件路径。</p>
+<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="node-js-的底层依赖" tabindex="-1"><a class="header-anchor" href="#node-js-的底层依赖" aria-hidden="true">#</a> node.js 的底层依赖</h3>
+<p>node.js 的主要依赖⼦模块有以下内容：</p>
+<ul>
+<li>V8 引擎：主要是 JS 语法的解析，有了它才能识别JS语法</li>
+<li>libuv: c语言实现的⼀个⾼性能异步非阻塞 IO 库，用来实现 node.js 的事件循环</li>
+<li>http-parser/llhttp: 底层处理 http 请求，处理报文，解析请求包等内容</li>
+<li>openssl: 处理加密算法，各种框架运用⼴泛</li>
+<li>zlib: 处理压缩等内容</li>
+</ul>
+<h4 id="包管理工具-npm" tabindex="-1"><a class="header-anchor" href="#包管理工具-npm" aria-hidden="true">#</a> 包管理⼯具 npm</h4>
+<p>npx 是 npm@5 之后新增的⼀个命令，它使得我们可以
+在不安装模块到当前环境的前提下，使用⼀些 cli 功能。</p>
 <h2 id="events" tabindex="-1"><a class="header-anchor" href="#events" aria-hidden="true">#</a> Events</h2>
 <p>events模块是node的核心模块之一，几乎所有常用的node模块都继承了events模块，比如http、fs等。</p>
 <p>模块本身非常简单，API虽然也不少，但常用的就那么几个，这里举几个简单例子。</p>
@@ -187,24 +274,28 @@ event<span class="token punctuation">.</span><span class="token function">emit</
 event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'once'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
 event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'once'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br></div></div><p>event.js</p>
-<h2 id="全局对象解析" tabindex="-1"><a class="header-anchor" href="#全局对象解析" aria-hidden="true">#</a> 全局对象解析</h2>
+<h2 id="全局对象global" tabindex="-1"><a class="header-anchor" href="#全局对象global" aria-hidden="true">#</a> 全局对象Global</h2>
 <p>JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。</p>
 <p>在浏览器 JavaScript 中，通常 window 是全局对象， 而 Node.js 中的全局对象是 global，所有全局变量（除了 global 本身以外）都是 global 对象的属性。</p>
 <p>在 Node.js 我们可以直接访问到 global 的属性，而不需要在应用中包含它。</p>
 <h3 id="全局对象和全局变量" tabindex="-1"><a class="header-anchor" href="#全局对象和全局变量" aria-hidden="true">#</a> 全局对象和全局变量</h3>
-<p>global 最根本的作用是作为全局变量的宿主。按照 ECMAScript 的定义，满足以下条 件的变量是全局变量：</p>
-<p>在最外层定义的变量；
-全局对象的属性；
-隐式定义的变量（未定义直接赋值的变量）。
-当你定义一个全局变量时，这个变量同时也会成为全局对象的属性，反之亦然。需要注 意的是，在 Node.js 中你不可能在最外层定义变量，因为所有用户代码都是属于当前模块的， 而模块本身不是最外层上下文。</p>
-<p>注意： 永远使用 var 定义变量以避免引入全局变量，因为全局变量会污染 命名空间，提高代码的耦合风险。</p>
+<p>global 最根本的作用是作为全局变量的宿主。按照 ECMAScript 的定义，满足以下条件的变量是全局变量：</p>
+<ul>
+<li>在最外层定义的变量；</li>
+<li>全局对象的属性；</li>
+<li>隐式定义的变量（未定义直接赋值的变量）。</li>
+<li>当你定义一个全局变量时，这个变量同时也会成为全局对象的属性，反之亦然。需要注 意的是，在 Node.js 中你不可能在最外层定义变量，因为所有用户代码都是属于当前模块的， 而模块本身不是最外层上下文。</li>
+</ul>
+<p>注意： 永远使用 var 定义变量以避免引入全局变量，因为全局变量会污染命名空间，提高代码的耦合风险。</p>
 <h3 id="filename" tabindex="-1"><a class="header-anchor" href="#filename" aria-hidden="true">#</a> __filename</h3>
 <p>__filename 表示当前正在执行的脚本的文件名。它将输出文件所在位置的绝对路径，且和命令行参数所指定的文件名不一定相同。 如果在模块中，返回的值是模块文件的路径。</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> __filename <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h3 id="dirname" tabindex="-1"><a class="header-anchor" href="#dirname" aria-hidden="true">#</a> __dirname</h3>
 <p>__dirname 表示当前执行脚本所在的目录。</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> __dirname <span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h3 id="settimeout-cb-ms" tabindex="-1"><a class="header-anchor" href="#settimeout-cb-ms" aria-hidden="true">#</a> setTimeout(cb, ms)</h3>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><ul>
+<li>setTimeout(cb, ms)</li>
+</ul>
 <p>setTimeout(cb, ms) 全局函数在指定的毫秒(ms)数后执行指定函数(cb)。：setTimeout() 只执行一次指定函数。</p>
 <p>返回一个代表定时器的句柄值。</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">printHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -226,12 +317,11 @@ event<span class="token punctuation">.</span><span class="token function">emit</
 <li>
 <p>console</p>
 </li>
-<li>
-<p>process</p>
-</li>
 </ul>
+<h3 id="process" tabindex="-1"><a class="header-anchor" href="#process" aria-hidden="true">#</a> process</h3>
 <p>process 是一个全局变量，即 global 对象的属性。</p>
-<p>它用于描述当前Node.js 进程状态的对象，提供了一个与操作系统的简单接口。通常在你写本地命令行程序的时候，少不了要 和它打交道。下面将会介绍 process 对象的一些最常用的成员方法。</p>
+<p>它用于描述当前Node.js 进程状态的对象，提供了一个与操作系统的简单接口。通常在写本地命令行程序的时候，少不了要和它打交道。
+下面将会介绍 process 对象的一些最常用的成员方法。</p>
 <ol>
 <li>
 <p>exit
@@ -300,6 +390,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>platform<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="node中的this" tabindex="-1"><a class="header-anchor" href="#node中的this" aria-hidden="true">#</a> node中的this</h3>
+<p>NodeJS全局范围中的这个是当前模块。导出对象，而不是全局对象。</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token comment">// this in NodeJS global scope is the current module.exports object, not the global object.</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// {}</span>
@@ -308,6 +399,9 @@ module<span class="token punctuation">.</span>exports<span class="token punctuat
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// { foo:5 }</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="node-js-事件循环模型" tabindex="-1"><a class="header-anchor" href="#node-js-事件循环模型" aria-hidden="true">#</a> node.js 事件循环模型</h2>
+<div class="custom-container tip"><p class="custom-container-title">小tips</p>
+<p>这里我在js模块下面，很详细的说了我对事件循环的理解，但是对nodejs一些描述的比较少</p>
+</div>
 <h3 id="什么是事件循环" tabindex="-1"><a class="header-anchor" href="#什么是事件循环" aria-hidden="true">#</a> 什么是事件循环</h3>
 <p>事件循环使 Node.js 可以通过将操作转移到系统内核中来执行非阻塞 I/O 操作（尽管 JavaScript 是单线程的）。</p>
 <p>由于大多数现代内核都是多线程的，因此它们可以处理在后台执行的多个操作。 当这些操作之一完成时，内核会告诉 Node.js，以便可以将适当的回调添加到轮询队列中以最终执行。</p>
@@ -341,8 +435,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>close callbacks：一些关闭回调，例如 socket.on('close', ...)。</li>
 </ol>
 <p>在每次事件循环运行之间，Node.js 会检查它是否正在等待任何异步 I/O 或 timers，如果没有，则将其干净地关闭。</p>
-<h2 id="各阶段详细解析" tabindex="-1"><a class="header-anchor" href="#各阶段详细解析" aria-hidden="true">#</a> 各阶段详细解析</h2>
-<h3 id="timers-计时器阶段" tabindex="-1"><a class="header-anchor" href="#timers-计时器阶段" aria-hidden="true">#</a> timers 计时器阶段</h3>
+<h3 id="各阶段详细解析" tabindex="-1"><a class="header-anchor" href="#各阶段详细解析" aria-hidden="true">#</a> 各阶段详细解析</h3>
+<h4 id="timers-计时器阶段" tabindex="-1"><a class="header-anchor" href="#timers-计时器阶段" aria-hidden="true">#</a> timers 计时器阶段</h4>
 <p>计时器可以在回调后面指定时间阈值，但这不是我们希望其执行的确切时间。 计时器回调将在经过指定的时间后尽早运行。 但是，操作系统调度或其他回调的运行可能会延迟它们。-- 执行的实际时间不确定</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -372,9 +466,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 等待 95 ms 过去时，fs.readFile 完成读取文件，并将需要 10ms 完成的其回调添加到轮询 (poll) 队列并执行。
 回调完成后，队列中不再有回调，此时事件循环已达到最早计时器 (timer) 的阈值 (100ms)，然后返回到计时器 (timer) 阶段以执行计时器的回调。
 在此示例中，您将看到计划的计时器与执行的回调之间的总延迟为 105ms。</p>
-<h3 id="pending-callbacks-阶段" tabindex="-1"><a class="header-anchor" href="#pending-callbacks-阶段" aria-hidden="true">#</a> pending callbacks 阶段</h3>
+<h4 id="pending-callbacks-阶段" tabindex="-1"><a class="header-anchor" href="#pending-callbacks-阶段" aria-hidden="true">#</a> pending callbacks 阶段</h4>
 <p>此阶段执行某些系统操作的回调，例如 TCP 错误。 平时无需关注</p>
-<h3 id="轮询-poll-阶段" tabindex="-1"><a class="header-anchor" href="#轮询-poll-阶段" aria-hidden="true">#</a> 轮询 poll 阶段</h3>
+<h4 id="轮询-poll-阶段" tabindex="-1"><a class="header-anchor" href="#轮询-poll-阶段" aria-hidden="true">#</a> 轮询 poll 阶段</h4>
 <p>轮询阶段具有两个主要功能：</p>
 <ol>
 <li>计算应该阻塞并 I/O 轮询的时间</li>
@@ -388,11 +482,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 2.2 如果脚本并没有 setImmediate 设置回调，则事件循环将等待 poll 队列中的回调，然后立即执行它们。</li>
 </ol>
 <p>一旦轮询队列 (poll queue) 为空，事件循环将检查哪些计时器 timer 已经到时间。 如果一个或多个计时器 timer 准备就绪，则事件循环将返回到计时器阶段，以执行这些计时器的回调。</p>
-<h3 id="检查阶段-check" tabindex="-1"><a class="header-anchor" href="#检查阶段-check" aria-hidden="true">#</a> 检查阶段 check</h3>
+<h4 id="检查阶段-check" tabindex="-1"><a class="header-anchor" href="#检查阶段-check" aria-hidden="true">#</a> 检查阶段 check</h4>
 <p>此阶段允许在轮询 poll 阶段完成后立即执行回调。 如果轮询 poll 阶段处于空闲，并且脚本已使用 setImmediate 进入 check 队列，则事件循环可能会进入 check 阶段，而不是在 poll 阶段等待。</p>
 <p>setImmediate 实际上是一个特殊的计时器，它在事件循环的单独阶段运行。 它使用 libuv API，该 API 计划在轮询阶段完成后执行回调。</p>
 <p>通常，在执行代码时，事件循环最终将到达轮询 poll 阶段，在该阶段它将等待传入的连接，请求等。但是，如果已使用 setImmediate 设置回调并且轮询阶段变为空闲，则它将将结束并进入 check 阶段，而不是等待轮询事件。</p>
-<h3 id="close-callbacks-阶段" tabindex="-1"><a class="header-anchor" href="#close-callbacks-阶段" aria-hidden="true">#</a> close callbacks 阶段</h3>
+<h4 id="close-callbacks-阶段" tabindex="-1"><a class="header-anchor" href="#close-callbacks-阶段" aria-hidden="true">#</a> close callbacks 阶段</h4>
 <p>如果套接字或句柄突然关闭（例如 socket.destroy），则在此阶段将发出 'close' 事件。 否则它将通过 process.nextTick 发出。</p>
 <h3 id="setimmediate-和-settimeout-的区别" tabindex="-1"><a class="header-anchor" href="#setimmediate-和-settimeout-的区别" aria-hidden="true">#</a> setImmediate 和 setTimeout 的区别</h3>
 <p>setImmediate 和 setTimeout 相似，但是根据调用时间的不同，它们的行为也不同。</p>
@@ -400,8 +494,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>setImmediate 设计为在当前轮询 poll 阶段完成后执行脚本。</li>
 <li>setTimeout 计划在以毫秒为单位的最小阈值过去之后运行脚本。</li>
 </ul>
-<p>Tips: 计时器的执行顺序将根据调用它们的上下文而有所不同。 如果两者都是主模块中调用的，则时序将受到进程性能的限制.</p>
-<p>来看两个例子：</p>
+<div class="custom-container tip"><p class="custom-container-title">TIP</p>
+<p>计时器的执行顺序将根据调用它们的上下文而有所不同。 如果两者都是主模块中调用的，则时序将受到进程性能的限制.</p>
+</div>
+<p>看两个例子：</p>
 <ol>
 <li>
 <p>在主模块中执行</p>
@@ -436,8 +532,9 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 如果有就先执行 timers 的回调，再执行 check 阶段的回调。因此这是 timers 的不确定性导致的。</p>
 <h3 id="process-nexttick微任务" tabindex="-1"><a class="header-anchor" href="#process-nexttick微任务" aria-hidden="true">#</a> process.nextTick微任务</h3>
 <p>在同一微任务队列里，他在微任务里面优先级最高</p>
-<p>process.nextTick 从技术上讲不是事件循环的一部分。 相反，无论事件循环的当前阶段如何，都将在当前操作完成之后处理 nextTickQueue</p>
-<h3 id="process-nexttick-和-setimmediate-的区别" tabindex="-1"><a class="header-anchor" href="#process-nexttick-和-setimmediate-的区别" aria-hidden="true">#</a> process.nextTick 和 setImmediate 的区别</h3>
+<p>process.nextTick 从技术上讲不是事件循环的一部分。
+相反，无论事件循环的当前阶段如何，都将在当前操作完成之后处理 nextTickQueue</p>
+<h4 id="process-nexttick-和-setimmediate-的区别" tabindex="-1"><a class="header-anchor" href="#process-nexttick-和-setimmediate-的区别" aria-hidden="true">#</a> process.nextTick 和 setImmediate 的区别</h4>
 <ul>
 <li>process.nextTick 在同一阶段立即触发</li>
 <li>setImmediate fires on the following iteration or 'tick' of the event loop (在事件循环接下来的阶段迭代中执行 - check 阶段)。</li>
@@ -475,7 +572,7 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 <p>在主线结束后以及事件循环的每个阶段之后，立即运行微任务回调。</p>
 <p>resolved 的 promise.then 回调像微处理一样执行，就像 process.nextTick 一样。 虽然，如果两者都在同一个微任务队列中，则将首先执行 process.nextTick 的回调。</p>
 <p>优先级： process.nextTick &gt; promise.then</p>
-<h3 id="看代码输出顺序" tabindex="-1"><a class="header-anchor" href="#看代码输出顺序" aria-hidden="true">#</a> 看代码输出顺序</h3>
+<h3 id="代码输出顺序" tabindex="-1"><a class="header-anchor" href="#代码输出顺序" aria-hidden="true">#</a> 代码输出顺序</h3>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">async1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'async1 start'</span><span class="token punctuation">)</span>
     <span class="token keyword">await</span> <span class="token function">async2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -504,92 +601,7 @@ process<span class="token punctuation">.</span><span class="token function">next
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'script end'</span><span class="token punctuation">)</span>
 
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h2 id="nodejs传参" tabindex="-1"><a class="header-anchor" href="#nodejs传参" aria-hidden="true">#</a> nodejs传参</h2>
-<p><code>nodemon .\app.js</code></p>
-<p>req 接来的传参</p>
-<p>req.body post
-req.query get</p>
-<p>req.params 针对于 /users/:id</p>
-<ul>
-<li>config 配置文件</li>
-<li>controller 解析用户</li>
-<li>model 数据持久层</li>
-<li>middleware 编写中间件</li>
-<li>router 路由</li>
-<li>util 工具模块</li>
-<li>app.js 入口</li>
-</ul>
-<h3 id="node-js-版本切换" tabindex="-1"><a class="header-anchor" href="#node-js-版本切换" aria-hidden="true">#</a> node.js 版本切换</h3>
-<p>在个⼈电脑上，我们可以安装⼀些⼯具，对 node.js 版
-本进行切换，例如 nvm 和 n。</p>
-<p>nvm 的全称就是 node version manager，意思就是能够管理 node 版本的⼀个⼯具，它提供了⼀种直接通过shell 执行的⽅式来进行安装。简单来说，就是通过将多个 node 版本安装在指定路径，然后通过 nvm 命令切换时，就会切换我们环境变量中 node 命令指定的实际执行的软件路径。</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="包管理工具-npm" tabindex="-1"><a class="header-anchor" href="#包管理工具-npm" aria-hidden="true">#</a> 包管理⼯具 npm</h3>
-<p>npx 是 npm@5 之后新增的⼀个命令，它使得我们可以
-在不安装模块到当前环境的前提下，使用⼀些 cli 功能。</p>
-<h3 id="node-js-的底层依赖" tabindex="-1"><a class="header-anchor" href="#node-js-的底层依赖" aria-hidden="true">#</a> node.js 的底层依赖</h3>
-<p>node.js 的主要依赖⼦模块有以下内容：</p>
-<ul>
-<li>V8 引擎：主要是 JS 语法的解析，有了它才能识别JS语法</li>
-<li>libuv: c语言实现的⼀个⾼性能异步非阻塞 IO 库，用来实现 node.js 的事件循环</li>
-<li>http-parser/llhttp: 底层处理 http 请求，处理报文，解析请求包等内容</li>
-<li>openssl: 处理加密算法，各种框架运用⼴泛</li>
-<li>zlib: 处理压缩等内容</li>
-</ul>
-<h3 id="node-js-常见内置模块" tabindex="-1"><a class="header-anchor" href="#node-js-常见内置模块" aria-hidden="true">#</a> node.js 常见内置模块</h3>
-<ul>
-<li>fs: nodejs的api调用文件系统，能够读取写⼊当前安装系统环境中硬盘的数据</li>
-</ul>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token comment">//文件系统,使用绝对路径更好</span>
-<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> pathToFile <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'util'</span><span class="token punctuation">)</span>
-
-<span class="token comment">//异步的</span>
-fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>pathToFile<span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> err
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token comment">//同步的</span>
-<span class="token keyword">const</span> content <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>pathToFile<span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul>
-<li>path: 路径系统，能够处理路径之间的问题</li>
-</ul>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> resolvePath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token comment">//* 返回路径本身,绝对路径</span>
-<span class="token keyword">const</span> joinPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token comment">//返回路径</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//当前文件夹名称</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//当前文件夹名称,包含文件名.xx</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul>
-<li>crypto: 加密相关模块，能够以标准的加密⽅式对我们的内容进行加解密</li>
-<li>dns: 处理 dns 相关内容，例如我们可以设置 dns 服务器等等</li>
-<li>http: 设置⼀个 http 服务器，发送 http 请求，监听响应等等</li>
-</ul>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> proxy <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-proxy<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">8888</span><span class="token punctuation">,</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'server start'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul>
-<li>readline: 读取 stdin 的⼀行内容，可以读取、增加、删除我们命令行中的内容</li>
-<li>os: 操作系统层⾯的⼀些 api，例如告诉你当前系统类型及⼀些参数</li>
-<li>vm: ⼀个专门处理沙箱的虚拟机模块，底层主要来调用 v8 相关 api 进行代码解析。
-<ul>
-<li>把一个字符串变成可执行的代码过程，可以实现类似commonjs</li>
-</ul>
-</li>
-</ul>
-<h2 id="node-js-commonjs" tabindex="-1"><a class="header-anchor" href="#node-js-commonjs" aria-hidden="true">#</a> node.js CommonJS</h2>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h4 id="node-js-commonjs" tabindex="-1"><a class="header-anchor" href="#node-js-commonjs" aria-hidden="true">#</a> node.js CommonJS</h4>
 <p>V8 引擎：https://github.com/v8/v8 /
 https://chromium.googlesource.com/v8/v8.git</p>
 <p>引擎只是解析层⾯，具体的上层还有许多具体环境的封

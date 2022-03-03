@@ -73,74 +73,14 @@ export const data = {
       "children": [
         {
           "level": 3,
-          "title": "20.有效的括号。",
-          "slug": "_20-有效的括号。",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "144.二叉树的前序遍历",
-          "slug": "_144-二叉树的前序遍历",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "933.最近的请求次数 时间和空间复杂度都是 On",
-          "slug": "_933-最近的请求次数-时间和空间复杂度都是-on",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "237，删除链表中的节点",
-          "slug": "_237-删除链表中的节点",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "206.反转链表",
-          "slug": "_206-反转链表",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "2.两数相加",
-          "slug": "_2-两数相加",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "83.删除排序链表中的重复元素。",
-          "slug": "_83-删除排序链表中的重复元素。",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "141，环形列表",
-          "slug": "_141-环形列表",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "3.无重复字符的最长子串",
-          "slug": "_3-无重复字符的最长子串",
+          "title": "20.有效的括号",
+          "slug": "_20-有效的括号",
           "children": []
         },
         {
           "level": 3,
           "title": "349.两个数组的交集",
           "slug": "_349-两个数组的交集",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "1.两数之和",
-          "slug": "_1-两数之和",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "704. 二分查找",
-          "slug": "_704-二分查找",
           "children": []
         },
         {

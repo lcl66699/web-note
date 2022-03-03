@@ -8,6 +8,31 @@ export const data = {
   "headers": [
     {
       "level": 2,
+      "title": "基础",
+      "slug": "基础",
+      "children": [
+        {
+          "level": 3,
+          "title": "express的req传参",
+          "slug": "express的req传参",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "node.js 常见内置模块",
+          "slug": "node-js-常见内置模块",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "node.js 的底层依赖",
+          "slug": "node-js-的底层依赖",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
       "title": "Events",
       "slug": "events",
       "children": [
@@ -57,8 +82,8 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "全局对象解析",
-      "slug": "全局对象解析",
+      "title": "全局对象Global",
+      "slug": "全局对象global",
       "children": [
         {
           "level": 3,
@@ -80,8 +105,8 @@ export const data = {
         },
         {
           "level": 3,
-          "title": "setTimeout(cb, ms)",
-          "slug": "settimeout-cb-ms",
+          "title": "process",
+          "slug": "process",
           "children": []
         },
         {
@@ -114,42 +139,11 @@ export const data = {
           "title": "各阶段概览",
           "slug": "各阶段概览",
           "children": []
-        }
-      ]
-    },
-    {
-      "level": 2,
-      "title": "各阶段详细解析",
-      "slug": "各阶段详细解析",
-      "children": [
-        {
-          "level": 3,
-          "title": "timers 计时器阶段",
-          "slug": "timers-计时器阶段",
-          "children": []
         },
         {
           "level": 3,
-          "title": "pending callbacks 阶段",
-          "slug": "pending-callbacks-阶段",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "轮询 poll 阶段",
-          "slug": "轮询-poll-阶段",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "检查阶段 check",
-          "slug": "检查阶段-check",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "close callbacks 阶段",
-          "slug": "close-callbacks-阶段",
+          "title": "各阶段详细解析",
+          "slug": "各阶段详细解析",
           "children": []
         },
         {
@@ -166,12 +160,6 @@ export const data = {
         },
         {
           "level": 3,
-          "title": "process.nextTick 和 setImmediate 的区别",
-          "slug": "process-nexttick-和-setimmediate-的区别",
-          "children": []
-        },
-        {
-          "level": 3,
           "title": "nextTick在事件循环中的位置",
           "slug": "nexttick在事件循环中的位置",
           "children": []
@@ -184,48 +172,11 @@ export const data = {
         },
         {
           "level": 3,
-          "title": "看代码输出顺序",
-          "slug": "看代码输出顺序",
+          "title": "代码输出顺序",
+          "slug": "代码输出顺序",
           "children": []
         }
       ]
-    },
-    {
-      "level": 2,
-      "title": "nodejs传参",
-      "slug": "nodejs传参",
-      "children": [
-        {
-          "level": 3,
-          "title": "node.js 版本切换",
-          "slug": "node-js-版本切换",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "包管理⼯具 npm",
-          "slug": "包管理工具-npm",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "node.js 的底层依赖",
-          "slug": "node-js-的底层依赖",
-          "children": []
-        },
-        {
-          "level": 3,
-          "title": "node.js 常见内置模块",
-          "slug": "node-js-常见内置模块",
-          "children": []
-        }
-      ]
-    },
-    {
-      "level": 2,
-      "title": "node.js CommonJS",
-      "slug": "node-js-commonjs",
-      "children": []
     },
     {
       "level": 2,
@@ -254,8 +205,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1645720235000,
+    "contributors": [
+      {
+        "name": "liuchenglong",
+        "email": "768206581@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "views/nodejs/readme.md"
 }

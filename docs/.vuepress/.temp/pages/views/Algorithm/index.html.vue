@@ -1,13 +1,11 @@
 <template><h1 id="数据结构与算法" tabindex="-1"><a class="header-anchor" href="#数据结构与算法" aria-hidden="true">#</a> 数据结构与算法</h1>
 <h2 id="时间复杂度" tabindex="-1"><a class="header-anchor" href="#时间复杂度" aria-hidden="true">#</a> 时间复杂度</h2>
-<pre><code>定性描述算法运行时间，取复杂度最高的，共同完成一个循环，是o1。
-</code></pre>
+<p>定性描述算法运行时间，取复杂度最高的，共同完成一个循环，是o1。</p>
 <ul>
 <li>o1 ologn on o nlogn on2 on3 o2n on！ 越往后面越需要优化</li>
 </ul>
 <h2 id="空间复杂度" tabindex="-1"><a class="header-anchor" href="#空间复杂度" aria-hidden="true">#</a> 空间复杂度</h2>
-<pre><code>在运行过程中临时占用存储空间的度量，取复杂度最高。
-</code></pre>
+<p>在运行过程中临时占用存储空间的度量，取复杂度最高。</p>
 <blockquote>
 <p>o1 on on 方 log n 二分搜索 n log n 排序 on3 2n 次方 树</p>
 </blockquote>
@@ -87,8 +85,7 @@ obj 的原型，Obj 原型，null
 fun 原型，Fun，然后 Obj，然后 null</p>
 </blockquote>
 <h2 id="集合" tabindex="-1"><a class="header-anchor" href="#集合" aria-hidden="true">#</a> 集合</h2>
-<pre><code>集合是一种无序且唯一的数据结构,new Set 对象存储的值总是唯一的
-</code></pre>
+<p>集合是一种无序且唯一的数据结构,new Set 对象存储的值总是唯一的</p>
 <h4 id="方法" tabindex="-1"><a class="header-anchor" href="#方法" aria-hidden="true">#</a> 方法</h4>
 <ul>
 <li>add 添加某个值，返回 Set 对象本身。</li>
@@ -102,8 +99,7 @@ fun 原型，Fun，然后 Obj，然后 null</p>
 <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> intersect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>a<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token operator">=></span> b<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// {2, 3}</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="字典" tabindex="-1"><a class="header-anchor" href="#字典" aria-hidden="true">#</a> 字典</h2>
-<pre><code>字典与集合类似，字典也是存储唯一值的数据结构，但它是以键值对形式存储，es6的 new Map
-</code></pre>
+<p>字典与集合类似，字典也是存储唯一值的数据结构，但它是以键值对形式存储，es6的 new Map</p>
 <p>map 本质上是键值对的集合（Hash 结构），但是传统上只能用字符串当作键。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
 <h4 id="实例的属性和操作方法" tabindex="-1"><a class="header-anchor" href="#实例的属性和操作方法" aria-hidden="true">#</a> 实例的属性和操作方法</h4>
 <ul>
@@ -177,7 +173,7 @@ set 方法设置 key 所对应的键值，然后返回整个 Map 结构。如果
 stack栈放基础类型string、number等。
 ...</p>
 <h2 id="leetcode-算法题解题思路" tabindex="-1"><a class="header-anchor" href="#leetcode-算法题解题思路" aria-hidden="true">#</a> leetcode 算法题解题思路</h2>
-<h3 id="_20-有效的括号。" tabindex="-1"><a class="header-anchor" href="#_20-有效的括号。" aria-hidden="true">#</a> 20.有效的括号。</h3>
+<h3 id="_20-有效的括号" tabindex="-1"><a class="header-anchor" href="#_20-有效的括号" aria-hidden="true">#</a> 20.有效的括号</h3>
 <p>解题：
 新建一个栈，遍历字符串，遇到左括号入栈，遇到右括号与栈顶括号匹配，就出栈。
 最后空了就合法，否则不合法。该题时间和空间复杂度都是 On</p>
@@ -235,19 +231,19 @@ stack栈放基础类型string、number等。
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> stack<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h3 id="_144-二叉树的前序遍历" tabindex="-1"><a class="header-anchor" href="#_144-二叉树的前序遍历" aria-hidden="true">#</a> 144.二叉树的前序遍历</h3>
-<h3 id="_933-最近的请求次数-时间和空间复杂度都是-on" tabindex="-1"><a class="header-anchor" href="#_933-最近的请求次数-时间和空间复杂度都是-on" aria-hidden="true">#</a> 933.最近的请求次数 时间和空间复杂度都是 On</h3>
-<h3 id="_237-删除链表中的节点" tabindex="-1"><a class="header-anchor" href="#_237-删除链表中的节点" aria-hidden="true">#</a> 237，删除链表中的节点</h3>
-<h3 id="_206-反转链表" tabindex="-1"><a class="header-anchor" href="#_206-反转链表" aria-hidden="true">#</a> 206.反转链表</h3>
-<h3 id="_2-两数相加" tabindex="-1"><a class="header-anchor" href="#_2-两数相加" aria-hidden="true">#</a> 2.两数相加</h3>
-<h3 id="_83-删除排序链表中的重复元素。" tabindex="-1"><a class="header-anchor" href="#_83-删除排序链表中的重复元素。" aria-hidden="true">#</a> 83.删除排序链表中的重复元素。</h3>
-<h3 id="_141-环形列表" tabindex="-1"><a class="header-anchor" href="#_141-环形列表" aria-hidden="true">#</a> 141，环形列表</h3>
-<h3 id="_3-无重复字符的最长子串" tabindex="-1"><a class="header-anchor" href="#_3-无重复字符的最长子串" aria-hidden="true">#</a> 3.无重复字符的最长子串</h3>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h4 id="_144-二叉树的前序遍历" tabindex="-1"><a class="header-anchor" href="#_144-二叉树的前序遍历" aria-hidden="true">#</a> 144.二叉树的前序遍历</h4>
+<h4 id="_933-最近的请求次数-时间和空间复杂度都是-on" tabindex="-1"><a class="header-anchor" href="#_933-最近的请求次数-时间和空间复杂度都是-on" aria-hidden="true">#</a> 933.最近的请求次数 时间和空间复杂度都是 On</h4>
+<h4 id="_237-删除链表中的节点" tabindex="-1"><a class="header-anchor" href="#_237-删除链表中的节点" aria-hidden="true">#</a> 237，删除链表中的节点</h4>
+<h4 id="_206-反转链表" tabindex="-1"><a class="header-anchor" href="#_206-反转链表" aria-hidden="true">#</a> 206.反转链表</h4>
+<h4 id="_2-两数相加" tabindex="-1"><a class="header-anchor" href="#_2-两数相加" aria-hidden="true">#</a> 2.两数相加</h4>
+<h4 id="_83-删除排序链表中的重复元素。" tabindex="-1"><a class="header-anchor" href="#_83-删除排序链表中的重复元素。" aria-hidden="true">#</a> 83.删除排序链表中的重复元素。</h4>
+<h4 id="_141-环形列表" tabindex="-1"><a class="header-anchor" href="#_141-环形列表" aria-hidden="true">#</a> 141，环形列表</h4>
+<h4 id="_3-无重复字符的最长子串" tabindex="-1"><a class="header-anchor" href="#_3-无重复字符的最长子串" aria-hidden="true">#</a> 3.无重复字符的最长子串</h4>
 <h3 id="_349-两个数组的交集" tabindex="-1"><a class="header-anchor" href="#_349-两个数组的交集" aria-hidden="true">#</a> 349.两个数组的交集</h3>
 <p>求交集 fillter，has
 求差集。正好反过来，感叹号 ❕</p>
-<h3 id="_1-两数之和" tabindex="-1"><a class="header-anchor" href="#_1-两数之和" aria-hidden="true">#</a> 1.两数之和</h3>
-<h3 id="_704-二分查找" tabindex="-1"><a class="header-anchor" href="#_704-二分查找" aria-hidden="true">#</a> 704. 二分查找</h3>
+<h4 id="_1-两数之和" tabindex="-1"><a class="header-anchor" href="#_1-两数之和" aria-hidden="true">#</a> 1.两数之和</h4>
+<h4 id="_704-二分查找" tabindex="-1"><a class="header-anchor" href="#_704-二分查找" aria-hidden="true">#</a> 704. 二分查找</h4>
 <h4 id="二分查找" tabindex="-1"><a class="header-anchor" href="#二分查找" aria-hidden="true">#</a> 二分查找</h4>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token doc-comment comment">/**
  * <span class="token keyword">@param</span> <span class="token class-name"><span class="token punctuation">{</span>number<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token parameter">nums</span>
