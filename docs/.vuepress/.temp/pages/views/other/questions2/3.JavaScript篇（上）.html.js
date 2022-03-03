@@ -457,8 +457,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1646297184000,
+    "contributors": [
+      {
+        "name": "liuchenglong",
+        "email": "768206581@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "views/other/questions2/3.JavaScript篇（上）.md"
 }

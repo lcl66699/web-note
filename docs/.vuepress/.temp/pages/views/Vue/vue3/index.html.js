@@ -7,8 +7,14 @@ export const data = {
   "excerpt": "",
   "headers": [],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1646297184000,
+    "contributors": [
+      {
+        "name": "liuchenglong",
+        "email": "768206581@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "views/Vue/vue3/readme.md"
 }
