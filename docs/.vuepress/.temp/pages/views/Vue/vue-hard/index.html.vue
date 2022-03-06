@@ -14,13 +14,34 @@
 <li>监听器 Observer ：对所有数据进行监听</li>
 <li>解析器 Compiler：对每个元素节点的指令进行扫描和解析，根据指令替换数据，绑定对应的更新函数。</li>
 </ul>
+<blockquote>
+<p>watcher主要做啥？</p>
+</blockquote>
+<blockquote>
+<p>Watcher订阅者是Observer和Compile之间通信的桥梁，主要做的事情是:</p>
+<ol>
+<li>在自身实例化时往属性订阅器(dep)里面添加自己</li>
+<li>自身必须有个update()方法</li>
+<li>待属性变动dep.notice()通知时，能调用自身的update()方法，并触发Compile中绑定的回调，则功成身退。</li>
+</ol>
+</blockquote>
+<p>Vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。主要分为以下几个步骤：</p>
 <h3 id="实现原理" tabindex="-1"><a class="header-anchor" href="#实现原理" aria-hidden="true">#</a> 实现原理</h3>
 <ol>
 <li>new Vue()执行初始化，对 data 通过 Object.defineProperty 进行响应化处理，这个过程发生在 Observer 中，每一个 key 都会有一个 dep 实例来存储 watcher 实例数组</li>
 <li>对模板进行编译时，v-开头的关键词作为指令解析，找到动态绑定的数据，从 data 中获取数据并初始化视图，这过程发生在 Compiler 里，如果遇到了 v-model，就监听 input 事件，更新 data 对应的数值。</li>
 <li>在解析指令的过程中，每一个指令都会定义一个更新函数和 watcher，之后对应数据变化时候 watcher 会调用更新函数（watcher 是对数据 key 的观察）。new watcher 实例的过程中会读取 data 的 key，触发 getter 的响应式收集，将对应的 watcher 添加到 dep 里。</li>
-<li>将来 data 中的数据一旦发生变化，会找到对应的 dep，通知所有的 watcher 执行更新函数。</li>
+<li>将来 data 中的数据一旦发生变化，会找到对应的 属性订阅器dep，通知所有的 watcher 执行更新函数。</li>
 </ol>
+<h3 id="对diff算法的理解" tabindex="-1"><a class="header-anchor" href="#对diff算法的理解" aria-hidden="true">#</a> 对diff算法的理解</h3>
+<p>作用：修改dom的一小段，不会引起dom树的重绘</p>
+<p>diff算法的实现原理:diff算法将virtual dom的某个节点数据改变后生成的新的vnode 与旧节点进行比较，并替换为新的节点，具体过程就是调用patch方法，比较新旧节点，边比较—边给真实的dom打补丁进行替换</p>
+<p>具体过程详解:</p>
+<p>a、在采用diff算法进行新旧节点进行比较的时候，比较是按照在同级进行比较的，不会进行跨级比较:</p>
+<p>b.当数据发生改变的时候, set方法会调用dep.notify通知所有的订阅者watcher,订阅者会调用patch函数给响应的dom进行打补丁，从而更新真实的视图</p>
+<p>c、 patch函数接受两个参数，第一个是旧节点，第二个是新节点，首先判断两个节点是否值得比较，值得比较则执行patchVnode网数，不值得比较则直接将旧节点替换为新节点。如果两个节点一样就直接检查对应的子节点，如果子节点不―样就说明整个子节点全部改变不再往下对比直接进行新旧节点的整体替换</p>
+<p>d、patchVnode函数:找到真实的dom元素;判断新旧节点是否指向同一个对象，如果是就直接返回;如果新旧节点都有文本节点，那么直接将新的文本节点赋值给dom元素并且更新旧的节点为新的节点;如果旧节点有子节点而新节点没有，则直接删除dom元素中的子节点;如果旧节点没有子节点，新节点有子节点，那么直接将新节点中的子节点更新到dom 中;如果两者都有子节点，那么继续调用函数updateChildren</p>
+<p>e、updateChildren函数:抽离出新旧节点的所有子节点，并且设置新旧节点的开始指针和结束指针，然后进行两辆比较，从而更新dom(调整顺序或者插入新的内容结束后删掉多余的内容)</p>
 <h3 id="实现一个响应式函数-对一个对象内的所有-key-添加响应式特性" tabindex="-1"><a class="header-anchor" href="#实现一个响应式函数-对一个对象内的所有-key-添加响应式特性" aria-hidden="true">#</a> 实现一个响应式函数,对一个对象内的所有 key 添加响应式特性</h3>
 <blockquote>
 <p>数据更新，劫持 setter</p>
@@ -177,7 +198,12 @@ user<span class="token punctuation">.</span><span class="token function">observe
 user<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"xiaoming"</span><span class="token punctuation">;</span> <span class="token comment">//SET  key=name value =xiaoming</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//GET  key=name value =xiaoming</span>
 <span class="token keyword">delete</span> user<span class="token punctuation">.</span>name<span class="token punctuation">;</span> <span class="token comment">//DELETE key=name value=</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br></div></div><h2 id="了解虚拟-dom-吗-浅谈优缺点" tabindex="-1"><a class="header-anchor" href="#了解虚拟-dom-吗-浅谈优缺点" aria-hidden="true">#</a> 了解虚拟 dom 吗，浅谈优缺点</h2>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br></div></div><h2 id="proxy只会代理对象的第一层-那么vue3又是怎样处理这个问题的呢" tabindex="-1"><a class="header-anchor" href="#proxy只会代理对象的第一层-那么vue3又是怎样处理这个问题的呢" aria-hidden="true">#</a> Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢?</h2>
+<p>判断当前Reflect.get 的返回值是否为Object，如果是则再通过reactive方法做代理，这样就实现了深度观测。</p>
+<h2 id="监测数组的时候可能触发多次get-set-那么如何防止触发多次呢" tabindex="-1"><a class="header-anchor" href="#监测数组的时候可能触发多次get-set-那么如何防止触发多次呢" aria-hidden="true">#</a> 监测数组的时候可能触发多次get/set，那么如何防止触发多次呢?</h2>
+<p>我们可以判断key是否为当前被代理对象target自身属性，也可以判断旧值与新
+值是否相等,只有满足以上两个条件之一时，才有可能执行trigger。</p>
+<h2 id="了解虚拟-dom-吗-浅谈优缺点" tabindex="-1"><a class="header-anchor" href="#了解虚拟-dom-吗-浅谈优缺点" aria-hidden="true">#</a> 了解虚拟 dom 吗，浅谈优缺点</h2>
 <p>对于真实 Dom 的抽象，用嵌套对象表示，用属性来描述节点，最终通过一系列操作映射到真实 dom 上</p>
 <h3 id="优点" tabindex="-1"><a class="header-anchor" href="#优点" aria-hidden="true">#</a> 优点：</h3>
 <ol>
@@ -323,6 +349,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </li>
 <li>
 <p>实现一个深拷贝</p>
+</li>
+</ol>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -330,37 +358,39 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token literal-property property">qwe</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">132</span><span class="token punctuation">,</span> <span class="token number">456</span><span class="token punctuation">,</span> <span class="token number">465465</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">65465</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>function deepClone(obj, hash = new WeakMap()) {
-//WeakMap弱引用,可以用对象作为一个key，又不会持有这个对象的引用，不影响垃圾回收
-if (obj === null) {
-return null
-}
-if (obj instanceof Date) {
-return new Date(obj)
-}
-if (obj instanceof RegExp) {
-return new RegExp(obj)
-}
-if (typeof obj !== 'object') {
-return obj
-}
-if (hash.has(obj)) {
-console.log('hash');
-return hash.get(obj)
-}</p>
-<pre><code> const resObj = Array.isArray(obj) ? [] : {}
 
- hash.set(obj, resObj)//破解循环引用
+<span class="token keyword">function</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> hash <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//WeakMap弱引用,可以用对象作为一个key，又不会持有这个对象的引用，不影响垃圾回收</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">Date</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">RegExp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">!==</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> obj
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hash'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
- Reflect.ownKeys(obj).forEach(key =&gt; {
-     resObj[key] = deepClone(obj[key], hash);
- });
- return resObj
-</code></pre>
-<p>}</p>
-<p>console.log(deepClone(obj));</p>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div></li>
+    <span class="token keyword">const</span> resObj <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    hash<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> resObj<span class="token punctuation">)</span><span class="token comment">//破解循环引用</span>
+
+    Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        resObj<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> resObj
+
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">deepClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><ol start="5">
 <li>
 <p>如何判断是对象类型 ，分别适用于哪些场景</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>

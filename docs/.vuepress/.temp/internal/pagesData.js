@@ -25,14 +25,8 @@ export const pagesData = {
   "v-c66d7ba6": () => import(/* webpackChunkName: "v-c66d7ba6" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/js/面向对象与原型,原型链.html.js").then(({ data }) => data),
   // path: /views/nodejs/
   "v-37b6ec6c": () => import(/* webpackChunkName: "v-37b6ec6c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/nodejs/index.html.js").then(({ data }) => data),
-  // path: /views/other/guide.html
-  "v-d2a54114": () => import(/* webpackChunkName: "v-d2a54114" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/guide.html.js").then(({ data }) => data),
-  // path: /views/other/
-  "v-32a37759": () => import(/* webpackChunkName: "v-32a37759" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/index.html.js").then(({ data }) => data),
   // path: /views/other/webpack.html
   "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
-  // path: /views/Principle/
-  "v-2b4f018d": () => import(/* webpackChunkName: "v-2b4f018d" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Principle/index.html.js").then(({ data }) => data),
   // path: /views/React/easy.html
   "v-7e784326": () => import(/* webpackChunkName: "v-7e784326" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/easy.html.js").then(({ data }) => data),
   // path: /views/React/
@@ -91,6 +85,8 @@ export const pagesData = {
   "v-4cb3c239": () => import(/* webpackChunkName: "v-4cb3c239" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-hard/
   "v-4a0622ba": () => import(/* webpackChunkName: "v-4a0622ba" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Vue/vue-hard/index.html.js").then(({ data }) => data),
+  // path: /views/Vue/vue-router/
+  "v-0a1cea9c": () => import(/* webpackChunkName: "v-0a1cea9c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Vue/vue-router/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue2-easy/
   "v-ca7f5562": () => import(/* webpackChunkName: "v-ca7f5562" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Vue/vue2-easy/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue2-mid/

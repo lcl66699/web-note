@@ -47,6 +47,7 @@ module.exports = {
           { text: 'vue-cli', link: '/views/Vue/vue-cli/' },
           { text: 'vue原理篇', link: '/views/Vue/vue-hard/' },
           { text: 'vuex原理', link: '/views/Vue/vuex/' },
+          { text: 'vue-router', link: '/views/Vue/vue-router/' },
         ]
       },
       {
@@ -82,12 +83,6 @@ module.exports = {
       ],
       //js
       '/views/js/': [
-        // {
-        //   text: '事件循环',
-        //   collapsible: true,
-        //   // link: '事件循环.md'
-        //   children: ['readme.md'],
-        // },
         'readme.md',
         'js模块化.md',
         'Es6.md',
@@ -110,6 +105,9 @@ module.exports = {
       ],
       '/views/Vue/vuex/': [
         '',
+      ],
+      '/views/Vue/vue-router/': [
+        'readme.md',
       ],
       '/views/Vue/vue2-easy/': [
         '',
@@ -145,7 +143,7 @@ module.exports = {
         ''
       ],
       "/views/other/questions2/": [
-        '',
+        'readme.md',
         '1.HTML篇.md',
         '2.CSS篇.md',
         '3.JavaScript篇（上）.md',
@@ -164,27 +162,6 @@ module.exports = {
       ],
     },
     darkMode: true,//是否启用切换夜间模式的功能。
-    // type: 'blog',
-    // // 博客设置
-    // blogConfig: {
-    //   category: {
-    //     location: 2, // 在导航栏菜单中所占的位置，默认2
-    //     // text: 'Categories' // 默认 “分类”
-    //   },
-    //   tag: {
-    //     location: 3, // 在导航栏菜单中所占的位置，默认3
-    //     // text: 'Tags' // 默认 “标签”
-    //   },
-    //   socialLinks: [
-    //     { icon: 'reco-github', link: 'https://github.com/recoluan' },
-    //     { icon: 'fa-camera', link: 'https://www.npmjs.com/~reco_luan' }
-    //   ]
-    // },
-    // 搜索设置
-    // search: true,
-    // searchMaxSuggestions: 10,
-    // subSidebar: 'auto',// 自动形成侧边导航
-    // editLink: true,
     sidebarDepth: 2,//设置根据页面标题自动生成的侧边栏的最大深度。
     // 最后更新时间
     lastUpdated: true,

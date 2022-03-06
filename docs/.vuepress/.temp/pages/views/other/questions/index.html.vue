@@ -97,12 +97,11 @@
 <h3 id="_1-这种模式-事件的触发和回调之间是同步的还是异步的" tabindex="-1"><a class="header-anchor" href="#_1-这种模式-事件的触发和回调之间是同步的还是异步的" aria-hidden="true">#</a> 1. 这种模式, 事件的触发和回调之间是同步的还是异步的?</h3>
 <p>eventemitter3 是同步的，一般是同步的</p>
 <h3 id="_2-实现一个简单的-eventemitter-并设置设置最大监听数" tabindex="-1"><a class="header-anchor" href="#_2-实现一个简单的-eventemitter-并设置设置最大监听数" aria-hidden="true">#</a> 2. 实现一个简单的 EventEmitter 并设置设置最大监听数?</h3>
-<pre><code>包含：
+<p>包含：
 on 添加监听
 emit 触发
 once 执行一次监听
-off 解除监听
-</code></pre>
+off 解除监听</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">EventEmitter</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>events <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//存  {add：[cb1,cb2]}</span>
@@ -442,4 +441,29 @@ DNS查找过程为：
 <p>浏览器向服务器发送异步请求，因为有些页面显示完成之后客户端仍需要与服务端保持联系。</p>
 <p>整个过程结束之后，浏览器关闭TCP连接。
 8. TCP四次挥手断开连接</p>
+<h2 id="vue" tabindex="-1"><a class="header-anchor" href="#vue" aria-hidden="true">#</a> vue</h2>
+<h3 id="vue模板编译原理" tabindex="-1"><a class="header-anchor" href="#vue模板编译原理" aria-hidden="true">#</a> vue模板编译原理</h3>
+<p>讲template转换render函数的过程，会经历以下阶段：</p>
+<ol>
+<li>生成AST语法树</li>
+<li>优化</li>
+<li>codegen</li>
+</ol>
+<p>首先解析模版,生成AST语法树(一种用JavaScript对象的形式来描述整个模板)。使用大量的正则表达式对模板进行解析，遇到标签。文本的时候都会执行对应的钩子进行相关处理。
+首先解析模版，生成AST语法树(一种用JavaScript对象的形式来描述整个模板)。使用大量的正则表达式对模板进行解析，遇到标签.文本的时候都会执行对应的钩子进行相关处理.</p>
+<p>Vue 的数据是响应式的，但其实模板中并不是所有的数据都是响应式的。有一些数据首次渲染后就不会再变化,对应的DOM也不会变化。那么优化过程就是深度遍历AST树，按照相关条件对树节点进行标记。这些被标记的节点(静态节点)我们就可以跳过对它们的比对，对运行时的模板起到很大的优化作用。</p>
+<p>编译的最后步是将优化后的AST树转换为可执行的代码。</p>
+<h3 id="vue2和vue3渲染器的diff算法" tabindex="-1"><a class="header-anchor" href="#vue2和vue3渲染器的diff算法" aria-hidden="true">#</a> vue2和vue3渲染器的diff算法</h3>
+<p>简单来说,diff算法有以下过程</p>
+<ol>
+<li>同级比较，再比较子节点</li>
+<li>先判断—方有子节点一方没有子节点的情况(如果新的 children没有子节点，将旧的子节点移除)</li>
+<li>比较都有子节点的情况(核心diff)</li>
+<li>递归比较子节点</li>
+</ol>
+<p>正常Diff两个树的时间复杂度是O(n^3)，但实际情况下我们很少会进行跨层级的移动DOM，所以Vue将 Diff进行了优化，从O(n^3) -&gt; O(n)，只有当新旧children都为多个子节点时才需要用核心的Diff 算法进行同层级比较。</p>
+<p>Vue2的核心Diff 算法采用了双端比较的算法，同时从新旧children 的两端开始进行比较，借助key值找到可复用的节点，再进行相关操作。相比 React的 Diff算法，同样情况下可以减少移动节点次数，减少不必要的性能损耗，更加的优雅。</p>
+<p>vue3.x借鉴了ivi算法和inferno算法</p>
+<p>在创建VNode时就确定其类型，以及在 mount/patch 的过程中采用位运算来判断一个VNode的类型，在这个基础之上再配合核心的 Diff算法，使得性能上较Vue2.x有了提升。(实际的实现可以结合Vue3.x源码看。)</p>
+<p>该算法中还运用了动态规划的思想求解最长递归子序列。</p>
 </template>

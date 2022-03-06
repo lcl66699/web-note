@@ -43,6 +43,10 @@ export const themeData = {
         {
           "text": "vuex原理",
           "link": "/views/Vue/vuex/"
+        },
+        {
+          "text": "vue-router",
+          "link": "/views/Vue/vue-router/"
         }
       ]
     },
@@ -141,6 +145,9 @@ export const themeData = {
     "/views/Vue/vuex/": [
       ""
     ],
+    "/views/Vue/vue-router/": [
+      "readme.md"
+    ],
     "/views/Vue/vue2-easy/": [
       ""
     ],
@@ -172,7 +179,7 @@ export const themeData = {
       ""
     ],
     "/views/other/questions2/": [
-      "",
+      "readme.md",
       "1.HTML篇.md",
       "2.CSS篇.md",
       "3.JavaScript篇（上）.md",

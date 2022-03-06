@@ -15,12 +15,44 @@
 - 监听器 Observer ：对所有数据进行监听
 - 解析器 Compiler：对每个元素节点的指令进行扫描和解析，根据指令替换数据，绑定对应的更新函数。
 
+> watcher主要做啥？
+
+>Watcher订阅者是Observer和Compile之间通信的桥梁，主要做的事情是:
+>1. 在自身实例化时往属性订阅器(dep)里面添加自己
+>2. 自身必须有个update()方法
+>3. 待属性变动dep.notice()通知时，能调用自身的update()方法，并触发Compile中绑定的回调，则功成身退。
+
+
+
+Vue.js 是采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听回调。主要分为以下几个步骤：
 ### 实现原理
 
 1. new Vue()执行初始化，对 data 通过 Object.defineProperty 进行响应化处理，这个过程发生在 Observer 中，每一个 key 都会有一个 dep 实例来存储 watcher 实例数组
 2. 对模板进行编译时，v-开头的关键词作为指令解析，找到动态绑定的数据，从 data 中获取数据并初始化视图，这过程发生在 Compiler 里，如果遇到了 v-model，就监听 input 事件，更新 data 对应的数值。
 3. 在解析指令的过程中，每一个指令都会定义一个更新函数和 watcher，之后对应数据变化时候 watcher 会调用更新函数（watcher 是对数据 key 的观察）。new watcher 实例的过程中会读取 data 的 key，触发 getter 的响应式收集，将对应的 watcher 添加到 dep 里。
-4. 将来 data 中的数据一旦发生变化，会找到对应的 dep，通知所有的 watcher 执行更新函数。
+4. 将来 data 中的数据一旦发生变化，会找到对应的 属性订阅器dep，通知所有的 watcher 执行更新函数。
+
+### 对diff算法的理解
+
+作用：修改dom的一小段，不会引起dom树的重绘
+
+diff算法的实现原理:diff算法将virtual dom的某个节点数据改变后生成的新的vnode 与旧节点进行比较，并替换为新的节点，具体过程就是调用patch方法，比较新旧节点，边比较—边给真实的dom打补丁进行替换
+
+具体过程详解:
+
+a、在采用diff算法进行新旧节点进行比较的时候，比较是按照在同级进行比较的，不会进行跨级比较:
+
+b.当数据发生改变的时候, set方法会调用dep.notify通知所有的订阅者watcher,订阅者会调用patch函数给响应的dom进行打补丁，从而更新真实的视图
+
+c、 patch函数接受两个参数，第一个是旧节点，第二个是新节点，首先判断两个节点是否值得比较，值得比较则执行patchVnode网数，不值得比较则直接将旧节点替换为新节点。如果两个节点一样就直接检查对应的子节点，如果子节点不―样就说明整个子节点全部改变不再往下对比直接进行新旧节点的整体替换
+
+d、patchVnode函数:找到真实的dom元素;判断新旧节点是否指向同一个对象，如果是就直接返回;如果新旧节点都有文本节点，那么直接将新的文本节点赋值给dom元素并且更新旧的节点为新的节点;如果旧节点有子节点而新节点没有，则直接删除dom元素中的子节点;如果旧节点没有子节点，新节点有子节点，那么直接将新节点中的子节点更新到dom 中;如果两者都有子节点，那么继续调用函数updateChildren
+
+e、updateChildren函数:抽离出新旧节点的所有子节点，并且设置新旧节点的开始指针和结束指针，然后进行两辆比较，从而更新dom(调整顺序或者插入新的内容结束后删掉多余的内容)
+
+
+
+
 
 ### 实现一个响应式函数,对一个对象内的所有 key 添加响应式特性
 
@@ -188,6 +220,16 @@ user.name = "xiaoming"; //SET  key=name value =xiaoming
 console.log(user.name); //GET  key=name value =xiaoming
 delete user.name; //DELETE key=name value=
 ```
+## Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢?
+判断当前Reflect.get 的返回值是否为Object，如果是则再通过reactive方法做代理，这样就实现了深度观测。
+
+## 监测数组的时候可能触发多次get/set，那么如何防止触发多次呢?
+
+我们可以判断key是否为当前被代理对象target自身属性，也可以判断旧值与新
+值是否相等,只有满足以上两个条件之一时，才有可能执行trigger。
+
+
+
 
 ## 了解虚拟 dom 吗，浅谈优缺点
 
@@ -337,49 +379,47 @@ console.log(render(vnode));
 
 4. 实现一个深拷贝
 
-   ```js
-   let obj = {
-     a: {
-       b: 1,
-       c: 12,
-     },
-     qwe: [132, 456, 465465, 4, 65465],
-   };
-   ```
+```js
+let obj = {
+  a: {
+    b: 1,
+    c: 12,
+  },
+  qwe: [132, 456, 465465, 4, 65465],
+};
 
-
-    function deepClone(obj, hash = new WeakMap()) {
-        //WeakMap弱引用,可以用对象作为一个key，又不会持有这个对象的引用，不影响垃圾回收
-        if (obj === null) {
-            return null
-        }
-        if (obj instanceof Date) {
-            return new Date(obj)
-        }
-        if (obj instanceof RegExp) {
-            return new RegExp(obj)
-        }
-        if (typeof obj !== 'object') {
-            return obj
-        }
-        if (hash.has(obj)) {
-            console.log('hash');
-            return hash.get(obj)
-        }
-
-        const resObj = Array.isArray(obj) ? [] : {}
-
-        hash.set(obj, resObj)//破解循环引用
-
-        Reflect.ownKeys(obj).forEach(key => {
-            resObj[key] = deepClone(obj[key], hash);
-        });
-        return resObj
-
+function deepClone(obj, hash = new WeakMap()) {
+    //WeakMap弱引用,可以用对象作为一个key，又不会持有这个对象的引用，不影响垃圾回收
+    if (obj === null) {
+        return null
+    }
+    if (obj instanceof Date) {
+        return new Date(obj)
+    }
+    if (obj instanceof RegExp) {
+        return new RegExp(obj)
+    }
+    if (typeof obj !== 'object') {
+        return obj
+    }
+    if (hash.has(obj)) {
+        console.log('hash');
+        return hash.get(obj)
     }
 
-    console.log(deepClone(obj));
-    ```
+    const resObj = Array.isArray(obj) ? [] : {}
+
+    hash.set(obj, resObj)//破解循环引用
+
+    Reflect.ownKeys(obj).forEach(key => {
+        resObj[key] = deepClone(obj[key], hash);
+    });
+    return resObj
+
+}
+
+console.log(deepClone(obj));
+```
 
 5. 如何判断是对象类型 ，分别适用于哪些场景
 

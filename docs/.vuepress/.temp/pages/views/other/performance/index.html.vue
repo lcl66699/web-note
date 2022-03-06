@@ -5,6 +5,61 @@
 <li>首次可交互时间 （比如输入框验证码）</li>
 <li>首次有意义内容渲染时间</li>
 </ol>
+<h2 id="性能优化-1" tabindex="-1"><a class="header-anchor" href="#性能优化-1" aria-hidden="true">#</a> 性能优化</h2>
+<h2 id="编码阶段的优化" tabindex="-1"><a class="header-anchor" href="#编码阶段的优化" aria-hidden="true">#</a> 编码阶段的优化</h2>
+<h3 id="vue框架层面" tabindex="-1"><a class="header-anchor" href="#vue框架层面" aria-hidden="true">#</a> vue框架层面</h3>
+<ol>
+<li>减少data中的数据，因为会增加getter、setter，会手机对应的watcher</li>
+<li>v-if和v-for不能连用</li>
+<li>可以采用keep-alive缓存组件</li>
+<li>一些业务情况，可以使用vif代替vshow</li>
+<li>key保证唯一，有利于diff算法更好做对比</li>
+<li>使用路由懒加载，异步组件+webpack的ensure()</li>
+<li>第三方模块按需引入</li>
+</ol>
+<h3 id="js层面" tabindex="-1"><a class="header-anchor" href="#js层面" aria-hidden="true">#</a> js层面</h3>
+<ol>
+<li>可以使用事件委托代替给每一个原生都绑定事件</li>
+<li>滚动或输入框等事件，可以结合节流、防抖</li>
+<li>图片懒加载，列表滚动到可视区域动态加载</li>
+<li>组件销毁清除定时器</li>
+<li>垃圾回收机制方面：减少全局变量，少用闭包</li>
+<li>减少http请求，或者合并http请求，用promise.all</li>
+</ol>
+<h3 id="css层面" tabindex="-1"><a class="header-anchor" href="#css层面" aria-hidden="true">#</a> css层面</h3>
+<ol>
+<li>减少回流与重绘</li>
+<li>减少CSS代码的层级，因为选择器是从左向右进行解析的</li>
+<li>尽量不要使用table布局， 一个小的改动可能会使整个table进行重新布局</li>
+<li>不要频繁操作元素的样式，对于静态页面，可以修改类名，而不是样式。</li>
+<li>使用iconfont代替小图，或者css雪碧图</li>
+</ol>
+<h3 id="html层面" tabindex="-1"><a class="header-anchor" href="#html层面" aria-hidden="true">#</a> html层面</h3>
+<ol>
+<li>HTML文件的代码层级尽量不要太深</li>
+<li>使用语义化的标签，来避免不标准语义化的特殊处理</li>
+</ol>
+<h3 id="seo优化" tabindex="-1"><a class="header-anchor" href="#seo优化" aria-hidden="true">#</a> seo优化</h3>
+<ol>
+<li>服务端渲染SSR</li>
+</ol>
+<h2 id="webpack方面的优化-运行时优化-和打包时的优化" tabindex="-1"><a class="header-anchor" href="#webpack方面的优化-运行时优化-和打包时的优化" aria-hidden="true">#</a> webpack方面的优化（运行时优化 和打包时的优化）</h2>
+<ol>
+<li>压缩代码（css压缩 图片压缩 js压缩）</li>
+<li>tree Shaking</li>
+<li>使用cdn加载第三方模块</li>
+<li>多线程打包 happypack</li>
+<li>splitChunks抽离公共文件</li>
+<li>sourceMap优化</li>
+<li>代码分割 做缓存</li>
+</ol>
+<p>开启nginx的zip</p>
+<h3 id="合理利用缓存" tabindex="-1"><a class="header-anchor" href="#合理利用缓存" aria-hidden="true">#</a> 合理利用缓存</h3>
+<ol>
+<li>cdn cdn预热（不通过访问，提前预热） cdn刷新（原站更新了，强制去cdn）</li>
+<li>对于一些服务器不需要的 可以session或location存 减少cookie存</li>
+<li>http缓存，对于一些不经常更新的数据，最好采用浏览器的304做协商缓存</li>
+</ol>
 <h2 id="前端的性能优化" tabindex="-1"><a class="header-anchor" href="#前端的性能优化" aria-hidden="true">#</a> 前端的性能优化</h2>
 <p>页面性能检测: https://developers.google.com/speed/pagespeed/insights/</p>
 <ol>
@@ -103,8 +158,7 @@ localStorage, sessionStorage</p>
     <span class="token keyword">return</span> url <span class="token operator">+</span> <span class="token string">'?x-oss-process=image/format,webp'</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h3 id="如果有巨量的图片需要展示在页面-除了懒加载这种方式-还有什么好的方法限制其同一时间加载的数量" tabindex="-1"><a class="header-anchor" href="#如果有巨量的图片需要展示在页面-除了懒加载这种方式-还有什么好的方法限制其同一时间加载的数量" aria-hidden="true">#</a> 如果有巨量的图片需要展示在页面, 除了懒加载这种方式, 还有什么好的方法限制其同一时间加载的数量?</h3>
-<pre><code>代码题, 使用promise实现并发控制
-</code></pre>
+<p>代码题, 使用promise实现并发控制</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">limitLoad</span><span class="token punctuation">(</span><span class="token parameter">urls<span class="token punctuation">,</span> handler<span class="token punctuation">,</span> limit</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 对数组做一个拷贝</span>
     <span class="token keyword">const</span> sequence <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>urls<span class="token punctuation">)</span>

@@ -8,6 +8,62 @@ export const data = {
   "headers": [
     {
       "level": 2,
+      "title": "性能优化",
+      "slug": "性能优化-1",
+      "children": []
+    },
+    {
+      "level": 2,
+      "title": "编码阶段的优化",
+      "slug": "编码阶段的优化",
+      "children": [
+        {
+          "level": 3,
+          "title": "vue框架层面",
+          "slug": "vue框架层面",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "js层面",
+          "slug": "js层面",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "css层面",
+          "slug": "css层面",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "html层面",
+          "slug": "html层面",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "seo优化",
+          "slug": "seo优化",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "webpack方面的优化（运行时优化 和打包时的优化）",
+      "slug": "webpack方面的优化-运行时优化-和打包时的优化",
+      "children": [
+        {
+          "level": 3,
+          "title": "合理利用缓存",
+          "slug": "合理利用缓存",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
       "title": "前端的性能优化",
       "slug": "前端的性能优化",
       "children": [

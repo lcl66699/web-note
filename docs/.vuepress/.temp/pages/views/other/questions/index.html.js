@@ -135,6 +135,25 @@ export const data = {
       "title": "写出输入网址后到页面展现的过程",
       "slug": "写出输入网址后到页面展现的过程",
       "children": []
+    },
+    {
+      "level": 2,
+      "title": "vue",
+      "slug": "vue",
+      "children": [
+        {
+          "level": 3,
+          "title": "vue模板编译原理",
+          "slug": "vue模板编译原理",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "vue2和vue3渲染器的diff算法",
+          "slug": "vue2和vue3渲染器的diff算法",
+          "children": []
+        }
+      ]
     }
   ],
   "git": {

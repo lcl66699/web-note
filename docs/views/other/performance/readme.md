@@ -5,7 +5,54 @@
 1. 首屏时间（比如刷新后的白屏）
 2. 首次可交互时间 （比如输入框验证码）
 3. 首次有意义内容渲染时间
+## 性能优化
 
+## 编码阶段的优化
+
+### vue框架层面
+1. 减少data中的数据，因为会增加getter、setter，会手机对应的watcher
+2. v-if和v-for不能连用
+3. 可以采用keep-alive缓存组件
+4. 一些业务情况，可以使用vif代替vshow
+5. key保证唯一，有利于diff算法更好做对比
+6. 使用路由懒加载，异步组件+webpack的ensure()
+7. 第三方模块按需引入
+  
+
+### js层面
+1. 可以使用事件委托代替给每一个原生都绑定事件
+2. 滚动或输入框等事件，可以结合节流、防抖
+3. 图片懒加载，列表滚动到可视区域动态加载
+4. 组件销毁清除定时器
+5. 垃圾回收机制方面：减少全局变量，少用闭包
+6. 减少http请求，或者合并http请求，用promise.all
+
+### css层面
+1. 减少回流与重绘
+2. 减少CSS代码的层级，因为选择器是从左向右进行解析的
+3. 尽量不要使用table布局， 一个小的改动可能会使整个table进行重新布局
+4. 不要频繁操作元素的样式，对于静态页面，可以修改类名，而不是样式。
+5. 使用iconfont代替小图，或者css雪碧图
+### html层面
+1. HTML文件的代码层级尽量不要太深
+2. 使用语义化的标签，来避免不标准语义化的特殊处理
+### seo优化
+1. 服务端渲染SSR
+
+## webpack方面的优化（运行时优化 和打包时的优化）
+1. 压缩代码（css压缩 图片压缩 js压缩）
+2. tree Shaking
+3. 使用cdn加载第三方模块
+4. 多线程打包 happypack
+5. splitChunks抽离公共文件
+6. sourceMap优化
+7. 代码分割 做缓存
+
+开启nginx的zip
+### 合理利用缓存
+1. cdn cdn预热（不通过访问，提前预热） cdn刷新（原站更新了，强制去cdn）
+2. 对于一些服务器不需要的 可以session或location存 减少cookie存 
+3.  http缓存，对于一些不经常更新的数据，最好采用浏览器的304做协商缓存
 ## 前端的性能优化
 
 页面性能检测: https://developers.google.com/speed/pagespeed/insights/ 
@@ -100,7 +147,7 @@ export function getWebpImageUrl(url) {
 
 ### 如果有巨量的图片需要展示在页面, 除了懒加载这种方式, 还有什么好的方法限制其同一时间加载的数量?
 
-    代码题, 使用promise实现并发控制
+代码题, 使用promise实现并发控制
     
 ```js
 function limitLoad(urls, handler, limit) {

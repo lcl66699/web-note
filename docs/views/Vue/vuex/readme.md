@@ -72,7 +72,7 @@ vuex
 
 1. State
 
-当前应⽤状态，可以理解为组件的data⽅法返回的Object
+当前应⽤状态，可以理解为组件的data方法返回的Object
 
 2. Mutations
 
@@ -106,6 +106,8 @@ modules的主要功能是为了防⽌state过于庞⼤和冗余，所以对其�
 
 
 > [开发 vue 插件](https://cn.vuejs.org/v2/guide/plugins.html)
+
+
 首先vuex是vue的一个插件，通过Vue.use()使用
 
 每个组件（也就是Vue实例）在beforeCreate的生命周期中都通过混入（Vue.mixin）
@@ -124,7 +126,7 @@ vuex状态机，是总线机制，单例模式实现的（全局只能有一个�
 Store 对象解析
 
 
-看源码
+> ### vuex3源码部分
 ### Step1 - store 注册
 
 ```js
@@ -410,17 +412,99 @@ function installModule(store, state, path, root) {
 
 
 以上只是以最简化的代码实现了 `vuex` 核心的 `state` `module` `actions` `mutations` `getters` 机制，
-如果对源代码感兴趣，可以看[若川的文章](https://juejin.cn/post/6844904001192853511#heading-12)
+如果对源代码感兴趣，可以看[vuex 源码整体架构](https://juejin.cn/post/6844904001192853511#heading-12)
+
+
+
+
+
+## vuex3常见问题
+
+### vuex修改数据为何兜一圈？
+异步操作先actions调用muations然后muations去修改
+
+
+### vuex什么时候进行的初始化？ 
+beforeCreate
+
+### vuex自己定义了告警，为什么不用console.assert？
+console.assert 函数报错不会阻止后续代码执行
+因为要throw Error，把进程打断
+
+### object.create(null) 和{}区别 
+- 原型链问题
+  - object.create(null).__proto__为undefined
+  - {}.__proto指向Object.prototype
+
+
+
+## vuex4
+
+### 安装
+```sh
+yarn create vite vue3-vuex4<项⽬名，自定义> 
+cd vue3-vuex4
+yarn // 安装 node_modules
+yarn add vuex@next // 安装 vuex
+yarn dev // 启动项⽬并访问 localhost:3000
+```
+### 用法
+
+- createStore 不传参数 
+在 vue3 中使⽤ vuex，⼊⼝代码如下（main.js）：
+```js
+import { createApp } from 'vue'
+import { createStore } from 'vuex'
+import App from './App.vue'
+const app = createApp(App);
+const store = createStore({})
+app.use(store);
+console.log(store)
+app.mount('#app')
+```
+app.use 注册插件（vue2 则为 Vue.use）时，会⾃动调⽤参数的 install 方法（例如 vue-router），定位到 node_modules/vuex/dist/vuex.esm-bundler.js ⽂件，找到 install 定义的位置：
+
+跨组件传递状态的方法中，有 provide/inject 组合因此下⾯的代码可以访问到 store
+```vue
+ // App.vue ⽂件修改
+<script setup> 
+  import { inject } from 'vue'
+  import HelloWorld from './components/HelloWorld.vue'
+  const store = inject('store') 
+</script>
+<template>
+  <pre>{{ JSON.stringify(store, null, 2) }}</pre>
+  <HelloWorld msg="hello vue" />
+</template>
+
+```
+
+#### 源码开始
+
+* 将 vuex 的核⼼源码分 3 部分解读，每部分将结合具体的业务代码进⾏展开（源码⽂件 node_modules/vuex/dist/vuex.esm-bundler.js）。
+1. 创建 store，可⻅ ModuleCollection 及末尾的 installModule 和resetStoreState 是需要关注的⽅法。 
+   1. ModuleCollection 将参数 options 进⾏转换，本质是对 options 对象的包装与扩充，扩充结果作为store._modules 的值
+   2. installModule 的作⽤就是把 state、actions、mutations、getters 分别注册到相应的模块名称下
+   3. resetStoreState 将树状结构的 state，统⼀使⽤ reactive 代理后，挂载 store._state 下，这样未来对 state 的更新，将具有被追踪的能⼒。resetStoreState 除了初始化会调⽤，重置 store 时以及动态注册模块时都会⽤到。
+2. store 分发
+3. state 变更引发副作⽤和视图更新=>reactive
+
+##### vuex4源码dispatch 和 commit 将原型上的同名方法重写？
+⽬的就是保证，当解构 commit/dispatch 时，this 指向依旧为 store 实例
+
+
+
 
 
 
 ## SSR
 
+服务端渲染
 > web1.0 时代，几乎所有的页面都是服务端渲染的...现在，只是又绕回去了而已
 
 #### CSR VS SSR
 
-首先让我们看看 CSR 的过程（划重点，浏览器渲染原理基本流程）
+首先让我们看看 CSR 的过程（浏览器渲染原理基本流程）
 
 ![csr](https://raw.githubusercontent.com/yacan8/blog/master/images/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/image-20200730191954015.png)
 
@@ -449,7 +533,7 @@ function installModule(store, state, path, root) {
 
 但其实，现在 `SSR` 也并没有大行其道，凡事有利有弊，`SSR` 也是有缺点的
 
-1.  复杂，同构项目的代码复杂度直线上升，因为要兼容两种环境
+1. 复杂，同构项目的代码复杂度直线上升，因为要兼容两种环境
 2. 对服务端的开销大，既然 `HTML` 都是拼接好的，那么传输的数据肯定就大多了，同时，拿 `Node` 举例，在处理 `Computed` 密集型逻辑的时候是阻塞的，不得不上负载均衡、缓存策略等来提升
 3. CI/CD 更麻烦了，需要在一个 `Server` 环境，比如 `Node`
 
@@ -457,7 +541,7 @@ function installModule(store, state, path, root) {
 
 
 
-彩蛋，这里说到了 `CSR` 和 `SSR` ，其实我们现今常见的渲染方案有6-7种吧！
+说到了 `CSR` 和 `SSR` ，其实我们现今常见的渲染方案有6-7种吧！
 
 
 
@@ -543,47 +627,24 @@ function installModule(store, state, path, root) {
 5. 分块传输，这样前置的 `CGI` 完成就会渲染输出，但是这个方案难啊
 6. [JSC](https://juejin.cn/post/6844903476120518670)，就是不用 `vue-loader`
 
-
-
-
-
-
-
-
-
-
-
-
-## 常见问题
-
-### vuex修改数据为何兜一圈？
-异步操作先actions调用muations然后muations去修改
-
-
-### vuex什么时候进行的初始化？ 
-beforeCreate
-
-
-
-### vuex自己定义了告警，为什么不用console.assert？
-console.assert 函数报错不会阻止后续代码执行
-因为要throw Error，把进程打断
-
-### object.create(null) 和{}区别 
-- 原型链问题
-  - object.create(null).__proto__为undefined
-  - {}.__proto指向Object.prototype
-
-
-### ssr特点
+#### ssr特点
 优点 首屏加载快、有利于seo
 缺点:server压力大，负载均衡
 
 服务端为什么不导出一个router实例，而是工程模式函数封装
-因为用户每一个请求都创建一个实例
+因为用户每一个请求都创建一个实例·
+
+
+
+
+
+
+
+
+
 
 # vuex 4版本
-vuex 是⼀个专为 vue.js 应⽤程序开发的状态管理模式 + 库。它采⽤集中式存储管理应⽤的所有组件的状态，并以相应的规则保证状态以⼀种可预测的⽅式发生变化。
+vuex 是⼀个专为 vue.js 应⽤程序开发的状态管理模式 + 库。它采⽤集中式存储管理应⽤的所有组件的状态，并以相应的规则保证状态以⼀种可预测的方式发生变化。
 与 vuex 4 相匹配的版本是 vue 3。
 
 在组件访问store inject或者$stroe

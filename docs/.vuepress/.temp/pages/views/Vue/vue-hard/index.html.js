@@ -19,6 +19,12 @@ export const data = {
         },
         {
           "level": 3,
+          "title": "对diff算法的理解",
+          "slug": "对diff算法的理解",
+          "children": []
+        },
+        {
+          "level": 3,
           "title": "实现一个响应式函数,对一个对象内的所有 key 添加响应式特性",
           "slug": "实现一个响应式函数-对一个对象内的所有-key-添加响应式特性",
           "children": []
@@ -35,6 +41,18 @@ export const data = {
       "level": 2,
       "title": "实现基于 proxy 的响应式？能够监听对象的删除操作？要求最终的输出如下方代码所示",
       "slug": "实现基于-proxy-的响应式-能够监听对象的删除操作-要求最终的输出如下方代码所示",
+      "children": []
+    },
+    {
+      "level": 2,
+      "title": "Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢?",
+      "slug": "proxy只会代理对象的第一层-那么vue3又是怎样处理这个问题的呢",
+      "children": []
+    },
+    {
+      "level": 2,
+      "title": "监测数组的时候可能触发多次get/set，那么如何防止触发多次呢?",
+      "slug": "监测数组的时候可能触发多次get-set-那么如何防止触发多次呢",
       "children": []
     },
     {

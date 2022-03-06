@@ -66,7 +66,7 @@ vuex</p>
 <ol>
 <li>State</li>
 </ol>
-<p>当前应⽤状态，可以理解为组件的data⽅法返回的Object</p>
+<p>当前应⽤状态，可以理解为组件的data方法返回的Object</p>
 <ol start="2">
 <li>Mutations</li>
 </ol>
@@ -93,9 +93,9 @@ vuex</p>
 </ol>
 <h2 id="vuex-3原理" tabindex="-1"><a class="header-anchor" href="#vuex-3原理" aria-hidden="true">#</a> vuex 3原理</h2>
 <blockquote>
-<p><a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener noreferrer">开发 vue 插件<ExternalLinkIcon/></a>
-首先vuex是vue的一个插件，通过Vue.use()使用</p>
+<p><a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener noreferrer">开发 vue 插件<ExternalLinkIcon/></a></p>
 </blockquote>
+<p>首先vuex是vue的一个插件，通过Vue.use()使用</p>
 <p>每个组件（也就是Vue实例）在beforeCreate的生命周期中都通过混入（Vue.mixin）
 将 <code>$store</code> 这样的快速访问 <code>store</code> 的快捷属性注入到每一个 <code>vue</code> 实例中
 也就是为啥可以通过<code>this.$store.dispatch</code> 等调用方法的原因。
@@ -106,7 +106,9 @@ vuex</p>
 <p>结构原理
 初始化挂载
 Store 对象解析</p>
-<p>看源码</p>
+<blockquote>
+<h3 id="vuex3源码部分" tabindex="-1"><a class="header-anchor" href="#vuex3源码部分" aria-hidden="true">#</a> vuex3源码部分</h3>
+</blockquote>
 <h3 id="step1-store-注册" tabindex="-1"><a class="header-anchor" href="#step1-store-注册" aria-hidden="true">#</a> Step1 - store 注册</h3>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token doc-comment comment">/**
 * store.js - store 注册
@@ -356,13 +358,81 @@ Store 对象解析</p>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br></div></div><h3 id="step6-插件机制" tabindex="-1"><a class="header-anchor" href="#step6-插件机制" aria-hidden="true">#</a> Step6 - 插件机制</h3>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token punctuation">(</span>options<span class="token punctuation">.</span>plugins <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">plugin</span> <span class="token operator">=></span> <span class="token function">plugin</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><p>以上只是以最简化的代码实现了 <code>vuex</code> 核心的 <code>state</code> <code>module</code> <code>actions</code> <code>mutations</code> <code>getters</code> 机制，
-如果对源代码感兴趣，可以看<a href="https://juejin.cn/post/6844904001192853511#heading-12" target="_blank" rel="noopener noreferrer">若川的文章<ExternalLinkIcon/></a></p>
+如果对源代码感兴趣，可以看<a href="https://juejin.cn/post/6844904001192853511#heading-12" target="_blank" rel="noopener noreferrer">vuex 源码整体架构<ExternalLinkIcon/></a></p>
+<h2 id="vuex3常见问题" tabindex="-1"><a class="header-anchor" href="#vuex3常见问题" aria-hidden="true">#</a> vuex3常见问题</h2>
+<h3 id="vuex修改数据为何兜一圈" tabindex="-1"><a class="header-anchor" href="#vuex修改数据为何兜一圈" aria-hidden="true">#</a> vuex修改数据为何兜一圈？</h3>
+<p>异步操作先actions调用muations然后muations去修改</p>
+<h3 id="vuex什么时候进行的初始化" tabindex="-1"><a class="header-anchor" href="#vuex什么时候进行的初始化" aria-hidden="true">#</a> vuex什么时候进行的初始化？</h3>
+<p>beforeCreate</p>
+<h3 id="vuex自己定义了告警-为什么不用console-assert" tabindex="-1"><a class="header-anchor" href="#vuex自己定义了告警-为什么不用console-assert" aria-hidden="true">#</a> vuex自己定义了告警，为什么不用console.assert？</h3>
+<p>console.assert 函数报错不会阻止后续代码执行
+因为要throw Error，把进程打断</p>
+<h3 id="object-create-null-和-区别" tabindex="-1"><a class="header-anchor" href="#object-create-null-和-区别" aria-hidden="true">#</a> object.create(null) 和{}区别</h3>
+<ul>
+<li>原型链问题
+<ul>
+<li>object.create(null).__proto__为undefined</li>
+<li>{}.__proto指向Object.prototype</li>
+</ul>
+</li>
+</ul>
+<h2 id="vuex4" tabindex="-1"><a class="header-anchor" href="#vuex4" aria-hidden="true">#</a> vuex4</h2>
+<h3 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h3>
+<div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token function">yarn</span> create vite vue3-vuex<span class="token operator"><span class="token file-descriptor important">4</span>&lt;</span>项⽬名，自定义<span class="token operator">></span> 
+<span class="token builtin class-name">cd</span> vue3-vuex4
+<span class="token function">yarn</span> // 安装 node_modules
+<span class="token function">yarn</span> <span class="token function">add</span> vuex@next // 安装 vuex
+<span class="token function">yarn</span> dev // 启动项⽬并访问 localhost:3000
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="用法" tabindex="-1"><a class="header-anchor" href="#用法" aria-hidden="true">#</a> 用法</h3>
+<ul>
+<li>createStore 不传参数
+在 vue3 中使⽤ vuex，⼊⼝代码如下（main.js）：</li>
+</ul>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>app.use 注册插件（vue2 则为 Vue.use）时，会⾃动调⽤参数的 install 方法（例如 vue-router），定位到 node_modules/vuex/dist/vuex.esm-bundler.js ⽂件，找到 install 定义的位置：</p>
+<p>跨组件传递状态的方法中，有 provide/inject 组合因此下⾯的代码可以访问到 store</p>
+<div class="language-vue ext-vue line-numbers-mode"><pre v-pre class="language-vue"><code> // App.vue ⽂件修改
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"> 
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> inject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+  <span class="token keyword">import</span> HelloWorld <span class="token keyword">from</span> <span class="token string">'./components/HelloWorld.vue'</span>
+  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">inject</span><span class="token punctuation">(</span><span class="token string">'store'</span><span class="token punctuation">)</span> 
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span>{{ JSON.stringify(store, null, 2) }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HelloWorld</span> <span class="token attr-name">msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hello vue<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h4 id="源码开始" tabindex="-1"><a class="header-anchor" href="#源码开始" aria-hidden="true">#</a> 源码开始</h4>
+<ul>
+<li>将 vuex 的核⼼源码分 3 部分解读，每部分将结合具体的业务代码进⾏展开（源码⽂件 node_modules/vuex/dist/vuex.esm-bundler.js）。</li>
+</ul>
+<ol>
+<li>创建 store，可⻅ ModuleCollection 及末尾的 installModule 和resetStoreState 是需要关注的⽅法。
+<ol>
+<li>ModuleCollection 将参数 options 进⾏转换，本质是对 options 对象的包装与扩充，扩充结果作为store._modules 的值</li>
+<li>installModule 的作⽤就是把 state、actions、mutations、getters 分别注册到相应的模块名称下</li>
+<li>resetStoreState 将树状结构的 state，统⼀使⽤ reactive 代理后，挂载 store._state 下，这样未来对 state 的更新，将具有被追踪的能⼒。resetStoreState 除了初始化会调⽤，重置 store 时以及动态注册模块时都会⽤到。</li>
+</ol>
+</li>
+<li>store 分发</li>
+<li>state 变更引发副作⽤和视图更新=&gt;reactive</li>
+</ol>
+<h5 id="vuex4源码dispatch-和-commit-将原型上的同名方法重写" tabindex="-1"><a class="header-anchor" href="#vuex4源码dispatch-和-commit-将原型上的同名方法重写" aria-hidden="true">#</a> vuex4源码dispatch 和 commit 将原型上的同名方法重写？</h5>
+<p>⽬的就是保证，当解构 commit/dispatch 时，this 指向依旧为 store 实例</p>
 <h2 id="ssr" tabindex="-1"><a class="header-anchor" href="#ssr" aria-hidden="true">#</a> SSR</h2>
+<p>服务端渲染</p>
 <blockquote>
 <p>web1.0 时代，几乎所有的页面都是服务端渲染的...现在，只是又绕回去了而已</p>
 </blockquote>
 <h4 id="csr-vs-ssr" tabindex="-1"><a class="header-anchor" href="#csr-vs-ssr" aria-hidden="true">#</a> CSR VS SSR</h4>
-<p>首先让我们看看 CSR 的过程（划重点，浏览器渲染原理基本流程）</p>
+<p>首先让我们看看 CSR 的过程（浏览器渲染原理基本流程）</p>
 <p><img src="https://raw.githubusercontent.com/yacan8/blog/master/images/服务端渲染原理/image-20200730191954015.png" alt="csr"></p>
 <p>过程如下：</p>
 <ol>
@@ -387,7 +457,7 @@ Store 对象解析</p>
 <blockquote>
 <p>一般来说，ToB 的业务场景基本不需要 SSR，需要 SSR 的一定是对首屏或者 SEO 有强诉求的，不然没必要搞那么麻烦，简洁是避免麻烦的最佳实践，同时，随着浏览器发展，越来越快，爬虫也越来越智能，SSR 的场景在被压缩</p>
 </blockquote>
-<p>彩蛋，这里说到了 <code>CSR</code> 和 <code>SSR</code> ，其实我们现今常见的渲染方案有6-7种吧！</p>
+<p>说到了 <code>CSR</code> 和 <code>SSR</code> ，其实我们现今常见的渲染方案有6-7种吧！</p>
 <p><img src="https://image-static.segmentfault.com/324/269/3242695953-5c7c0095b3cf5_fix732" alt="render"></p>
 <p>注意，这里提到了 <code>hydration</code> 这个词，这是一个很棒的思路，对 <code>FP</code> 有帮助，但是不能提升 <code>TTI</code></p>
 <blockquote>
@@ -452,30 +522,13 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <li>分块传输，这样前置的 <code>CGI</code> 完成就会渲染输出，但是这个方案难啊</li>
 <li><a href="https://juejin.cn/post/6844903476120518670" target="_blank" rel="noopener noreferrer">JSC<ExternalLinkIcon/></a>，就是不用 <code>vue-loader</code></li>
 </ol>
-<h2 id="常见问题" tabindex="-1"><a class="header-anchor" href="#常见问题" aria-hidden="true">#</a> 常见问题</h2>
-<h3 id="vuex修改数据为何兜一圈" tabindex="-1"><a class="header-anchor" href="#vuex修改数据为何兜一圈" aria-hidden="true">#</a> vuex修改数据为何兜一圈？</h3>
-<p>异步操作先actions调用muations然后muations去修改</p>
-<h3 id="vuex什么时候进行的初始化" tabindex="-1"><a class="header-anchor" href="#vuex什么时候进行的初始化" aria-hidden="true">#</a> vuex什么时候进行的初始化？</h3>
-<p>beforeCreate</p>
-<h3 id="vuex自己定义了告警-为什么不用console-assert" tabindex="-1"><a class="header-anchor" href="#vuex自己定义了告警-为什么不用console-assert" aria-hidden="true">#</a> vuex自己定义了告警，为什么不用console.assert？</h3>
-<p>console.assert 函数报错不会阻止后续代码执行
-因为要throw Error，把进程打断</p>
-<h3 id="object-create-null-和-区别" tabindex="-1"><a class="header-anchor" href="#object-create-null-和-区别" aria-hidden="true">#</a> object.create(null) 和{}区别</h3>
-<ul>
-<li>原型链问题
-<ul>
-<li>object.create(null).__proto__为undefined</li>
-<li>{}.__proto指向Object.prototype</li>
-</ul>
-</li>
-</ul>
-<h3 id="ssr特点" tabindex="-1"><a class="header-anchor" href="#ssr特点" aria-hidden="true">#</a> ssr特点</h3>
+<h4 id="ssr特点" tabindex="-1"><a class="header-anchor" href="#ssr特点" aria-hidden="true">#</a> ssr特点</h4>
 <p>优点 首屏加载快、有利于seo
 缺点:server压力大，负载均衡</p>
 <p>服务端为什么不导出一个router实例，而是工程模式函数封装
-因为用户每一个请求都创建一个实例</p>
+因为用户每一个请求都创建一个实例·</p>
 <h1 id="vuex-4版本" tabindex="-1"><a class="header-anchor" href="#vuex-4版本" aria-hidden="true">#</a> vuex 4版本</h1>
-<p>vuex 是⼀个专为 vue.js 应⽤程序开发的状态管理模式 + 库。它采⽤集中式存储管理应⽤的所有组件的状态，并以相应的规则保证状态以⼀种可预测的⽅式发生变化。
+<p>vuex 是⼀个专为 vue.js 应⽤程序开发的状态管理模式 + 库。它采⽤集中式存储管理应⽤的所有组件的状态，并以相应的规则保证状态以⼀种可预测的方式发生变化。
 与 vuex 4 相匹配的版本是 vue 3。</p>
 <p>在组件访问store inject或者$stroe</p>
 <p>重写了dispatch和content是为了保证this指向store实例</p>

@@ -38,6 +38,12 @@ export const data = {
       "children": [
         {
           "level": 3,
+          "title": "vuex3源码部分",
+          "slug": "vuex3源码部分",
+          "children": []
+        },
+        {
+          "level": 3,
           "title": "Step1 - store 注册",
           "slug": "step1-store-注册",
           "children": []
@@ -76,14 +82,8 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "SSR",
-      "slug": "ssr",
-      "children": []
-    },
-    {
-      "level": 2,
-      "title": "常见问题",
-      "slug": "常见问题",
+      "title": "vuex3常见问题",
+      "slug": "vuex3常见问题",
       "children": [
         {
           "level": 3,
@@ -108,23 +108,42 @@ export const data = {
           "title": "object.create(null) 和{}区别",
           "slug": "object-create-null-和-区别",
           "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "vuex4",
+      "slug": "vuex4",
+      "children": [
+        {
+          "level": 3,
+          "title": "安装",
+          "slug": "安装",
+          "children": []
         },
         {
           "level": 3,
-          "title": "ssr特点",
-          "slug": "ssr特点",
+          "title": "用法",
+          "slug": "用法",
           "children": []
         }
       ]
+    },
+    {
+      "level": 2,
+      "title": "SSR",
+      "slug": "ssr",
+      "children": []
     }
   ],
   "git": {
-    "updatedTime": 1646297184000,
+    "updatedTime": 1646322231000,
     "contributors": [
       {
         "name": "liuchenglong",
         "email": "768206581@qq.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   },

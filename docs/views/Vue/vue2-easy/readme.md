@@ -976,10 +976,9 @@ axios.get('/user/12345', {
 ## 路由
 
 - 对比 vue-router  和  react-router
-
-      1. vue-router  通过配置添加路由的;react-router 通过标签加载路由
-      2. vue-router  展示路由的内容时需要使用 ``` <router-view> ``` 标签;react-router 不需要
-      3. vue-router  的配置更集中一些，全部在 new VueRouter()时配置;react-router 更多是在标签上配置
+  1. vue-router  通过配置添加路由的;react-router 通过标签加载路由
+  2. vue-router  展示路由的内容时需要使用 ``` <router-view> ``` 标签;react-router 不需要
+  3. vue-router  的配置更集中一些，全部在 new VueRouter()时配置;react-router 更多是在标签上配置
 
   4. vue-router  有更高阶的用法，路由守卫; react-router 是没有。
 

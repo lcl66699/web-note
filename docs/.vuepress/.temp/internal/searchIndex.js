@@ -1703,71 +1703,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "vuepress-theme-reco",
-    "headers": [
-      {
-        "level": 2,
-        "title": "测试 test 123",
-        "slug": "测试-test-123-1",
-        "children": [
-          {
-            "level": 3,
-            "title": "测试 test 123",
-            "slug": "测试-test-123-2",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Use",
-        "slug": "use",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Play Together",
-        "slug": "play-together",
-        "children": [
-          {
-            "level": 3,
-            "title": "0.x",
-            "slug": "_0-x",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1.x",
-            "slug": "_1-x",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "CLI",
-            "slug": "cli",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "License",
-        "slug": "license",
-        "children": []
-      }
-    ],
-    "path": "/views/other/guide.html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/views/other/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "webpack 基础知识整理",
     "headers": [
       {
@@ -2242,83 +2177,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "原理篇",
-    "headers": [
-      {
-        "level": 2,
-        "title": "vue 数据双向绑定原理",
-        "slug": "vue-数据双向绑定原理",
-        "children": [
-          {
-            "level": 3,
-            "title": "实现原理",
-            "slug": "实现原理",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "实现一个响应式函数,对一个对象内的所有 key 添加响应式特性",
-            "slug": "实现一个响应式函数-对一个对象内的所有-key-添加响应式特性",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Vue 对于数组类型怎么处理的？简单模拟下数组方法的监听，最终输出如下",
-        "slug": "vue-对于数组类型怎么处理的-简单模拟下数组方法的监听-最终输出如下",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "实现基于 proxy 的响应式？能够监听对象的删除操作？要求最终的输出如下方代码所示",
-        "slug": "实现基于-proxy-的响应式-能够监听对象的删除操作-要求最终的输出如下方代码所示",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "了解虚拟 dom 吗，浅谈优缺点",
-        "slug": "了解虚拟-dom-吗-浅谈优缺点",
-        "children": [
-          {
-            "level": 3,
-            "title": "优点：",
-            "slug": "优点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "缺点：",
-            "slug": "缺点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "code",
-            "slug": "code",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "symbol",
-        "slug": "symbol",
-        "children": [
-          {
-            "level": 3,
-            "title": "coding",
-            "slug": "coding",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/Principle/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "",
     "headers": [],
     "path": "/views/React/easy.html",
@@ -2579,6 +2437,62 @@ export const searchIndex = [
     "headers": [
       {
         "level": 2,
+        "title": "性能优化",
+        "slug": "性能优化-1",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "编码阶段的优化",
+        "slug": "编码阶段的优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "vue框架层面",
+            "slug": "vue框架层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "js层面",
+            "slug": "js层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "css层面",
+            "slug": "css层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "html层面",
+            "slug": "html层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "seo优化",
+            "slug": "seo优化",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "webpack方面的优化（运行时优化 和打包时的优化）",
+        "slug": "webpack方面的优化-运行时优化-和打包时的优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "合理利用缓存",
+            "slug": "合理利用缓存",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
         "title": "前端的性能优化",
         "slug": "前端的性能优化",
         "children": [
@@ -2770,6 +2684,25 @@ export const searchIndex = [
         "title": "写出输入网址后到页面展现的过程",
         "slug": "写出输入网址后到页面展现的过程",
         "children": []
+      },
+      {
+        "level": 2,
+        "title": "vue",
+        "slug": "vue",
+        "children": [
+          {
+            "level": 3,
+            "title": "vue模板编译原理",
+            "slug": "vue模板编译原理",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "vue2和vue3渲染器的diff算法",
+            "slug": "vue2和vue3渲染器的diff算法",
+            "children": []
+          }
+        ]
       }
     ],
     "path": "/views/other/questions/",
@@ -7748,6 +7681,12 @@ export const searchIndex = [
           },
           {
             "level": 3,
+            "title": "对diff算法的理解",
+            "slug": "对diff算法的理解",
+            "children": []
+          },
+          {
+            "level": 3,
             "title": "实现一个响应式函数,对一个对象内的所有 key 添加响应式特性",
             "slug": "实现一个响应式函数-对一个对象内的所有-key-添加响应式特性",
             "children": []
@@ -7764,6 +7703,18 @@ export const searchIndex = [
         "level": 2,
         "title": "实现基于 proxy 的响应式？能够监听对象的删除操作？要求最终的输出如下方代码所示",
         "slug": "实现基于-proxy-的响应式-能够监听对象的删除操作-要求最终的输出如下方代码所示",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢?",
+        "slug": "proxy只会代理对象的第一层-那么vue3又是怎样处理这个问题的呢",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "监测数组的时候可能触发多次get/set，那么如何防止触发多次呢?",
+        "slug": "监测数组的时候可能触发多次get-set-那么如何防止触发多次呢",
         "children": []
       },
       {
@@ -7806,6 +7757,58 @@ export const searchIndex = [
       }
     ],
     "path": "/views/Vue/vue-hard/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vue-router",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Router 发展历史",
+        "slug": "router-发展历史",
+        "children": [
+          {
+            "level": 3,
+            "title": "路由的分类",
+            "slug": "路由的分类",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "hash 路由 和 history 路由，有什么区别？",
+        "slug": "hash-路由-和-history-路由-有什么区别",
+        "children": [
+          {
+            "level": 3,
+            "title": "手写hash路由",
+            "slug": "手写hash路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "手写history路由",
+            "slug": "手写history路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "history.go / back ⼀定会刷新吗？",
+            "slug": "history-go-back-一定会刷新吗",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "pushState 会触发 popState 事件吗？",
+            "slug": "pushstate-会触发-popstate-事件吗",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/Vue/vue-router/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -8173,6 +8176,12 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
+            "title": "vuex3源码部分",
+            "slug": "vuex3源码部分",
+            "children": []
+          },
+          {
+            "level": 3,
             "title": "Step1 - store 注册",
             "slug": "step1-store-注册",
             "children": []
@@ -8211,14 +8220,8 @@ export const searchIndex = [
       },
       {
         "level": 2,
-        "title": "SSR",
-        "slug": "ssr",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "常见问题",
-        "slug": "常见问题",
+        "title": "vuex3常见问题",
+        "slug": "vuex3常见问题",
         "children": [
           {
             "level": 3,
@@ -8243,14 +8246,33 @@ export const searchIndex = [
             "title": "object.create(null) 和{}区别",
             "slug": "object-create-null-和-区别",
             "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vuex4",
+        "slug": "vuex4",
+        "children": [
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装",
+            "children": []
           },
           {
             "level": 3,
-            "title": "ssr特点",
-            "slug": "ssr特点",
+            "title": "用法",
+            "slug": "用法",
             "children": []
           }
         ]
+      },
+      {
+        "level": 2,
+        "title": "SSR",
+        "slug": "ssr",
+        "children": []
       }
     ],
     "path": "/views/Vue/vuex/",
