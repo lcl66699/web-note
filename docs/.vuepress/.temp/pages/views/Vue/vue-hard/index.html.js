@@ -95,12 +95,12 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1646297184000,
+    "updatedTime": 1646583067000,
     "contributors": [
       {
         "name": "liuchenglong",
         "email": "768206581@qq.com",
-        "commits": 2
+        "commits": 3
       }
     ]
   },
