@@ -27,16 +27,16 @@ export const pagesData = {
   "v-37b6ec6c": () => import(/* webpackChunkName: "v-37b6ec6c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/nodejs/index.html.js").then(({ data }) => data),
   // path: /views/other/webpack.html
   "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
-  // path: /views/React/easy.html
-  "v-7e784326": () => import(/* webpackChunkName: "v-7e784326" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/easy.html.js").then(({ data }) => data),
   // path: /views/React/
   "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
-  // path: /views/Algorithm/js-algorithm/
-  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
+  // path: /views/React/
+  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/category1/2018/121501.html
   "v-25a3c47f": () => import(/* webpackChunkName: "v-25a3c47f" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2018/121501.html.js").then(({ data }) => data),
   // path: /views/category1/2019/092101.html
   "v-2203eb9d": () => import(/* webpackChunkName: "v-2203eb9d" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2019/092101.html.js").then(({ data }) => data),
+  // path: /views/Algorithm/js-algorithm/
+  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/other/Git/
   "v-89cffcd4": () => import(/* webpackChunkName: "v-89cffcd4" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/Git/index.html.js").then(({ data }) => data),
   // path: /views/other/micro-web/

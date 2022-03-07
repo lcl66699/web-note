@@ -14,12 +14,6 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "目录结构",
-      "slug": "目录结构",
-      "children": []
-    },
-    {
-      "level": 2,
       "title": "jsx语法",
       "slug": "jsx语法",
       "children": []
@@ -33,6 +27,12 @@ export const data = {
           "level": 3,
           "title": "类形式组件",
           "slug": "类形式组件",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "props",
+          "slug": "props",
           "children": []
         }
       ]
@@ -56,8 +56,8 @@ export const data = {
       "children": [
         {
           "level": 3,
-          "title": "生命周期函数作用",
-          "slug": "生命周期函数作用",
+          "title": "code",
+          "slug": "code",
           "children": []
         },
         {
@@ -90,6 +90,12 @@ export const data = {
       "level": 2,
       "title": "状态提升",
       "slug": "状态提升",
+      "children": []
+    },
+    {
+      "level": 2,
+      "title": "组合",
+      "slug": "组合",
       "children": []
     }
   ],

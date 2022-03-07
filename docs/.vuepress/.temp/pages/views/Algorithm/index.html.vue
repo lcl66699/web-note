@@ -2,10 +2,19 @@
 <h2 id="时间复杂度" tabindex="-1"><a class="header-anchor" href="#时间复杂度" aria-hidden="true">#</a> 时间复杂度</h2>
 <p>定性描述算法运行时间，取复杂度最高的，共同完成一个循环，是o1。</p>
 <ul>
-<li>o1 ologn on o nlogn on2 on3 o2n on！ 越往后面越需要优化</li>
+<li>o1 &lt; ologn &lt;  on &lt;  Onlogn &lt;  on^2  &lt; on^3  &lt; o2^n &lt; on^n！ 越往后面越需要优化</li>
 </ul>
+<div class="custom-container tip"><p class="custom-container-title">TIP</p>
+<ul>
+<li>Ο(1)表示基本语句的执行次数是一个常数，一般来说，只要算法中不存在循环语句，其时间复杂度就是Ο(1)。</li>
+<li>O(logn)比如while循环里面操作/2等等</li>
+<li>for 循环的时间复杂度为 O(n)。</li>
+<li>for嵌套for循环on^2</li>
+</ul>
+</div>
 <h2 id="空间复杂度" tabindex="-1"><a class="header-anchor" href="#空间复杂度" aria-hidden="true">#</a> 空间复杂度</h2>
-<p>在运行过程中临时占用存储空间的度量，取复杂度最高。</p>
+<p>在运行过程中临时占用存储空间的度量，取复杂度最高。
+<strong>表示算法的存储空间和数据规模之间的关系</strong></p>
 <blockquote>
 <p>o1 on on 方 log n 二分搜索 n log n 排序 on3 2n 次方 树</p>
 </blockquote>

@@ -2177,9 +2177,52 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "",
-    "headers": [],
-    "path": "/views/React/easy.html",
+    "title": "【讲义】React基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "简介",
+        "slug": "简介",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "JSX",
+        "slug": "jsx",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "State",
+        "slug": "state",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Props",
+        "slug": "props",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "条件渲染和循环 & 绑定事件",
+        "slug": "条件渲染和循环-绑定事件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "生命周期",
+        "slug": "生命周期",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "组件化",
+        "slug": "组件化",
+        "children": []
+      }
+    ],
+    "path": "/views/React/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2190,12 +2233,6 @@ export const searchIndex = [
         "level": 2,
         "title": "React介绍",
         "slug": "react介绍",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "目录结构",
-        "slug": "目录结构",
         "children": []
       },
       {
@@ -2213,6 +2250,12 @@ export const searchIndex = [
             "level": 3,
             "title": "类形式组件",
             "slug": "类形式组件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "props",
+            "slug": "props",
             "children": []
           }
         ]
@@ -2236,8 +2279,8 @@ export const searchIndex = [
         "children": [
           {
             "level": 3,
-            "title": "生命周期函数作用",
-            "slug": "生命周期函数作用",
+            "title": "code",
+            "slug": "code",
             "children": []
           },
           {
@@ -2271,16 +2314,15 @@ export const searchIndex = [
         "title": "状态提升",
         "slug": "状态提升",
         "children": []
+      },
+      {
+        "level": 2,
+        "title": "组合",
+        "slug": "组合",
+        "children": []
       }
     ],
     "path": "/views/React/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "js-algorithm",
-    "headers": [],
-    "path": "/views/Algorithm/js-algorithm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2371,6 +2413,13 @@ export const searchIndex = [
       }
     ],
     "path": "/views/category1/2019/092101.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "js-algorithm",
+    "headers": [],
+    "path": "/views/Algorithm/js-algorithm/",
     "pathLocale": "/",
     "extraFields": []
   },

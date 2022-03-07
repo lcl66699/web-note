@@ -11,15 +11,64 @@
 <body>
     <div id="box" onclick="chaoge({id:123123321})">dasdasdas</div>
 
-    <script>
-        const stack = new Map([
-            ["}", "{"],
-            ["]", "["],
-            [")", "("],
-        ])
-        console.log(stack);
-
-    </script>
 </body>
+<script>
+
+
+
+
+    /*
+创建一个对象
+讲对象的原型对象指向构造函数的prototype
+讲构造函数的this指向改对象
+执行构造函数初始化代码
+如果构造函数返回非空对象 则返回该对象 否在返回刚创建的对象
+返回新对象
+ 
+*/
+
+
+
+
+    (() => {
+        let arr = [1, 1, 1, 2, 3, 4, 4, 5, 6, 6, 7, 7, 34, 5, 67, 78, 8, 8, 4, 2, 4, 5]
+
+        arr = [...new Set(arr)]
+        console.log(arr);
+        var obj = {
+            0: 'one',
+            1: 'two',
+            length: 2
+        };
+
+        obj[Symbol.iterator] = function () {
+            var keys = Object.keys(this);
+            var count = 0;
+            return {
+                next() {
+                    if (count < keys.length) {
+                        return { value: obj[keys[count++]], done: false };
+                    } else {
+                        return { value: undefined, done: true };
+                    }
+                }
+            }
+        }
+        for (var k of obj) {
+            // console.log(k)
+        }
+        for (var i = 0; i <= 5; i++) {
+            setTimeout(function timer(j) {
+                console.log(j)
+            }, i * 1000, i)
+        }
+
+    })();
+
+
+
+
+
+</script>
 
 </html>

@@ -29,16 +29,16 @@ export const pagesComponents = {
   "v-37b6ec6c": defineAsyncComponent(() => import(/* webpackChunkName: "v-37b6ec6c" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/nodejs/index.html.vue")),
   // path: /views/other/webpack.html
   "v-683d3365": defineAsyncComponent(() => import(/* webpackChunkName: "v-683d3365" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/webpack.html.vue")),
-  // path: /views/React/easy.html
-  "v-7e784326": defineAsyncComponent(() => import(/* webpackChunkName: "v-7e784326" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/easy.html.vue")),
   // path: /views/React/
   "v-005056ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.vue")),
-  // path: /views/Algorithm/js-algorithm/
-  "v-1c8689ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.vue")),
+  // path: /views/React/
+  "v-005056ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.vue")),
   // path: /views/category1/2018/121501.html
   "v-25a3c47f": defineAsyncComponent(() => import(/* webpackChunkName: "v-25a3c47f" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2018/121501.html.vue")),
   // path: /views/category1/2019/092101.html
   "v-2203eb9d": defineAsyncComponent(() => import(/* webpackChunkName: "v-2203eb9d" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2019/092101.html.vue")),
+  // path: /views/Algorithm/js-algorithm/
+  "v-1c8689ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.vue")),
   // path: /views/other/Git/
   "v-89cffcd4": defineAsyncComponent(() => import(/* webpackChunkName: "v-89cffcd4" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/Git/index.html.vue")),
   // path: /views/other/micro-web/

@@ -3,7 +3,16 @@
 
 
 ## React介绍
-Facebook,React主要是用于构建用户界面的JavaScript 库，实现单页面应用。
+Facebook,React主要是用于构建用户界面的JavaScript 库，实现单页面应用。于 2013 年 5 月开源
+
+React 拥有较高的性能:
+
+1. 声明式设计 −React采用声明范式，可以轻松描述应用。
+2. 高效 −React通过对DOM的模拟，最大限度地减少与DOM的交互。
+3. 灵活 −React可以与已知的库或框架很好地配合。
+4. JSX − JSX 是 JavaScript 语法的扩展。React 开发不一定使用 JSX ，但我们建议使用它。
+5. 组件 − 通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。
+6. 单向响应的数据流 − React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单
 
 - 单页面应用和多页面应用
     - 多页面应用:页面跳转时跳转的都是完整的html页面
@@ -22,29 +31,8 @@ Facebook,React主要是用于构建用户界面的JavaScript 库，实现单页
 `npm i -g create - react -app`
 `create -react- app my- appcreate -react- app my- app`
 
-    npx: npm中的个功能，
-    npx的执行分3步，第一步:下载脚手架，第二步: 使用脚手架安装项目。第三步:下载好项目后删除脚手架。
-## 目录结构
-- 项目依赖的包
-- pubic：静态文件
-- src ：前台文件代码的文件夹
-    - index.js 入口
-    - app.js 入口文件渲染的页面
-    - App.test.js测试文件 不用管
-    - serviceWorker.js PWA配置文件 不用管
-- .gitignore git上传时的忽略配置
-- package.json
-        "scripts": {
-            "start": "react-scripts start",//启动开发阶段服务器
-            "build": "react-scripts build",//打包
-            "test": "react-scripts test",//运行测试
-            "eject": "react-scripts eject"//显示隐藏的配置
-        },
-- 运行npm run eject 时， 提示: Are you sure you want to eject? This action is permanent .(这个)
-`npm run eject`
-运行eject后会多出config文件夹和scripts文件夹
-  - config:里面是webpack的配置
-  - scripts:是启动命令的配置
+npx: npm中的个功能，npx的执行分3步，第一步:下载脚手架，第二步: 使用脚手架安装项目。第三步:下载好项目后删除脚手架。
+
 ## jsx语法
 
 1. 在js中可以直接写html
@@ -72,51 +60,54 @@ Facebook,React主要是用于构建用户界面的JavaScript 库，实现单页
 ## 组件
 1. 概念:从概念上类似于JavaScript 函数。它接受任意的入参(即"props") ，并返回用于描述页面展示内容的React元素。组件允许你将UI拆分为独立可复用的代码片段，并对每个片段进行独立构思。
 2. 创建方式
-   - 函数式组件
-    ```js
-    function App(props){
-        return (<div>{props.name}</div>)
-    }
-    ```
-    函数组件不用hook语法时，功能弱j，有hook语法后 替代类形式组件。
-   - 类形式组件
-    ```js
-    class App extends React.Component{
-        render(){}
-        componentWillMount(){}
-        states={}
-    }
-    ```
+- 函数式组件
+```js
+function App(props){
+    return (<div>{props.name}</div>)
+}
+```
+函数组件不用hook语法时，功能弱j，有hook语法后 替代类形式组件。
+- 类形式组件 rcc
+```js
+class App extends React.Component{
+    render(){}
+    componentWillMount(){}
+    states={}
+}
+```
 前期使用类组件，会学习类组件中的state,生命周期函数。不管什么组件 必须引入react7
 ### 类形式组件
 #### 创建组件rcc
 ```js
-    class Home extends React.Component{
-        render(){
-            return (<div><div>)
-        }
+class Home extends React.Component{
+    render(){
+        return (<div><div>)
     }
-``` 
+}
+```
+
 说明：
    1. 组件名称首字母要求大写
    2. 需要继承React.Component这个类
    3. 必须有一个render函数，render必须return，return后写的是jsx语法
 #### 导出组件
-    `export {Home}`
-    `export default Home`
+`export {Home}`
+`export default Home`
 #### 导入组件
-    `import {Home} from 'path'`
-    `import AppHome from 'path'`
+`import {Home} from 'path'`
+`import AppHome from 'path'`
 #### 使用组件,当成标签使用
-    `<Home />`
-    `<Home></Home>`
-### 组件复用
+`<Home />`
+`<Home></Home>`
+#### 组件复用
 把页面中的某一块UI拆分出去，做成一个组件，在原来的位置调用组件即可。
-## props
+
+### props
 - 当React元素为用户自定义组件时，它会将JSX 所接收的属性(attributes) 转换为单个对象传递给组件，这个对象被称之为“props”。
 - 调用组件时可以通过属性的形式定义传递数据
 `<Item data='string' arr={[1,2,3,4]}  />`
 `<Item picurl={arr[0].picurl} title={arr[0].title} />`
+
 在Item组件可以通过props对象，获取到用户调用组件时传入的数据
 
 ```js
@@ -137,38 +128,38 @@ class Item extends Component{
 ## state
 - state是定义组件内部自己使用的数据
 - 在类组件中有两种定义方式
-    - 第一种：在constructor方法中定义
-    ```js
-                constructor(){
-                    super()
-                    this.state = {
-                        count:1
-                    }
-                }
-    ```
-    - 第二种：直接在组件中定义
-    ```js
-                state = {
-                    count:2
-                }
-    ```
+  - 第一种：在constructor方法中定义
+```js
+constructor(){
+    super()
+    this.state = {
+        count:1
+    }
+}
+```
+  - 第二种：直接在组件中定义
+```js
+state = {
+    count:2
+}
+```
 - 使用state数据
     `this.state.xx`
 - 修改state数据,必须！this.setState()方法
-  - 用法1：对象形式的
-    ```js
-    this.setState({
-        count:this. state . count + 1
-    })
-    ```
-  - 用法2：函数形式的
-    ```js
-    this.setState((state)={
-        return {
-            count:state.count+1
-        }
-    })
-    ```
+  - 用法1：对象形式的，多次调用 只加一次
+```js
+this.setState({
+    count:this. state . count + 1
+})
+```
+  - 用法2：函数形式的,拿到更新前的值，多次调用可以一直加
+```js
+this.setState((state)={
+    return {
+        count:state.count+1
+    }
+})
+```
 - this.setState()方法有批量更新功能
   
 `this.setState({count:this.state.count+1})`
@@ -181,7 +172,7 @@ class Item extends Component{
 
 什么时候是同步的：setState又被放在别的宏任务中,或者其他的微任务中
 
-- setState的函数形式：
+- setState的函数形式：
 ```js
 this.setState((state)={
     return {
@@ -208,6 +199,38 @@ state是上一次操作完state的结果(永远是最新的数据)
 }}>++</button>
 ```
 
+
+如果视图内的数据需要修改, 并且同时页面响应变化，我们需要将数据放在state中, 使用setState来修改数据。
+
+```jsx
+import React, { Component } from 'react'
+
+export default class Clock extends Component {
+  state = {
+      date: new Date()
+  }
+
+  componentDidMount(){
+      this.timer = setInterval(() => {
+          this.setState({
+              date: new Date()
+          })
+      }, 1000);
+  }
+
+  componentWillUnmount(){
+      clearInterval(this.timer);
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.date.toLocaleTimeString()}
+      </div>
+    )
+  }
+}
+```
 ## 生命周期函数
 又叫钩子函数，在组件运行的过程会在某些指定的条件下自动触发执行。
 组件有三个生命周期函数一生只触发一次：
@@ -215,14 +238,66 @@ state是上一次操作完state的结果(永远是最新的数据)
 - componentDidMount
 - componentWillUnMount
   
-### 生命周期函数作用
-  - componentWillMount 组件渲染前，可能会放网络请求(不太建议)
-  - componentDidMount 组件渲染完成，网络请求，全局事件绑定
-  - shouldComponentUpdate(){return false;} 是否允许组件更新，优化使用
-  - componentWillUpdate(){} 更新前，一般不做任何处理
+1. 组件初始化阶段 initialization, 比如constructor
+
+  - componentWillMount 组件挂载到DOM前调用,只会被调用一次, 这里写setState不会引起组件重新渲染,组件渲染前，可能会放网络请求(不太建议)
+  - componentDidMount 组件渲染完成，网络请求，全局事件绑定, 且只会被调用一次
+  - shouldComponentUpdate(nextProps, nextState){return false;} 是否允许组件更新，优化使用,比较之前和当前的props state是否有变化
+  - componentWillUpdate(){} render方法前执行,更新前，一般不做任何处理
   - componentDidUpdate(){} 组件更新完成，新网络请求
   - componentWillReceiveProps(){}props改变了 接收新的props，一般不做任何处理
-  - componentWillUnmount(){} 组件销毁前，把全局绑定的事件、网络请求等有副作用的全部清除
+  - componentWillUnmount(){} 组件销毁前，清理一些定时器,把全局绑定的事件、网络请求等有副作用的全部清除
+
+### code
+```jsx
+import React, { Component } from "react";
+export default class Lifecycle extends Component {
+  constructor(props) {
+    super(props);
+    // 常用于初始化状态
+    console.log("1.组件构造函数执行");
+  }
+  componentWillMount() {
+    // 此时可以访问状态和属性，可进行api调用等
+    console.log("2.组件将要挂载");
+  }
+  componentDidMount() {
+    // 组件已挂载，可进行状态更新操作
+    console.log("3.组件已挂载");
+  }
+  componentWillReceiveProps() {
+    // 父组件传递的属性有变化，做相应响应
+    console.log("4.将要接收属性传递");
+  }
+  shouldComponentUpdate() {
+    // 组件是否需要更新，需要返回布尔值结果，优化点
+    console.log("5.组件是否需要更新？");
+    return true;
+  }
+  componentWillUpdate() {
+    // 组件将要更新，可做更新统计
+    console.log("6.组件将要更新");
+  }
+  componentDidUpdate() {
+    // 组件更新
+    console.log("7.组件已更新");
+  }
+  componentWillUnmount() {
+    // 组件将要卸载, 可做清理工作
+    console.log("8.组件将要卸载");
+  }
+  render() {
+    console.log("组件渲染");
+    return <div>生命周期探究</div>;
+  }
+}
+
+```
+Fiber：
+
+getDerivedStateFromProps(props,state)
+
+在组件创建和更新的render之前调用
 ### 事件系统
 - react中自己重新定义事件系统，react绑定事件不需要获取到DOM元素，而是把事件绑定定义在虛拟DOM上了
 - 语法:
@@ -233,21 +308,21 @@ state是上一次操作完state的结果(永远是最新的数据)
    1. 直接定义一个箭头函数
    2. 可以定义函数
     如果是类形式组件，需要使用this.clickme, clickme函数定义在类中
-    ```jsx
-    class App extends React.Component{
-        clickme(){}
-        render(){
-            return <div onClick={this.clickme}>
-        }
+```jsx
+class App extends React.Component{
+    clickme(){}
+    render(){
+        return <div onClick={this.clickme}>
     }
-    ```
+}
+```
 ### this指向问题
 在react中，自定义事件中this默认是指向undefined的。
 - 在react组件的生命周期函数中，this指向当前组件
 - 在react class定义的组件中，constructor构造方法中需要通过调用super()方法生成this，这时	this指向当前组件；否则不存在this，使用会报错。
 - 在react 组件中，自定义function函数中this默认指向undefined）
 
-如果想让this指向当前组件    I
+如果想让this指向当前组件   
   - 方法1:使用bind,改变this指向   
   - 方法2：使用箭头函数
   - 方法3：在constructor构造方法中通过bind绑定this
@@ -263,8 +338,11 @@ constructor( ){
 ### 事件对象
 - 事件对象不需要传递，直接调用就行，把事件对象方法函数形参的最后y一个位置
 - 获取坐标信息
+  
 `event.pagex / event . pageY`获取事件触发者  
+
 `e.preventDefault()`阻止冒泡
+
 `e.stopPropagation()` 阻止默认事件
 ### 表单
 - form标签
@@ -274,45 +352,47 @@ constructor( ){
   - 第一种收集信息的形式：受控组件
   
     受控组件：表单数据的显示和更改有react控制，具体是由react的state的控制。使 React 的 state 成为“唯一数据源”。
+
     `<input value={this.state.user} onChange={(e)=>this.setState({user:e.currentTarget.vale})} />`
-    特殊的受控组件：单选按钮,多选按钮
-      - value属性值不能改变
-      - onChange事件只有在选中时触发
+  特殊的受控组件：单选按钮,多选按钮
+    - value属性值不能改变
+    - onChange事件只有在选中时触发
                     
-  - 第二种收集信息的形式：非受控组件
-    允许用户获取到原生DOM，自己来操作数据
-      - 使用非受控组件获取input中值
-        - 创建ref ： React.createRef()
-        - 把创建ref添加到标签上，使用ref属性 ref={this.mref}
-        - 获取DOM，this.myref.current
+  - 第二种收集信息的形式：非受控组件，允许用户获取到原生DOM，自己来操作数据
+    - 使用非受控组件获取input中值
+      - 创建ref ： React.createRef()
+      - 把创建ref添加到标签上，使用ref属性 ref={this.mref}
+      - 获取DOM，this.myref.current
 
 ## 状态提升
 1. 数据的传递方向：
-    父级向子级传递，使用props
-    子级向父级传递，状态提升
+   - 父级向子级传递，使用props
+   - 子级向父级传递，状态提升
 2. 用法
     1. 让父级向子级传递一个函数 `<Son user= getSonDate={this.getSonDate.bind(this)}/>`
     2. 在子级组件中调用传递来的这个方法 `this.props.getSonDate(this.state.user)`
     3. 在子级组件中调用这个函数时可以传递实参 `this.setState({list:cs})`
     4. 在父级函数中接收数据
  	
-```md
+
 ## 组合
-    1. 有些组件无法提前知晓它们子组件的具体内容。在Sidebar (侧边栏)和Dialog (对话框)等展现通用容器(box)的组件中特别容易遇到这种情况。我们建议这些组件使用一个特殊的childrenprop來将他们的子组件传递到渲染结果中
-    2. 用法:
-        1. 定义一个组件，组件中使用特殊的children prop属性
- 					{this.props.children}
-        2. 使用这个组件，作为双标签使用，在双标签内部定义具体内容
-					<TopBar>
-        					<div>首页</div>
-        					<div>组件</div>
-      				</TopBar>
-        3. 定义组件时使用childrenprop的位置就能显示双标签中的内容
-    3. React.createElement(type,options,children)
+1. 有些组件无法提前知晓它们子组件的具体内容。在Sidebar (侧边栏)和Dialog (对话框)等展现通用容器(box)的组件中特别容易遇到这种情况。我们建议这些组件使用一个特殊的childrenprop來将他们的子组件传递到渲染结果中
+2. 用法:
+  1. 定义一个组件，组件中使用特殊的children prop属性 {this.props.children}
+  2. 使用这个组件，作为双标签使用，在双标签内部定义具体内容
+  ```
+  <TopBar>
+    <div>首页</div>
+    <div>组件</div>
+  </TopBar>
+  ```
+```md
+  3. 定义组件时使用childrenprop的位置就能显示双标签中的内容
+3. React.createElement(type,options,children)
         type :标签类型
         options:属性集合
         children:子级元素
-        <div id='odiv' className='box'><span>ddd</span></div>
+        `<div id='odiv' className='box'><span>ddd</span></div>`
         React.createElements('div',{id='odiv', className='box'},React.createElements('span',{},'ddd'))
 3. props类型验证
     1. PropTypes类型检测:父级向子级传递数据时，是否是子级要求的数据类型，如果不是PropTypes会报警告。
@@ -425,32 +505,32 @@ DAY 4
     npm i -S react-router-dom
 3. 配置
     1. 先决定使用哪种路由模式(hash,history)
-        <HashRouter></HashRouter>  #
-        <BrowserRouter></BrowserRouter> //
+       ` <HashRouter></HashRouter>`  #
+       ` <BrowserRouter></BrowserRouter> `//
         提供了一个路由容器,在容器中定义具体
         路由，那么定义的路由就会按照决定好的路由模式来显示。
     2. 定义具体的路由
-        <Route path='/about' compoent={about}/>
+        `<Route path='/about' compoent={about}/>`
         path:是路径，会在浏览器地址栏显示
         component：要加载的页面
         exact：精准匹配
     3. Route的特点:贪婪匹配
         不想贪婪，想一次加载一个路由，实现方式2种:
         1. exact精准匹配
-        2. react-router-rom还提供了一个标签,<Switch>,作用是显示匹配到的第一个Path
+        2. react-router-rom还提供了一个标签,`<Switch>`,作用是显示匹配到的第一个Path
     4. Link标签，导航
-        <link to='/' exact />去哪</link>
+       ` <link to='/' exact />去哪</link>`
     5. 动态路由
         1. 定义路由时，规定哪些部分是动态的，如果是动态需要使用:variable 形式定义
-           <Route path= '/detail/:newsid' component={Detail}>
+          ` <Route path= '/detail/:newsid' component={Detail}>`
         2. 跳转时(Link),需要给动态参加具体的数据
-             <link to='/detail/1'  />去哪</link>
-<Link to={ /detail/${id}^ }>详情</L ink>
+             `<link to='/detail/1'  />去哪</link>`
+<!-- `<Link to={ /detail/${id}^ }>详情</L ink>
 <Link to={{ 
-pathpame: /detail/${id} |
-}}>
+`pathpame: /detail/${id} |`
+}}>` -->
 遍历
-{this.state.arr.map((ele,index)=>(<Link key={index} to={`/detail/${ele.id}`}>{ele.user}</Link>))}
+`{this.state.arr.map((ele,index)=>(<Link key={index} to={`/detail/${ele.id}`}>{ele.user}</Link>))}`
         3. 在跳转后的组件中可以获取到动态路由的具体参数值
             从props.match.params这个对象获取
 
@@ -679,19 +759,21 @@ Day7
      console.log(this.ref1.current);
     然后在组件中传过去ref <Sonref ref={this.ref1} msg='2006'/> 
     2. 使用forwardRef来创建组件
-       let Son=React.forwardRef((props,ref)=>{
+  `     let Son=React.forwardRef((props,ref)=>{
         return <div>
            <div ref={ref}>son中的div</div>
-        </div>
+        </div>`
 })
 export default Son
 # Fragments
 1. Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
 2. 语法：
-<React.Fragment></React.Fragment>
+`<React.Fragment></React.Fragment>`
 简写语法： <>...</>
 
 # 高阶组件
+类似于高阶函数 一个函数返回一个函数
+高阶组件 接受一个组件 返回一个组件
 - 高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式， 高阶组件本身是一个函数，接收一个组件，返回一个新组件
   高阶组件是参数为组件，返回值为新组件的函数
   代码如下
@@ -726,22 +808,25 @@ return <div>{this . props. render (this. state)}</div>
 }
 }
 在公共app.js，等于把state传给son
- <Data render={(state)=>{
+` <Data render={(state)=>{
         console.log('ap',state);
           return <Son1 state={state}/>
-      }}/>  
+      }}/>  `
 Son.jsx在通过this.props接数据
 
 # 懒加载
 - 当组件什么时候使用到了，再动态加载这个组件
 - 使用：
 let About = React.lazy(()=>import('./About'));
-            <Suspense fallback={<Loading />}>
+           ` <Suspense fallback={<Loading />}>
                 <About />
-            </Suspense>
+            </Suspense>`
 
 Day8
 # hooks hook作用：让函数式组件能使用state和生命周期
+
+import React, { useState, useEffect } from "react";
+
 1. 介绍：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。 rfc快速创建
     hook是给函数组件使用的，hook只能在函数组件中使用，不能在class组件中使用
     没有破坏性改动，100%向后兼容，react版本大于16.8就可以直接使用Hook
@@ -794,7 +879,7 @@ useContext
     2. 用法：
         1. 创建Context,提供数据
             Let Mycontext = React.createContext() //写在export前面
-            <Mycontext.Provider value={{}}><Son /></Mycontext.Provider>
+          `  <Mycontext.Provider value={{}}><Son /></Mycontext.Provider>`
 export {Mycontext}
         2. 在函数组件中调用useContext获取数据
             function Son(){
@@ -802,7 +887,7 @@ export {Mycontext}
             }
         3. 在函数组件中还可以使用Consumer获取数据
             function Son (){
-                <Mycontext.Consumer>
+               ` <Mycontext.Consumer>`
                 {
                    (value)=>{
                         console.log(value);
@@ -837,7 +922,8 @@ Day9
         调用dispatch方法
 
 # 注意：<React.StrictMode>严格模式
-- 检测意外的副作用
+
+- 检测意外的副作用
     严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下函数来实现的该操作：
     class 组件的 constructor，render 以及 shouldComponentUpdate 方法
     class 组件的生命周期方法 getDerivedStateFromProps
@@ -856,9 +942,9 @@ Day9
          1. 创建ref
 		2. 语法：const myref = useRef()
 		3. 使用
-        		<div ref={myref}></div>
+        	`	<div ref={myref}></div>`
 		4. refs转发
-        <Son ref={myref} />
+       ` <Son ref={myref} />`
         Son组件创建时，需要使用 React.forwardRef()创建
             React.forwardRef((props,ref)=>{
                 return <div ref={ref}></div>
@@ -878,7 +964,7 @@ Day9
     3. 使用：
         在组件中直接调用即可
         注意：1. 只能在函数组件中使用
-              2. 不能放在 if,for,普通函数中调用
+              2. 不能放在 if,for,普通函数中调用，在设计的时候有顺序，单项链表
 
 
 
@@ -997,9 +1083,9 @@ const store = createStore(all,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__RE
     2. 使用 react-redux 把react项目和redux关联起来
         import {Provider } from 'react-redux'
         import store from 'redux3.js'
-        <Provider store={store}>
+       ` <Provider store={store}>
             <App />
-        </Provider>
+        </Provider>`
     3. 在组件中使用redux数据
         import {connect} from 'react-redux'//引入高阶组件
         export default connect(mapStateToProps,mapDispatchToprops)(Son)

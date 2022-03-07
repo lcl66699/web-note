@@ -487,6 +487,9 @@
 <li>404.2 - Web 服务扩展锁定策略阻止本请求。</li>
 <li>404.3 - MIME 映射策略阻止本请求。</li>
 </ul>
+<h4 id="_429" tabindex="-1"><a class="header-anchor" href="#_429" aria-hidden="true">#</a> 429</h4>
+<p>表示在一定的时间内用户发送了太多的请求，即超出了“频次限制”。</p>
+<p>在响应中，可以提供一个 Retry-After 首部来提示用户需要等待多长时间之后再发送新的请求。</p>
 <h4 id="_5-405-method-not-allowed" tabindex="-1"><a class="header-anchor" href="#_5-405-method-not-allowed" aria-hidden="true">#</a> （5）405 Method Not Allowed</h4>
 <p>该状态码表示客户端请求的方法虽然能被服务器识别，但是服务器禁止使用该方法。GET 和 HEAD 方法，服务器应该总是允许客户端进行访问。客户端可以通过 OPTIONS 方法（预检）来查看服务器允许的访问方法, 如下</p>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>Access<span class="token operator">-</span>Control<span class="token operator">-</span>Allow<span class="token operator">-</span>Methods<span class="token operator">:</span> <span class="token constant">GET</span><span class="token punctuation">,</span><span class="token constant">HEAD</span><span class="token punctuation">,</span><span class="token constant">PUT</span><span class="token punctuation">,</span><span class="token constant">PATCH</span><span class="token punctuation">,</span><span class="token constant">POST</span><span class="token punctuation">,</span><span class="token constant">DELETE</span>
