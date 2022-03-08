@@ -58,7 +58,7 @@ module.exports = {
       },
       { text: 'nodejs', link: '/views/nodejs/' },
       { text: '算法', link: '/views/Algorithm/' },
-      { text: '个人空间', link: 'http://39.106.5.96/' },
+      { text: '个人空间', link: 'https://blog.numb.run' },
       {
         text: '其他',
         children: [

@@ -16,14 +16,25 @@ export const data = {
           "title": "路由的分类",
           "slug": "路由的分类",
           "children": []
-        }
-      ]
-    },
-    {
-      "level": 2,
-      "title": "hash 路由 和 history 路由，有什么区别？",
-      "slug": "hash-路由-和-history-路由-有什么区别",
-      "children": [
+        },
+        {
+          "level": 3,
+          "title": "hash 路由",
+          "slug": "hash-路由",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "history 路由",
+          "slug": "history-路由",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "hash 路由 和 history 路由，有什么区别？",
+          "slug": "hash-路由-和-history-路由-有什么区别",
+          "children": []
+        },
         {
           "level": 3,
           "title": "手写hash路由",
@@ -46,6 +57,31 @@ export const data = {
           "level": 3,
           "title": "pushState 会触发 popState 事件吗？",
           "slug": "pushstate-会触发-popstate-事件吗",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "vue导航守卫",
+      "slug": "vue导航守卫",
+      "children": [
+        {
+          "level": 3,
+          "title": "导航解析流程",
+          "slug": "导航解析流程",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "导航守卫的执行顺序",
+          "slug": "导航守卫的执行顺序",
+          "children": []
+        },
+        {
+          "level": 3,
+          "title": "next必须调用",
+          "slug": "next必须调用",
           "children": []
         }
       ]

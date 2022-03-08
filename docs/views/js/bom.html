@@ -6,11 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- <input oninput="change(event)" type="text"> -->
+    <input oninput="test(event)" type="text">
     <a href="">asdfghjkl</a>
-    <script>
+    <script src="">
         var aaa = document.querySelector('a')
         aaa.addEventListener('click', (e) => {
             e.preventDefault()
@@ -139,5 +146,52 @@
         controller.abort();//调用中断
     </script>
 </body>
+<script>
+    var change = (event) => {
+        console.log(event.target.value);
+    }
+    var debounce = (fn, wait) => {
+        var timer = null
+        return function () {
+            if (timer !== null) {
+                clearInterval(timer)
+            }
+            timer = setTimeout(() => {
+                fn.apply(this, arguments)
+            }, wait)
+        }
+    }
+
+    var test = debounce(change, 1000)
+
+    const myscroll = () => {
+        console.log('滚动了', Date.now());
+    }
+
+    var throttle = (fn, wait) => {
+        var timer = null
+        var last = 0
+
+        return function () {
+            const now = Date.now()
+            clearInterval(timer)
+            if (now - last >= wait) {
+                fn.apply(this, arguments)
+                last = Date.now()
+            } else {
+                timer = setTimeout(() => {
+                    fn.apply(this, arguments)
+                    last = Date.now()
+                }, wait)
+            }
+        }
+    }
+    var mythrottle = throttle(myscroll, 1000)
+
+    window.addEventListener('scroll', mythrottle)
+
+
+// const throw
+</script>
 
 </html>

@@ -69,7 +69,7 @@ export const themeData = {
     },
     {
       "text": "个人空间",
-      "link": "http://39.106.5.96/"
+      "link": "https://blog.numb.run"
     },
     {
       "text": "其他",

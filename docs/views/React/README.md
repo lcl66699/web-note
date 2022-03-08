@@ -380,75 +380,75 @@ constructor( ){
 2. 用法:
   1. 定义一个组件，组件中使用特殊的children prop属性 {this.props.children}
   2. 使用这个组件，作为双标签使用，在双标签内部定义具体内容
-  ```
+  ```jsx
   <TopBar>
     <div>首页</div>
     <div>组件</div>
   </TopBar>
   ```
-```md
+
   3. 定义组件时使用childrenprop的位置就能显示双标签中的内容
 3. React.createElement(type,options,children)
-        type :标签类型
-        options:属性集合
-        children:子级元素
-        `<div id='odiv' className='box'><span>ddd</span></div>`
-        React.createElements('div',{id='odiv', className='box'},React.createElements('span',{},'ddd'))
-3. props类型验证
-    1. PropTypes类型检测:父级向子级传递数据时，是否是子级要求的数据类型，如果不是PropTypes会报警告。
-    2. 使用步骤
-        1. 引入验证包
-            import PropTypes from 'prop-types' ;
-        2. 定义需要验证的prop属性
-            类组件中用法：
-            组件名.propTypes={
-                count:propTypes.string //验证单个类型
-                msg：propTypes.oneOfType([//验证多种类型
-                    propTypes.number,
-                    propTypes.string
-                ]),
-                vnode:propTypes.element.isRequired//验证必须项
-            }
-            第二种写法：
-                static propTypes ={}
-    3. 给props定义默认值
-            类名.defaultProps={
-                msg:'hello',
-                obj:{}
-            }
-    4. 执行顺序
-        默认值比验证执行的早
+   - type :标签类型
+   - options:属性集合
+   - children:子级元素
+4. props类型验证
+   1. PropTypes类型检测:父级向子级传递数据时，是否是子级要求的数据类型，如果不是PropTypes会报警告。
+   2. 使用步骤
+   3. 引入验证包 `import PropTypes from 'prop-types' ;`
+1. 定义需要验证的prop属性
+类组件中用法：
+```jsx
+组件名.propTypes={
+  count:propTypes.string //验证单个类型
+  msg：propTypes.oneOfType([//验证多种类型
+    propTypes.number,
+    propTypes.string
+  ]),
+  vnode:propTypes.element.isRequired//验证必须项
+}
+//第二种写法：
+static propTypes ={}
+```
+2. 给props定义默认值
+类名.defaultProps={msg:'hello',obj:{}}
+1. 执行顺序
+默认值比验证执行的早
 
-4. fetch网络请求
-    1. 介绍:
-        1. 是es6中提供的一种新的网络请求方式。Fetch API 提供了一个JavaScript接口，用于访问和操纵HTTP管道的部分，不是ajax 了。
-        2. fetch方法是一个全局方法，可以在任意位置使用
-        3. fetch()返回的Promise ，使用. then( )获取请求成功的结果,使用. catch捕获错误信息
-        4. 默认情况下，fetch不会从服务端发送或接收任何cookies, 要发送cookies,必须设置credentials 选项，credentials的默认值是 same-origin
-    2. 语法
+## fetch网络请求
+介绍:
+1. 是es6中提供的一种新的网络请求方式。Fetch API 提供了一个JavaScript接口，用于访问和操纵HTTP管道的部分，不是ajax 了。
+2. fetch方法是一个全局方法，可以在任意位置使用
+3. fetch()返回的Promise ，使用. then( )获取请求成功的结果,使用. catch捕获错误信息
+4. 默认情况下，fetch不会从服务端发送或接收任何cookies, 要发送cookies,必须设置credentials 选项，credentials的默认值是 same-origin
+### 语法
+```js
         fetch(url,{
-            method:''get/post',//默认get
+            method:''get/post',//默认get
             body:data,//携带的是post数据
             params:data//携带的是get数据
             header:{//配置请求头
-                'Content-Type':'application/x-www-form-urlencoded' 
-//post以form data形式传递数据
+                'Content-Type':'application/x-www-form-urlencoded'   //post以form data形式传递数据
             },
             credentials:'same-origin', //是否允许携带cookie数据(include可携带)
         })
-    3. 返回值：网络请求的结果 通过promise.then方法接收的
-        不可直接用，fetch提供了对应的解析方法
+```
+返回值：网络请求的结果 通过promise.then方法接收的不可直接用，fetch提供了对应的解析方法
+```js
         .blob() 把结果解析二进制
         .text() 把结果解析字符串
         .json() 把结果解析json对象
-then(data=>data. json())
-then( data=>{ console . log(data)})
-        解析后的json对象格式：key：value
+
+        then(data=>data. json())
+        then( data=>{ console . log(data)})
+        //解析后的json对象格式：key：value
             {
                 data：{}//真实请求结果
                 status：200，
                 header：{}
             }
+```
+```md
     4. 请求携带数据
        1. get
             1. 问号携带数据
@@ -473,8 +473,7 @@ then( data=>{ console . log(data)})
 
         3. 代理
             1. 在package.json中写
-"proxy": "http://localhost:5000"
-
+            "proxy": "http://localhost:5000"
                 1. package.json中有一个字段：proxy,这个字段可以实现一个代理
                 2. 重启前台服务
                 3. 前台调用接口时只需要写接口名称，不写代理地址
@@ -485,18 +484,16 @@ then( data=>{ console . log(data)})
 let {createProxyMiddleware} = require('http-proxy-middleware');
 module.exports =function(app){
 app.use(createProxyMiddleware('/inex',{
-target:'https://3g.163.com//touch/reconstruct/article/list',
-changeOrigin:true,
-pathRewrite:{
-'/inex':''
-}
+  target:'https://3g.163.com//touch/reconstruct/article/list',
+  changeOrigin:true,
+  pathRewrite:{
+    '/inex':''
+  }
 }))
 }
-
-4. 网络请求时：/inex/接口名称
-
-DAY 4
-# router 路由
+```
+## router 路由
+```md
 1. 路由介绍:react主要实现单页面应用，也有切换内容显示的需求，定义一个可以根据不同的路径加载不同的内容的功能，这个功能就叫路由
     路由常用的有两种实现方法:
         1. hash路由，根据路径中的hash值来决定显示页面
@@ -525,15 +522,12 @@ DAY 4
           ` <Route path= '/detail/:newsid' component={Detail}>`
         2. 跳转时(Link),需要给动态参加具体的数据
              `<link to='/detail/1'  />去哪</link>`
-<!-- `<Link to={ /detail/${id}^ }>详情</L ink>
-<Link to={{ 
-`pathpame: /detail/${id} |`
-}}>` -->
+            `<Link to={ /detail/${id}^ }>详情</L ink>
+            <Link to={{`pathpame: /detail/${id} |`}}>`
 遍历
 `{this.state.arr.map((ele,index)=>(<Link key={index} to={`/detail/${ele.id}`}>{ele.user}</Link>))}`
         3. 在跳转后的组件中可以获取到动态路由的具体参数值
             从props.match.params这个对象获取
-
     6. Route加载的组件的props.上会自动多3个对象(history,match,loaction)
         history:h5的history对象，里面有push, goBack等常用浏览器的操作方法
         locatin:经过封装的浏览器的loaction对象
@@ -545,36 +539,16 @@ DAY 4
                 外层把组件作为路由标签用，在组件的属性上使用path属性，来定义路径内层被嵌套的组件使用<Route>来定义
                 在外层组件内部需要使用props. children来显示子级路由
                 注意:内层路由路径要把父级的路径带上
-  APP.js：<Kemu path='/kemu'>
+            APP.js：
+            <Kemu path='/kemu'>
               <Route path='/kemu/keyi' component={Keyi}/>
               <Route path='/kemu/Keer' component={Keer}/>
               <Route path='/kemu/Kesan' component={Kesan}/>
               <Route path='/kemu/Kesi' component={Kesi}/>
             </Kemu>
-
-Kemu.js
- <div>
-                <h1>驾照考试</h1>
-                <Link to='/kemu/keyi'>科111</Link>
-          		<Link to='/kemu/Keer'>科222</Link>
-          		<Link to='/kemu/Kesan'>科333</Link>
-          		<Link to='/kemu/Kesi'>科444</Link>
-                <div>
-                    {this.props.children}
-                </div>
-            </div>
-
             2. 多层嵌套
                 1. 不能把组件作为标签使用了
-                2. 定义在组件内部，在组件内部使用<Route>来定义路由
-                    <Link>定义导航
-function Keer(props) {
-  return (<div>科二
-<Route path='/kemu/Keer/Daoche' component={Daoche}/>
-<Link to='/kemu/Keer/Daoche'>倒车</Link>
-  </div>)
-}
-
+                2. 定义在组件内部，在组件内部使用`<Route/>`来定义路由,`<Link/>`定义导航
     8. 路由重定向
         1. 引入标签<Redirect/>
         2. 用法
@@ -599,28 +573,14 @@ function Keer(props) {
         - 有些页面访问不到，如果想在这种页面使用编程式导航
         - withRouter是react-router 提供的一个高阶组件，使用这个函数调用时把不能访问
         history对象的组件放在实爹位置上，就可以返回一个新组件，这个新组件就具备了history ,loaction，match对象
-import {withRouter} from 'react-router'//引入
-let Newkemu=withRouter(kemu)//引用
-export default Newkemu //导出
-
+        import {withRouter} from 'react-router'//引入
+        let Newkemu=withRouter(kemu)//引用
+        export default Newkemu //导出
         - 除了withRouter,还可以通过props传参形式由父级传递下来
+```
 
-# antd
-- antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品
-- 使用
-    1. 安装：npm install antd --save
-    2. 引入
-        1. 全部引入css
-            优点：不需要考虑css问题，引入任何组件都有css
-            缺点：有很多css用不到
-            import 'antd/dist/antd.css'
-        2. 按需引入
-             用哪个组件，就动态的添加这个组件需要的css
-                第一种方式：craco库
-                第二种方式：
-
-Day5
-# 配置less
+## 配置less
+```md
 - 使用create-react-app脚手架创建的项目，默认是不支持less。如果想在项目中使用less就需要自己配置
 - 常用的方法：
     0. 首先下载 less 和 less-loader 
@@ -668,42 +628,39 @@ Day5
         6.占位符 支持 相对路径 和 绝对路径
     6. 拦截网络请求
         Mock.mock(url,type,template)
-3. 小项目
+```
 
 
-
-Day6
-1. 
-2.
- 作用：可以不通过props一层一层的传递数据，通过Provider提供数据，在组件树之间可以直接获取数据。
+### Provider
+```md
+作用：可以不通过props一层一层的传递数据，通过Provider提供数据，在组件树之间可以直接获取数据。
     1. 数据传递方向有父传子 (props),子传父 (事件)
         这两种形式都需要一层一层的传递
     2. 作用：Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法
     3. 使用
         1. 创建Context.js
             import React from 'react'
-              const Mycontext=React.createContext()
-export default Mycontext
-
+            const Mycontext=React.createContext()
+            export default Mycontext
         2. Mycontext.Provider : 提供数据
             <Mycontext.Provider value={}>
                 <Comp />
             </Mycontext.Provider>
         3. Mycontext.Consumer : 获取数据
-             render() {
-        return (
-           <Mycontext.Consumer>
-               {(value)=>{
-                   console.log(value);
-                   return <div>
-                       item
-                       {value.sun}
-                       {value.pp}
-                   </div>
-               }}
-           </Mycontext.Consumer>
-        )
-}
+           render() {
+              return (
+                 <Mycontext.Consumer>
+                     {(value)=>{
+                         console.log(value);
+                         return <div>
+                             item
+                             {value.sun}
+                             {value.pp}
+                         </div>
+                     }}
+                 </Mycontext.Consumer>
+              )
+          }
 
         4. Class.contextType:获取数据
             Class.contextType = Mycontext;//写在最下
@@ -716,21 +673,20 @@ export default Mycontext
             Consumer 调用多次，数据不覆盖
 
 
-
 2. 错误边界
     1. react中一个页面中可能有很多组件，只要其中有一个组件运行出错，react会把页面中所有组件全卸载掉，显示空白屏幕
     2. 错误边界:当React运行中有错误时，这时显示一个备用的页面，不显示白屏，还可以把报错信息发送到指定的位置
     3. 用法：
          错误边界也是一个组件，定义好后包裹其他的组件，这个组件必须是class定义的，同时这个组件中必须有以下两个生命周期函数中的至少一个
              static getDerivedStateFromError(){
-       		 return {iserror:true}
-   				 }
+       		    return {iserror:true}
+   			     }
         渲染备用 UI
             componentDidCatch(...rest){
-        console.log(rest);
-}
+               console.log(rest);
+            }
         打印错误信息，可以把错误信息发送到指定位置
-render() {
+      render() {
         if(this.state.iserror){
             return <div>组件报错了</div>
         }
@@ -739,105 +695,109 @@ render() {
                 {this.props.children}           
             </div>
         )  
-}
-
-Day7
-# Refs 转发
-1. ref是什么？允许用户获取到原生DOM
-2. ref放在组件上，这时current的值是谁？
+    }
+```
+## Refs 转发
+1. ref是什么？允许用户获取到原生DOM
+2. ref放在组件上，这时current的值是谁？
     就是这个组件
-3. ref放在组件上时，我想获取的是这个组件内部的某个DOM元素
+3. ref放在组件上时，我想获取的是这个组件内部的某个DOM元素
 - react中组件上使用ref属性时，react会把ref从props中删除，根本不会传递到组件内部。
 - refs转发就是解决上面这个问题的
-4. 用法：
-    1. 创建ref 在父类
-      constructor(){
-        super()
-        this.ref1=React.createRef()
+4. 用法：
+  1. 创建ref 在父类
+```jsx
+constructor(){
+  super()
+  this.ref1=React.createRef()
 }
-    在父类可以通过事件输出
-     console.log(this.ref1.current);
-    然后在组件中传过去ref <Sonref ref={this.ref1} msg='2006'/> 
-    2. 使用forwardRef来创建组件
-  `     let Son=React.forwardRef((props,ref)=>{
-        return <div>
-           <div ref={ref}>son中的div</div>
-        </div>`
-})
+```
+在父类可以通过事件输出 console.log(this.ref1.current);
+
+然后在组件中传过去ref `<Sonref ref={this.ref1} msg='2006'/> `
+   2. 使用forwardRef来创建组件
+```jsx
+let Son=React.forwardRef((props,ref)=>{
+return <div>
+  <div ref={ref}>son中的div</div>
+</div>`
 export default Son
-# Fragments
-1. Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
-2. 语法：
+```
+
+### Fragments
+1. Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
+2. 语法：
 `<React.Fragment></React.Fragment>`
 简写语法： <>...</>
 
-# 高阶组件
+### 高阶组件
 类似于高阶函数 一个函数返回一个函数
 高阶组件 接受一个组件 返回一个组件
-- 高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式， 高阶组件本身是一个函数，接收一个组件，返回一个新组件
-  高阶组件是参数为组件，返回值为新组件的函数
-  代码如下
+- 高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式， 高阶组件本身是一个函数，接收一个组件，返回一个新组件,高阶组件是参数为组件，返回值为新组件的函数
 
-//     // React的api, React.createElement(标签,{属性},children)
-//     // React的api, React.cloneElement(react元素,{属性},children)
-//     // React的api, React.Children.map()
+代码如下
 
-# 性能优化
-- shouldComponentUpdate(nextProps,nextState)
+- //React的api, React.createElement(标签,{属性},children)
+- //React的api, React.cloneElement(react元素,{属性},children)
+- //React的api, React.Children.map()
+
+### react性能优化
+- shouldComponentUpdate(nextProps,nextState)
 this.props代表老状态，nextProps代表新状态
 是否允许组件更新
-- PureComponent （export default class Son2 extends PureComponent）
+- PureComponent （export default class Son2 extends PureComponent）
 PureComponent来定义类形式组件，只有当props或state发生改变时才会触发组件更新
 
-- ComponentWillUnmount 组件注销
+- ComponentWillUnmount 组件注销
   // 组件销毁前，把全局的事件删除了 比如
         window.removeEventListener('scroll',this.myscroll);
         clearTimeout(this.state.timer);
-- ComponentDidUpdate(prevProps,prevState)
+- ComponentDidUpdate(prevProps,prevState)
  防止死循环 可以加条件判断
 
-# Render Props
+
+###  Render Props
 - 术语 “render prop” 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术，一些组件向外提供数据，不把需要数据的组件硬编程到这个组件内部，通过调用props.上
 的一个方法，把数据提供处理
 - 语法
 Data.jsx提供数据的组件
+```jsx
 class Data extends Component {
-state ={count:1}
-render(){
-return <div>{this . props. render (this. state)}</div>
+  state ={count:1}
+  render(){
+    return <div>{this . props. render (this. state)}</div>
 }
 }
-在公共app.js，等于把state传给son
-` <Data render={(state)=>{
+//在公共app.js，等于把state传给son
+      <Data render={(state)=>{
         console.log('ap',state);
           return <Son1 state={state}/>
-      }}/>  `
-Son.jsx在通过this.props接数据
-
-# 懒加载
+      }}/>  
+//Son.jsx在通过this.props接数据
+```
+####  懒加载
 - 当组件什么时候使用到了，再动态加载这个组件
 - 使用：
 let About = React.lazy(()=>import('./About'));
-           ` <Suspense fallback={<Loading />}>
-                <About />
-            </Suspense>`
 
-Day8
-# hooks hook作用：让函数式组件能使用state和生命周期
+## hooks 
+
+hook作用：让函数式组件能使用state和生命周期
 
 import React, { useState, useEffect } from "react";
 
-1. 介绍：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。 rfc快速创建
+1. 介绍：Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。 rfc快速创建
     hook是给函数组件使用的，hook只能在函数组件中使用，不能在class组件中使用
     没有破坏性改动，100%向后兼容，react版本大于16.8就可以直接使用Hook
-2. State Hook
-    1. 语法：
-        import React,{useState} from 'react'
-        const [count, setCount] = useState(0);
-    2. 调用
-        直接使用变量名 count
-    3. 修改
-        调用setCount方法
+### State Hook
+1. 语法：
+- import React,{useState} from 'react'
+- const [count, setCount] = useState(0);
+2. 调用
+- 直接使用变量名 count
+3. 修改
+调用setCount方法
+```jsx
             <!-- 第一种用法：在老状态上修改 -->
             setCount((count)=>{
                 //count是老的状态
@@ -847,14 +807,20 @@ import React, { useState, useEffect } from "react";
             setCount(2)
             <!-- 第三种用法： -->
             setCount(count+2) //有批量更新功能
-    4. 是否是批量更新
-        setCount(count=>count+1):不批量更新，写几个就执行几次
-    5. 是否是异步
-        在非其他宏任务或微任务中时是异步的， 否则同步执行的
+```
+4. 是否是批量更新
 
-2. Effect Hook
-    1. useEffect 是给函数组件提供 "生命周期" 的一个函数，相当于有3个生命周期
-    2. 语法：
+setCount(count=>count+1):不批量更新，写几个就执行几次
+
+5. 是否是异步
+
+
+在非其他宏任务或微任务中时是异步的， 否则同步执行的
+
+### Effect Hook
+1. useEffect 是给函数组件提供 "生命周期" 的一个函数，相当于有3个生命周期
+```jsx
+2. 语法：
         1. 引入
             import React,{useEffect} from 'react'
         2. 使用：
@@ -868,8 +834,9 @@ import React, { useState, useEffect } from "react";
                 2. 第二个参数位置写空数组([])：禁止ComponentDidUpdate执行
                 3. 第二次参数位置数组中有值：只有数组中的参数的值发生改变时，才能执行ComponentDidUpdate
             3. 第一个参数位置的函数中的返回值(return) : 相当于componentWillUnmount，effect 的清除阶段在每次重新渲染时都会执行，而不是只在卸载组件的时候执行一次。这个设计可以帮助我们创建 bug 更少的组件。
-
-3. Context Hook
+```
+### Context Hook
+```jsx
 - 在函数组件中使用Context的hook
 - 语法：
         这是获取数据 const value = useContext(MyContext);
@@ -899,8 +866,10 @@ export {Mycontext}
 4. Hook 规则
     1. 只在最顶层使用 Hook,不要在循环，条件或嵌套函数中调用 Hook
     2. 只在 React 函数中调用 Hook
-Day9
-# 新知识点
+
+```
+### useReducer | useMemo
+```jsx
 1.  useReducer 是功能更强大的"useState"
     1. 语法:
         const [state, dispatch] = useReducer(reducer, initialArg, init)
@@ -935,23 +904,26 @@ Day9
 2. useMemo
     1. 把“创建”函数和依赖项数组作为参数传入 useMemo，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算
     2. const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
 
-3. useRef
-    1. useRef 返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内保持不变。
-    2. 用法：
-         1. 创建ref
-		2. 语法：const myref = useRef()
-		3. 使用
-        	`	<div ref={myref}></div>`
-		4. refs转发
-       ` <Son ref={myref} />`
-        Son组件创建时，需要使用 React.forwardRef()创建
-            React.forwardRef((props,ref)=>{
-                return <div ref={ref}></div>
-            })
+### useRef
+```jsx
+1. useRef 返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。返回的 ref 对象在组件的整个生命周期内保持不变。
+2. 用法：
+  1. 创建ref
+  2. 语法：const myref = useRef()
+  3. 使用	`	<div ref={myref}></div>`
+  4. refs转发
+` <Son ref={myref} />`
+  Son组件创建时，需要使用 React.forwardRef()创建
+  React.forwardRef((props,ref)=>{
+    return <div ref={ref}></div>
+  })
+```
 
 
-4. 自定义hook
+### 自定义hook
+```md
     1. 提取组件中的业务逻辑
     2. 语法：
         必须以 'use' 开头，可以使用内置hook
@@ -966,9 +938,10 @@ Day9
         注意：1. 只能在函数组件中使用
               2. 不能放在 if,for,普通函数中调用，在设计的时候有顺序，单项链表
 
+```
 
-
-Day10 redux
+## redux
+```md
 1. 在react中数据传递方式有几种?
     1. 父传子： props
     2. 子传父： 使用事件
@@ -1108,7 +1081,6 @@ function mapDispatchToprops(dispatch){
         })
 }
 }
-
 ```
         
 

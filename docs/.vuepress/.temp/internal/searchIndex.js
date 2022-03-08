@@ -7,6 +7,168 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "webpack",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Webpack 基础",
+        "slug": "webpack-基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "经典问题",
+        "slug": "经典问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "webpack运行流程",
+            "slug": "webpack运行流程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "compiler和compilation",
+            "slug": "compiler和compilation",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "webpack中的Module是什么？",
+            "slug": "webpack中的module是什么",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "webpack modules,如何表达自己的各种依赖关系",
+            "slug": "webpack-modules-如何表达自己的各种依赖关系",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "*常说的 chunk和bundle的区别是什么？",
+            "slug": "常说的-chunk和bundle的区别是什么",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Loader 和 Plugin 分别是做什么的? 怎么工作的?",
+            "slug": "loader-和-plugin-分别是做什么的-怎么工作的",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "如何本地项目去做一些多端口服务的代理转发",
+            "slug": "如何本地项目去做一些多端口服务的代理转发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "如何利用webpack去做依赖锁定？锁版本",
+            "slug": "如何利用webpack去做依赖锁定-锁版本",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "静态文件的移动&赋值,用哪个plugin",
+            "slug": "静态文件的移动-赋值-用哪个plugin",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "性能优化",
+            "slug": "性能优化",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "文件指纹",
+        "slug": "文件指纹",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Loader",
+        "slug": "loader",
+        "children": [
+          {
+            "level": 3,
+            "title": "常用loaders",
+            "slug": "常用loaders",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Plugin",
+        "slug": "plugin",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "noParse",
+        "slug": "noparse",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "函数式编程理论",
+        "slug": "函数式编程理论",
+        "children": [
+          {
+            "level": 3,
+            "title": "特点",
+            "slug": "特点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "概念",
+            "slug": "概念",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "纯函数",
+            "slug": "纯函数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "高阶函数",
+            "slug": "高阶函数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "函数柯里化",
+            "slug": "函数柯里化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "升级->组合",
+            "slug": "升级-组合",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/engineering/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "数据结构与算法",
     "headers": [
       {
@@ -359,168 +521,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "webpack",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Webpack 基础",
-        "slug": "webpack-基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "经典问题",
-        "slug": "经典问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "webpack运行流程",
-            "slug": "webpack运行流程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "compiler和compilation",
-            "slug": "compiler和compilation",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "webpack中的Module是什么？",
-            "slug": "webpack中的module是什么",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "webpack modules,如何表达自己的各种依赖关系",
-            "slug": "webpack-modules-如何表达自己的各种依赖关系",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "*常说的 chunk和bundle的区别是什么？",
-            "slug": "常说的-chunk和bundle的区别是什么",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Loader 和 Plugin 分别是做什么的? 怎么工作的?",
-            "slug": "loader-和-plugin-分别是做什么的-怎么工作的",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如何本地项目去做一些多端口服务的代理转发",
-            "slug": "如何本地项目去做一些多端口服务的代理转发",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如何利用webpack去做依赖锁定？锁版本",
-            "slug": "如何利用webpack去做依赖锁定-锁版本",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "静态文件的移动&赋值,用哪个plugin",
-            "slug": "静态文件的移动-赋值-用哪个plugin",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "性能优化",
-            "slug": "性能优化",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "文件指纹",
-        "slug": "文件指纹",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Loader",
-        "slug": "loader",
-        "children": [
-          {
-            "level": 3,
-            "title": "常用loaders",
-            "slug": "常用loaders",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Plugin",
-        "slug": "plugin",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "noParse",
-        "slug": "noparse",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "函数式编程理论",
-        "slug": "函数式编程理论",
-        "children": [
-          {
-            "level": 3,
-            "title": "特点",
-            "slug": "特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "概念",
-            "slug": "概念",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "纯函数",
-            "slug": "纯函数",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "高阶函数",
-            "slug": "高阶函数",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "函数柯里化",
-            "slug": "函数柯里化",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "升级->组合",
-            "slug": "升级-组合",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/engineering/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "网络和并发",
     "headers": [
       {
@@ -704,6 +704,211 @@ export const searchIndex = [
       }
     ],
     "path": "/views/Http/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "nodejs",
+    "headers": [
+      {
+        "level": 2,
+        "title": "基础",
+        "slug": "基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "express的req传参",
+            "slug": "express的req传参",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "node.js 常见内置模块",
+            "slug": "node-js-常见内置模块",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "node.js 的底层依赖",
+            "slug": "node-js-的底层依赖",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Events",
+        "slug": "events",
+        "children": [
+          {
+            "level": 3,
+            "title": "例子1：单个事件监听器",
+            "slug": "例子1-单个事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子2：同个事件，多个事件监听器",
+            "slug": "例子2-同个事件-多个事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子3：只运行一次的事件监听器",
+            "slug": "例子3-只运行一次的事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子4：注册事件监听器前，事件先触发",
+            "slug": "例子4-注册事件监听器前-事件先触发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子5：异步执行，还是顺序执行",
+            "slug": "例子5-异步执行-还是顺序执行",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子6：移除事件监听器",
+            "slug": "例子6-移除事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "手写实现EventEmitter",
+            "slug": "手写实现eventemitter",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "全局对象Global",
+        "slug": "全局对象global",
+        "children": [
+          {
+            "level": 3,
+            "title": "全局对象和全局变量",
+            "slug": "全局对象和全局变量",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "__filename",
+            "slug": "filename",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "__dirname",
+            "slug": "dirname",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "process",
+            "slug": "process",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "退出的状态码",
+            "slug": "退出的状态码",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "node中的this",
+            "slug": "node中的this",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "node.js 事件循环模型",
+        "slug": "node-js-事件循环模型",
+        "children": [
+          {
+            "level": 3,
+            "title": "什么是事件循环",
+            "slug": "什么是事件循环",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "各阶段概览",
+            "slug": "各阶段概览",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "各阶段详细解析",
+            "slug": "各阶段详细解析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "setImmediate 和 setTimeout 的区别",
+            "slug": "setimmediate-和-settimeout-的区别",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "process.nextTick微任务",
+            "slug": "process-nexttick微任务",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "nextTick在事件循环中的位置",
+            "slug": "nexttick在事件循环中的位置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Microtasks 微任务",
+            "slug": "microtasks-微任务",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "代码输出顺序",
+            "slug": "代码输出顺序",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "node.js 周边⼯具",
+        "slug": "node-js-周边工具",
+        "children": [
+          {
+            "level": 3,
+            "title": "debug",
+            "slug": "debug",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "quickjs",
+            "slug": "quickjs",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "deno",
+            "slug": "deno",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/nodejs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -1498,211 +1703,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "nodejs",
-    "headers": [
-      {
-        "level": 2,
-        "title": "基础",
-        "slug": "基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "express的req传参",
-            "slug": "express的req传参",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "node.js 常见内置模块",
-            "slug": "node-js-常见内置模块",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "node.js 的底层依赖",
-            "slug": "node-js-的底层依赖",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Events",
-        "slug": "events",
-        "children": [
-          {
-            "level": 3,
-            "title": "例子1：单个事件监听器",
-            "slug": "例子1-单个事件监听器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "例子2：同个事件，多个事件监听器",
-            "slug": "例子2-同个事件-多个事件监听器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "例子3：只运行一次的事件监听器",
-            "slug": "例子3-只运行一次的事件监听器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "例子4：注册事件监听器前，事件先触发",
-            "slug": "例子4-注册事件监听器前-事件先触发",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "例子5：异步执行，还是顺序执行",
-            "slug": "例子5-异步执行-还是顺序执行",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "例子6：移除事件监听器",
-            "slug": "例子6-移除事件监听器",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "手写实现EventEmitter",
-            "slug": "手写实现eventemitter",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "全局对象Global",
-        "slug": "全局对象global",
-        "children": [
-          {
-            "level": 3,
-            "title": "全局对象和全局变量",
-            "slug": "全局对象和全局变量",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "__filename",
-            "slug": "filename",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "__dirname",
-            "slug": "dirname",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "process",
-            "slug": "process",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "退出的状态码",
-            "slug": "退出的状态码",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "node中的this",
-            "slug": "node中的this",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "node.js 事件循环模型",
-        "slug": "node-js-事件循环模型",
-        "children": [
-          {
-            "level": 3,
-            "title": "什么是事件循环",
-            "slug": "什么是事件循环",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "各阶段概览",
-            "slug": "各阶段概览",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "各阶段详细解析",
-            "slug": "各阶段详细解析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "setImmediate 和 setTimeout 的区别",
-            "slug": "setimmediate-和-settimeout-的区别",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "process.nextTick微任务",
-            "slug": "process-nexttick微任务",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "nextTick在事件循环中的位置",
-            "slug": "nexttick在事件循环中的位置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Microtasks 微任务",
-            "slug": "microtasks-微任务",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "代码输出顺序",
-            "slug": "代码输出顺序",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "node.js 周边⼯具",
-        "slug": "node-js-周边工具",
-        "children": [
-          {
-            "level": 3,
-            "title": "debug",
-            "slug": "debug",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "quickjs",
-            "slug": "quickjs",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "deno",
-            "slug": "deno",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/nodejs/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "webpack 基础知识整理",
     "headers": [
       {
@@ -2177,6 +2177,44 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "浏览器工作流程",
+    "headers": [
+      {
+        "level": 3,
+        "title": "1.通过query配置：",
+        "slug": "_1-通过query配置",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2.通过params配置：",
+        "slug": "_2-通过params配置",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "1.通过query****配置的：",
+        "slug": "_1-通过query-配置的",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "2.通过params配置的：",
+        "slug": "_2-通过params配置的",
+        "children": []
+      },
+      {
+        "level": 3,
+        "title": "说一下Vue的双向绑定数据的原理",
+        "slug": "说一下vue的双向绑定数据的原理",
+        "children": []
+      }
+    ],
+    "path": "/views/other/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "【讲义】React基础",
     "headers": [
       {
@@ -2319,6 +2357,118 @@ export const searchIndex = [
         "level": 2,
         "title": "组合",
         "slug": "组合",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "fetch网络请求",
+        "slug": "fetch网络请求",
+        "children": [
+          {
+            "level": 3,
+            "title": "语法",
+            "slug": "语法",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "router 路由",
+        "slug": "router-路由",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "配置less",
+        "slug": "配置less",
+        "children": [
+          {
+            "level": 3,
+            "title": "Provider",
+            "slug": "provider",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Refs 转发",
+        "slug": "refs-转发",
+        "children": [
+          {
+            "level": 3,
+            "title": "Fragments",
+            "slug": "fragments",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "高阶组件",
+            "slug": "高阶组件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "react性能优化",
+            "slug": "react性能优化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Render Props",
+            "slug": "render-props",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "hooks",
+        "slug": "hooks",
+        "children": [
+          {
+            "level": 3,
+            "title": "State Hook",
+            "slug": "state-hook",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Effect Hook",
+            "slug": "effect-hook",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Context Hook",
+            "slug": "context-hook",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "useReducer | useMemo",
+            "slug": "usereducer-usememo",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "useRef",
+            "slug": "useref",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "自定义hook",
+            "slug": "自定义hook",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "redux",
+        "slug": "redux",
         "children": []
       }
     ],
@@ -7822,14 +7972,25 @@ export const searchIndex = [
             "title": "路由的分类",
             "slug": "路由的分类",
             "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "hash 路由 和 history 路由，有什么区别？",
-        "slug": "hash-路由-和-history-路由-有什么区别",
-        "children": [
+          },
+          {
+            "level": 3,
+            "title": "hash 路由",
+            "slug": "hash-路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "history 路由",
+            "slug": "history-路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "hash 路由 和 history 路由，有什么区别？",
+            "slug": "hash-路由-和-history-路由-有什么区别",
+            "children": []
+          },
           {
             "level": 3,
             "title": "手写hash路由",
@@ -7852,6 +8013,31 @@ export const searchIndex = [
             "level": 3,
             "title": "pushState 会触发 popState 事件吗？",
             "slug": "pushstate-会触发-popstate-事件吗",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vue导航守卫",
+        "slug": "vue导航守卫",
+        "children": [
+          {
+            "level": 3,
+            "title": "导航解析流程",
+            "slug": "导航解析流程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "导航守卫的执行顺序",
+            "slug": "导航守卫的执行顺序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "next必须调用",
+            "slug": "next必须调用",
             "children": []
           }
         ]
