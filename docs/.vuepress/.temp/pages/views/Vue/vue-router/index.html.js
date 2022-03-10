@@ -88,12 +88,12 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1646583067000,
+    "updatedTime": 1646733437000,
     "contributors": [
       {
         "name": "liuchenglong",
         "email": "768206581@qq.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   },

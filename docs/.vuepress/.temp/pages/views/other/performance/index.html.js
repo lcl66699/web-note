@@ -8,14 +8,14 @@ export const data = {
   "headers": [
     {
       "level": 2,
-      "title": "性能优化",
-      "slug": "性能优化-1",
+      "title": "从输入URL到页面加载的过程",
+      "slug": "从输入url到页面加载的过程",
       "children": []
     },
     {
       "level": 2,
-      "title": "编码阶段的优化",
-      "slug": "编码阶段的优化",
+      "title": "性能优化",
+      "slug": "性能优化-1",
       "children": [
         {
           "level": 3,
@@ -51,8 +51,8 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "webpack方面的优化（运行时优化 和打包时的优化）",
-      "slug": "webpack方面的优化-运行时优化-和打包时的优化",
+      "title": "webpack方面",
+      "slug": "webpack方面",
       "children": [
         {
           "level": 3,

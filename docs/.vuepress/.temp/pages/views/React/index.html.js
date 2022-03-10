@@ -212,8 +212,13 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1646668897000,
+    "updatedTime": 1646733437000,
     "contributors": [
+      {
+        "name": "liuchenglong",
+        "email": "768206581@qq.com",
+        "commits": 2
+      },
       {
         "name": "liuchenglong",
         "email": "liuchenglong@yoonuu.com",
@@ -221,11 +226,6 @@ export const data = {
       },
       {
         "name": "chenglong",
-        "email": "768206581@qq.com",
-        "commits": 1
-      },
-      {
-        "name": "liuchenglong",
         "email": "768206581@qq.com",
         "commits": 1
       }

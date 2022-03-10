@@ -202,7 +202,14 @@ export const data = {
           "title": "31. 代码输出结果",
           "slug": "_31-代码输出结果",
           "children": []
-        },
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "二、this",
+      "slug": "二、this",
+      "children": [
         {
           "level": 3,
           "title": "1. 代码输出结果",
@@ -286,7 +293,14 @@ export const data = {
           "title": "15. 代码输出结果",
           "slug": "_15-代码输出结果-1",
           "children": []
-        },
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "三、作用域&变量提升&闭包",
+      "slug": "三、作用域-变量提升-闭包",
+      "children": [
         {
           "level": 3,
           "title": "1. 代码输出结果",
@@ -334,7 +348,14 @@ export const data = {
           "title": "8. 代码输出结果",
           "slug": "_8-代码输出结果-1",
           "children": []
-        },
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "四、原型&继承",
+      "slug": "四、原型-继承",
+      "children": [
         {
           "level": 3,
           "title": "1. 代码输出结果",

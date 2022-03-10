@@ -982,7 +982,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>此时微任务队列为空，继续执行宏任务队列，打印出1。</li>
 </ol>
 <p>做完这道题目，我们就需要格外注意，每个定时器的时间，并不是所有定时器的时间都为0哦。</p>
-<h1 id="二、this" tabindex="-1"><a class="header-anchor" href="#二、this" aria-hidden="true">#</a> 二、this</h1>
+<h2 id="二、this" tabindex="-1"><a class="header-anchor" href="#二、this" aria-hidden="true">#</a> 二、this</h2>
 <h3 id="_1-代码输出结果-1" tabindex="-1"><a class="header-anchor" href="#_1-代码输出结果-1" aria-hidden="true">#</a> 1. 代码输出结果</h3>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1290,7 +1290,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>输出结果： 2  2  3</p>
 <p>这道题目和上面题目差不多，主要都是考察this绑定的优先级。记住以下结论即可：<strong>this绑定的优先级：new绑定 &gt; 显式绑定 &gt; 隐式绑定 &gt; 默认绑定。</strong></p>
-<h1 id="三、作用域-变量提升-闭包" tabindex="-1"><a class="header-anchor" href="#三、作用域-变量提升-闭包" aria-hidden="true">#</a> 三、作用域&amp;变量提升&amp;闭包</h1>
+<h2 id="三、作用域-变量提升-闭包" tabindex="-1"><a class="header-anchor" href="#三、作用域-变量提升-闭包" aria-hidden="true">#</a> 三、作用域&amp;变量提升&amp;闭包</h2>
 <h3 id="_1-代码输出结果-2" tabindex="-1"><a class="header-anchor" href="#_1-代码输出结果-2" aria-hidden="true">#</a> 1. 代码输出结果</h3>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    <span class="token keyword">var</span> x <span class="token operator">=</span> y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
@@ -1434,7 +1434,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>这里首先定义了两个变量f和g，我们知道变量是可以重新赋值的。后面是一个匿名自执行函数，在 if 条件中调用了函数 g()，由于在匿名函数中，又重新定义了函数g，就覆盖了外部定义的变量g，所以，这里调用的是内部函数 g 方法，返回为 true。第一个条件通过，进入第二个条件。</p>
 <p>第二个条件是[] == ![]，先看 ![] ，在 JavaScript 中，当用于布尔运算时，比如在这里，对象的非空引用被视为 true，空引用 null 则被视为 false。由于这里不是一个 null, 而是一个没有元素的数组，所以 [] 被视为 true, 而 ![] 的结果就是 false 了。当一个布尔值参与到条件运算的时候，true 会被看作 1, 而 false 会被看作 0。现在条件变成了 [] == 0 的问题了，当一个对象参与条件比较的时候，它会被求值，求值的结果是数组成为一个字符串，[] 的结果就是 '' ，而 '' 会被当作 0 ，所以，条件成立。</p>
 <p>两个条件都成立，所以会执行条件中的代码， f 在定义是没有使用var，所以他是一个全局变量。因此，这里会通过闭包访问到外部的变量 f, 重新赋值，现在执行 f 函数返回值已经成为 false 了。而 g 则不会有这个问题，这里是一个函数内定义的 g，不会影响到外部的 g 函数。所以最后的结果就是 false。</p>
-<h1 id="四、原型-继承" tabindex="-1"><a class="header-anchor" href="#四、原型-继承" aria-hidden="true">#</a> 四、原型&amp;继承</h1>
+<h2 id="四、原型-继承" tabindex="-1"><a class="header-anchor" href="#四、原型-继承" aria-hidden="true">#</a> 四、原型&amp;继承</h2>
 <h3 id="_1-代码输出结果-3" tabindex="-1"><a class="header-anchor" href="#_1-代码输出结果-3" aria-hidden="true">#</a> 1. 代码输出结果</h3>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name

@@ -147,48 +147,157 @@
     </script>
 </body>
 <script>
-    var change = (event) => {
-        console.log(event.target.value);
-    }
-    var debounce = (fn, wait) => {
-        var timer = null
+
+    Function.prototype.mybind = function () {
+        const _this = this
+        let args = Array.prototype.slice.call(arguments)
+        let newThis = args.shift()
+        console.log(args);
         return function () {
-            if (timer !== null) {
-                clearInterval(timer)
-            }
-            timer = setTimeout(() => {
-                fn.apply(this, arguments)
-            }, wait)
+            return _this.apply(newThis, args)
         }
     }
-
-    var test = debounce(change, 1000)
-
-    const myscroll = () => {
-        console.log('滚动了', Date.now());
-    }
-
-    var throttle = (fn, wait) => {
-        var timer = null
-        var last = 0
-
-        return function () {
-            const now = Date.now()
-            clearInterval(timer)
-            if (now - last >= wait) {
-                fn.apply(this, arguments)
-                last = Date.now()
-            } else {
-                timer = setTimeout(() => {
-                    fn.apply(this, arguments)
-                    last = Date.now()
-                }, wait)
-            }
+    const aaaa = 456
+    const obj = {
+        aaaa: 123,
+        logFun: function () {
+            console.log('haha', this.aaaa);
         }
     }
-    var mythrottle = throttle(myscroll, 1000)
+    const obj1 = {
+        aaaa: 999,
+    }
 
-    window.addEventListener('scroll', mythrottle)
+    obj.logFun.mybind(obj1, 12321)()
+
+
+    let arr = [1, 123, 123, 124, 43, 34, 45, 65, 5623];
+    function flatten(arr) {
+        if (!Array.isArray(arr)) return new Error('not array')
+        let newArr = []
+
+        arr.forEach((item) => {
+            if (newArr.indexOf(item) == -1) {
+                newArr.push(item)
+            }
+        })
+        return newArr
+    }
+    console.log(flatten(arr));  //  [1, 2, 3, 4，5]
+
+
+    const PromiseAll = (arr) => {
+        return new Promise((resolve, reject) => {
+            if (!Array.isArray(arr)) return reject('传入是数组')
+            // console.log(arr);
+            let count = 0
+            let res = []//结果
+            arr.forEach((item, index) => {
+                // console.log(item);
+                Promise.resolve(item)
+                    .then((data) => {
+                        res[index] = data
+                        count++
+                        if (count === arr.length) {
+                            resolve(res)
+                        }
+                    })
+                    .catch((err) => reject(err))
+
+            })
+
+        })
+    }
+
+
+    const pro1 = new Promise((res, rej) => {
+        setTimeout(() => {
+            res('1')
+        }, 1000)
+    })
+    const pro2 = new Promise((res, rej) => {
+        setTimeout(() => {
+            res('2')
+        }, 2000)
+    })
+    const pro3 = new Promise((res, rej) => {
+        setTimeout(() => {
+            res('3')
+        }, 3000)
+    })
+
+    const pro4 = 123
+
+    // const peoAll = PromiseAll([pro1, pro2, pro3, pro4])
+    //     .then((res) => {
+    //         console.log('3s', res);//3s后打印['1','2','3']
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //     })
+
+
+    console.log('-----------------------');
+    function Game(arg) {
+        this.name = 'lol';
+        this.skin = ['s'];
+    }
+    Game.prototype.getName = function () {
+        return this.name;
+    }
+
+    // LOL类
+    function LOL(arg) {
+        console.log(121123);
+        Game.call(this, arg);
+    }
+    LOL.prototype = Object.create(new Game())
+    LOL.prototype.constructor = LOL;
+
+    const game3 = new LOL();
+
+    console.log(game3.getName());
+
+
+    console.log('********************************');
+    // 1    7   6    8    2     4   3 5    9   11   10  12  
+
+    aa = async () => {
+        await new Promise((res, rej) => {
+            return 123
+        })
+        console.log(123)
+    }
+
+    aa()
+
+    //w1
+    process.nextTick(function () {
+        console.log('6');
+    })
+
+
+    new Promise(function (resolve) {
+        console.log('7');
+        resolve();
+    }).then(function () {//w2  
+        console.log('8')
+    })
+
+
+    // h2   
+    setTimeout(function () {
+        console.log('9');
+        process.nextTick(function () {
+            console.log('10');
+        })
+        new Promise(function (resolve) {
+            console.log('11');
+            resolve();
+        }).then(function () {
+            console.log('12')
+        })
+    })
 
 
 // const throw

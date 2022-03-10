@@ -5,8 +5,90 @@
 <li>首次可交互时间 （比如输入框验证码）</li>
 <li>首次有意义内容渲染时间</li>
 </ol>
+<h2 id="从输入url到页面加载的过程" tabindex="-1"><a class="header-anchor" href="#从输入url到页面加载的过程" aria-hidden="true">#</a> 从输入URL到页面加载的过程</h2>
+<ul>
+<li>
+<p>url解析：判断输入是关键字搜索还是url访问，对url进行解析</p>
+<ul>
+<li>URL一般包括几大部分：
+<ul>
+<li>protocol，协议头，譬如有http，ftp等</li>
+<li>host，主机域名或IP地址</li>
+<li>port，端口号</li>
+<li>path，目录路径</li>
+<li>query，即查询参数</li>
+<li>fragment，即#后的hash值，一般用来定位到某个位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>开启网络线程</p>
+</li>
+<li>
+<p>dns查询：域名解析得到IP。</p>
+<p>DNS查找过程为： 浏览器缓存-&gt;系统缓存-&gt;路由器缓存-&gt;ISP DNS缓存-&gt;递归搜索</p>
+<p>递归搜索过程为：从根域名服务器到顶级域名服务器到所查询的域名服务器</p>
+<ul>
+<li>如果浏览器有缓存，直接使用浏览器缓存，否则使用本机缓存，再没有的话就是用系统缓存host</li>
+<li>向本地DNS服务器发送查询报文</li>
+<li>本地DNS服务器检查自身缓存，存在返回，不存在向根域名服务器发送查询报文，得到顶级域的顶级域名服务器地址</li>
+<li>查询到对应的IP</li>
+<li>使用IP建立TCP链接（三次握手）</li>
+</ul>
+</li>
+<li>
+<p>建立TCP链接-三次握手</p>
+<ul>
+<li>第一次握手： 建立连接时，客户端发送SYN标记的数据包（syn=j）到服务器，并进入SYN_SENT状态，等待服务器确认；</li>
+<li>第二次握手： 服务器收到SYN标记的数据包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态；</li>
+<li>第三次握手： 客户端收到服务器的SYN+ACK包，向服务器发送确认包ACK(ack=k+1），此包发送完毕，客户端和服务器进入ESTABLISHED（TCP连接成功）状态，完成三次握手。</li>
+</ul>
+</li>
+<li>
+<p>http请求
+发送http请求，服务器响应，缓存判断（强缓存和协商缓存304）</p>
+<ul>
+<li>请求：发送命令+发送请求头信息+空白行+请求体（post）</li>
+<li>响应：响应状态 + 响应头+空白行+响应体</li>
+<li>强缓存：cache-control（max-age）、Expires</li>
+<li>协商缓存：返回Etag、Last-modified和请求IF-none-match、IF-modified-since</li>
+</ul>
+</li>
+<li>
+<p>浏览器解析渲染页面</p>
+<ul>
+<li>解析HTML，构建dom树，词法分析和语法分析</li>
+<li>加载外部js脚本和样式表文件;（预扫描)</li>
+<li>解析并执行js脚本;</li>
+<li>解析css，生成css规则树，从右往左解析</li>
+<li>合并DOM树和CSS规则树，生成render树</li>
+<li>布局render树，根据render节点的类型，确定元素大小和位置</li>
+<li>绘制render树，绘制页面像素信息</li>
+<li>dom树构建完成- html解析完毕(完成后触发 onready -&gt;即DOMContentLoaded)</li>
+<li>加载图片等外部文件(完成后触发图片onload )</li>
+<li>浏览器将各层的信息发送给GUI，GUI将各层合成，展示在屏幕上</li>
+<li>细化流程：构件dom树、构建sytle Rules、样式计算、创建布局树、分层、绘制、分块和光栅化、合成和显示</li>
+<li>渲染是在渲染进程执⾏的，渲染进程分为渲染主线程、光栅线程、合成线程等</li>
+<li>从分块阶段开始，包括分块、光栅化、合成这三步是在⾮主渲染线程执⾏</li>
+<li>重排、重绘、合成：开发中尽量减少重排重绘</li>
+<li>重排：改变了 DOM 元素的⼏何位置属性，⽐如宽度、⾼度，那么就会触发重新布局（Layout 阶段），及之后的⼦阶段；重排需要更新完整的流⽔线，开销也⽐较⼤</li>
+<li>重绘：通过CSS 或 JS 改变了⾮ DOM 元素的⼏何位置属性，⽐如背景⾊、边框⾊等；那么会跳过布局、分层阶段，直接到绘制阶段，执⾏效率⽐重排⾼⼀些</li>
+<li>合成：CSS3 动画，⽐如transform，直接在合成线程上合成动画操作，效率⽐较⾼</li>
+<li>页面加载完毕(完成后触发页面onload)</li>
+</ul>
+</li>
+<li>
+<p>连接结束关闭TCP链接（四次挥手）</p>
+<ul>
+<li>第一次挥手是浏览器发完数据后，发送FIN请求断开连接，进入FIN_WAIT_1状态</li>
+<li>第二次挥手是服务器收到FIN报文，返回ACK报文段表示同意，进入FIN_WAIT_2状态</li>
+<li>第三次挥手是服务器发送FIN报文请求关闭连接，进入LAST_ACK状态</li>
+<li>第四次挥手是浏览器收到FIN报文段，向服务器发送ACK报文段，进入TIME_WAIT状态。服务器接收到ACK报文关闭连接，浏览器等待一段时间后，表示服务器已关闭连接，也关闭连接。</li>
+</ul>
+</li>
+</ul>
 <h2 id="性能优化-1" tabindex="-1"><a class="header-anchor" href="#性能优化-1" aria-hidden="true">#</a> 性能优化</h2>
-<h2 id="编码阶段的优化" tabindex="-1"><a class="header-anchor" href="#编码阶段的优化" aria-hidden="true">#</a> 编码阶段的优化</h2>
 <h3 id="vue框架层面" tabindex="-1"><a class="header-anchor" href="#vue框架层面" aria-hidden="true">#</a> vue框架层面</h3>
 <ol>
 <li>减少data中的数据，因为会增加getter、setter，会手机对应的watcher</li>
@@ -43,9 +125,16 @@
 <ol>
 <li>服务端渲染SSR</li>
 </ol>
-<h2 id="webpack方面的优化-运行时优化-和打包时的优化" tabindex="-1"><a class="header-anchor" href="#webpack方面的优化-运行时优化-和打包时的优化" aria-hidden="true">#</a> webpack方面的优化（运行时优化 和打包时的优化）</h2>
+<h2 id="webpack方面" tabindex="-1"><a class="header-anchor" href="#webpack方面" aria-hidden="true">#</a> webpack方面</h2>
+<blockquote>
+<p>分为运行时优化 和打包时的优化</p>
+</blockquote>
 <ol>
-<li>压缩代码（css压缩 图片压缩 js压缩）</li>
+<li>压缩代码（css压缩 图片压缩 ）
+<ol>
+<li>使用uglifyjs-webpack-plugin实现js压缩</li>
+</ol>
+</li>
 <li>tree Shaking</li>
 <li>使用cdn加载第三方模块</li>
 <li>多线程打包 happypack</li>
