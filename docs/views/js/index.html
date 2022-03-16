@@ -5,61 +5,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>Document</title>
-    <style>
-        ul {
-            list-style: none;
-            background: darkgreen;
-        }
-
-        #two {
-            background: cornflowerblue;
-
-        }
-
-        #three {
-            background: crimson;
-        }
-    </style>
 </head>
+<style>
+    @keyframes identifier {}
+
+    div:nth-child(1) {
+        background: red;
+        width: 200px;
+        /* float: left; */
+        animation: identifier duration timing-function delay iteration-count direction fill-mode;
+    }
+
+    div:nth-child(2) {
+        width: 200px;
+        background: green;
+        /* float: right; */
+    }
+
+    div:nth-child(3) {
+        background: powderblue;
+    }
+</style>
 
 <body>
-    <script>
-        Promise.resolve()//先执行
-            .then(async () => {//执行上行后走微任务
-                console.log(0);
-                setTimeout(() => {
-                    console.log('宏任务');
-                }, 0);
-                return Promise.resolve(4);//当执行栈空的时候 job进队列
-                // return 4
-            })
-            .then((res) => {
-                console.log(res);
-            });
+    <div ondrag="test">132</div>
+    <div>132</div>
+    <div>321</div>
 
-
-        Promise.resolve().then(() => {//回调进入微任务2
-            console.log(1);
-        }).then(() => {
-            console.log(2);
-        }).then(() => {
-            console.log(3);
-        }).then(() => {
-            console.log(5);
-        }).then(() => {
-            console.log(6);
-        }).then(() => {
-            console.log(7);
-        }).then(() => {
-            console.log(8);
-        })
-        //return Promise.resolve() 会产生两个微任务
-        /*
-        当前执行栈为空的时候，才会resolve
-        */
-
-    </script>
 </body>
+<script src="">
+    function test() {
+        console.log(123);
+    }
+
+    var xhr = new XMLHttpRequest()
+    xhr.open('get', 'http://39.106.5.96/api/')
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState !== 4) return
+
+        if (xhr.status == 200) {
+            console.log(xhr.responseText);
+        } else {
+            console.log(xhr.status, xhr.responseText);
+        }
+    }
+
+    xhr.send()
+</script>
+<script>
+    var arr = [1, 2, 2, '1', 123, 312, 432, 34, 234, 32, 2, 2, 2, 1]
+
+    function unique(arr) {
+        return Array.from(new Set(arr))
+    }
+    console.log(unique(arr));   // [1,0,2,9,8,3]
+
+</script>
 
 </html>

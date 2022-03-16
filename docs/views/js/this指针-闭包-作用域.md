@@ -202,7 +202,7 @@ course.test();
 如何解决??? => 改成箭头函数
 
 
-## 手写bind | apply
+## 实现bind | apply
 ```js
 //手写bind => bind位置（挂在那里） => Function.prototype
 Function.prototype.myBind = function () {

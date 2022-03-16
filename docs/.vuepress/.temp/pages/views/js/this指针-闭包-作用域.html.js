@@ -58,8 +58,8 @@ export const data = {
     },
     {
       "level": 2,
-      "title": "手写bind | apply",
-      "slug": "手写bind-apply",
+      "title": "实现bind | apply",
+      "slug": "实现bind-apply",
       "children": [
         {
           "level": 3,

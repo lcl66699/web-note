@@ -45,8 +45,8 @@ module.exports = {
           { text: 'vue2基础', link: '/views/Vue/vue2-easy/' }, // 可不写后缀 .md
           { text: 'vue2进阶', link: '/views/Vue/vue2-mid/' },
           { text: 'vue-cli', link: '/views/Vue/vue-cli/' },
-          { text: 'vue原理篇', link: '/views/Vue/vue-hard/' },
-          { text: 'vuex原理', link: '/views/Vue/vuex/' },
+          { text: 'vue-理解', link: '/views/Vue/vue-hard/' },
+          { text: 'vuex', link: '/views/Vue/vuex/' },
           { text: 'vue-router', link: '/views/Vue/vue-router/' },
         ]
       },

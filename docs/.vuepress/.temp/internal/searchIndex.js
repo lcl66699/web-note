@@ -1379,8 +1379,8 @@ export const searchIndex = [
       },
       {
         "level": 2,
-        "title": "手写bind | apply",
-        "slug": "手写bind-apply",
+        "title": "实现bind | apply",
+        "slug": "实现bind-apply",
         "children": [
           {
             "level": 3,
@@ -2477,13 +2477,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "js-algorithm",
-    "headers": [],
-    "path": "/views/Algorithm/js-algorithm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "first page in category1",
     "headers": [],
     "path": "/views/category1/2018/121501.html",
@@ -2570,6 +2563,13 @@ export const searchIndex = [
       }
     ],
     "path": "/views/category1/2019/092101.html",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "js-algorithm",
+    "headers": [],
+    "path": "/views/Algorithm/js-algorithm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7868,6 +7868,13 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/web-safe/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "react 高级用法",
+    "headers": [],
+    "path": "/views/React/react-mid/",
     "pathLocale": "/",
     "extraFields": []
   },

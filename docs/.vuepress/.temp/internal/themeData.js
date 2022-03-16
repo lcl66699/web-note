@@ -37,11 +37,11 @@ export const themeData = {
           "link": "/views/Vue/vue-cli/"
         },
         {
-          "text": "vue原理篇",
+          "text": "vue-理解",
           "link": "/views/Vue/vue-hard/"
         },
         {
-          "text": "vuex原理",
+          "text": "vuex",
           "link": "/views/Vue/vuex/"
         },
         {

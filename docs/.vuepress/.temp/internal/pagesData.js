@@ -33,12 +33,12 @@ export const pagesData = {
   "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/React/
   "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
-  // path: /views/Algorithm/js-algorithm/
-  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/category1/2018/121501.html
   "v-25a3c47f": () => import(/* webpackChunkName: "v-25a3c47f" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2018/121501.html.js").then(({ data }) => data),
   // path: /views/category1/2019/092101.html
   "v-2203eb9d": () => import(/* webpackChunkName: "v-2203eb9d" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2019/092101.html.js").then(({ data }) => data),
+  // path: /views/Algorithm/js-algorithm/
+  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/other/Git/
   "v-89cffcd4": () => import(/* webpackChunkName: "v-89cffcd4" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/Git/index.html.js").then(({ data }) => data),
   // path: /views/other/micro-web/
@@ -83,6 +83,8 @@ export const pagesData = {
   "v-5511ab51": () => import(/* webpackChunkName: "v-5511ab51" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/typescript/index.html.js").then(({ data }) => data),
   // path: /views/other/web-safe/
   "v-be200160": () => import(/* webpackChunkName: "v-be200160" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/web-safe/index.html.js").then(({ data }) => data),
+  // path: /views/React/react-mid/
+  "v-a9d28642": () => import(/* webpackChunkName: "v-a9d28642" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/react-mid/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-cli/
   "v-4cb3c239": () => import(/* webpackChunkName: "v-4cb3c239" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-hard/

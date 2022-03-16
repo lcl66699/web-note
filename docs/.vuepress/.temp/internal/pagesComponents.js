@@ -35,12 +35,12 @@ export const pagesComponents = {
   "v-005056ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.vue")),
   // path: /views/React/
   "v-005056ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-005056ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/index.html.vue")),
-  // path: /views/Algorithm/js-algorithm/
-  "v-1c8689ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.vue")),
   // path: /views/category1/2018/121501.html
   "v-25a3c47f": defineAsyncComponent(() => import(/* webpackChunkName: "v-25a3c47f" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2018/121501.html.vue")),
   // path: /views/category1/2019/092101.html
   "v-2203eb9d": defineAsyncComponent(() => import(/* webpackChunkName: "v-2203eb9d" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/category1/2019/092101.html.vue")),
+  // path: /views/Algorithm/js-algorithm/
+  "v-1c8689ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-1c8689ea" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.vue")),
   // path: /views/other/Git/
   "v-89cffcd4": defineAsyncComponent(() => import(/* webpackChunkName: "v-89cffcd4" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/Git/index.html.vue")),
   // path: /views/other/micro-web/
@@ -85,6 +85,8 @@ export const pagesComponents = {
   "v-5511ab51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5511ab51" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/typescript/index.html.vue")),
   // path: /views/other/web-safe/
   "v-be200160": defineAsyncComponent(() => import(/* webpackChunkName: "v-be200160" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/other/web-safe/index.html.vue")),
+  // path: /views/React/react-mid/
+  "v-a9d28642": defineAsyncComponent(() => import(/* webpackChunkName: "v-a9d28642" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/React/react-mid/index.html.vue")),
   // path: /views/Vue/vue-cli/
   "v-4cb3c239": defineAsyncComponent(() => import(/* webpackChunkName: "v-4cb3c239" */"D:/studsy/vuepress-blog/docs/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.vue")),
   // path: /views/Vue/vue-hard/
