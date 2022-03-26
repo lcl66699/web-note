@@ -60,6 +60,15 @@ export const themeData = {
       ]
     },
     {
+      "text": "angular",
+      "children": [
+        {
+          "text": "angular",
+          "link": "/views/angular/"
+        }
+      ]
+    },
+    {
       "text": "nodejs",
       "link": "/views/nodejs/"
     },
@@ -159,6 +168,9 @@ export const themeData = {
     ],
     "/views/React/": [
       ""
+    ],
+    "/views/angular/": [
+      "readme.md"
     ],
     "/views/other/Git/": [
       ""
