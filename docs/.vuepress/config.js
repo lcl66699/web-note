@@ -57,10 +57,10 @@ module.exports = {
         ]
       },
       {
-        text: 'angular',
-        children: [
-          { text: 'angular', link: '/views/angular/' }, // 可不写后缀 .md
-        ]
+        text: 'angular',link: '/views/angular/' 
+        // children: [
+        //   { text: 'angular', link: '/views/angular/' }, // 可不写后缀 .md
+        // ]
       },
       { text: 'nodejs', link: '/views/nodejs/' },
       { text: '算法', link: '/views/Algorithm/' },

@@ -1,35 +1,35 @@
 {
-  "hash": "4b28e27f",
-  "browserHash": "ef59b32e",
+  "hash": "b93d91e4",
+  "browserHash": "038867d9",
   "optimized": {
     "vue": {
-      "file": "D:/别的盘/自己电脑/test/vuepress-blog/docs/.vuepress/.cache/vue.js",
-      "src": "D:/别的盘/自己电脑/test/vuepress-blog/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js",
+      "file": "C:/nxin/x-nxin/numbrun/docs/.vuepress/.cache/vue.js",
+      "src": "C:/nxin/x-nxin/numbrun/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js",
       "needsInterop": false
     },
     "vue-router": {
-      "file": "D:/别的盘/自己电脑/test/vuepress-blog/docs/.vuepress/.cache/vue-router.js",
-      "src": "D:/别的盘/自己电脑/test/vuepress-blog/node_modules/vue-router/dist/vue-router.esm-bundler.js",
+      "file": "C:/nxin/x-nxin/numbrun/docs/.vuepress/.cache/vue-router.js",
+      "src": "C:/nxin/x-nxin/numbrun/node_modules/vue-router/dist/vue-router.esm-bundler.js",
       "needsInterop": false
     },
     "@vue/devtools-api": {
-      "file": "D:/别的盘/自己电脑/test/vuepress-blog/docs/.vuepress/.cache/@vue_devtools-api.js",
-      "src": "D:/别的盘/自己电脑/test/vuepress-blog/node_modules/@vue/devtools-api/lib/esm/index.js",
+      "file": "C:/nxin/x-nxin/numbrun/docs/.vuepress/.cache/@vue_devtools-api.js",
+      "src": "C:/nxin/x-nxin/numbrun/node_modules/@vue/devtools-api/lib/esm/index.js",
       "needsInterop": false
     },
     "@vueuse/core": {
-      "file": "D:/别的盘/自己电脑/test/vuepress-blog/docs/.vuepress/.cache/@vueuse_core.js",
-      "src": "D:/别的盘/自己电脑/test/vuepress-blog/node_modules/@vueuse/core/index.mjs",
+      "file": "C:/nxin/x-nxin/numbrun/docs/.vuepress/.cache/@vueuse_core.js",
+      "src": "C:/nxin/x-nxin/numbrun/node_modules/@vueuse/core/index.mjs",
       "needsInterop": false
     },
     "nprogress": {
-      "file": "D:/别的盘/自己电脑/test/vuepress-blog/docs/.vuepress/.cache/nprogress.js",
-      "src": "D:/别的盘/自己电脑/test/vuepress-blog/node_modules/nprogress/nprogress.js",
+      "file": "C:/nxin/x-nxin/numbrun/docs/.vuepress/.cache/nprogress.js",
+      "src": "C:/nxin/x-nxin/numbrun/node_modules/nprogress/nprogress.js",
       "needsInterop": true
     },
     "@vuepress/shared": {
-      "file": "D:/别的盘/自己电脑/test/vuepress-blog/docs/.vuepress/.cache/@vuepress_shared.js",
-      "src": "D:/别的盘/自己电脑/test/vuepress-blog/node_modules/@vuepress/shared/lib/esm/index.js",
+      "file": "C:/nxin/x-nxin/numbrun/docs/.vuepress/.cache/@vuepress_shared.js",
+      "src": "C:/nxin/x-nxin/numbrun/node_modules/@vuepress/shared/lib/esm/index.js",
       "needsInterop": false
     }
   }

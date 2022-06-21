@@ -442,8 +442,14 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": null,
-    "contributors": []
+    "updatedTime": 1648309309000,
+    "contributors": [
+      {
+        "name": "chenglong",
+        "email": "768206581@qq.com",
+        "commits": 1
+      }
+    ]
   },
   "filePathRelative": "views/angular/readme.md"
 }

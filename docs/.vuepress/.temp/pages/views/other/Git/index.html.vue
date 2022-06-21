@@ -63,34 +63,24 @@ Git 是目前世界上最先进的分布式版本控制系统
 </ol>
 <h2 id="git分支" tabindex="-1"><a class="header-anchor" href="#git分支" aria-hidden="true">#</a> git分支</h2>
 <ol>
-<li>
-<p>不在源代码上直接修改，可以开启具体相同代码的分支，在分支上进行开发，开发完成后再合并到主分支即可
-2.<code> git checkout -b name</code> : 开启一个分支，并切换到这个分支下
+<li>不在源代码上直接修改，可以开启具体相同代码的分支，在分支上进行开发，开发完成后再合并到主分支即可</li>
+<li><code> git checkout -b name</code> : 开启一个分支，并切换到这个分支下
 <code>git branch name </code>: 开启一个分支
-<code>git checkout name</code> : 切换分支</p>
-</li>
-<li>
-<p><code>git branch</code> : 查看分支 (分支前有*符号就是当前所在分支)</p>
-</li>
-<li>
-<p><code>git branch -a</code> : 查看所有分支，包括远程</p>
-</li>
-<li>
-<p><code>git merge</code> : 分支合并,合并指定分支到当前分支</p>
-</li>
-<li>
-<p>分支合并时的冲突
+<code>git checkout name</code> : 切换分支</li>
+<li><code>git branch</code> : 查看分支 (分支前有*符号就是当前所在分支)</li>
+<li><code>git branch -a</code> : 查看所有分支，包括远程</li>
+<li><code>git merge</code> : 分支合并,合并指定分支到当前分支</li>
+<li>分支合并时的冲突
 解决方案：1. 保存其中某一份 1. 全保存
-<code>git log --graph</code> 可以看到分支合并图</p>
-</li>
-<li>
-<p>标签</p>
+<code>git log --graph</code> 可以看到分支合并图</li>
+<li><code>git branch -d name</code> 删除分支（记得不要在当前分支下删，会删除失败）</li>
+<li><code>git checkout -b [本地分支名] [origin/远程分支名]</code> 从远程仓库拉本地不存在的分支</li>
+</ol>
+<h2 id="标签" tabindex="-1"><a class="header-anchor" href="#标签" aria-hidden="true">#</a> 标签</h2>
 <ol>
 <li><code>git tag vx.x.x</code> : 创建</li>
 <li><code>git tag</code> : 查看标签</li>
 <li><code>git show &lt;tagname&gt;</code> : 查看标签详情</li>
-</ol>
-</li>
 </ol>
 <h2 id="远程仓库" tabindex="-1"><a class="header-anchor" href="#远程仓库" aria-hidden="true">#</a> 远程仓库</h2>
 <ol>

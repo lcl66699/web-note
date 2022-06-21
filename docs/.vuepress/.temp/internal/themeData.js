@@ -61,12 +61,7 @@ export const themeData = {
     },
     {
       "text": "angular",
-      "children": [
-        {
-          "text": "angular",
-          "link": "/views/angular/"
-        }
-      ]
+      "link": "/views/angular/"
     },
     {
       "text": "nodejs",

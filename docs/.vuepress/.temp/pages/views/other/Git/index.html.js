@@ -20,6 +20,12 @@ export const data = {
     },
     {
       "level": 2,
+      "title": "标签",
+      "slug": "标签",
+      "children": []
+    },
+    {
+      "level": 2,
       "title": "远程仓库",
       "slug": "远程仓库",
       "children": []
