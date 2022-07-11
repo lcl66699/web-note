@@ -23,7 +23,7 @@
 			}
     </script>
     <link rel="icon" href="/favicon.ico"><title>前端安全 | 我的前端学习记录</title><meta name="description" content="听橘子海，炫沙糖桔">
-    <link rel="modulepreload" href="/assets/app.9ec6dd11.js"><link rel="modulepreload" href="/assets/index.html.77d574d4.js"><link rel="modulepreload" href="/assets/index.html.b97a3fa8.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper.21dcd24c.js">
+    <link rel="modulepreload" href="/assets/app.05656edd.js"><link rel="modulepreload" href="/assets/index.html.77d574d4.js"><link rel="modulepreload" href="/assets/index.html.9c1c4697.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper.21dcd24c.js">
     <link rel="stylesheet" href="/assets/style.b29aeafa.css">
   </head>
   <body>
@@ -42,6 +42,6 @@ s<span class="token punctuation">.</span>parent<span class="token punctuation">.
 3. 打包的时候根据js文件生产一个hash值，并且把hash作为intergrity属性注入到script上
 4. 当浏览器在用户端请求的时候，拿到这个文件做hash，做对比，不一样，则不安全。
 </code></pre><h2 id="referer-policy-控制referer的携带策略" tabindex="-1"><a class="header-anchor" href="#referer-policy-控制referer的携带策略" aria-hidden="true">#</a> Referer-Policy（控制referer的携带策略）</h2><h2 id="node-服务端-相关的安全" tabindex="-1"><a class="header-anchor" href="#node-服务端-相关的安全" aria-hidden="true">#</a> Node（服务端）相关的安全：</h2><h3 id="本地文件操作相关-静态资源" tabindex="-1"><a class="header-anchor" href="#本地文件操作相关-静态资源" aria-hidden="true">#</a> 本地文件操作相关，静态资源</h3><p>比如提供一个静态服务，通过请求url参数来返回用户要的数据，攻击者通过请求参数输入奇怪的路径 比如：localhost：8080/?/../../text.js来查看本不应该看到的文件</p><ul><li>express.static</li><li>koa-static</li><li>resolve-path</li></ul><h3 id="redos-正则表达式攻击" tabindex="-1"><a class="header-anchor" href="#redos-正则表达式攻击" aria-hidden="true">#</a> ReDos 正则表达式攻击</h3><p>利用正则表达式的回溯特点，每当一次匹配不成，就会尝试回溯到上一个字符，来验证能不能有其他组合来匹配这个字符串，会走很多步，占用服务器资源，造成宕机。</p><p>测试网站： regex.rip</p><h3 id="时序攻击" tabindex="-1"><a class="header-anchor" href="#时序攻击" aria-hidden="true">#</a> 时序攻击</h3><p>攻击者通过不停尝试，大量推断，大量分析代码执行执行来推导出他想知道的密码或信息。</p><h3 id="ip-origin-referrer-request-headers校验-防止爬虫" tabindex="-1"><a class="header-anchor" href="#ip-origin-referrer-request-headers校验-防止爬虫" aria-hidden="true">#</a> ip origin || referrer || request headers校验（防止爬虫）</h3><h3 id="实现一个截图服务" tabindex="-1"><a class="header-anchor" href="#实现一个截图服务" aria-hidden="true">#</a> 实现一个截图服务</h3><p>node中的：puppeter-chromium-resolver</p><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">上次更新时间: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者列表: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 768206581@qq.com">liuchenglong</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
-    <script type="module" src="/assets/app.9ec6dd11.js" defer></script>
+    <script type="module" src="/assets/app.05656edd.js" defer></script>
   </body>
 </html>

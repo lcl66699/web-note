@@ -442,27 +442,19 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1648309309000,
+    "updatedTime": 1657532592000,
     "contributors": [
       {
         "name": "chenglong",
         "email": "768206581@qq.com",
         "commits": 1
+      },
+      {
+        "name": "liuchenglong",
+        "email": "liuchenglong@nxin.com",
+        "commits": 1
       }
     ]
   },
   "filePathRelative": "views/angular/readme.md"
-}
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updatePageData) {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ data }) => {
-    __VUE_HMR_RUNTIME__.updatePageData(data)
-  })
 }

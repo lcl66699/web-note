@@ -7,6 +7,448 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "angular",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Angular介绍",
+        "slug": "angular介绍",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Angular环境搭建",
+        "slug": "angular环境搭建",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "安装Angular CLI",
+        "slug": "安装angular-cli",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "新建Angular项目",
+        "slug": "新建angular项目",
+        "children": [
+          {
+            "level": 3,
+            "title": "新建Angular项目",
+            "slug": "新建angular项目-1",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "启动项目",
+            "slug": "启动项目",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Angular CLI简单使用",
+        "slug": "angular-cli简单使用",
+        "children": [
+          {
+            "level": 3,
+            "title": "新建组件",
+            "slug": "新建组件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "其他命令",
+            "slug": "其他命令",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "单元测试",
+            "slug": "单元测试",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "端到端测试",
+            "slug": "端到端测试",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "构建应用程序",
+            "slug": "构建应用程序",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Angular目录结构分析",
+        "slug": "angular目录结构分析",
+        "children": [
+          {
+            "level": 3,
+            "title": "目录结构分析",
+            "slug": "目录结构分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "app.module.ts、组件分析",
+            "slug": "app-module-ts、组件分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "app.component.ts组件分析",
+            "slug": "app-component-ts组件分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "总结",
+            "slug": "总结",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "angular 组件 以及组件里面的模板",
+        "slug": "angular-组件-以及组件里面的模板",
+        "children": [
+          {
+            "level": 3,
+            "title": "Angular 绑定数据",
+            "slug": "angular-绑定数据",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数据循环 *ngFor",
+            "slug": "数据循环-ngfor",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "条件判断语句 *ngIf",
+            "slug": "条件判断语句-ngif",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "条件判断语句 *ngSwitch",
+            "slug": "条件判断语句-ngswitch",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "属性[ngClass]",
+            "slug": "属性-ngclass",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "属性[ngStyle]",
+            "slug": "属性-ngstyle",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "管道",
+            "slug": "管道",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Angular 配置文件常见配置注解",
+        "slug": "angular-配置文件常见配置注解",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "组件通信",
+        "slug": "组件通信",
+        "children": [
+          {
+            "level": 3,
+            "title": "@input-父传子",
+            "slug": "input-父传子",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "@ViewChild-直接调用",
+            "slug": "viewchild-直接调用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "@Output 子调父",
+            "slug": "output-子调父",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "非父子组件通讯",
+        "slug": "非父子组件通讯",
+        "children": [
+          {
+            "level": 3,
+            "title": "总结",
+            "slug": "总结-1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "生命周期函数",
+        "slug": "生命周期函数",
+        "children": [
+          {
+            "level": 3,
+            "title": "constructor",
+            "slug": "constructor",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngOnChanges()",
+            "slug": "ngonchanges",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngOnInit()",
+            "slug": "ngoninit",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngDoCheck()",
+            "slug": "ngdocheck",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngAfterContentInit()",
+            "slug": "ngaftercontentinit",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngAfterContentChecked()",
+            "slug": "ngaftercontentchecked",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngAfterViewInit()",
+            "slug": "ngafterviewinit",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngAfterViewChecked()",
+            "slug": "ngafterviewchecked",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ngOnDestroy()",
+            "slug": "ngondestroy",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "1 父传子的而一种方式",
+            "slug": "_1-父传子的而一种方式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2 子传父的另一种方式",
+            "slug": "_2-子传父的另一种方式",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Rxjs 异步数据流编程",
+        "slug": "rxjs-异步数据流编程",
+        "children": [
+          {
+            "level": 3,
+            "title": "Rxjs 介绍",
+            "slug": "rxjs-介绍",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Promise 和 RxJS 处理异步对比",
+            "slug": "promise-和-rxjs-处理异步对比",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Rxjs unsubscribe 取消订阅",
+            "slug": "rxjs-unsubscribe-取消订阅",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Rxjs 订阅后多次执行",
+            "slug": "rxjs-订阅后多次执行",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Angualr6.x 之前使用 Rxjs 的工具函数 map,filter",
+            "slug": "angualr6-x-之前使用-rxjs-的工具函数-map-filter",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Angualr6.x 以后 Rxjs6.x 的变化以及使用",
+            "slug": "angualr6-x-以后-rxjs6-x-的变化以及使用",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Angular 中的数据交互（get,post）",
+        "slug": "angular-中的数据交互-get-post",
+        "children": [
+          {
+            "level": 3,
+            "title": "Angular get 请求数据",
+            "slug": "angular-get-请求数据",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Angular post 提交数据",
+            "slug": "angular-post-提交数据",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Angular 中的路由",
+        "slug": "angular-中的路由",
+        "children": [
+          {
+            "level": 3,
+            "title": "routerLink 跳转页面默认路由",
+            "slug": "routerlink-跳转页面默认路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "routerLinkActive",
+            "slug": "routerlinkactive",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "动态路由",
+        "slug": "动态路由",
+        "children": [
+          {
+            "level": 3,
+            "title": "问号传参",
+            "slug": "问号传参",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "路径传参",
+            "slug": "路径传参",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "父子路由",
+        "slug": "父子路由",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Angular 内置模块",
+        "slug": "angular-内置模块",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Angular 自定义模块",
+        "slug": "angular-自定义模块",
+        "children": [
+          {
+            "level": 3,
+            "title": "如何在根模块挂载 user 模块呢？",
+            "slug": "如何在根模块挂载-user-模块呢",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "创建 user 模块下的服务",
+            "slug": "创建-user-模块下的服务",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "配置路由实现模块懒加载",
+        "slug": "配置路由实现模块懒加载",
+        "children": [
+          {
+            "level": 3,
+            "title": "angular配置懒加载",
+            "slug": "angular配置懒加载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "配置子路由",
+            "slug": "配置子路由",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Ngxs 状态管理",
+        "slug": "ngxs-状态管理",
+        "children": [
+          {
+            "level": 3,
+            "title": "问题： The pipe 'async' could not be found？",
+            "slug": "问题-the-pipe-async-could-not-be-found",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/angular/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "数据结构与算法",
     "headers": [
       {
@@ -355,448 +797,6 @@ export const searchIndex = [
       }
     ],
     "path": "/views/Algorithm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "angular",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Angular介绍",
-        "slug": "angular介绍",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Angular环境搭建",
-        "slug": "angular环境搭建",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "安装Angular CLI",
-        "slug": "安装angular-cli",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "新建Angular项目",
-        "slug": "新建angular项目",
-        "children": [
-          {
-            "level": 3,
-            "title": "新建Angular项目",
-            "slug": "新建angular项目-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "启动项目",
-            "slug": "启动项目",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Angular CLI简单使用",
-        "slug": "angular-cli简单使用",
-        "children": [
-          {
-            "level": 3,
-            "title": "新建组件",
-            "slug": "新建组件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "其他命令",
-            "slug": "其他命令",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "单元测试",
-            "slug": "单元测试",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "端到端测试",
-            "slug": "端到端测试",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "构建应用程序",
-            "slug": "构建应用程序",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Angular目录结构分析",
-        "slug": "angular目录结构分析",
-        "children": [
-          {
-            "level": 3,
-            "title": "目录结构分析",
-            "slug": "目录结构分析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "app.module.ts、组件分析",
-            "slug": "app-module-ts、组件分析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "app.component.ts组件分析",
-            "slug": "app-component-ts组件分析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "总结",
-            "slug": "总结",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "angular 组件 以及组件里面的模板",
-        "slug": "angular-组件-以及组件里面的模板",
-        "children": [
-          {
-            "level": 3,
-            "title": "Angular 绑定数据",
-            "slug": "angular-绑定数据",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "数据循环 *ngFor",
-            "slug": "数据循环-ngfor",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "条件判断语句 *ngIf",
-            "slug": "条件判断语句-ngif",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "条件判断语句 *ngSwitch",
-            "slug": "条件判断语句-ngswitch",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "属性[ngClass]",
-            "slug": "属性-ngclass",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "属性[ngStyle]",
-            "slug": "属性-ngstyle",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "管道",
-            "slug": "管道",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Angular 配置文件常见配置注解",
-        "slug": "angular-配置文件常见配置注解",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "组件通信",
-        "slug": "组件通信",
-        "children": [
-          {
-            "level": 3,
-            "title": "父传子-@input",
-            "slug": "父传子-input",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "子传父-@ViewChild",
-            "slug": "子传父-viewchild",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "-@Output",
-            "slug": "output",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "非父子组件通讯",
-        "slug": "非父子组件通讯",
-        "children": [
-          {
-            "level": 3,
-            "title": "总结",
-            "slug": "总结-1",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "生命周期函数",
-        "slug": "生命周期函数",
-        "children": [
-          {
-            "level": 3,
-            "title": "constructor",
-            "slug": "constructor",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngOnChanges()",
-            "slug": "ngonchanges",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngOnInit()",
-            "slug": "ngoninit",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngDoCheck()",
-            "slug": "ngdocheck",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngAfterContentInit()",
-            "slug": "ngaftercontentinit",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngAfterContentChecked()",
-            "slug": "ngaftercontentchecked",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngAfterViewInit()",
-            "slug": "ngafterviewinit",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngAfterViewChecked()",
-            "slug": "ngafterviewchecked",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ngOnDestroy()",
-            "slug": "ngondestroy",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "1 父传子的而一种方式",
-            "slug": "_1-父传子的而一种方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2 子传父的另一种方式",
-            "slug": "_2-子传父的另一种方式",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Rxjs 异步数据流编程",
-        "slug": "rxjs-异步数据流编程",
-        "children": [
-          {
-            "level": 3,
-            "title": "Rxjs 介绍",
-            "slug": "rxjs-介绍",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Promise 和 RxJS 处理异步对比",
-            "slug": "promise-和-rxjs-处理异步对比",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Rxjs unsubscribe 取消订阅",
-            "slug": "rxjs-unsubscribe-取消订阅",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Rxjs 订阅后多次执行",
-            "slug": "rxjs-订阅后多次执行",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Angualr6.x 之前使用 Rxjs 的工具函数 map,filter",
-            "slug": "angualr6-x-之前使用-rxjs-的工具函数-map-filter",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Angualr6.x 以后 Rxjs6.x 的变化以及使用",
-            "slug": "angualr6-x-以后-rxjs6-x-的变化以及使用",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Angular 中的数据交互（get,post）",
-        "slug": "angular-中的数据交互-get-post",
-        "children": [
-          {
-            "level": 3,
-            "title": "Angular get 请求数据",
-            "slug": "angular-get-请求数据",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Angular post 提交数据",
-            "slug": "angular-post-提交数据",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Angular 中的路由",
-        "slug": "angular-中的路由",
-        "children": [
-          {
-            "level": 3,
-            "title": "routerLink 跳转页面默认路由",
-            "slug": "routerlink-跳转页面默认路由",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "routerLinkActive",
-            "slug": "routerlinkactive",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "动态路由",
-        "slug": "动态路由",
-        "children": [
-          {
-            "level": 3,
-            "title": "问号传参",
-            "slug": "问号传参",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "路径传参",
-            "slug": "路径传参",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "父子路由",
-        "slug": "父子路由",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Angular 内置模块",
-        "slug": "angular-内置模块",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Angular 自定义模块",
-        "slug": "angular-自定义模块",
-        "children": [
-          {
-            "level": 3,
-            "title": "如何在根模块挂载 user 模块呢？",
-            "slug": "如何在根模块挂载-user-模块呢",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "创建 user 模块下的服务",
-            "slug": "创建-user-模块下的服务",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "配置路由实现模块懒加载",
-        "slug": "配置路由实现模块懒加载",
-        "children": [
-          {
-            "level": 3,
-            "title": "angular配置懒加载",
-            "slug": "angular配置懒加载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "配置子路由",
-            "slug": "配置子路由",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Ngxs 状态管理",
-        "slug": "ngxs-状态管理",
-        "children": [
-          {
-            "level": 3,
-            "title": "问题： The pipe 'async' could not be found？",
-            "slug": "问题-the-pipe-async-could-not-be-found",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/angular/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2919,13 +2919,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "js-algorithm",
-    "headers": [],
-    "path": "/views/Algorithm/js-algorithm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "first page in category1",
     "headers": [],
     "path": "/views/category1/2018/121501.html",
@@ -3016,6 +3009,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "js-algorithm",
+    "headers": [],
+    "path": "/views/Algorithm/js-algorithm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "git",
     "headers": [
       {
@@ -3056,146 +3056,6 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/Git/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "微前端",
-    "headers": [
-      {
-        "level": 2,
-        "title": "思想",
-        "slug": "思想",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "特点",
-        "slug": "特点",
-        "children": []
-      }
-    ],
-    "path": "/views/other/micro-web/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "性能优化",
-    "headers": [
-      {
-        "level": 2,
-        "title": "从输入URL到页面加载的过程",
-        "slug": "从输入url到页面加载的过程",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "性能优化",
-        "slug": "性能优化-1",
-        "children": [
-          {
-            "level": 3,
-            "title": "vue框架层面",
-            "slug": "vue框架层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "js层面",
-            "slug": "js层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "css层面",
-            "slug": "css层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "html层面",
-            "slug": "html层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "seo优化",
-            "slug": "seo优化",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "webpack方面",
-        "slug": "webpack方面",
-        "children": [
-          {
-            "level": 3,
-            "title": "合理利用缓存",
-            "slug": "合理利用缓存",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "前端的性能优化",
-        "slug": "前端的性能优化",
-        "children": [
-          {
-            "level": 3,
-            "title": "如果⼀段js执行时间非常长, 怎么去分析?",
-            "slug": "如果一段js执行时间非常长-怎么去分析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "阿⾥云oss⽀持通过链接后拼参数实现图⽚格式转换, 尝试写⼀下, 把图⽚转为webp格式? 需要注意什么?",
-            "slug": "阿里云oss支持通过链接后拼参数实现图片格式转换-尝试写一下-把图片转为webp格式-需要注意什么",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如果有巨量的图片需要展示在页面, 除了懒加载这种方式, 还有什么好的方法限制其同一时间加载的数量?",
-            "slug": "如果有巨量的图片需要展示在页面-除了懒加载这种方式-还有什么好的方法限制其同一时间加载的数量",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "前端的内存处理",
-        "slug": "前端的内存处理",
-        "children": [
-          {
-            "level": 3,
-            "title": "js 的垃圾回收机制",
-            "slug": "js-的垃圾回收机制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "常见的内存泄露",
-            "slug": "常见的内存泄露",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "避免内存泄露？",
-            "slug": "避免内存泄露",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "实现一个 sizeOf 函数。接收一个对象，计算传入的对象占用的字节数",
-            "slug": "实现一个-sizeof-函数。接收一个对象-计算传入的对象占用的字节数",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/other/performance/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3353,6 +3213,146 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/questions/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "微前端",
+    "headers": [
+      {
+        "level": 2,
+        "title": "思想",
+        "slug": "思想",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "特点",
+        "slug": "特点",
+        "children": []
+      }
+    ],
+    "path": "/views/other/micro-web/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性能优化",
+    "headers": [
+      {
+        "level": 2,
+        "title": "从输入URL到页面加载的过程",
+        "slug": "从输入url到页面加载的过程",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "性能优化",
+        "slug": "性能优化-1",
+        "children": [
+          {
+            "level": 3,
+            "title": "vue框架层面",
+            "slug": "vue框架层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "js层面",
+            "slug": "js层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "css层面",
+            "slug": "css层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "html层面",
+            "slug": "html层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "seo优化",
+            "slug": "seo优化",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "webpack方面",
+        "slug": "webpack方面",
+        "children": [
+          {
+            "level": 3,
+            "title": "合理利用缓存",
+            "slug": "合理利用缓存",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "前端的性能优化",
+        "slug": "前端的性能优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "如果⼀段js执行时间非常长, 怎么去分析?",
+            "slug": "如果一段js执行时间非常长-怎么去分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "阿⾥云oss⽀持通过链接后拼参数实现图⽚格式转换, 尝试写⼀下, 把图⽚转为webp格式? 需要注意什么?",
+            "slug": "阿里云oss支持通过链接后拼参数实现图片格式转换-尝试写一下-把图片转为webp格式-需要注意什么",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "如果有巨量的图片需要展示在页面, 除了懒加载这种方式, 还有什么好的方法限制其同一时间加载的数量?",
+            "slug": "如果有巨量的图片需要展示在页面-除了懒加载这种方式-还有什么好的方法限制其同一时间加载的数量",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "前端的内存处理",
+        "slug": "前端的内存处理",
+        "children": [
+          {
+            "level": 3,
+            "title": "js 的垃圾回收机制",
+            "slug": "js-的垃圾回收机制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "常见的内存泄露",
+            "slug": "常见的内存泄露",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "避免内存泄露？",
+            "slug": "避免内存泄露",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "实现一个 sizeOf 函数。接收一个对象，计算传入的对象占用的字节数",
+            "slug": "实现一个-sizeof-函数。接收一个对象-计算传入的对象占用的字节数",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/other/performance/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -9108,16 +9108,3 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
-  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  }
-}
-
-if (import.meta.hot) {
-  import.meta.hot.accept(({ searchIndex }) => {
-    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
-  })
-}
