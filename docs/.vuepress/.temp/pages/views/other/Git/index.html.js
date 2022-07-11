@@ -44,14 +44,32 @@ export const data = {
     }
   ],
   "git": {
-    "updatedTime": 1640707342000,
+    "updatedTime": 1655791322000,
     "contributors": [
       {
         "name": "chenglong",
         "email": "768206581.com",
         "commits": 1
+      },
+      {
+        "name": "liuchenglong",
+        "email": "liuchenglong@nxin.com",
+        "commits": 1
       }
     ]
   },
   "filePathRelative": "views/other/Git/readme.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }

@@ -173,20 +173,20 @@ export const data = {
       "children": [
         {
           "level": 3,
-          "title": "父传子-@input",
-          "slug": "父传子-input",
+          "title": "@input-父传子",
+          "slug": "input-父传子",
           "children": []
         },
         {
           "level": 3,
-          "title": "子传父-@ViewChild",
-          "slug": "子传父-viewchild",
+          "title": "@ViewChild-直接调用",
+          "slug": "viewchild-直接调用",
           "children": []
         },
         {
           "level": 3,
-          "title": "-@Output",
-          "slug": "output",
+          "title": "@Output 子调父",
+          "slug": "output-子调父",
           "children": []
         }
       ]
@@ -452,4 +452,17 @@ export const data = {
     ]
   },
   "filePathRelative": "views/angular/readme.md"
+}
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updatePageData) {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ data }) => {
+    __VUE_HMR_RUNTIME__.updatePageData(data)
+  })
 }

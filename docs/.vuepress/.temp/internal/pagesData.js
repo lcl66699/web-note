@@ -1,10 +1,10 @@
 export const pagesData = {
   // path: /
   "v-8daa1a0e": () => import(/* webpackChunkName: "v-8daa1a0e" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/index.html.js").then(({ data }) => data),
-  // path: /views/angular/
-  "v-2b17dc47": () => import(/* webpackChunkName: "v-2b17dc47" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/angular/index.html.js").then(({ data }) => data),
   // path: /views/Algorithm/
   "v-3fb5c60c": () => import(/* webpackChunkName: "v-3fb5c60c" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/Algorithm/index.html.js").then(({ data }) => data),
+  // path: /views/angular/
+  "v-2b17dc47": () => import(/* webpackChunkName: "v-2b17dc47" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/angular/index.html.js").then(({ data }) => data),
   // path: /views/engineering/
   "v-b75cd794": () => import(/* webpackChunkName: "v-b75cd794" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/engineering/index.html.js").then(({ data }) => data),
   // path: /views/Http/
@@ -35,12 +35,12 @@ export const pagesData = {
   "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/React/
   "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
+  // path: /views/Algorithm/js-algorithm/
+  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/category1/2018/121501.html
   "v-25a3c47f": () => import(/* webpackChunkName: "v-25a3c47f" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/category1/2018/121501.html.js").then(({ data }) => data),
   // path: /views/category1/2019/092101.html
   "v-2203eb9d": () => import(/* webpackChunkName: "v-2203eb9d" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/category1/2019/092101.html.js").then(({ data }) => data),
-  // path: /views/Algorithm/js-algorithm/
-  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/other/Git/
   "v-89cffcd4": () => import(/* webpackChunkName: "v-89cffcd4" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/Git/index.html.js").then(({ data }) => data),
   // path: /views/other/micro-web/

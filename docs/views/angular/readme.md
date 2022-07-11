@@ -630,44 +630,100 @@ angular.json
 
 ## 组件通信
 
-### 父传子-@input
-1. 给子组件标签自定义一个属性  `[model]="toolbarPanel"`
-` <nx-zlw-toolbar-panel #toolbarInstance [model]="toolbarPanel"></nx-zlw-toolbar-panel>`
-2. 子组件引入 Input 模块
-`import { Input } from '@angular/core';`
+### @input-父传子
 
-```js
-//在class里面接收
-@Input('model')
-model: NxToolbarPanel;
+1. 父组件html中：
+```html
+<Cscore-set #Cscore  (init3)="init3($event)" [(leftTreeList3)]="leftTreeList3"></Cscore-set>
 ```
-```javascript
-//子组件中 @Input 接收父组件传过来的数据
-export class HeaderComponent implements OnInit {
-    @Input()  title:string
+- #Cscore 获取当前组件实例，类似于vue的ref
+- init3 传的事件
+- leftTreeList3 传的参数
 
-    constructor() { }
-    ngOnInit() {}
+2. 父组件js中：
+
+```ts
+leftTreeList3 = []  //在constructor上面定义变量，改变量传给子组件，也可以自己使用
+@ViewChild('Cscore', { static: false }) Cscore; //子组件实例
+/**
+* 左侧列表
+* options为配置项
+* @param options -focusedRowIndex :this.treeInstance.focusedRowIndex = -1;
+* @param options -saveCreate 保存时是否为新增 :true||false
+*/
+async init3(options: any = {}) {
+    //函数里怎么写却决于你的业务，这里删掉了一些业务代码，下面代码业务上不成立，仅用来展示怎么使用
+    //对数组中对象去重
+    var obj = {};
+    res = res.reduce(function (item, next) {
+        obj[next.BreedingID] ? '' : obj[next.BreedingID] = true && item.push(next);
+        return item;
+    }, []);
+    this.leftTreeList3 = res
+
+    //调用子组件的方法
+    this.Cscore.setDeficiencyID(this.leftTreeList3)
+    //更改子组件的变量赋值
+    this.Cscore.allowDelete = true
 }
 ```
-- 子组件执行父组件的方法
-  也可以通过传值，然后直接this.调用即可
 
-### 子传父-@ViewChild
+3. 子组件js中：
 
-通过 @ViewChild
+- 在接受leftTreeList3的值的时候，使用了@Input() set 跟函数是因为可以检测到这个变量的变化，然后赋值，函数内也可以做一些自己的业务，类似于vue的watch监听。
+- @Output 用于接父组件的方法，@Output 的本质是事件机制，我们可以利用它来监听子组件上派发的事件，子组件上这样写。
+- EventEmitter：在angular中组件通过定义EventEmitter 事件弹射器的方式由子组件向父组件发送数据。
+
+代码：
+```ts
+import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+@Component({
+    selector: 'Cscore-set',
+    templateUrl: './Cscore.component.html',
+    styleUrls: ['./Cscore.component.scss'],
+})
+export class Cscore implements OnInit {
+    allowDelete: boolean;
+    leftTreeList: any = [] //左侧传的列表
+    //子接父传值，接受传值类似于watch监听,
+    @Input() set leftTreeList3(val) {
+        this.leftTreeList = val
+    };
+    @Output() init3 = new EventEmitter();
+
+    //在class里面接收，下面变量不成立，仅作模拟
+    @Input('model') model;
+    constructor(
+        private service: BreedingSetService,
+        private tokenService: TokenAuthService,
+    ){
+        
+    }
+     delete() {
+      //触发父组件的函数，.emit为固定的写法，括号里面为我们业务上的传值
+      this.init3.emit({ focusedRowIndex: true })
+    }
+}
+```
+
+### @ViewChild-直接调用
+
+- 通过 @ViewChild父组件直接调用子组件方法或修改变量
+然后就可以通过this.compDemo获取这个子组件了，
+::: danger 注意
+需要注意的是，如果使用了*ngIf去控制该组件渲染时，this.Cscore未加载的时候调用相应的方法会报错，
+这里可以开启宏任务后再去做相应业务，比如在setTimeout回调里写。
+:::
 
 1. 父组件 引入`import { ViewChild } from '@angular/core';`
-2. 在子组件上` <nx-zlw-form-list #formListInstance` 加一个#号；通过#
+2. 在子组件上` <compDemo #compDemo> </compDemo>` 加一个#号；通过#
 3. 在父组件class内部，利用属性装饰器ViewChild，和刚才的子组件关联起来
 ```js
-@ViewChild('formListInstance', { static: false })  
-formListInstance: any;
-// 然后就可以通过this.formListInstance获取这个子组件了.
+@ViewChild('compDemo', { static: false })  compDemo: any;
 ```
 
 
-### -@Output
+### @Output 子调父
 子组件通过-@Output触发父组件的方法
 
 演示例子：
@@ -675,16 +731,17 @@ formListInstance: any;
 子组件：footer
 
 1. 子组件引入 Output 和 EventEmitter
-import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 
-2. 子组件中实例化 EventEmitter
+`import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';`
+
+1. 子组件中实例化 EventEmitter
 ```js
 @Output() 
 private outer=new EventEmitter<string>();
 /*用 EventEmitter 和 output 装饰器配合使用 <string>指定类型变量*/
 ```
 3. 子组件通过 EventEmitter 对象 outer 实例广播数据
-```
+```ts
 sendParent(){ 
     this.outer.emit('msg from child') 
  }
@@ -701,7 +758,6 @@ sendParent(){
 
 ![avator](/pic/子组件触发父组件的方法02.png)
 
-
 5. 父组件接收到数据会调用自己的 getFooterRun 方法，这个时候就能拿到子组件的数
 ```js
 //接收子组件传递过来的数据 
@@ -709,7 +765,6 @@ sendParent(){
    console.log(data);
   }
 ```
-
 
 ## 非父子组件通讯
 

@@ -527,50 +527,105 @@ keyUp:
 <span class="token punctuation">}</span>
 
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br></div></div><h2 id="组件通信" tabindex="-1"><a class="header-anchor" href="#组件通信" aria-hidden="true">#</a> 组件通信</h2>
-<h3 id="父传子-input" tabindex="-1"><a class="header-anchor" href="#父传子-input" aria-hidden="true">#</a> 父传子-@input</h3>
+<h3 id="input-父传子" tabindex="-1"><a class="header-anchor" href="#input-父传子" aria-hidden="true">#</a> @input-父传子</h3>
 <ol>
-<li>给子组件标签自定义一个属性  <code>[model]=&quot;toolbarPanel&quot;</code>
-<code> &lt;nx-zlw-toolbar-panel #toolbarInstance [model]=&quot;toolbarPanel&quot;&gt;&lt;/nx-zlw-toolbar-panel&gt;</code></li>
-<li>子组件引入 Input 模块
-<code>import { Input } from '@angular/core';</code></li>
+<li>父组件html中：</li>
 </ol>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token comment">//在class里面接收</span>
-@<span class="token function">Input</span><span class="token punctuation">(</span><span class="token string">'model'</span><span class="token punctuation">)</span>
-<span class="token literal-property property">model</span><span class="token operator">:</span> NxToolbarPanel<span class="token punctuation">;</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code><span class="token comment">//子组件中 @Input 接收父组件传过来的数据</span>
-<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">HeaderComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
-    @<span class="token function">Input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  title<span class="token operator">:</span>string
-
-    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-    <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul>
-<li>子组件执行父组件的方法
-也可以通过传值，然后直接this.调用即可</li>
+<div class="language-html ext-html line-numbers-mode"><pre v-pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Cscore-set</span> <span class="token attr-name">#Cscore</span>  <span class="token attr-name">(init3)</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>init3($event)<span class="token punctuation">"</span></span> <span class="token attr-name">[(leftTreeList3)]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>leftTreeList3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Cscore-set</span><span class="token punctuation">></span></span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><ul>
+<li>#Cscore 获取当前组件实例，类似于vue的ref</li>
+<li>init3 传的事件</li>
+<li>leftTreeList3 传的参数</li>
 </ul>
-<h3 id="子传父-viewchild" tabindex="-1"><a class="header-anchor" href="#子传父-viewchild" aria-hidden="true">#</a> 子传父-@ViewChild</h3>
-<p>通过 @ViewChild</p>
+<ol start="2">
+<li>父组件js中：</li>
+</ol>
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>leftTreeList3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment">//在constructor上面定义变量，改变量传给子组件，也可以自己使用</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">ViewChild</span></span><span class="token punctuation">(</span><span class="token string">'Cscore'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">static</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> Cscore<span class="token punctuation">;</span> <span class="token comment">//子组件实例</span>
+<span class="token doc-comment comment">/**
+* 左侧列表
+* options为配置项
+* <span class="token keyword">@param</span> <span class="token parameter">options</span> -focusedRowIndex :this.treeInstance.focusedRowIndex = -1;
+* <span class="token keyword">@param</span> <span class="token parameter">options</span> -saveCreate 保存时是否为新增 :true||false
+*/</span>
+<span class="token keyword">async</span> <span class="token function">init3</span><span class="token punctuation">(</span>options<span class="token operator">:</span> <span class="token builtin">any</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//函数里怎么写却决于你的业务，这里删掉了一些业务代码，下面代码业务上不成立，仅用来展示怎么使用</span>
+    <span class="token comment">//对数组中对象去重</span>
+    <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    res <span class="token operator">=</span> res<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>item<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        obj<span class="token punctuation">[</span>next<span class="token punctuation">.</span>BreedingID<span class="token punctuation">]</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token operator">:</span> obj<span class="token punctuation">[</span>next<span class="token punctuation">.</span>BreedingID<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> item<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>leftTreeList3 <span class="token operator">=</span> res
+
+    <span class="token comment">//调用子组件的方法</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>Cscore<span class="token punctuation">.</span><span class="token function">setDeficiencyID</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>leftTreeList3<span class="token punctuation">)</span>
+    <span class="token comment">//更改子组件的变量赋值</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>Cscore<span class="token punctuation">.</span>allowDelete <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ol start="3">
+<li>子组件js中：</li>
+</ol>
+<ul>
+<li>在接受leftTreeList3的值的时候，使用了@Input() set 跟函数是因为可以检测到这个变量的变化，然后赋值，函数内也可以做一些自己的业务，类似于vue的watch监听。</li>
+<li>@Output 用于接父组件的方法，@Output 的本质是事件机制，我们可以利用它来监听子组件上派发的事件，子组件上这样写。</li>
+<li>EventEmitter：在angular中组件通过定义EventEmitter 事件弹射器的方式由子组件向父组件发送数据。</li>
+</ul>
+<p>代码：</p>
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> OnInit<span class="token punctuation">,</span> ViewChild<span class="token punctuation">,</span> Input<span class="token punctuation">,</span> OnChanges<span class="token punctuation">,</span> SimpleChanges<span class="token punctuation">,</span> Output<span class="token punctuation">,</span> EventEmitter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Component</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    selector<span class="token operator">:</span> <span class="token string">'Cscore-set'</span><span class="token punctuation">,</span>
+    templateUrl<span class="token operator">:</span> <span class="token string">'./Cscore.component.html'</span><span class="token punctuation">,</span>
+    styleUrls<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'./Cscore.component.scss'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Cscore</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+    allowDelete<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+    leftTreeList<span class="token operator">:</span> <span class="token builtin">any</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//左侧传的列表</span>
+    <span class="token comment">//子接父传值，接受传值类似于watch监听,</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">Input</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">set</span> <span class="token function">leftTreeList3</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>leftTreeList <span class="token operator">=</span> val
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">Output</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> init3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//在class里面接收，下面变量不成立，仅作模拟</span>
+    <span class="token decorator"><span class="token at operator">@</span><span class="token function">Input</span></span><span class="token punctuation">(</span><span class="token string">'model'</span><span class="token punctuation">)</span> model<span class="token punctuation">;</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>
+        <span class="token keyword">private</span> service<span class="token operator">:</span> BreedingSetService<span class="token punctuation">,</span>
+        <span class="token keyword">private</span> tokenService<span class="token operator">:</span> TokenAuthService<span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">{</span>
+        
+    <span class="token punctuation">}</span>
+     <span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//触发父组件的函数，.emit为固定的写法，括号里面为我们业务上的传值</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>init3<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span> focusedRowIndex<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h3 id="viewchild-直接调用" tabindex="-1"><a class="header-anchor" href="#viewchild-直接调用" aria-hidden="true">#</a> @ViewChild-直接调用</h3>
+<ul>
+<li>通过 @ViewChild父组件直接调用子组件方法或修改变量
+然后就可以通过this.compDemo获取这个子组件了，</li>
+</ul>
+<div class="custom-container danger"><p class="custom-container-title">注意</p>
+<p>需要注意的是，如果使用了*ngIf去控制该组件渲染时，this.Cscore未加载的时候调用相应的方法会报错，
+这里可以开启宏任务后再去做相应业务，比如在setTimeout回调里写。</p>
+</div>
 <ol>
 <li>父组件 引入<code>import { ViewChild } from '@angular/core';</code></li>
-<li>在子组件上<code> &lt;nx-zlw-form-list #formListInstance</code> 加一个#号；通过#</li>
+<li>在子组件上<code> &lt;compDemo #compDemo&gt; &lt;/compDemo&gt;</code> 加一个#号；通过#</li>
 <li>在父组件class内部，利用属性装饰器ViewChild，和刚才的子组件关联起来</li>
 </ol>
-<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>@<span class="token function">ViewChild</span><span class="token punctuation">(</span><span class="token string">'formListInstance'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">static</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>  
-<span class="token literal-property property">formListInstance</span><span class="token operator">:</span> any<span class="token punctuation">;</span>
-<span class="token comment">// 然后就可以通过this.formListInstance获取这个子组件了.</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="output" tabindex="-1"><a class="header-anchor" href="#output" aria-hidden="true">#</a> -@Output</h3>
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>@<span class="token function">ViewChild</span><span class="token punctuation">(</span><span class="token string">'compDemo'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">static</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>  compDemo<span class="token operator">:</span> any<span class="token punctuation">;</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h3 id="output-子调父" tabindex="-1"><a class="header-anchor" href="#output-子调父" aria-hidden="true">#</a> @Output 子调父</h3>
 <p>子组件通过-@Output触发父组件的方法</p>
 <p>演示例子：
 父组件：news
 子组件：footer</p>
 <ol>
-<li>
-<p>子组件引入 Output 和 EventEmitter
-import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';</p>
-</li>
-<li>
-<p>子组件中实例化 EventEmitter</p>
-</li>
+<li>子组件引入 Output 和 EventEmitter</li>
+</ol>
+<p><code>import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';</code></p>
+<ol>
+<li>子组件中实例化 EventEmitter</li>
 </ol>
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>@<span class="token function">Output</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
 <span class="token keyword">private</span> outer<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">EventEmitter</span><span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -578,9 +633,9 @@ import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';</p>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ol start="3">
 <li>子组件通过 EventEmitter 对象 outer 实例广播数据</li>
 </ol>
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>sendParent(){ 
-    this.outer.emit('msg from child') 
- }
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code><span class="token function">sendParent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+    <span class="token keyword">this</span><span class="token punctuation">.</span>outer<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'msg from child'</span><span class="token punctuation">)</span> 
+ <span class="token punctuation">}</span>
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="/pic/子组件触发父组件的方法01.png" alt="avator"></p>
 <ol start="4">
 <li>父组件调用子组件的时候，定义接收事件,outer 就是子组件的 EventEmitter 对象 outer</li>
