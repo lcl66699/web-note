@@ -7,6 +7,358 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "数据结构与算法",
+    "headers": [
+      {
+        "level": 2,
+        "title": "时间复杂度",
+        "slug": "时间复杂度",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "空间复杂度",
+        "slug": "空间复杂度",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "栈",
+        "slug": "栈",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "队列",
+        "slug": "队列",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "链表",
+        "slug": "链表",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "集合",
+        "slug": "集合",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "字典",
+        "slug": "字典",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "树",
+        "slug": "树",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "图",
+        "slug": "图",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "堆",
+        "slug": "堆",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "leetcode 算法题解题思路",
+        "slug": "leetcode-算法题解题思路",
+        "children": [
+          {
+            "level": 3,
+            "title": "20.有效的括号",
+            "slug": "_20-有效的括号",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "349.两个数组的交集",
+            "slug": "_349-两个数组的交集",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "278. 第一个错误的版本",
+            "slug": "_278-第一个错误的版本",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "35. 搜索插入位置",
+            "slug": "_35-搜索插入位置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "21.合并两个有序的链表(归并)",
+            "slug": "_21-合并两个有序的链表-归并",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "374.猜数字大小",
+            "slug": "_374-猜数字大小",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "42.接雨水",
+            "slug": "_42-接雨水",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "排序算法",
+        "slug": "排序算法",
+        "children": [
+          {
+            "level": 3,
+            "title": "冒泡排序",
+            "slug": "冒泡排序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "选择排序",
+            "slug": "选择排序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "插入排序",
+            "slug": "插入排序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "归并排序",
+            "slug": "归并排序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "快速排序",
+            "slug": "快速排序",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "搜索",
+        "slug": "搜索",
+        "children": [
+          {
+            "level": 3,
+            "title": "顺序搜索",
+            "slug": "顺序搜索",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "二分搜索",
+            "slug": "二分搜索",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "分而治之",
+        "slug": "分而治之",
+        "children": [
+          {
+            "level": 3,
+            "title": "226.翻转二叉树",
+            "slug": "_226-翻转二叉树",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "100.相同的树",
+            "slug": "_100-相同的树",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "101.对称二叉树",
+            "slug": "_101-对称二叉树",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "动态规划",
+        "slug": "动态规划",
+        "children": [
+          {
+            "level": 3,
+            "title": "动态规划公式",
+            "slug": "动态规划公式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "01背包问题",
+            "slug": "_01背包问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "动态规划解题思路",
+            "slug": "动态规划解题思路",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "70.爬楼梯",
+            "slug": "_70-爬楼梯",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "198.打家劫舍",
+            "slug": "_198-打家劫舍",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "贪心算法",
+        "slug": "贪心算法",
+        "children": [
+          {
+            "level": 3,
+            "title": "455.分饼干",
+            "slug": "_455-分饼干",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "122.买卖股票的最佳时机 Ⅱ",
+            "slug": "_122-买卖股票的最佳时机-ii",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "区间调度问题",
+            "slug": "区间调度问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "贪心求解",
+            "slug": "贪心求解",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "区间调度算法的应用",
+            "slug": "区间调度算法的应用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "435. 无重叠区间",
+            "slug": "_435-无重叠区间",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "2. 用最少的箭头射爆气球",
+            "slug": "_2-用最少的箭头射爆气球",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "回溯算法",
+        "slug": "回溯算法",
+        "children": [
+          {
+            "level": 3,
+            "title": "场景",
+            "slug": "场景-2",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "46.全排列",
+            "slug": "_46-全排列",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "78.子集",
+            "slug": "_78-子集",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "搜索算法(递归或者栈解决)",
+        "slug": "搜索算法-递归或者栈解决",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "双指针",
+        "slug": "双指针",
+        "children": [
+          {
+            "level": 3,
+            "title": "977. 有序数组的平方",
+            "slug": "_977-有序数组的平方",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "189. 轮转数组",
+            "slug": "_189-轮转数组",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "283. 移动零",
+            "slug": "_283-移动零",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "344. 反转字符串",
+            "slug": "_344-反转字符串",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "反转",
+            "slug": "反转",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/Algorithm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "angular",
     "headers": [
       {
@@ -445,358 +797,6 @@ export const searchIndex = [
       }
     ],
     "path": "/views/angular/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "数据结构与算法",
-    "headers": [
-      {
-        "level": 2,
-        "title": "时间复杂度",
-        "slug": "时间复杂度",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "空间复杂度",
-        "slug": "空间复杂度",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "栈",
-        "slug": "栈",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "队列",
-        "slug": "队列",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "链表",
-        "slug": "链表",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "集合",
-        "slug": "集合",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "字典",
-        "slug": "字典",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "树",
-        "slug": "树",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "图",
-        "slug": "图",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "堆",
-        "slug": "堆",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "leetcode 算法题解题思路",
-        "slug": "leetcode-算法题解题思路",
-        "children": [
-          {
-            "level": 3,
-            "title": "20.有效的括号",
-            "slug": "_20-有效的括号",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "349.两个数组的交集",
-            "slug": "_349-两个数组的交集",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "278. 第一个错误的版本",
-            "slug": "_278-第一个错误的版本",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "35. 搜索插入位置",
-            "slug": "_35-搜索插入位置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "21.合并两个有序的链表(归并)",
-            "slug": "_21-合并两个有序的链表-归并",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "374.猜数字大小",
-            "slug": "_374-猜数字大小",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "42.接雨水",
-            "slug": "_42-接雨水",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "排序算法",
-        "slug": "排序算法",
-        "children": [
-          {
-            "level": 3,
-            "title": "冒泡排序",
-            "slug": "冒泡排序",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "选择排序",
-            "slug": "选择排序",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "插入排序",
-            "slug": "插入排序",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "归并排序",
-            "slug": "归并排序",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "快速排序",
-            "slug": "快速排序",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "搜索",
-        "slug": "搜索",
-        "children": [
-          {
-            "level": 3,
-            "title": "顺序搜索",
-            "slug": "顺序搜索",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "二分搜索",
-            "slug": "二分搜索",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "分而治之",
-        "slug": "分而治之",
-        "children": [
-          {
-            "level": 3,
-            "title": "226.翻转二叉树",
-            "slug": "_226-翻转二叉树",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "100.相同的树",
-            "slug": "_100-相同的树",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "101.对称二叉树",
-            "slug": "_101-对称二叉树",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "动态规划",
-        "slug": "动态规划",
-        "children": [
-          {
-            "level": 3,
-            "title": "动态规划公式",
-            "slug": "动态规划公式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "01背包问题",
-            "slug": "_01背包问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "动态规划解题思路",
-            "slug": "动态规划解题思路",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "70.爬楼梯",
-            "slug": "_70-爬楼梯",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "198.打家劫舍",
-            "slug": "_198-打家劫舍",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "贪心算法",
-        "slug": "贪心算法",
-        "children": [
-          {
-            "level": 3,
-            "title": "455.分饼干",
-            "slug": "_455-分饼干",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "122.买卖股票的最佳时机 Ⅱ",
-            "slug": "_122-买卖股票的最佳时机-ii",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "区间调度问题",
-            "slug": "区间调度问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "贪心求解",
-            "slug": "贪心求解",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "区间调度算法的应用",
-            "slug": "区间调度算法的应用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "435. 无重叠区间",
-            "slug": "_435-无重叠区间",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "2. 用最少的箭头射爆气球",
-            "slug": "_2-用最少的箭头射爆气球",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "回溯算法",
-        "slug": "回溯算法",
-        "children": [
-          {
-            "level": 3,
-            "title": "场景",
-            "slug": "场景-2",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "46.全排列",
-            "slug": "_46-全排列",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "78.子集",
-            "slug": "_78-子集",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "搜索算法(递归或者栈解决)",
-        "slug": "搜索算法-递归或者栈解决",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "双指针",
-        "slug": "双指针",
-        "children": [
-          {
-            "level": 3,
-            "title": "977. 有序数组的平方",
-            "slug": "_977-有序数组的平方",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "189. 轮转数组",
-            "slug": "_189-轮转数组",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "283. 移动零",
-            "slug": "_283-移动零",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "344. 反转字符串",
-            "slug": "_344-反转字符串",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "反转",
-            "slug": "反转",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/Algorithm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2919,6 +2919,13 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "js-algorithm",
+    "headers": [],
+    "path": "/views/Algorithm/js-algorithm/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "first page in category1",
     "headers": [],
     "path": "/views/category1/2018/121501.html",
@@ -3009,9 +3016,22 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "js-algorithm",
-    "headers": [],
-    "path": "/views/Algorithm/js-algorithm/",
+    "title": "微前端",
+    "headers": [
+      {
+        "level": 2,
+        "title": "思想",
+        "slug": "思想",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "特点",
+        "slug": "特点",
+        "children": []
+      }
+    ],
+    "path": "/views/other/micro-web/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3056,6 +3076,126 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/Git/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "性能优化",
+    "headers": [
+      {
+        "level": 2,
+        "title": "从输入URL到页面加载的过程",
+        "slug": "从输入url到页面加载的过程",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "性能优化",
+        "slug": "性能优化-1",
+        "children": [
+          {
+            "level": 3,
+            "title": "vue框架层面",
+            "slug": "vue框架层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "js层面",
+            "slug": "js层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "css层面",
+            "slug": "css层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "html层面",
+            "slug": "html层面",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "seo优化",
+            "slug": "seo优化",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "webpack方面",
+        "slug": "webpack方面",
+        "children": [
+          {
+            "level": 3,
+            "title": "合理利用缓存",
+            "slug": "合理利用缓存",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "前端的性能优化",
+        "slug": "前端的性能优化",
+        "children": [
+          {
+            "level": 3,
+            "title": "如果⼀段js执行时间非常长, 怎么去分析?",
+            "slug": "如果一段js执行时间非常长-怎么去分析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "阿⾥云oss⽀持通过链接后拼参数实现图⽚格式转换, 尝试写⼀下, 把图⽚转为webp格式? 需要注意什么?",
+            "slug": "阿里云oss支持通过链接后拼参数实现图片格式转换-尝试写一下-把图片转为webp格式-需要注意什么",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "如果有巨量的图片需要展示在页面, 除了懒加载这种方式, 还有什么好的方法限制其同一时间加载的数量?",
+            "slug": "如果有巨量的图片需要展示在页面-除了懒加载这种方式-还有什么好的方法限制其同一时间加载的数量",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "前端的内存处理",
+        "slug": "前端的内存处理",
+        "children": [
+          {
+            "level": 3,
+            "title": "js 的垃圾回收机制",
+            "slug": "js-的垃圾回收机制",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "常见的内存泄露",
+            "slug": "常见的内存泄露",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "避免内存泄露？",
+            "slug": "避免内存泄露",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "实现一个 sizeOf 函数。接收一个对象，计算传入的对象占用的字节数",
+            "slug": "实现一个-sizeof-函数。接收一个对象-计算传入的对象占用的字节数",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/other/performance/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3213,146 +3353,6 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/questions/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "微前端",
-    "headers": [
-      {
-        "level": 2,
-        "title": "思想",
-        "slug": "思想",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "特点",
-        "slug": "特点",
-        "children": []
-      }
-    ],
-    "path": "/views/other/micro-web/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "性能优化",
-    "headers": [
-      {
-        "level": 2,
-        "title": "从输入URL到页面加载的过程",
-        "slug": "从输入url到页面加载的过程",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "性能优化",
-        "slug": "性能优化-1",
-        "children": [
-          {
-            "level": 3,
-            "title": "vue框架层面",
-            "slug": "vue框架层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "js层面",
-            "slug": "js层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "css层面",
-            "slug": "css层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "html层面",
-            "slug": "html层面",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "seo优化",
-            "slug": "seo优化",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "webpack方面",
-        "slug": "webpack方面",
-        "children": [
-          {
-            "level": 3,
-            "title": "合理利用缓存",
-            "slug": "合理利用缓存",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "前端的性能优化",
-        "slug": "前端的性能优化",
-        "children": [
-          {
-            "level": 3,
-            "title": "如果⼀段js执行时间非常长, 怎么去分析?",
-            "slug": "如果一段js执行时间非常长-怎么去分析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "阿⾥云oss⽀持通过链接后拼参数实现图⽚格式转换, 尝试写⼀下, 把图⽚转为webp格式? 需要注意什么?",
-            "slug": "阿里云oss支持通过链接后拼参数实现图片格式转换-尝试写一下-把图片转为webp格式-需要注意什么",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如果有巨量的图片需要展示在页面, 除了懒加载这种方式, 还有什么好的方法限制其同一时间加载的数量?",
-            "slug": "如果有巨量的图片需要展示在页面-除了懒加载这种方式-还有什么好的方法限制其同一时间加载的数量",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "前端的内存处理",
-        "slug": "前端的内存处理",
-        "children": [
-          {
-            "level": 3,
-            "title": "js 的垃圾回收机制",
-            "slug": "js-的垃圾回收机制",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "常见的内存泄露",
-            "slug": "常见的内存泄露",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "避免内存泄露？",
-            "slug": "避免内存泄露",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "实现一个 sizeOf 函数。接收一个对象，计算传入的对象占用的字节数",
-            "slug": "实现一个-sizeof-函数。接收一个对象-计算传入的对象占用的字节数",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/other/performance/",
     "pathLocale": "/",
     "extraFields": []
   },
