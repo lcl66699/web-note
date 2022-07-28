@@ -801,168 +801,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "webpack",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Webpack 基础",
-        "slug": "webpack-基础",
-        "children": [
-          {
-            "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "经典问题",
-        "slug": "经典问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "webpack运行流程",
-            "slug": "webpack运行流程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "compiler和compilation",
-            "slug": "compiler和compilation",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "webpack中的Module是什么？",
-            "slug": "webpack中的module是什么",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "webpack modules,如何表达自己的各种依赖关系",
-            "slug": "webpack-modules-如何表达自己的各种依赖关系",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "*常说的 chunk和bundle的区别是什么？",
-            "slug": "常说的-chunk和bundle的区别是什么",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Loader 和 Plugin 分别是做什么的? 怎么工作的?",
-            "slug": "loader-和-plugin-分别是做什么的-怎么工作的",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如何本地项目去做一些多端口服务的代理转发",
-            "slug": "如何本地项目去做一些多端口服务的代理转发",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "如何利用webpack去做依赖锁定？锁版本",
-            "slug": "如何利用webpack去做依赖锁定-锁版本",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "静态文件的移动&赋值,用哪个plugin",
-            "slug": "静态文件的移动-赋值-用哪个plugin",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "性能优化",
-            "slug": "性能优化",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "文件指纹",
-        "slug": "文件指纹",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Loader",
-        "slug": "loader",
-        "children": [
-          {
-            "level": 3,
-            "title": "常用loaders",
-            "slug": "常用loaders",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Plugin",
-        "slug": "plugin",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "noParse",
-        "slug": "noparse",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "函数式编程理论",
-        "slug": "函数式编程理论",
-        "children": [
-          {
-            "level": 3,
-            "title": "特点",
-            "slug": "特点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "概念",
-            "slug": "概念",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "纯函数",
-            "slug": "纯函数",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "高阶函数",
-            "slug": "高阶函数",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "函数柯里化",
-            "slug": "函数柯里化",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "升级->组合",
-            "slug": "升级-组合",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/engineering/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "网络和并发",
     "headers": [
       {
@@ -1146,6 +984,211 @@ export const searchIndex = [
       }
     ],
     "path": "/views/Http/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "nodejs",
+    "headers": [
+      {
+        "level": 2,
+        "title": "基础",
+        "slug": "基础",
+        "children": [
+          {
+            "level": 3,
+            "title": "express的req传参",
+            "slug": "express的req传参",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "node.js 常见内置模块",
+            "slug": "node-js-常见内置模块",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "node.js 的底层依赖",
+            "slug": "node-js-的底层依赖",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Events",
+        "slug": "events",
+        "children": [
+          {
+            "level": 3,
+            "title": "例子1：单个事件监听器",
+            "slug": "例子1-单个事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子2：同个事件，多个事件监听器",
+            "slug": "例子2-同个事件-多个事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子3：只运行一次的事件监听器",
+            "slug": "例子3-只运行一次的事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子4：注册事件监听器前，事件先触发",
+            "slug": "例子4-注册事件监听器前-事件先触发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子5：异步执行，还是顺序执行",
+            "slug": "例子5-异步执行-还是顺序执行",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "例子6：移除事件监听器",
+            "slug": "例子6-移除事件监听器",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "手写实现EventEmitter",
+            "slug": "手写实现eventemitter",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "全局对象Global",
+        "slug": "全局对象global",
+        "children": [
+          {
+            "level": 3,
+            "title": "全局对象和全局变量",
+            "slug": "全局对象和全局变量",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "__filename",
+            "slug": "filename",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "__dirname",
+            "slug": "dirname",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "process",
+            "slug": "process",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "退出的状态码",
+            "slug": "退出的状态码",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "node中的this",
+            "slug": "node中的this",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "node.js 事件循环模型",
+        "slug": "node-js-事件循环模型",
+        "children": [
+          {
+            "level": 3,
+            "title": "什么是事件循环",
+            "slug": "什么是事件循环",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "各阶段概览",
+            "slug": "各阶段概览",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "各阶段详细解析",
+            "slug": "各阶段详细解析",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "setImmediate 和 setTimeout 的区别",
+            "slug": "setimmediate-和-settimeout-的区别",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "process.nextTick微任务",
+            "slug": "process-nexttick微任务",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "nextTick在事件循环中的位置",
+            "slug": "nexttick在事件循环中的位置",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Microtasks 微任务",
+            "slug": "microtasks-微任务",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "代码输出顺序",
+            "slug": "代码输出顺序",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "node.js 周边⼯具",
+        "slug": "node-js-周边工具",
+        "children": [
+          {
+            "level": 3,
+            "title": "debug",
+            "slug": "debug",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "quickjs",
+            "slug": "quickjs",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "deno",
+            "slug": "deno",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/nodejs/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -1940,207 +1983,433 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "nodejs",
+    "title": "webpack",
     "headers": [
       {
         "level": 2,
-        "title": "基础",
-        "slug": "基础",
+        "title": "Webpack 基础",
+        "slug": "webpack-基础",
         "children": [
           {
             "level": 3,
-            "title": "express的req传参",
-            "slug": "express的req传参",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "node.js 常见内置模块",
-            "slug": "node-js-常见内置模块",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "node.js 的底层依赖",
-            "slug": "node-js-的底层依赖",
+            "title": "安装",
+            "slug": "安装",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "Events",
-        "slug": "events",
+        "title": "经典问题",
+        "slug": "经典问题",
         "children": [
           {
             "level": 3,
-            "title": "例子1：单个事件监听器",
-            "slug": "例子1-单个事件监听器",
+            "title": "webpack运行流程",
+            "slug": "webpack运行流程",
             "children": []
           },
           {
             "level": 3,
-            "title": "例子2：同个事件，多个事件监听器",
-            "slug": "例子2-同个事件-多个事件监听器",
+            "title": "compiler和compilation",
+            "slug": "compiler和compilation",
             "children": []
           },
           {
             "level": 3,
-            "title": "例子3：只运行一次的事件监听器",
-            "slug": "例子3-只运行一次的事件监听器",
+            "title": "webpack中的Module是什么？",
+            "slug": "webpack中的module是什么",
             "children": []
           },
           {
             "level": 3,
-            "title": "例子4：注册事件监听器前，事件先触发",
-            "slug": "例子4-注册事件监听器前-事件先触发",
+            "title": "webpack modules,如何表达自己的各种依赖关系",
+            "slug": "webpack-modules-如何表达自己的各种依赖关系",
             "children": []
           },
           {
             "level": 3,
-            "title": "例子5：异步执行，还是顺序执行",
-            "slug": "例子5-异步执行-还是顺序执行",
+            "title": "*常说的 chunk和bundle的区别是什么？",
+            "slug": "常说的-chunk和bundle的区别是什么",
             "children": []
           },
           {
             "level": 3,
-            "title": "例子6：移除事件监听器",
-            "slug": "例子6-移除事件监听器",
+            "title": "Loader 和 Plugin 分别是做什么的? 怎么工作的?",
+            "slug": "loader-和-plugin-分别是做什么的-怎么工作的",
             "children": []
           },
           {
             "level": 3,
-            "title": "手写实现EventEmitter",
-            "slug": "手写实现eventemitter",
+            "title": "如何本地项目去做一些多端口服务的代理转发",
+            "slug": "如何本地项目去做一些多端口服务的代理转发",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "如何利用webpack去做依赖锁定？锁版本",
+            "slug": "如何利用webpack去做依赖锁定-锁版本",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "静态文件的移动&赋值,用哪个plugin",
+            "slug": "静态文件的移动-赋值-用哪个plugin",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "性能优化",
+            "slug": "性能优化",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "全局对象Global",
-        "slug": "全局对象global",
+        "title": "文件指纹",
+        "slug": "文件指纹",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Loader",
+        "slug": "loader",
         "children": [
           {
             "level": 3,
-            "title": "全局对象和全局变量",
-            "slug": "全局对象和全局变量",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "__filename",
-            "slug": "filename",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "__dirname",
-            "slug": "dirname",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "process",
-            "slug": "process",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "退出的状态码",
-            "slug": "退出的状态码",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "node中的this",
-            "slug": "node中的this",
+            "title": "常用loaders",
+            "slug": "常用loaders",
             "children": []
           }
         ]
       },
       {
         "level": 2,
-        "title": "node.js 事件循环模型",
-        "slug": "node-js-事件循环模型",
-        "children": [
-          {
-            "level": 3,
-            "title": "什么是事件循环",
-            "slug": "什么是事件循环",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "各阶段概览",
-            "slug": "各阶段概览",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "各阶段详细解析",
-            "slug": "各阶段详细解析",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "setImmediate 和 setTimeout 的区别",
-            "slug": "setimmediate-和-settimeout-的区别",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "process.nextTick微任务",
-            "slug": "process-nexttick微任务",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "nextTick在事件循环中的位置",
-            "slug": "nexttick在事件循环中的位置",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Microtasks 微任务",
-            "slug": "microtasks-微任务",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "代码输出顺序",
-            "slug": "代码输出顺序",
-            "children": []
-          }
-        ]
+        "title": "Plugin",
+        "slug": "plugin",
+        "children": []
       },
       {
         "level": 2,
-        "title": "node.js 周边⼯具",
-        "slug": "node-js-周边工具",
+        "title": "noParse",
+        "slug": "noparse",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "函数式编程理论",
+        "slug": "函数式编程理论",
         "children": [
           {
             "level": 3,
-            "title": "debug",
-            "slug": "debug",
+            "title": "特点",
+            "slug": "特点",
             "children": []
           },
           {
             "level": 3,
-            "title": "quickjs",
-            "slug": "quickjs",
+            "title": "概念",
+            "slug": "概念",
             "children": []
           },
           {
             "level": 3,
-            "title": "deno",
-            "slug": "deno",
+            "title": "纯函数",
+            "slug": "纯函数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "高阶函数",
+            "slug": "高阶函数",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "函数柯里化",
+            "slug": "函数柯里化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "升级->组合",
+            "slug": "升级-组合",
             "children": []
           }
         ]
       }
     ],
-    "path": "/views/nodejs/",
+    "path": "/views/engineering/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "【讲义】React基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "简介",
+        "slug": "简介",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "JSX",
+        "slug": "jsx",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "State",
+        "slug": "state",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Props",
+        "slug": "props",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "条件渲染和循环 & 绑定事件",
+        "slug": "条件渲染和循环-绑定事件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "生命周期",
+        "slug": "生命周期",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "组件化",
+        "slug": "组件化",
+        "children": []
+      }
+    ],
+    "path": "/views/React/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "React",
+    "headers": [
+      {
+        "level": 2,
+        "title": "React介绍",
+        "slug": "react介绍",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "jsx语法",
+        "slug": "jsx语法",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "组件",
+        "slug": "组件",
+        "children": [
+          {
+            "level": 3,
+            "title": "类形式组件",
+            "slug": "类形式组件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "props",
+            "slug": "props",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "JSX中的循环",
+        "slug": "jsx中的循环",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "state",
+        "slug": "state",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "生命周期函数",
+        "slug": "生命周期函数",
+        "children": [
+          {
+            "level": 3,
+            "title": "code",
+            "slug": "code",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "事件系统",
+            "slug": "事件系统",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "this指向问题",
+            "slug": "this指向问题",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "事件对象",
+            "slug": "事件对象",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "表单",
+            "slug": "表单",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "状态提升",
+        "slug": "状态提升",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "组合",
+        "slug": "组合",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "fetch网络请求",
+        "slug": "fetch网络请求",
+        "children": [
+          {
+            "level": 3,
+            "title": "语法",
+            "slug": "语法",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "router 路由",
+        "slug": "router-路由",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "配置less",
+        "slug": "配置less",
+        "children": [
+          {
+            "level": 3,
+            "title": "Provider",
+            "slug": "provider",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Refs 转发",
+        "slug": "refs-转发",
+        "children": [
+          {
+            "level": 3,
+            "title": "Fragments",
+            "slug": "fragments",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "高阶组件",
+            "slug": "高阶组件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "react性能优化",
+            "slug": "react性能优化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Render Props",
+            "slug": "render-props",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "hooks",
+        "slug": "hooks",
+        "children": [
+          {
+            "level": 3,
+            "title": "State Hook",
+            "slug": "state-hook",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Effect Hook",
+            "slug": "effect-hook",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Context Hook",
+            "slug": "context-hook",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "useReducer | useMemo",
+            "slug": "usereducer-usememo",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "useRef",
+            "slug": "useref",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "自定义hook",
+            "slug": "自定义hook",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "redux",
+        "slug": "redux",
+        "children": []
+      }
+    ],
+    "path": "/views/React/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "js-algorithm",
+    "headers": [],
+    "path": "/views/Algorithm/js-algorithm/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -2657,275 +2926,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "【讲义】React基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "简介",
-        "slug": "简介",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "JSX",
-        "slug": "jsx",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "State",
-        "slug": "state",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Props",
-        "slug": "props",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "条件渲染和循环 & 绑定事件",
-        "slug": "条件渲染和循环-绑定事件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "生命周期",
-        "slug": "生命周期",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "组件化",
-        "slug": "组件化",
-        "children": []
-      }
-    ],
-    "path": "/views/React/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "React",
-    "headers": [
-      {
-        "level": 2,
-        "title": "React介绍",
-        "slug": "react介绍",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "jsx语法",
-        "slug": "jsx语法",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "组件",
-        "slug": "组件",
-        "children": [
-          {
-            "level": 3,
-            "title": "类形式组件",
-            "slug": "类形式组件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "props",
-            "slug": "props",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "JSX中的循环",
-        "slug": "jsx中的循环",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "state",
-        "slug": "state",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "生命周期函数",
-        "slug": "生命周期函数",
-        "children": [
-          {
-            "level": 3,
-            "title": "code",
-            "slug": "code",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "事件系统",
-            "slug": "事件系统",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "this指向问题",
-            "slug": "this指向问题",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "事件对象",
-            "slug": "事件对象",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "表单",
-            "slug": "表单",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "状态提升",
-        "slug": "状态提升",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "组合",
-        "slug": "组合",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "fetch网络请求",
-        "slug": "fetch网络请求",
-        "children": [
-          {
-            "level": 3,
-            "title": "语法",
-            "slug": "语法",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "router 路由",
-        "slug": "router-路由",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "配置less",
-        "slug": "配置less",
-        "children": [
-          {
-            "level": 3,
-            "title": "Provider",
-            "slug": "provider",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Refs 转发",
-        "slug": "refs-转发",
-        "children": [
-          {
-            "level": 3,
-            "title": "Fragments",
-            "slug": "fragments",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "高阶组件",
-            "slug": "高阶组件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "react性能优化",
-            "slug": "react性能优化",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Render Props",
-            "slug": "render-props",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "hooks",
-        "slug": "hooks",
-        "children": [
-          {
-            "level": 3,
-            "title": "State Hook",
-            "slug": "state-hook",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Effect Hook",
-            "slug": "effect-hook",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Context Hook",
-            "slug": "context-hook",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "useReducer | useMemo",
-            "slug": "usereducer-usememo",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "useRef",
-            "slug": "useref",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "自定义hook",
-            "slug": "自定义hook",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "redux",
-        "slug": "redux",
-        "children": []
-      }
-    ],
-    "path": "/views/React/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "js-algorithm",
-    "headers": [],
-    "path": "/views/Algorithm/js-algorithm/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "first page in category1",
     "headers": [],
     "path": "/views/category1/2018/121501.html",
@@ -3016,22 +3016,693 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "微前端",
+    "title": "react 高级用法",
+    "headers": [],
+    "path": "/views/React/react-mid/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vue-cli",
     "headers": [
       {
         "level": 2,
-        "title": "思想",
-        "slug": "思想",
+        "title": "简介",
+        "slug": "简介",
+        "children": []
+      }
+    ],
+    "path": "/views/Vue/vue-cli/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "原理篇",
+    "headers": [
+      {
+        "level": 2,
+        "title": "vue 数据双向绑定原理",
+        "slug": "vue-数据双向绑定原理",
+        "children": [
+          {
+            "level": 3,
+            "title": "实现原理",
+            "slug": "实现原理",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "对diff算法的理解",
+            "slug": "对diff算法的理解",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "实现一个响应式函数,对一个对象内的所有 key 添加响应式特性",
+            "slug": "实现一个响应式函数-对一个对象内的所有-key-添加响应式特性",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Vue 对于数组类型怎么处理的？简单模拟下数组方法的监听，最终输出如下",
+        "slug": "vue-对于数组类型怎么处理的-简单模拟下数组方法的监听-最终输出如下",
         "children": []
       },
       {
         "level": 2,
-        "title": "特点",
-        "slug": "特点",
+        "title": "实现基于 proxy 的响应式？能够监听对象的删除操作？要求最终的输出如下方代码所示",
+        "slug": "实现基于-proxy-的响应式-能够监听对象的删除操作-要求最终的输出如下方代码所示",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢?",
+        "slug": "proxy只会代理对象的第一层-那么vue3又是怎样处理这个问题的呢",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "监测数组的时候可能触发多次get/set，那么如何防止触发多次呢?",
+        "slug": "监测数组的时候可能触发多次get-set-那么如何防止触发多次呢",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "了解虚拟 dom 吗，浅谈优缺点",
+        "slug": "了解虚拟-dom-吗-浅谈优缺点",
+        "children": [
+          {
+            "level": 3,
+            "title": "优点：",
+            "slug": "优点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "缺点：",
+            "slug": "缺点",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "code",
+            "slug": "code",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "symbol",
+        "slug": "symbol",
+        "children": [
+          {
+            "level": 3,
+            "title": "coding",
+            "slug": "coding",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/Vue/vue-hard/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vue-router",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Router 发展历史",
+        "slug": "router-发展历史",
+        "children": [
+          {
+            "level": 3,
+            "title": "路由的分类",
+            "slug": "路由的分类",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "hash 路由",
+            "slug": "hash-路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "history 路由",
+            "slug": "history-路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "hash 路由 和 history 路由，有什么区别？",
+            "slug": "hash-路由-和-history-路由-有什么区别",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "手写hash路由",
+            "slug": "手写hash路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "手写history路由",
+            "slug": "手写history路由",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "history.go / back ⼀定会刷新吗？",
+            "slug": "history-go-back-一定会刷新吗",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "pushState 会触发 popState 事件吗？",
+            "slug": "pushstate-会触发-popstate-事件吗",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vue导航守卫",
+        "slug": "vue导航守卫",
+        "children": [
+          {
+            "level": 3,
+            "title": "导航解析流程",
+            "slug": "导航解析流程",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "导航守卫的执行顺序",
+            "slug": "导航守卫的执行顺序",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "next必须调用",
+            "slug": "next必须调用",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/Vue/vue-router/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vue2 基础",
+    "headers": [
+      {
+        "level": 2,
+        "title": "安装",
+        "slug": "安装",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "常用指令",
+        "slug": "常用指令",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "表单输入绑定",
+        "slug": "表单输入绑定",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "计算属性",
+        "slug": "计算属性",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "侦听器 watch",
+        "slug": "侦听器-watch",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "组件基础",
+        "slug": "组件基础",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "props",
+        "slug": "props",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "数据传递方向：子传父",
+        "slug": "数据传递方向-子传父",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "动态绑定 class 和 style",
+        "slug": "动态绑定-class-和-style",
+        "children": [
+          {
+            "level": 3,
+            "title": "动态绑定 class 类名",
+            "slug": "动态绑定-class-类名",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "动态绑定 style",
+            "slug": "动态绑定-style",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "插槽",
+        "slug": "插槽",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "动态组件",
+        "slug": "动态组件",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "处理边界情况",
+        "slug": "处理边界情况",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "生命周期函数",
+        "slug": "生命周期函数",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "过渡动画",
+        "slug": "过渡动画",
+        "children": [
+          {
+            "level": 3,
+            "title": "自定义过渡的类名",
+            "slug": "自定义过渡的类名",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "provide 和 inject",
+        "slug": "provide-和-inject",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "自定义指令",
+        "slug": "自定义指令",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "过滤器",
+        "slug": "过滤器",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "axios 网络请求库(ajax)",
+        "slug": "axios-网络请求库-ajax",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "路由",
+        "slug": "路由",
+        "children": [
+          {
+            "level": 3,
+            "title": "-路由组件传参",
+            "slug": "路由组件传参",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "导航高亮效果",
+            "slug": "导航高亮效果",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "导航守卫",
+            "slug": "导航守卫",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "过渡动效",
+            "slug": "过渡动效",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "滚动行为",
+            "slug": "滚动行为",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "路由懒加载",
+            "slug": "路由懒加载",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vuex 介绍",
+        "slug": "vuex-介绍",
+        "children": [
+          {
+            "level": 3,
+            "title": "回顾常用数据传递方式",
+            "slug": "回顾常用数据传递方式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装-1",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "使用",
+            "slug": "使用",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "state",
+            "slug": "state",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "mutation",
+            "slug": "mutation",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Action",
+            "slug": "action",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "getters",
+            "slug": "getters",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "module",
+            "slug": "module",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "namespaced",
+            "slug": "namespaced",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "严格模式",
+            "slug": "严格模式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "插件",
+            "slug": "插件",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/Vue/vue2-easy/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vue进阶用法",
+    "headers": [
+      {
+        "level": 2,
+        "title": "特征一：模板化",
+        "slug": "特征一-模板化",
+        "children": [
+          {
+            "level": 3,
+            "title": "插槽",
+            "slug": "插槽",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "模板数据的二次加工",
+            "slug": "模板数据的二次加工",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "jsx 更自由的基于js书写",
+            "slug": "jsx-更自由的基于js书写",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "特征二：组件化",
+        "slug": "特征二-组件化",
+        "children": [
+          {
+            "level": 3,
+            "title": "传统模板化",
+            "slug": "传统模板化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "混入mixin - 逻辑混入",
+            "slug": "混入mixin-逻辑混入",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "继承拓展extends - 逻辑拓展",
+            "slug": "继承拓展extends-逻辑拓展",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Vue.use - 插件",
+            "slug": "vue-use-插件",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "组件的高级引用",
+            "slug": "组件的高级引用",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/Vue/vue2-mid/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "",
+    "headers": [],
+    "path": "/views/Vue/vue3/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "vuex状态管理",
+    "headers": [
+      {
+        "level": 2,
+        "title": "关于状态管理",
+        "slug": "关于状态管理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "vuex介绍",
+        "slug": "vuex介绍",
+        "children": [
+          {
+            "level": 3,
+            "title": "更改状态",
+            "slug": "更改状态",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "辅助函数",
+            "slug": "辅助函数",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vuex 3原理",
+        "slug": "vuex-3原理",
+        "children": [
+          {
+            "level": 3,
+            "title": "vuex3源码部分",
+            "slug": "vuex3源码部分",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Step1 - store 注册",
+            "slug": "step1-store-注册",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Step2 - 响应式",
+            "slug": "step2-响应式",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Step3 - 衍生数据",
+            "slug": "step3-衍生数据",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Step4 - Actions/Mutations",
+            "slug": "step4-actions-mutations",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Step5 - 拆分出多个 Module",
+            "slug": "step5-拆分出多个-module",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Step6 - 插件机制",
+            "slug": "step6-插件机制",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vuex3常见问题",
+        "slug": "vuex3常见问题",
+        "children": [
+          {
+            "level": 3,
+            "title": "vuex修改数据为何兜一圈？",
+            "slug": "vuex修改数据为何兜一圈",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "vuex什么时候进行的初始化？",
+            "slug": "vuex什么时候进行的初始化",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "vuex自己定义了告警，为什么不用console.assert？",
+            "slug": "vuex自己定义了告警-为什么不用console-assert",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "object.create(null) 和{}区别",
+            "slug": "object-create-null-和-区别",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "vuex4",
+        "slug": "vuex4",
+        "children": [
+          {
+            "level": 3,
+            "title": "安装",
+            "slug": "安装",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "用法",
+            "slug": "用法",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "SSR",
+        "slug": "ssr",
         "children": []
       }
     ],
-    "path": "/views/other/micro-web/",
+    "path": "/views/Vue/vuex/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "Vuex & SSR",
+    "headers": [
+      {
+        "level": 2,
+        "title": "Vuex 原理",
+        "slug": "vuex-原理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "SSR",
+        "slug": "ssr",
+        "children": []
+      }
+    ],
+    "path": "/views/Vue/vuex/vuex_ssr(1).html",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3076,6 +3747,26 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/Git/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "微前端",
+    "headers": [
+      {
+        "level": 2,
+        "title": "思想",
+        "slug": "思想",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "特点",
+        "slug": "特点",
+        "children": []
+      }
+    ],
+    "path": "/views/other/micro-web/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -3353,6 +4044,359 @@ export const searchIndex = [
       }
     ],
     "path": "/views/other/questions/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "TypeScript",
+    "headers": [
+      {
+        "level": 2,
+        "title": "安装 TypeScript",
+        "slug": "安装-typescript",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "基础类型",
+        "slug": "基础类型",
+        "children": [
+          {
+            "level": 3,
+            "title": "原始类型",
+            "slug": "原始类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "数组类型",
+            "slug": "数组类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "对象类型",
+            "slug": "对象类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "函数类型",
+            "slug": "函数类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "特殊类型",
+            "slug": "特殊类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "枚举类型",
+            "slug": "枚举类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "Object类型",
+            "slug": "object类型",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "断言",
+        "slug": "断言",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "接口",
+        "slug": "接口",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "类",
+        "slug": "类",
+        "children": [
+          {
+            "level": 3,
+            "title": "类与接口",
+            "slug": "类与接口",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "接口继承接口",
+            "slug": "接口继承接口",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "abstract抽象类",
+            "slug": "abstract抽象类",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "继承",
+            "slug": "继承",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "get|set",
+            "slug": "get-set",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "多态",
+            "slug": "多态",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "重载",
+            "slug": "重载",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "重写",
+            "slug": "重写",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "泛型",
+        "slug": "泛型",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Iterators 和 Generators",
+        "slug": "iterators-和-generators",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "装饰器",
+        "slug": "装饰器",
+        "children": [
+          {
+            "level": 3,
+            "title": "类装饰器（Class decorators）",
+            "slug": "类装饰器-class-decorators",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "属性装饰器（Property decorators）",
+            "slug": "属性装饰器-property-decorators",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "方法装饰器（Method decorators）",
+            "slug": "方法装饰器-method-decorators",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "参数装饰器（Parameter decorators）",
+            "slug": "参数装饰器-parameter-decorators",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "编译原理",
+        "slug": "编译原理",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "面试题",
+        "slug": "面试题",
+        "children": [
+          {
+            "level": 3,
+            "title": "类型推论 & 可赋值性",
+            "slug": "类型推论-可赋值性",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "什么是类型断言？",
+            "slug": "什么是类型断言",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "type 和 interface的异同",
+            "slug": "type-和-interface的异同",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "有哪些类型装饰器？执行的顺序是怎样的？",
+            "slug": "有哪些类型装饰器-执行的顺序是怎样的",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "接口类型有哪些种类",
+            "slug": "接口类型有哪些种类",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "TypeScript和JavaScript的区别",
+            "slug": "typescript和javascript的区别",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/other/typescript/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
+    "title": "前端安全",
+    "headers": [
+      {
+        "level": 2,
+        "title": "XSS （cross-site scripting，跨站脚本攻击",
+        "slug": "xss-cross-site-scripting-跨站脚本攻击",
+        "children": [
+          {
+            "level": 3,
+            "title": "外在表现上，有哪些攻击场景？",
+            "slug": "外在表现上-有哪些攻击场景",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "技术角度上，有哪些类型的攻击（分类）？",
+            "slug": "技术角度上-有哪些类型的攻击-分类",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "防范xss攻击方法？",
+            "slug": "防范xss攻击方法",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "CSRF 跨站请求伪造",
+        "slug": "csrf-跨站请求伪造",
+        "children": [
+          {
+            "level": 3,
+            "title": "攻击步骤",
+            "slug": "攻击步骤",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "攻击类型",
+            "slug": "攻击类型",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "防范方法-csrf",
+            "slug": "防范方法-csrf",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "HTTPS",
+        "slug": "https",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "CSP",
+        "slug": "csp",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "HSTS",
+        "slug": "hsts",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "X-Frame-Options",
+        "slug": "x-frame-options",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "SRI （subresouce intergrity 子资源的完整性，传到服务器或cdn上的资源",
+        "slug": "sri-subresouce-intergrity-子资源的完整性-传到服务器或cdn上的资源",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Referer-Policy（控制referer的携带策略）",
+        "slug": "referer-policy-控制referer的携带策略",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Node（服务端）相关的安全：",
+        "slug": "node-服务端-相关的安全",
+        "children": [
+          {
+            "level": 3,
+            "title": "本地文件操作相关，静态资源",
+            "slug": "本地文件操作相关-静态资源",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ReDos 正则表达式攻击",
+            "slug": "redos-正则表达式攻击",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "时序攻击",
+            "slug": "时序攻击",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "ip origin || referrer || request headers校验（防止爬虫）",
+            "slug": "ip-origin-referrer-request-headers校验-防止爬虫",
+            "children": []
+          },
+          {
+            "level": 3,
+            "title": "实现一个截图服务",
+            "slug": "实现一个截图服务",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "path": "/views/other/web-safe/",
     "pathLocale": "/",
     "extraFields": []
   },
@@ -7967,1070 +9011,6 @@ export const searchIndex = [
     "extraFields": []
   },
   {
-    "title": "TypeScript",
-    "headers": [
-      {
-        "level": 2,
-        "title": "安装 TypeScript",
-        "slug": "安装-typescript",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "基础类型",
-        "slug": "基础类型",
-        "children": [
-          {
-            "level": 3,
-            "title": "原始类型",
-            "slug": "原始类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "数组类型",
-            "slug": "数组类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "对象类型",
-            "slug": "对象类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "函数类型",
-            "slug": "函数类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "特殊类型",
-            "slug": "特殊类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "枚举类型",
-            "slug": "枚举类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Object类型",
-            "slug": "object类型",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "断言",
-        "slug": "断言",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "接口",
-        "slug": "接口",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "类",
-        "slug": "类",
-        "children": [
-          {
-            "level": 3,
-            "title": "类与接口",
-            "slug": "类与接口",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "接口继承接口",
-            "slug": "接口继承接口",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "abstract抽象类",
-            "slug": "abstract抽象类",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "继承",
-            "slug": "继承",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "get|set",
-            "slug": "get-set",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "多态",
-            "slug": "多态",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "重载",
-            "slug": "重载",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "重写",
-            "slug": "重写",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "泛型",
-        "slug": "泛型",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Iterators 和 Generators",
-        "slug": "iterators-和-generators",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "装饰器",
-        "slug": "装饰器",
-        "children": [
-          {
-            "level": 3,
-            "title": "类装饰器（Class decorators）",
-            "slug": "类装饰器-class-decorators",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "属性装饰器（Property decorators）",
-            "slug": "属性装饰器-property-decorators",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "方法装饰器（Method decorators）",
-            "slug": "方法装饰器-method-decorators",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "参数装饰器（Parameter decorators）",
-            "slug": "参数装饰器-parameter-decorators",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "编译原理",
-        "slug": "编译原理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "面试题",
-        "slug": "面试题",
-        "children": [
-          {
-            "level": 3,
-            "title": "类型推论 & 可赋值性",
-            "slug": "类型推论-可赋值性",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "什么是类型断言？",
-            "slug": "什么是类型断言",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "type 和 interface的异同",
-            "slug": "type-和-interface的异同",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "有哪些类型装饰器？执行的顺序是怎样的？",
-            "slug": "有哪些类型装饰器-执行的顺序是怎样的",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "接口类型有哪些种类",
-            "slug": "接口类型有哪些种类",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "TypeScript和JavaScript的区别",
-            "slug": "typescript和javascript的区别",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/other/typescript/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "前端安全",
-    "headers": [
-      {
-        "level": 2,
-        "title": "XSS （cross-site scripting，跨站脚本攻击",
-        "slug": "xss-cross-site-scripting-跨站脚本攻击",
-        "children": [
-          {
-            "level": 3,
-            "title": "外在表现上，有哪些攻击场景？",
-            "slug": "外在表现上-有哪些攻击场景",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "技术角度上，有哪些类型的攻击（分类）？",
-            "slug": "技术角度上-有哪些类型的攻击-分类",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "防范xss攻击方法？",
-            "slug": "防范xss攻击方法",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "CSRF 跨站请求伪造",
-        "slug": "csrf-跨站请求伪造",
-        "children": [
-          {
-            "level": 3,
-            "title": "攻击步骤",
-            "slug": "攻击步骤",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "攻击类型",
-            "slug": "攻击类型",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "防范方法-csrf",
-            "slug": "防范方法-csrf",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "HTTPS",
-        "slug": "https",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "CSP",
-        "slug": "csp",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "HSTS",
-        "slug": "hsts",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "X-Frame-Options",
-        "slug": "x-frame-options",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "SRI （subresouce intergrity 子资源的完整性，传到服务器或cdn上的资源",
-        "slug": "sri-subresouce-intergrity-子资源的完整性-传到服务器或cdn上的资源",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Referer-Policy（控制referer的携带策略）",
-        "slug": "referer-policy-控制referer的携带策略",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Node（服务端）相关的安全：",
-        "slug": "node-服务端-相关的安全",
-        "children": [
-          {
-            "level": 3,
-            "title": "本地文件操作相关，静态资源",
-            "slug": "本地文件操作相关-静态资源",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ReDos 正则表达式攻击",
-            "slug": "redos-正则表达式攻击",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "时序攻击",
-            "slug": "时序攻击",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "ip origin || referrer || request headers校验（防止爬虫）",
-            "slug": "ip-origin-referrer-request-headers校验-防止爬虫",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "实现一个截图服务",
-            "slug": "实现一个截图服务",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/other/web-safe/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "react 高级用法",
-    "headers": [],
-    "path": "/views/React/react-mid/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vue-cli",
-    "headers": [
-      {
-        "level": 2,
-        "title": "简介",
-        "slug": "简介",
-        "children": []
-      }
-    ],
-    "path": "/views/Vue/vue-cli/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "原理篇",
-    "headers": [
-      {
-        "level": 2,
-        "title": "vue 数据双向绑定原理",
-        "slug": "vue-数据双向绑定原理",
-        "children": [
-          {
-            "level": 3,
-            "title": "实现原理",
-            "slug": "实现原理",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "对diff算法的理解",
-            "slug": "对diff算法的理解",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "实现一个响应式函数,对一个对象内的所有 key 添加响应式特性",
-            "slug": "实现一个响应式函数-对一个对象内的所有-key-添加响应式特性",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "Vue 对于数组类型怎么处理的？简单模拟下数组方法的监听，最终输出如下",
-        "slug": "vue-对于数组类型怎么处理的-简单模拟下数组方法的监听-最终输出如下",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "实现基于 proxy 的响应式？能够监听对象的删除操作？要求最终的输出如下方代码所示",
-        "slug": "实现基于-proxy-的响应式-能够监听对象的删除操作-要求最终的输出如下方代码所示",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Proxy只会代理对象的第一层，那么Vue3又是怎样处理这个问题的呢?",
-        "slug": "proxy只会代理对象的第一层-那么vue3又是怎样处理这个问题的呢",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "监测数组的时候可能触发多次get/set，那么如何防止触发多次呢?",
-        "slug": "监测数组的时候可能触发多次get-set-那么如何防止触发多次呢",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "了解虚拟 dom 吗，浅谈优缺点",
-        "slug": "了解虚拟-dom-吗-浅谈优缺点",
-        "children": [
-          {
-            "level": 3,
-            "title": "优点：",
-            "slug": "优点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "缺点：",
-            "slug": "缺点",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "code",
-            "slug": "code",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "symbol",
-        "slug": "symbol",
-        "children": [
-          {
-            "level": 3,
-            "title": "coding",
-            "slug": "coding",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/Vue/vue-hard/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vue-router",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Router 发展历史",
-        "slug": "router-发展历史",
-        "children": [
-          {
-            "level": 3,
-            "title": "路由的分类",
-            "slug": "路由的分类",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "hash 路由",
-            "slug": "hash-路由",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "history 路由",
-            "slug": "history-路由",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "hash 路由 和 history 路由，有什么区别？",
-            "slug": "hash-路由-和-history-路由-有什么区别",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "手写hash路由",
-            "slug": "手写hash路由",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "手写history路由",
-            "slug": "手写history路由",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "history.go / back ⼀定会刷新吗？",
-            "slug": "history-go-back-一定会刷新吗",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "pushState 会触发 popState 事件吗？",
-            "slug": "pushstate-会触发-popstate-事件吗",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "vue导航守卫",
-        "slug": "vue导航守卫",
-        "children": [
-          {
-            "level": 3,
-            "title": "导航解析流程",
-            "slug": "导航解析流程",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "导航守卫的执行顺序",
-            "slug": "导航守卫的执行顺序",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "next必须调用",
-            "slug": "next必须调用",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/Vue/vue-router/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vue2 基础",
-    "headers": [
-      {
-        "level": 2,
-        "title": "安装",
-        "slug": "安装",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "常用指令",
-        "slug": "常用指令",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "表单输入绑定",
-        "slug": "表单输入绑定",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "计算属性",
-        "slug": "计算属性",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "侦听器 watch",
-        "slug": "侦听器-watch",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "组件基础",
-        "slug": "组件基础",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "props",
-        "slug": "props",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "数据传递方向：子传父",
-        "slug": "数据传递方向-子传父",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "动态绑定 class 和 style",
-        "slug": "动态绑定-class-和-style",
-        "children": [
-          {
-            "level": 3,
-            "title": "动态绑定 class 类名",
-            "slug": "动态绑定-class-类名",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "动态绑定 style",
-            "slug": "动态绑定-style",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "插槽",
-        "slug": "插槽",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "动态组件",
-        "slug": "动态组件",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "处理边界情况",
-        "slug": "处理边界情况",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "生命周期函数",
-        "slug": "生命周期函数",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "过渡动画",
-        "slug": "过渡动画",
-        "children": [
-          {
-            "level": 3,
-            "title": "自定义过渡的类名",
-            "slug": "自定义过渡的类名",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "provide 和 inject",
-        "slug": "provide-和-inject",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "自定义指令",
-        "slug": "自定义指令",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "过滤器",
-        "slug": "过滤器",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "axios 网络请求库(ajax)",
-        "slug": "axios-网络请求库-ajax",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "路由",
-        "slug": "路由",
-        "children": [
-          {
-            "level": 3,
-            "title": "-路由组件传参",
-            "slug": "路由组件传参",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "导航高亮效果",
-            "slug": "导航高亮效果",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "导航守卫",
-            "slug": "导航守卫",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "过渡动效",
-            "slug": "过渡动效",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "滚动行为",
-            "slug": "滚动行为",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "路由懒加载",
-            "slug": "路由懒加载",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "vuex 介绍",
-        "slug": "vuex-介绍",
-        "children": [
-          {
-            "level": 3,
-            "title": "回顾常用数据传递方式",
-            "slug": "回顾常用数据传递方式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "安装",
-            "slug": "安装-1",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "使用",
-            "slug": "使用",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "state",
-            "slug": "state",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "mutation",
-            "slug": "mutation",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Action",
-            "slug": "action",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "getters",
-            "slug": "getters",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "module",
-            "slug": "module",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "namespaced",
-            "slug": "namespaced",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "严格模式",
-            "slug": "严格模式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "插件",
-            "slug": "插件",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/Vue/vue2-easy/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vue进阶用法",
-    "headers": [
-      {
-        "level": 2,
-        "title": "特征一：模板化",
-        "slug": "特征一-模板化",
-        "children": [
-          {
-            "level": 3,
-            "title": "插槽",
-            "slug": "插槽",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "模板数据的二次加工",
-            "slug": "模板数据的二次加工",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "jsx 更自由的基于js书写",
-            "slug": "jsx-更自由的基于js书写",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "特征二：组件化",
-        "slug": "特征二-组件化",
-        "children": [
-          {
-            "level": 3,
-            "title": "传统模板化",
-            "slug": "传统模板化",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "混入mixin - 逻辑混入",
-            "slug": "混入mixin-逻辑混入",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "继承拓展extends - 逻辑拓展",
-            "slug": "继承拓展extends-逻辑拓展",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Vue.use - 插件",
-            "slug": "vue-use-插件",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "组件的高级引用",
-            "slug": "组件的高级引用",
-            "children": []
-          }
-        ]
-      }
-    ],
-    "path": "/views/Vue/vue2-mid/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "",
-    "headers": [],
-    "path": "/views/Vue/vue3/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "vuex状态管理",
-    "headers": [
-      {
-        "level": 2,
-        "title": "关于状态管理",
-        "slug": "关于状态管理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "vuex介绍",
-        "slug": "vuex介绍",
-        "children": [
-          {
-            "level": 3,
-            "title": "更改状态",
-            "slug": "更改状态",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "辅助函数",
-            "slug": "辅助函数",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "vuex 3原理",
-        "slug": "vuex-3原理",
-        "children": [
-          {
-            "level": 3,
-            "title": "vuex3源码部分",
-            "slug": "vuex3源码部分",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Step1 - store 注册",
-            "slug": "step1-store-注册",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Step2 - 响应式",
-            "slug": "step2-响应式",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Step3 - 衍生数据",
-            "slug": "step3-衍生数据",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Step4 - Actions/Mutations",
-            "slug": "step4-actions-mutations",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Step5 - 拆分出多个 Module",
-            "slug": "step5-拆分出多个-module",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "Step6 - 插件机制",
-            "slug": "step6-插件机制",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "vuex3常见问题",
-        "slug": "vuex3常见问题",
-        "children": [
-          {
-            "level": 3,
-            "title": "vuex修改数据为何兜一圈？",
-            "slug": "vuex修改数据为何兜一圈",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "vuex什么时候进行的初始化？",
-            "slug": "vuex什么时候进行的初始化",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "vuex自己定义了告警，为什么不用console.assert？",
-            "slug": "vuex自己定义了告警-为什么不用console-assert",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "object.create(null) 和{}区别",
-            "slug": "object-create-null-和-区别",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "vuex4",
-        "slug": "vuex4",
-        "children": [
-          {
-            "level": 3,
-            "title": "安装",
-            "slug": "安装",
-            "children": []
-          },
-          {
-            "level": 3,
-            "title": "用法",
-            "slug": "用法",
-            "children": []
-          }
-        ]
-      },
-      {
-        "level": 2,
-        "title": "SSR",
-        "slug": "ssr",
-        "children": []
-      }
-    ],
-    "path": "/views/Vue/vuex/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "Vuex & SSR",
-    "headers": [
-      {
-        "level": 2,
-        "title": "Vuex 原理",
-        "slug": "vuex-原理",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "SSR",
-        "slug": "ssr",
-        "children": []
-      }
-    ],
-    "path": "/views/Vue/vuex/vuex_ssr(1).html",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
-    "title": "部署",
-    "headers": [
-      {
-        "level": 2,
-        "title": "服务器",
-        "slug": "服务器",
-        "children": []
-      },
-      {
-        "level": 2,
-        "title": "Linux安装Nodejs",
-        "slug": "linux安装nodejs",
-        "children": []
-      }
-    ],
-    "path": "/views/Http/%E8%AF%BE%E7%A8%8B/Deploy/",
-    "pathLocale": "/",
-    "extraFields": []
-  },
-  {
     "title": "网络",
     "headers": [
       {
@@ -9101,6 +9081,26 @@ export const searchIndex = [
     "extraFields": []
   },
   {
+    "title": "部署",
+    "headers": [
+      {
+        "level": 2,
+        "title": "服务器",
+        "slug": "服务器",
+        "children": []
+      },
+      {
+        "level": 2,
+        "title": "Linux安装Nodejs",
+        "slug": "linux安装nodejs",
+        "children": []
+      }
+    ],
+    "path": "/views/Http/%E8%AF%BE%E7%A8%8B/Deploy/",
+    "pathLocale": "/",
+    "extraFields": []
+  },
+  {
     "title": "",
     "headers": [],
     "path": "/404.html",
@@ -9108,3 +9108,16 @@ export const searchIndex = [
     "extraFields": []
   }
 ]
+
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
+  if (__VUE_HMR_RUNTIME__.updateSearchIndex) {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  }
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(({ searchIndex }) => {
+    __VUE_HMR_RUNTIME__.updateSearchIndex(searchIndex)
+  })
+}
