@@ -19,6 +19,10 @@ features:
     details: 衬衫的价格是九磅十五便士，所以你选择了C项
 footerHtml: true
 footer:  <a href="https://blog.numb.run/#/" target="_blank">西瓜村 </a>| Copyright © QQ-768206581 | <a href="https://beian.miit.gov.cn" target="_blank">黑ICP备20003708号</a>
-
-
 ---
+<!-- <img src="https://ghchart.rshah.org/409ba5/lcl66699" 
+  alt="2016rshah's Github chart" 
+  style="width:100%"/> -->
+<img src="https://ghchart.rshah.org/lcl66699" 
+  alt="2016rshah's Github chart" 
+  style="width:100%"/>

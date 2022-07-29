@@ -1,3 +1,5 @@
+const { backToTopPlugin } = require('@vuepress/plugin-back-to-top')
+
 module.exports = {
   base: "/", //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   // base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
@@ -14,9 +16,67 @@ module.exports = {
       },
     ],
   ],
+  // plugins: [
+  //   // [
+  //   //   "vuepress-plugin-nuggets-style-copy",
+  //   //   {
+  //   //     copyText: "复制代码",
+  //   //     tip: {
+  //   //       content: "复制成功",
+  //   //     },
+  //   //   },
+  //   // ],
+  //   // [
+  //   //   '@vuepress-reco/vuepress-plugin-kan-ban-niang',
+  //   //   {
+  //   //     theme: ['blackCat', 'whiteCat', 'haru1', 'haru2', 'haruto', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16']
+  //   //   }
+  //   // ],
+
+  //   // [
+  //   //   "@vuepress-reco/vuepress-plugin-kan-ban-niang",
+  //   //   {
+  //   //     theme: ["blackCat"],
+  //   //     clean: false,
+  //   //     info: "https://github.com/mengqiuleo",
+  //   //     messages: {
+  //   //       welcome: "",
+  //   //       home: "心里的花，我想要带你回家",
+  //   //       theme: "好吧，希望你能喜欢我的其他小伙伴。",
+  //   //       close: "再见哦",
+  //   //     },
+  //   //   },
+  //   // ],
+
+  //   //选项卡
+  //   ["@snippetors/vuepress-plugin-tabs"],
+  //   // 代码复制功能，https://snippetors.github.io/plugins/vuepress-plugin-code-copy.html
+  //   ["@snippetors/vuepress-plugin-code-copy", {
+  //     align:'bottom',
+  //     color:'#3EAF7C',
+  //     successText:'复制成功',
+  //   }],
+  //   //平滑滚动
+  //   ["vuepress-plugin-smooth-scroll"],
+  //   //返回顶部
+  //   ["@vuepress/plugin-back-to-top"],
+  //   // backToTopPlugin(),
+  //   //搜索
+  //   [
+  //     "@vuepress/plugin-search",
+  //     {
+  //       locales: {
+  //         "/": {
+  //           placeholder: "搜索",
+  //         },
+  //       },
+  //     },
+  //   ],
+  // ],
   plugins: [
+    backToTopPlugin(),
     //返回顶部
-    ["@vuepress/plugin-back-to-top"],
+    // ["@vuepress/plugin-back-to-top"],
     //搜索
     [
       "@vuepress/plugin-search",
