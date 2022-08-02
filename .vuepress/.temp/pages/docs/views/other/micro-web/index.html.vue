@@ -1,0 +1,13 @@
+<template><div><h1 id="微前端" tabindex="-1"><a class="header-anchor" href="#微前端" aria-hidden="true">#</a> 微前端</h1>
+<p>微服务 ：接口地址走网关</p>
+<h2 id="思想" tabindex="-1"><a class="header-anchor" href="#思想" aria-hidden="true">#</a> 思想</h2>
+<p>做拆分和细化</p>
+<p>spa：单页应用比如vue、react，把整个应用一次性下载下来，通过xhr获取数据。
+在前端去控制展示页面。
+访问/aa.index.html由后端去做</p>
+<p>mpa就是传统的web应用访问的一种方式。</p>
+<h2 id="特点" tabindex="-1"><a class="header-anchor" href="#特点" aria-hidden="true">#</a> 特点</h2>
+<p>低耦合</p>
+<p>nginx做业务转发  jttp服务器
+不限技术栈</p>
+</div></template>

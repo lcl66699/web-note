@@ -27,24 +27,26 @@ export const pagesData = {
   "v-c66d7ba6": () => import(/* webpackChunkName: "v-c66d7ba6" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/js/面向对象与原型,原型链.html.js").then(({ data }) => data),
   // path: /views/nodejs/
   "v-37b6ec6c": () => import(/* webpackChunkName: "v-37b6ec6c" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/nodejs/index.html.js").then(({ data }) => data),
+  // path: /views/React/
+  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
+  // path: /views/React/
+  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/other/webpack.html
   "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
   // path: /views/other/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93.html
   "v-bfea8db0": () => import(/* webpackChunkName: "v-bfea8db0" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/前端面试常考技术问题总结.html.js").then(({ data }) => data),
-  // path: /views/React/
-  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
-  // path: /views/React/
-  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/Algorithm/js-algorithm/
   "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/category1/2018/121501.html
   "v-25a3c47f": () => import(/* webpackChunkName: "v-25a3c47f" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/category1/2018/121501.html.js").then(({ data }) => data),
   // path: /views/category1/2019/092101.html
   "v-2203eb9d": () => import(/* webpackChunkName: "v-2203eb9d" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/category1/2019/092101.html.js").then(({ data }) => data),
-  // path: /views/other/performance/
-  "v-7a552fd8": () => import(/* webpackChunkName: "v-7a552fd8" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/performance/index.html.js").then(({ data }) => data),
+  // path: /views/React/react-mid/
+  "v-a9d28642": () => import(/* webpackChunkName: "v-a9d28642" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/react-mid/index.html.js").then(({ data }) => data),
   // path: /views/other/micro-web/
   "v-38ec0e46": () => import(/* webpackChunkName: "v-38ec0e46" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/micro-web/index.html.js").then(({ data }) => data),
+  // path: /views/other/performance/
+  "v-7a552fd8": () => import(/* webpackChunkName: "v-7a552fd8" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/performance/index.html.js").then(({ data }) => data),
   // path: /views/other/Git/
   "v-89cffcd4": () => import(/* webpackChunkName: "v-89cffcd4" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/Git/index.html.js").then(({ data }) => data),
   // path: /views/other/questions/
@@ -85,8 +87,6 @@ export const pagesData = {
   "v-5511ab51": () => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/typescript/index.html.js").then(({ data }) => data),
   // path: /views/other/web-safe/
   "v-be200160": () => import(/* webpackChunkName: "v-be200160" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/other/web-safe/index.html.js").then(({ data }) => data),
-  // path: /views/React/react-mid/
-  "v-a9d28642": () => import(/* webpackChunkName: "v-a9d28642" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/React/react-mid/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-cli/
   "v-4cb3c239": () => import(/* webpackChunkName: "v-4cb3c239" */"C:/nxin/x-nxin/numbrun/docs/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-hard/
