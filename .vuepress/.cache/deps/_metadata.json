@@ -1,47 +1,56 @@
 {
-  "hash": "45f74c04",
-  "browserHash": "995d20c5",
+  "hash": "79f2d766",
+  "browserHash": "d3167318",
   "optimized": {
+    "@vicons/fa": {
+      "src": "../../../node_modules/@vicons/fa/es/index.js",
+      "file": "@vicons_fa.js",
+      "fileHash": "d3d7d6d8",
+      "needsInterop": false
+    },
+    "@vicons/tabler": {
+      "src": "../../../node_modules/@vicons/tabler/es/index.js",
+      "file": "@vicons_tabler.js",
+      "fileHash": "cfeebdc8",
+      "needsInterop": false
+    },
     "@vue/devtools-api": {
       "src": "../../../node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "@vue_devtools-api.js",
-      "fileHash": "fb8b4c56",
+      "fileHash": "3f293dea",
+      "needsInterop": false
+    },
+    "@vuepress-reco/shared": {
+      "src": "../../../node_modules/@vuepress-reco/shared/lib/esm/index.js",
+      "file": "@vuepress-reco_shared.js",
+      "fileHash": "5e868d2a",
       "needsInterop": false
     },
     "@vuepress/shared": {
       "src": "../../../node_modules/@vuepress/shared/dist/index.js",
       "file": "@vuepress_shared.js",
-      "fileHash": "8d740c85",
+      "fileHash": "6988b1d2",
       "needsInterop": false
     },
-    "@vueuse/core": {
-      "src": "../../../node_modules/@vueuse/core/index.mjs",
-      "file": "@vueuse_core.js",
-      "fileHash": "3dfe8327",
-      "needsInterop": false
-    },
-    "vue": {
-      "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
-      "file": "vue.js",
-      "fileHash": "96988ff7",
-      "needsInterop": false
+    "md5": {
+      "src": "../../../node_modules/md5/md5.js",
+      "file": "md5.js",
+      "fileHash": "ad45883b",
+      "needsInterop": true
     },
     "vue-router": {
       "src": "../../../node_modules/vue-router/dist/vue-router.esm-bundler.js",
       "file": "vue-router.js",
-      "fileHash": "42d24da7",
+      "fileHash": "f77d0d96",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-GSB4F75G": {
-      "file": "chunk-GSB4F75G.js"
+    "chunk-GC3PMFLV": {
+      "file": "chunk-GC3PMFLV.js"
     },
-    "chunk-2WP3HSEV": {
-      "file": "chunk-2WP3HSEV.js"
-    },
-    "chunk-FEFTYQ2P": {
-      "file": "chunk-FEFTYQ2P.js"
+    "chunk-PYQ6YE6F": {
+      "file": "chunk-PYQ6YE6F.js"
     }
   }
 }

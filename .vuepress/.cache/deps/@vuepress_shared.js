@@ -1,6 +1,35 @@
-import "./chunk-FEFTYQ2P.js";
+import {
+  init_define_CLASSIFICATION_PAGINATION_POSTS,
+  init_define_CLASSIFICATION_SUMMARY,
+  init_define_EXTERNAL_LINK_ICON_LOCALES,
+  init_define_POSTS,
+  init_define_SEARCH_HOT_KEYS,
+  init_define_SEARCH_LOCALES
+} from "./chunk-PYQ6YE6F.js";
 
-// node_modules/@vuepress/shared/node_modules/@vue/shared/dist/shared.esm-bundler.js
+// dep:@vuepress_shared
+init_define_CLASSIFICATION_PAGINATION_POSTS();
+init_define_CLASSIFICATION_SUMMARY();
+init_define_POSTS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_SEARCH_HOT_KEYS();
+init_define_SEARCH_LOCALES();
+
+// node_modules/@vuepress/shared/dist/index.js
+init_define_CLASSIFICATION_PAGINATION_POSTS();
+init_define_CLASSIFICATION_SUMMARY();
+init_define_POSTS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_SEARCH_HOT_KEYS();
+init_define_SEARCH_LOCALES();
+
+// node_modules/@vue/shared/dist/shared.esm-bundler.js
+init_define_CLASSIFICATION_PAGINATION_POSTS();
+init_define_CLASSIFICATION_SUMMARY();
+init_define_POSTS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_SEARCH_HOT_KEYS();
+init_define_SEARCH_LOCALES();
 function makeMap(str, expectsLowerCase) {
   const map = /* @__PURE__ */ Object.create(null);
   const list = str.split(",");
@@ -28,9 +57,7 @@ var EMPTY_ARR = true ? Object.freeze([]) : [];
 var isArray = Array.isArray;
 var isFunction = (val) => typeof val === "function";
 var isString = (val) => typeof val === "string";
-var isReservedProp = makeMap(
-  ",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted"
-);
+var isReservedProp = makeMap(",key,ref,ref_for,ref_key,onVnodeBeforeMount,onVnodeMounted,onVnodeBeforeUpdate,onVnodeUpdated,onVnodeBeforeUnmount,onVnodeUnmounted");
 var isBuiltInDirective = makeMap("bind,cloak,else-if,else,for,html,if,model,on,once,pre,show,slot,text,memo");
 var cacheStringFunction = (fn) => {
   const cache = /* @__PURE__ */ Object.create(null);
@@ -87,6 +114,29 @@ var formatDateString = (str, defaultDateString = "") => {
   const [, yearStr, monthStr, dayStr] = dateMatch;
   return [yearStr, monthStr.padStart(2, "0"), dayStr.padStart(2, "0")].join("-");
 };
+var htmlEscapeMap = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  "'": "&#39;",
+  '"': "&quot;"
+};
+var htmlEscapeRegexp = /[&<>'"]/g;
+var htmlEscape = (str) => str.replace(htmlEscapeRegexp, (char) => htmlEscapeMap[char]);
+var htmlUnescapeMap = {
+  "&amp;": "&",
+  "&#38;": "&",
+  "&lt;": "<",
+  "&#60;": "<",
+  "&gt;": ">",
+  "&#62;": ">",
+  "&apos;": "'",
+  "&#39;": "'",
+  "&quot;": '"',
+  "&#34;": '"'
+};
+var htmlUnescapeRegexp = /&(amp|#38|lt|#60|gt|#62|apos|#39|quot|#34);/g;
+var htmlUnescape = (str) => str.replace(htmlUnescapeRegexp, (char) => htmlUnescapeMap[char]);
 var isLinkFtp = (link) => link.startsWith("ftp://");
 var isLinkHttp = (link) => /^(https?:)?\/\//.test(link);
 var markdownLinkRegexp = /.md((\?|#).*)?$/;
@@ -125,6 +175,8 @@ export {
   ensureEndingSlash,
   ensureLeadingSlash,
   formatDateString,
+  htmlEscape,
+  htmlUnescape,
   isArray,
   isFunction,
   isLinkExternal,

@@ -2,8 +2,23 @@ import {
   isPerformanceSupported,
   now,
   setupDevtoolsPlugin
-} from "./chunk-2WP3HSEV.js";
-import "./chunk-FEFTYQ2P.js";
+} from "./chunk-GC3PMFLV.js";
+import {
+  init_define_CLASSIFICATION_PAGINATION_POSTS,
+  init_define_CLASSIFICATION_SUMMARY,
+  init_define_EXTERNAL_LINK_ICON_LOCALES,
+  init_define_POSTS,
+  init_define_SEARCH_HOT_KEYS,
+  init_define_SEARCH_LOCALES
+} from "./chunk-PYQ6YE6F.js";
+
+// dep:@vue_devtools-api
+init_define_CLASSIFICATION_PAGINATION_POSTS();
+init_define_CLASSIFICATION_SUMMARY();
+init_define_POSTS();
+init_define_EXTERNAL_LINK_ICON_LOCALES();
+init_define_SEARCH_HOT_KEYS();
+init_define_SEARCH_LOCALES();
 export {
   isPerformanceSupported,
   now,
