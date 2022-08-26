@@ -2,16 +2,17 @@
   "name": "lcl-blog",
   "version": "2.0.0",
   "description": "lcl的blog笔记，基于vuepress2.0&vuepress-theme-reco",
-  "repository": "git@github.com:recoluan/vuepress-theme-reco-demo.git",
+  "repository": "https://numbrun.gitee.io/",
   "author": "768206581@qq.com",
   "license": "MIT",
   "scripts": {
     "dev": "vuepress dev .",
     "start": "vuepress dev .",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "push": " gitPush.bat"
   },
   "dependencies": {
     "vuepress": "2.0.0-beta.48",
-    "vuepress-theme-reco": "2.0.0-beta.30"
+    "vuepress-theme-reco": "2.0.0-beta.33"
   }
 }

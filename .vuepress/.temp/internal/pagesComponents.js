@@ -51,8 +51,6 @@ export const pagesComponents = {
   "v-7a552fd8": defineAsyncComponent(() => import(/* webpackChunkName: "v-7a552fd8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/performance/index.html.vue")),
   // path: /views/other/questions/
   "v-8f4076ca": defineAsyncComponent(() => import(/* webpackChunkName: "v-8f4076ca" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions/index.html.vue")),
-  // path: /views/other/typescript/
-  "v-5511ab51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.vue")),
   // path: /views/other/questions2/1.HTMLpian.html
   "v-764fe0c1": defineAsyncComponent(() => import(/* webpackChunkName: "v-764fe0c1" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/1.HTML篇.html.vue")),
   // path: /views/other/questions2/10.liulanqiyuanlipian.html
@@ -85,6 +83,8 @@ export const pagesComponents = {
   "v-1f4e0fb4": defineAsyncComponent(() => import(/* webpackChunkName: "v-1f4e0fb4" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/9.计算机网络篇.html.vue")),
   // path: /views/other/questions2/
   "v-5398cf51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5398cf51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/index.html.vue")),
+  // path: /views/other/typescript/
+  "v-5511ab51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.vue")),
   // path: /views/other/web-safe/
   "v-be200160": defineAsyncComponent(() => import(/* webpackChunkName: "v-be200160" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/web-safe/index.html.vue")),
   // path: /views/React/react-mid/
@@ -93,18 +93,18 @@ export const pagesComponents = {
   "v-4cb3c239": defineAsyncComponent(() => import(/* webpackChunkName: "v-4cb3c239" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.vue")),
   // path: /views/Vue/vue-hard/
   "v-4a0622ba": defineAsyncComponent(() => import(/* webpackChunkName: "v-4a0622ba" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-hard/index.html.vue")),
-  // path: /views/Vue/vue-router/
-  "v-0a1cea9c": defineAsyncComponent(() => import(/* webpackChunkName: "v-0a1cea9c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-router/index.html.vue")),
+  // path: /views/Vue/vue3/
+  "v-611d7c02": defineAsyncComponent(() => import(/* webpackChunkName: "v-611d7c02" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue3/index.html.vue")),
   // path: /views/Vue/vue2-easy/
   "v-ca7f5562": defineAsyncComponent(() => import(/* webpackChunkName: "v-ca7f5562" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue2-easy/index.html.vue")),
   // path: /views/Vue/vue2-mid/
   "v-4f5445c5": defineAsyncComponent(() => import(/* webpackChunkName: "v-4f5445c5" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue2-mid/index.html.vue")),
-  // path: /views/Vue/vue3/
-  "v-611d7c02": defineAsyncComponent(() => import(/* webpackChunkName: "v-611d7c02" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue3/index.html.vue")),
   // path: /views/Vue/vuex/
   "v-611d6b4c": defineAsyncComponent(() => import(/* webpackChunkName: "v-611d6b4c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vuex/index.html.vue")),
   // path: /views/Vue/vuex/vuex_ssr(1).html
   "v-5cd4f9f8": defineAsyncComponent(() => import(/* webpackChunkName: "v-5cd4f9f8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vuex/vuex_ssr(1).html.vue")),
+  // path: /views/Vue/vue-router/
+  "v-0a1cea9c": defineAsyncComponent(() => import(/* webpackChunkName: "v-0a1cea9c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-router/index.html.vue")),
   // path: /views/Http/kecheng/Deploy/
   "v-3acf3a4c": defineAsyncComponent(() => import(/* webpackChunkName: "v-3acf3a4c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Http/课程/Deploy/index.html.vue")),
   // path: /views/Http/kecheng/Internet/

@@ -28,7 +28,7 @@ export default defineUserConfig({
     docsBranch: 'main',
     docsDir: 'example',
     lastUpdatedText: '上次更新时间',
-    autoSetCategory: true,         // 自动设置分类
+    // autoSetCategory: true,         // 自动设置分类
     // autoAddCategoryToNavbar: true,  // 自动将首页、分类和标签 添加至头部导航条
     // series 为原 sidebar
     series: {
@@ -178,7 +178,8 @@ export default defineUserConfig({
           content: `
           <ul>
             <li><a style='color:#4954E6;' target="_blank" href="https://blog.numb.run/#/welcome">个人空间<a/></li>
-            <li><a style='color:#4954E6;' target="_blank" href="https://gitee.com/numbrun">gitee<a/></li>
+            <li><a style='color:#4954E6;' target="_blan4k" href="https://gitee.com/numbrun">gitee<a/></li>
+            <li><a style='color:#4954E6;' target="_blank" href="https://blog.csdn.net/qq_38594056?type=blog">我的CSDN<a/></li>
           </ul>`,
           style: 'font-size: 14px;'
         },
@@ -202,15 +203,13 @@ export default defineUserConfig({
       options: {
         appId: 'KIQRtSsv6seFXXznyLqblYUm-gzGzoHsz', // your appId
         appKey: 'Hm9lyXwdYw8Nq4pHaMcp89Im', // your appKey
-        hideComments: false, // 全局隐藏评论，默认 false
-        // serverURLs: 'https://RMUxnxp0.api.lncldglobal.com',//该配置适用于国内自定义域名用户, 海外版本会自动检测(无需手动填写) 
-        serverURLs: 'https://kiqrtssv.lc-cn-n1-shared.com',//该配置适用于国内自定义域名用户, 海外版本会自动检测(无需手动填写) 
         placeholder: '说点啥好呢',
-        visitor: true,
+        serverURLs: 'https://kiqrtssv.lc-cn-n1-shared.com',//该配置适用于国内自定义域名用户, 海外版本会自动检测(无需手动填写) 
+        visitor: true,//文章访问量统计。
         enableQQ: true,// 阅读量统计
         avatar: 'robohash',//头像
-
-
+        recordIP: true,//是否记录评论者IP
+        hideComments: false, // 全局隐藏评论，默认 false
       },
     },
   }),

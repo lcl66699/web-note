@@ -49,8 +49,6 @@ export const pagesData = {
   "v-7a552fd8": () => import(/* webpackChunkName: "v-7a552fd8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/performance/index.html.js").then(({ data }) => data),
   // path: /views/other/questions/
   "v-8f4076ca": () => import(/* webpackChunkName: "v-8f4076ca" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions/index.html.js").then(({ data }) => data),
-  // path: /views/other/typescript/
-  "v-5511ab51": () => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.js").then(({ data }) => data),
   // path: /views/other/questions2/1.HTMLpian.html
   "v-764fe0c1": () => import(/* webpackChunkName: "v-764fe0c1" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/1.HTML篇.html.js").then(({ data }) => data),
   // path: /views/other/questions2/10.liulanqiyuanlipian.html
@@ -83,6 +81,8 @@ export const pagesData = {
   "v-1f4e0fb4": () => import(/* webpackChunkName: "v-1f4e0fb4" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/9.计算机网络篇.html.js").then(({ data }) => data),
   // path: /views/other/questions2/
   "v-5398cf51": () => import(/* webpackChunkName: "v-5398cf51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/index.html.js").then(({ data }) => data),
+  // path: /views/other/typescript/
+  "v-5511ab51": () => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.js").then(({ data }) => data),
   // path: /views/other/web-safe/
   "v-be200160": () => import(/* webpackChunkName: "v-be200160" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/web-safe/index.html.js").then(({ data }) => data),
   // path: /views/React/react-mid/
@@ -91,18 +91,18 @@ export const pagesData = {
   "v-4cb3c239": () => import(/* webpackChunkName: "v-4cb3c239" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-hard/
   "v-4a0622ba": () => import(/* webpackChunkName: "v-4a0622ba" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-hard/index.html.js").then(({ data }) => data),
-  // path: /views/Vue/vue-router/
-  "v-0a1cea9c": () => import(/* webpackChunkName: "v-0a1cea9c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-router/index.html.js").then(({ data }) => data),
+  // path: /views/Vue/vue3/
+  "v-611d7c02": () => import(/* webpackChunkName: "v-611d7c02" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue3/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue2-easy/
   "v-ca7f5562": () => import(/* webpackChunkName: "v-ca7f5562" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue2-easy/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue2-mid/
   "v-4f5445c5": () => import(/* webpackChunkName: "v-4f5445c5" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue2-mid/index.html.js").then(({ data }) => data),
-  // path: /views/Vue/vue3/
-  "v-611d7c02": () => import(/* webpackChunkName: "v-611d7c02" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue3/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vuex/
   "v-611d6b4c": () => import(/* webpackChunkName: "v-611d6b4c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vuex/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vuex/vuex_ssr(1).html
   "v-5cd4f9f8": () => import(/* webpackChunkName: "v-5cd4f9f8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vuex/vuex_ssr(1).html.js").then(({ data }) => data),
+  // path: /views/Vue/vue-router/
+  "v-0a1cea9c": () => import(/* webpackChunkName: "v-0a1cea9c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-router/index.html.js").then(({ data }) => data),
   // path: /views/Http/kecheng/Deploy/
   "v-3acf3a4c": () => import(/* webpackChunkName: "v-3acf3a4c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Http/课程/Deploy/index.html.js").then(({ data }) => data),
   // path: /views/Http/kecheng/Internet/
