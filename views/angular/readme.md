@@ -1416,7 +1416,84 @@ ng g component module/user/components/address
 ng g component module/user/components/order
 ng g component module/user/components/profile
 ```
-### 如何在根模块挂载 user 模块呢？
+
+### @NgModule的理解
+
+>举例说明，如果一个angular应用是一个公司，那么AppModule就是这个公司。AppComponent就是这个公司的一个工厂，公司可以有很多个工厂。declearation数组里面的元素就是组成工厂的一部分，比如生产车间、人员管理系统等。imports数组就像是工厂请来的外援，专业性比较强。providers数组就像是后勤部门，提供各种服务。
+
+Angular的基本构造块就是NgModule，它会把一部分的代码整合在一起，可以看做一个一个的单元块，在使用脚手架搭建Angular项目时，会自动的生成一个根目录模块AppModule，根模块有一个根组件AppComponent，引导这个根模块就可以启动应用了，Angular应用是模块化的，每一个模块都可以根据需求去包含任意的组件。
+
+- providers：将本模块所有在组件中注入的服务(接口)，在这里提前定义好，否则在此模块中使用这个服务会有错误提示。
+
+- declaration：声明一些模块中要使用到的一些组件，指令，管道等。
+
+- imports：导入一些模块，比如说我把所有的指令构成一个模块 我使用其中某些指令的时候，我可以选择导入整个指令模块。也可以导入一些通过npm install 安装的一些模块导入其中，才可以使用。
+
+- exports：导出组件or指令管道等，以供引用此模块的模块可以使用此模块的组件or 指令管道等。
+
+- exporyComponents：entry component 表示 angular 的入口组件，可以引导组件是一个入口组件，Angular 会在引导过程中把它加载到 DOM 中。 其它入口组件是在其它时机动态加载的。字面上的意义，但是啥时候用呢，比如，我要弹出一个组件，那么这个组件是要动态加载到DOM中了吧，这个时候就需要将这个组件xxxComponent写上了。
+
+- bootstrap:这个模块启动的时候应该启动的组件，上面代码可以看到AppModule是作为根模块的启动组件。
+
+- schemas：不属于Angular的组件或者指令的元素或者属性都需要在这里进行声明。
+
+##### 以下为我平时开发时写的代码举例 `breeding-set.module.ts`
+```ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BreedingSettingComponent } from './breeding-set.component';
+import { inheritance } from './Ainheritance/inheritance.component';
+import { Cscore } from './Cscore/Cscore.component';
+import { Bchoice } from './Bchoice/Bchoice.component';
+import { TypeSettingRoutingModule } from './breeding-set.routing';
+import {
+    DxTreeViewModule,
+    DxFormModule,
+    DxToolbarModule,
+    DxButtonModule,
+    DxTreeListModule,
+    DxTextAreaModule,
+    DxRadioGroupModule,
+    DxSelectBoxModule,
+    DxValidationGroupModule,
+    DxDateBoxModule,
+    DxPopupModule,
+    DxDataGridModule,
+    DxValidatorModule,
+    DxDropDownBoxModule,
+    DxTagBoxModule,
+} from 'devextreme-angular';
+import { BreedingSetService } from './breeding-set.service';
+import { TranslateModule } from 'src/app/providers/i18n-translate';
+@NgModule({
+    imports: [// 用来导入外部模块
+        CommonModule,
+        TypeSettingRoutingModule,
+        DxTreeViewModule,
+        DxFormModule,
+        DxToolbarModule,
+        DxButtonModule,
+        DxTreeListModule,
+        DxTextAreaModule,
+        DxRadioGroupModule,
+        TranslateModule,
+        DxSelectBoxModule,
+        DxValidationGroupModule,
+        DxDateBoxModule,
+        DxPopupModule,
+        DxDataGridModule,
+        DxValidatorModule,
+        DxTagBoxModule,
+        DxDropDownBoxModule,
+    ],
+    declarations: [BreedingSettingComponent, inheritance, Cscore, Bchoice],// 用来放组件、指令、管道的声明
+    providers: [BreedingSetService],// 需要使用的 Service(接口)
+})
+export class BreedingSetModule { }
+
+```
+### 举例：挂载模块与创建服务
+#### 如何在根模块挂载 user 模块呢？
 
 在 app 根组件的模板文件 app.component.html 里引用 user 组件会报错
 需要如下处理才可以被访问
@@ -1442,7 +1519,7 @@ ng g component module/user/components/profile
 
 
 
-### 创建 user 模块下的服务
+#### 创建 user 模块下的服务
 
 1. 创建
 ng g service module/user/services/common

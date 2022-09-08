@@ -47,6 +47,8 @@ export const pagesData = {
   "v-38ec0e46": () => import(/* webpackChunkName: "v-38ec0e46" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/micro-web/index.html.js").then(({ data }) => data),
   // path: /views/other/performance/
   "v-7a552fd8": () => import(/* webpackChunkName: "v-7a552fd8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/performance/index.html.js").then(({ data }) => data),
+  // path: /views/other/typescript/
+  "v-5511ab51": () => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.js").then(({ data }) => data),
   // path: /views/other/questions/
   "v-8f4076ca": () => import(/* webpackChunkName: "v-8f4076ca" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions/index.html.js").then(({ data }) => data),
   // path: /views/other/questions2/1.HTMLpian.html
@@ -81,8 +83,6 @@ export const pagesData = {
   "v-1f4e0fb4": () => import(/* webpackChunkName: "v-1f4e0fb4" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/9.计算机网络篇.html.js").then(({ data }) => data),
   // path: /views/other/questions2/
   "v-5398cf51": () => import(/* webpackChunkName: "v-5398cf51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/index.html.js").then(({ data }) => data),
-  // path: /views/other/typescript/
-  "v-5511ab51": () => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.js").then(({ data }) => data),
   // path: /views/other/web-safe/
   "v-be200160": () => import(/* webpackChunkName: "v-be200160" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/web-safe/index.html.js").then(({ data }) => data),
   // path: /views/React/react-mid/

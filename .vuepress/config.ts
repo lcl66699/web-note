@@ -24,9 +24,10 @@ export default defineUserConfig({
     style: '@vuepress-reco/style-default',
     logo: '/orange.png',//导航栏log
     author: '刘成龙',
-    docsRepo: 'https://github.com/vuepress-reco/vuepress-theme-reco-next',
-    docsBranch: 'main',
-    docsDir: 'example',
+    // docsRepo: 'https://fanyi.baidu.com/?aldtype=16047#auto/zh',
+    docsRepo: 'https://gitee.com/numbrun/numbrun',//git的地址
+    docsBranch: 'master',//分支
+    docsDir: '', //文档对应文件夹
     lastUpdatedText: '上次更新时间',
     // autoSetCategory: true,         // 自动设置分类
     // autoAddCategoryToNavbar: true,  // 自动将首页、分类和标签 添加至头部导航条

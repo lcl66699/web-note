@@ -49,6 +49,8 @@ export const pagesComponents = {
   "v-38ec0e46": defineAsyncComponent(() => import(/* webpackChunkName: "v-38ec0e46" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/micro-web/index.html.vue")),
   // path: /views/other/performance/
   "v-7a552fd8": defineAsyncComponent(() => import(/* webpackChunkName: "v-7a552fd8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/performance/index.html.vue")),
+  // path: /views/other/typescript/
+  "v-5511ab51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.vue")),
   // path: /views/other/questions/
   "v-8f4076ca": defineAsyncComponent(() => import(/* webpackChunkName: "v-8f4076ca" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions/index.html.vue")),
   // path: /views/other/questions2/1.HTMLpian.html
@@ -83,8 +85,6 @@ export const pagesComponents = {
   "v-1f4e0fb4": defineAsyncComponent(() => import(/* webpackChunkName: "v-1f4e0fb4" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/9.计算机网络篇.html.vue")),
   // path: /views/other/questions2/
   "v-5398cf51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5398cf51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/questions2/index.html.vue")),
-  // path: /views/other/typescript/
-  "v-5511ab51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.vue")),
   // path: /views/other/web-safe/
   "v-be200160": defineAsyncComponent(() => import(/* webpackChunkName: "v-be200160" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/web-safe/index.html.vue")),
   // path: /views/React/react-mid/
