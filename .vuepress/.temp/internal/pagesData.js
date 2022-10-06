@@ -7,10 +7,10 @@ export const pagesData = {
   "v-3fb5c60c": () => import(/* webpackChunkName: "v-3fb5c60c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Algorithm/index.html.js").then(({ data }) => data),
   // path: /views/angular/
   "v-2b17dc47": () => import(/* webpackChunkName: "v-2b17dc47" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/angular/index.html.js").then(({ data }) => data),
-  // path: /views/engineering/
-  "v-b75cd794": () => import(/* webpackChunkName: "v-b75cd794" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/engineering/index.html.js").then(({ data }) => data),
   // path: /views/Http/
   "v-3292d5e6": () => import(/* webpackChunkName: "v-3292d5e6" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Http/index.html.js").then(({ data }) => data),
+  // path: /views/engineering/
+  "v-b75cd794": () => import(/* webpackChunkName: "v-b75cd794" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/engineering/index.html.js").then(({ data }) => data),
   // path: /views/js/BOM.html
   "v-eb100d76": () => import(/* webpackChunkName: "v-eb100d76" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/js/BOM.html.js").then(({ data }) => data),
   // path: /views/js/Es6.html
