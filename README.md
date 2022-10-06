@@ -29,7 +29,7 @@ bannerBrand: # bannerBrand 模块的配置
   bgImage: '/bg.svg'
   buttons:
     - { text: 一键 内卷 →, link: '/views/js/' }
-    - { text: Default, link: '/docs/style-default-api/introduce', type: 'plain' }
+    # - { text: Default, link: '/docs/style-default-api/introduce', type: 'plain' }
 
 isShowTitleInHome: true
 actionText: About

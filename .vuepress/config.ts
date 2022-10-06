@@ -8,6 +8,8 @@ export default defineUserConfig({
   title: '前端笔记',
   description: 'Just playing around',
   theme: recoTheme({
+    componentsDir: './showHtml/demo',
+    vuePreviewsDir: './showHtml/demo',//展示的vue组件
     // displayAllHeaders: false, // 显示所有页面的标题链接-默认值：false
     // smoothScroll: true, //页面滚动效果
     serviceWorker: {
@@ -23,7 +25,7 @@ export default defineUserConfig({
     catalogTitle: '此页内容',
     style: '@vuepress-reco/style-default',
     logo: '/orange.png',//导航栏log
-    author: '刘成龙',
+    author: '百事可口',
     // docsRepo: 'https://fanyi.baidu.com/?aldtype=16047#auto/zh',
     docsRepo: 'https://gitee.com/numbrun/numbrun',//git的地址
     docsBranch: 'master',//分支
@@ -76,17 +78,17 @@ export default defineUserConfig({
         "2.CSS.md",
         "3.JavaScript1.md",
         "4.JavaScript2.md",
-        "5.Vue篇.md",
-        "6.Vue篇.md",
-        "7.React篇.md",
-        "8.React篇.md",
-        "9.计算机网络篇.md",
-        "10.浏览器原理篇.md",
-        "11.前端性能优化篇.md",
-        "12.手写代码篇.md",
-        "13.代码输出结果篇.md",
-        "14.从输入URL到页面加载的过程.md",
-        "15.JS运行机制.md",
+        "5.Vue1.md",
+        "6.Vue2.md",
+        "7.React1.md",
+        "8.React2.md",
+        "9.http.md",
+        "10.browser.md",
+        "11.xingnengyouhua.md",
+        "12.shouxie.md",
+        "13.log.md",
+        "14.url.md",
+        "15.JSyunxing.md",
       ],
     },
     navbar: [
@@ -106,9 +108,10 @@ export default defineUserConfig({
       },
       {
         text: "React",
-        children: [
-          { text: "React基础", link: "/views/React/" }, // 可不写后缀 .md
-        ],
+        link: "/views/React/",
+        // children: [
+        //   { text: "React基础", link: "/views/React/" }, // 可不写后缀 .md
+        // ],
       },
       {
         text: "Angular",
@@ -124,6 +127,7 @@ export default defineUserConfig({
         text: "其他",
         children: [
           { text: "git", link: "/views/other/Git/", ariaLabel: "其他" },
+          { text: "留言板", link: "/views/other/message/", ariaLabel: "其他" },
           {
             text: "性能优化",
             link: "/views/other/performance/",
@@ -193,7 +197,7 @@ export default defineUserConfig({
           children: [
             {
               text: '留言',
-              // link: '/docs/others/donate.html'
+              link: '/views/other/message/'
             }
           ]
         }
