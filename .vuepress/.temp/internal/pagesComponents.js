@@ -9,10 +9,10 @@ export const pagesComponents = {
   "v-3fb5c60c": defineAsyncComponent(() => import(/* webpackChunkName: "v-3fb5c60c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Algorithm/index.html.vue")),
   // path: /views/angular/
   "v-2b17dc47": defineAsyncComponent(() => import(/* webpackChunkName: "v-2b17dc47" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/angular/index.html.vue")),
-  // path: /views/Http/
-  "v-3292d5e6": defineAsyncComponent(() => import(/* webpackChunkName: "v-3292d5e6" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Http/index.html.vue")),
   // path: /views/engineering/
   "v-b75cd794": defineAsyncComponent(() => import(/* webpackChunkName: "v-b75cd794" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/engineering/index.html.vue")),
+  // path: /views/examination/
+  "v-4ad6a9d0": defineAsyncComponent(() => import(/* webpackChunkName: "v-4ad6a9d0" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/examination/index.html.vue")),
   // path: /views/js/BOM.html
   "v-eb100d76": defineAsyncComponent(() => import(/* webpackChunkName: "v-eb100d76" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/js/BOM.html.vue")),
   // path: /views/js/Es6.html
@@ -31,6 +31,8 @@ export const pagesComponents = {
   "v-bca6fbe8": defineAsyncComponent(() => import(/* webpackChunkName: "v-bca6fbe8" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/js/index.html.vue")),
   // path: /views/js/this.html
   "v-1a98706f": defineAsyncComponent(() => import(/* webpackChunkName: "v-1a98706f" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/js/this.html.vue")),
+  // path: /views/Http/
+  "v-3292d5e6": defineAsyncComponent(() => import(/* webpackChunkName: "v-3292d5e6" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Http/index.html.vue")),
   // path: /views/nodejs/
   "v-37b6ec6c": defineAsyncComponent(() => import(/* webpackChunkName: "v-37b6ec6c" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/nodejs/index.html.vue")),
   // path: /views/other/webpack.html
@@ -89,10 +91,10 @@ export const pagesComponents = {
   "v-5511ab51": defineAsyncComponent(() => import(/* webpackChunkName: "v-5511ab51" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/typescript/index.html.vue")),
   // path: /views/other/web-safe/
   "v-be200160": defineAsyncComponent(() => import(/* webpackChunkName: "v-be200160" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/other/web-safe/index.html.vue")),
-  // path: /views/React/react-mid/
-  "v-a9d28642": defineAsyncComponent(() => import(/* webpackChunkName: "v-a9d28642" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.vue")),
   // path: /views/Vue/vue-cli/
   "v-4cb3c239": defineAsyncComponent(() => import(/* webpackChunkName: "v-4cb3c239" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.vue")),
+  // path: /views/React/react-mid/
+  "v-a9d28642": defineAsyncComponent(() => import(/* webpackChunkName: "v-a9d28642" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.vue")),
   // path: /views/Vue/vue-hard/
   "v-4a0622ba": defineAsyncComponent(() => import(/* webpackChunkName: "v-4a0622ba" */"C:/nxin/x-nxin/numbrun/.vuepress/.temp/pages/views/Vue/vue-hard/index.html.vue")),
   // path: /views/Vue/vue-router/

@@ -122,6 +122,7 @@ export default defineUserConfig({
       },
       { text: "nodejs", link: "/views/nodejs/" },
       { text: "算法", link: "/views/Algorithm/" },
+      { text: "软考", link: "/views/examination/" },
       { text: "个人空间", link: "https://blog.numb.run/" },
       {
         text: "其他",
