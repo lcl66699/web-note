@@ -25,7 +25,7 @@ first page in category1
 
 
 ::: tip
-这是一个提示
+这是一个提示 
 :::
 
 ::: info
