@@ -454,3 +454,7 @@ console.log(my_instanceof([], Object));
 console.log(my_instanceof([], Array));
 console.log(my_instanceof(213, Number));
 ```
+
+## vue3和vue2区别
+
+https://worktile.com/kb/ask/19553.html

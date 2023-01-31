@@ -312,16 +312,29 @@ console.log(p.firstName, p.lastName);
 ```
 ### 多态 
 子类重写父类的同名方法
-### 重载 
-同一个类里面，名字是一样的，但是参数有差别（类型||个数）
-### 重写
+### 函数重载 
+同一个类里面，函数名字是一样的，但是参数有差别（类型||个数）,就是函数的重载
+
+函数签名 = 函数名称+函数参数+函数参数类型+返回值类型四者合成，包含了实现签名和重载签名
+`function funa(value: number, type: string): string` 这就是函数签名（重载签名）
+
+
+函数重载由一个实现签名 + 一个或多个重载签名合成
+
+参考：https://www.jianshu.com/p/98a4291d7ff4
+
+### 函数重写
 发生在父子类里面，方法名和参数也一样
 ## 泛型
+
+泛型是指附属于函数、类、接口、类型别名之上的类型，当某个函数的参数，返回值和内部使用时的类型无法确定的情况下，就可以使用泛型来进行约束
 ```ts
 //泛型 声明这个函数、接口或类的时候不指定具体类型 调用在指定
 function createArray<T>(length: number, value: T): T[] {
   return Array<T>(length).fill(value);
 }
+//型类型“T”就像一个参数，可供传递，如我们在调用函数时在尖括号中传入，则这个T(泛型)的类型就是number,
+//这样我们就可以any类型都换成泛型就可以了，这样就当泛型参数传入number类型时，函数的返回值就是number类型的数组
 console.log(createArray<string>(25, "das"));
 console.log(createArray<number>(25, 1326));
 ```
