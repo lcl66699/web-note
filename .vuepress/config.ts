@@ -64,7 +64,7 @@ export default defineUserConfig({
       // react
       "/views/React/": [""],
       // react
-      "/views/angular/": ["readme.md"],
+      "/views/angular/": ["angular.md","rxjs.md"],
       "/views/other/Git/": [""],
       "/views/other/performance/": [""],
       "/views/other/web-safe/": [""],
@@ -115,7 +115,7 @@ export default defineUserConfig({
       },
       {
         text: "Angular",
-        link: "/views/angular/",
+        link: "/views/angular/angular",
         // children: [
         //   { text: 'angular', link: '/views/angular/' }, // 可不写后缀 .md
         // ]
