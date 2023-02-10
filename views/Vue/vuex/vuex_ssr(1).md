@@ -1,11 +1,6 @@
 # Vuex & SSR
 
 
-
-> 波比 - 资深航空母舰拼接工程师｜一级螺丝工
-
-
-
 课程大纲：
 
 - 关于状态管理的一点思考
@@ -265,7 +260,6 @@ function resetStoreVM(store, state) {
   })
 }
 ```
-
 
 
 Step4 - Actions/Mutations
