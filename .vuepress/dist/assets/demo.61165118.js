@@ -1,1 +1,0 @@
-import{_ as e,m as _,o,c as t,b as s}from"./app.9b962d41.js";const a={class:"demo-container"},n=s("div",null,null,-1),c=[n],r=_({__name:"demo",setup(d){return(l,m)=>(o(),t("div",a,c))}});var u=e(r,[["__file","demo.vue"]]);export{u as default};
