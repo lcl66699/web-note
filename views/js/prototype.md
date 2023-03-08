@@ -121,10 +121,27 @@ JS中的面向对象
 * 3. 原型对象：Course.prototype
 
 :::tip 查找原型对象
-- `__proto__`：实例上的指针，指向其构造函数的原型对象
+- `__proto__`：实例上的指针（实例上的属性），指向其构造函数的原型对象
 - Object.getPrototypeOf：获取对象上的__proto__属性
 - isPrototypeOf：是否是某个实例对象的原型对象
-- prototype：构造函数属性，指向原型对象，原型对象上有constructor属性，指向构造函数
+- prototype：构造函数属性（创建出来实例的原型），指向原型对象，原型对象上有constructor属性，指向构造函数
+  - 其实构造函数是没有原型的，prototype永远都是你创建实例出来的原型
+  - 也就是说 `p1.__proto__ = Person.prototype`
+  - code
+  ```js
+    function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sayHello = function () {
+                console.log(this.name + " is " + this.age + " years old");
+            };
+        }
+        Person.prototype.sayHi = 'hi'
+
+        var p1 = new Person("John", 20);
+        console.log(p1.sayHi)
+        console.log(p1.__proto__ === Person.prototype) //true
+  ```
 - 原型链都会终止于Object的原型对象，Object原型的原型是null
 :::
 #### 原型继承
