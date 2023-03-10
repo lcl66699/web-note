@@ -45,12 +45,12 @@ export const pagesData = {
   "v-bfea8db0": () => import(/* webpackChunkName: "v-bfea8db0" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/前端面试常考技术问题总结.html.js").then(({ data }) => data),
   // path: /views/Algorithm/js-algorithm/
   "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
-  // path: /views/React/react-mid/
-  "v-a9d28642": () => import(/* webpackChunkName: "v-a9d28642" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-cli/
   "v-4cb3c239": () => import(/* webpackChunkName: "v-4cb3c239" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-hard/
   "v-4a0622ba": () => import(/* webpackChunkName: "v-4a0622ba" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue-hard/index.html.js").then(({ data }) => data),
+  // path: /views/React/react-mid/
+  "v-a9d28642": () => import(/* webpackChunkName: "v-a9d28642" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-router/
   "v-0a1cea9c": () => import(/* webpackChunkName: "v-0a1cea9c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue-router/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue2-easy/
@@ -61,8 +61,6 @@ export const pagesData = {
   "v-611d7c02": () => import(/* webpackChunkName: "v-611d7c02" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue3/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vuex/
   "v-611d6b4c": () => import(/* webpackChunkName: "v-611d6b4c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vuex/index.html.js").then(({ data }) => data),
-  // path: /views/Vue/vuex/vuex_ssr(1).html
-  "v-5cd4f9f8": () => import(/* webpackChunkName: "v-5cd4f9f8" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vuex/vuex_ssr(1).html.js").then(({ data }) => data),
   // path: /views/other/Git/
   "v-89cffcd4": () => import(/* webpackChunkName: "v-89cffcd4" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/Git/index.html.js").then(({ data }) => data),
   // path: /views/other/message/

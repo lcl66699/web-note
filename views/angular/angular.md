@@ -5,7 +5,7 @@
 Angular是谷歌开发的一款开源的web前端框架，诞生于2009年，由Misko Hevery 等人创建，后为Google所收购。是一款优秀的前端JS框架，已经被用于Google的多款产品当中。
 根据项目数统计angular（1.x 、2.x 、4.x、5.x、6.x、7.x 、8.x、9.x）是现在网上使用量最大的框架。
 
-Angular基于TypeScript和react、vue相比 Angular更适合中大型企业级项目。
+Angular基于TypeScript，和react、vue相比Angular更适合中大型企业级项目。
 
 ## Angular环境搭建
 
@@ -491,6 +491,53 @@ home.component.ts
 {{keywords}}
 <button (click)="changeKeywords()">改变keywords的值</button>
 ```
+## Angular的标签
+
+- ng-container
+- ng-content
+- ng-template
+
+### ng-container
+
+
+::: tip 
+它等用于vue中的`<template></template>`,react中的`<></>`,
+ng-container是一种特殊的元素，可以保存结构指令（比如 ng-if），而无需向DOM添加新元素。
+
+简而言之：ng-container标签，不会在dom中产生标签
+
+:::
+
+> ＜ng容器＞允许我们在没有任何额外元素的情况下使用结构指令，确保唯一应用的DOM更改是由指令本身决定的。这不仅提高了性能（甚至稍微提高了一点），因为浏览器最终呈现的元素更少，而且在拥有更干净的DOM和样式方面也是一项宝贵的资产。例如，它可以使我们能够使用结构指令，而不破坏依赖于精确DOM结构的样式（例如，我们在使用flex容器、边距、子组合选择器等时获得的样式）。
+
+### ng-content 
+
+###### 插槽，插入的内容，插入到指定的位置。
+
+> ＜ng-content＞元素指定在组件模板中投影内容的位置。
+
+1. 在一个子组件里，定义具名插槽：
+```html
+<div>
+  <div>111</div>
+  <ng-content select="[ ]"></ng-content>
+  <div>333</div>
+</div>
+```
+1. 在父组件里，引入该组件`app-child`使用插槽，可以这么写
+```html
+<app-child>
+    <div importSlot>
+      222   
+    </div>
+</app-child>
+```
+1. 最终页面呈现的就是：111 222 333
+
+### ng-template
+
+>使用＜ng template＞，您可以定义仅当您直接或间接明确指示Angular渲染时才由Angular渲染的模板内容，从而可以完全控制内容的显示方式和时间。请注意，如果您在＜ng模板＞中包装内容，而不指示Angular渲染它，则此类内容不会出现在页面上。例如，请参见下面的HTML代码，当处理它时，Angular不会在短语“Hip！Hip！Hooray！”中呈现中间的“Hip”，因为周围的＜ng template＞。
+
 
 ## Angular 配置文件常见配置注解
 
