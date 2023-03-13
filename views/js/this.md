@@ -1,23 +1,38 @@
-# this指针-闭包-作用域
+# this指针-作用域-闭包
 
 ## 作用域
-### 执行上下文
-创建和执行是分开的
-1. 创建阶段
-    - 创建作用域链：当前变量、所有父级变量
-    - 初始化：参数、变量、函数
-    - content：指定this
-2. 执行阶段
-    - 变量赋值
-    - 变量使用
-    - 函数引用
-#### 执行堆栈
-js是单线程执行。执行某个区域相当于入栈，执行完成后出栈。
-### 作用域与作用域
+定义变量的区域，找到对应的定义的变量，就是作用域
+JavaScript 采用词法作用域(lexical scoping)，也就是静态作用域，函数的作用域基于函数创建的位置。
+
+```js
+// case 1
+var scope = "global scope";
+function checkscope(){
+    var scope = "local scope";
+    function f(){
+        return scope;
+    }
+    return f();
+}
+checkscope();
+
+// case 2
+var scope = "global scope";
+function checkscope(){
+    var scope = "local scope";
+    function f(){
+        return scope;
+    }
+    return f;
+}
+checkscope()();
+```
+
+### 作用域与作用域链
 
 作用域：全局作用域、函数作用域、块级作用域。
 可以隔离变量或函数，并控制生命周期。
-作用域在函数执行上下文创建时定义好的，不是执行是定义。
+作用域在函数执行上下文创建时定义好的，不是执行才定义（静态）！。
 
 对于**作用域链**,其实就是向上找爹的一个过程。
 
@@ -27,13 +42,74 @@ js是单线程执行。执行某个区域相当于入栈，执行完成后出栈
 2. 我们可以通过一些方式手动取消全局作用域，使用块级作用域，
    比如立刻执行函数,let等
 
-#### 上下文context
+## 执行上下文
+已知js引擎是一段一段去执行代码的，在当前有一个可执行的代码块就是执行上下文（execution context），
+执行上下文栈（先进后出）,说白了就是通过栈来维护代码的执行顺序，单线程执行。执行某个区域相当于入栈，执行完成后出
 
-- this是在执行时动态读取上下文决定的，而不是创建时
+创建和执行是分开的
+1. 创建阶段
+    - 创建作用域链：当前变量、所有父级变量
+    - 初始化：参数、变量、函数
+    - content：指定this
+2. 执行阶段
+    - 变量赋值
+    - 变量使用
+    - 函数引用
 
-考察重点
+
+###  code-demo
+
+```js
+function foo() {
+    console.log('foo1');
+}
+
+foo();  // foo2
+
+function foo() {
+    console.log('foo2');
+}
+
+foo(); // foo2
+```
+
+```js
+console.log(add2(1,1)); //输出2
+function add2(a,b){
+    return a+b;
+}
+console.log(add1(1,1));  //报错：add1 is not a function
+var add1 = function(a,b){
+    return a+b;
+}
+```
+
+由此得出：
+  - 用函数语句创建的函数add2，函数名称和函数体均被提前，在声明它之前就使用它。
+  - 但是使用var表达式定义函数add1，只有变量声明提前了，变量初始化代码仍然在原来的位置，没法提前执行。
+
+
+Variable object VO
+变量对象 存储了上下文中定义的变量和函数声明
+
+
+
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval
+
+https://www.yuque.com/lpldplws/web/tmbe7ykqmslqszhe?singleDoc# 
+《JavaScript高级用法(1/2)》 密码：bwxh
+
+https://www.yuque.com/lpldplws/web/os260aysmxgeyhhm?singleDoc# 
+《JavaScript高级用法(2/2)》 密码：ih4c
+ 
+https://github.com/xianzao/xianzao-interview/issues
+
+
 
 ## this指向
+
+**this是在执行时动态读取上下文决定的，而不是创建时**
+
 ::: tip this指向
 1. 函数直接调用,不管放在哪里,函数内部this指向的都是window => 变种方式(函数表达式、匿名函数、嵌套函数)
 2. 在隐式绑定中,this指向的是调用堆栈的上一级 => 变种方式(对象、数组等引用关系逻辑（找到最后谁激活的我）)
@@ -64,7 +140,7 @@ js是单线程执行。执行某个区域相当于入栈，执行完成后出栈
     obj.fn()//调用的时候 fn的上一级是obj
 ```
 
-#### 面试题：
+#### demo code：
 ```js
 const foo = {
     bar: 10,
@@ -240,8 +316,12 @@ Function.prototype.myApply = function (context) {
 
 ### 闭包
 ::: tip 突破作用域束缚
-一个函数有权访问另一个函数作用域中的变量。
+一个函数有权访问另一个函数作用域中的变量（函数引用了外部作用域的变量）。
 一个函数和他周围状态的引用捆绑在一起的组合
+
+能够访问自由变量的函数
+在函数中使用的，既不是函数的参数，也不是函数局部变量的变量
+闭包 = 函数 + 函数内部能够访问自由变量
 :::
 
 #### 函数作为返回值的场景

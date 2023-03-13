@@ -47,12 +47,12 @@ export const pagesComponents = {
   "v-bfea8db0": defineAsyncComponent(() => import(/* webpackChunkName: "v-bfea8db0" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/前端面试常考技术问题总结.html.vue")),
   // path: /views/Algorithm/js-algorithm/
   "v-1c8689ea": defineAsyncComponent(() => import(/* webpackChunkName: "v-1c8689ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.vue")),
+  // path: /views/React/react-mid/
+  "v-a9d28642": defineAsyncComponent(() => import(/* webpackChunkName: "v-a9d28642" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.vue")),
   // path: /views/Vue/vue-cli/
   "v-4cb3c239": defineAsyncComponent(() => import(/* webpackChunkName: "v-4cb3c239" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue-cli/index.html.vue")),
   // path: /views/Vue/vue-hard/
   "v-4a0622ba": defineAsyncComponent(() => import(/* webpackChunkName: "v-4a0622ba" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue-hard/index.html.vue")),
-  // path: /views/React/react-mid/
-  "v-a9d28642": defineAsyncComponent(() => import(/* webpackChunkName: "v-a9d28642" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.vue")),
   // path: /views/Vue/vue-router/
   "v-0a1cea9c": defineAsyncComponent(() => import(/* webpackChunkName: "v-0a1cea9c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue-router/index.html.vue")),
   // path: /views/Vue/vue2-easy/

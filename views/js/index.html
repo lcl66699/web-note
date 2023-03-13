@@ -55,13 +55,45 @@
     xhr.send()
 </script>
 <script>
-    var arr = [1, 2, 2, '1', 123, 312, 432, 34, 234, 32, 2, 2, 2, 1]
+    // var arr = [1, 2, 2, '1', 123, 312, 432, 34, 234, 32, 2, 2, 2, 1]
 
-    function unique(arr) {
-        return Array.from(new Set(arr))
+    // function unique(arr) {
+    //     return Array.from(new Set(arr))
+    // }
+    // console.log(unique(arr));   // [1,0,2,9,8,3]
+
+
+    // var value = 1;
+    // var foo = {
+    //     value: 2,
+
+    //     bar: function () {
+    //         return this.value;
+
+    //     }
+    // }
+    // console.log((foo.bar)()); ////示例3
+
+
+    // // console.log(foo.bar());////示例2
+    // // console.log((foo.bar = foo.bar)()); ////示例4
+    // // console.log((false || foo.bar)()); // //示例5
+    // // console.log((11,foo.bar,11, foo.bar)); //
+
+
+ 
+
+    var foo = function () {
+        console.log(' ', 1)
     }
-    console.log(unique(arr));   // [1,0,2,9,8,3]
+    foo()
 
+    var foo = function () {
+        console.log(' ', 2)
+    }
+    function aa() {
+        console.log(' ', 3)
+    }
 </script>
 
 </html>
