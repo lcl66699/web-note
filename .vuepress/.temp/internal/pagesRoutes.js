@@ -13,6 +13,7 @@ export const pagesRoutes = [
   ["v-0b3c5ebd","/views/js/Es6.html",{"title":"ES6"},["/views/js/Es6","/views/js/Es6.md"]],
   ["v-2d57c467","/views/js/EventLoop.html",{"title":"事件循环"},["/views/js/EventLoop","/views/js/EventLoop.md"]],
   ["v-074f24ca","/views/js/Promise.html",{"title":"Promise"},["/views/js/Promise","/views/js/Promise.md"]],
+  ["v-6810dde4","/views/js/compiler.html",{"title":"编译器"},["/views/js/compiler","/views/js/compiler.md"]],
   ["v-389f00c6","/views/js/fun.html",{"title":"理解函数式编程"},["/views/js/fun","/views/js/fun.md"]],
   ["v-6b103f5b","/views/js/jsBridge.html",{"title":"jsBridge"},["/views/js/jsBridge","/views/js/jsBridge.md"]],
   ["v-70ff9be0","/views/js/jsExport.html",{"title":"js模块化"},["/views/js/jsExport","/views/js/jsExport.md"]],
@@ -68,5 +69,4 @@ export const pagesRoutes = [
   ["v-03d53030","/posts/4/",{"title":""},["/posts/4/index.html"]],
   ["v-03d5304f","/posts/5/",{"title":""},["/posts/5/index.html"]],
   ["v-03d5306e","/posts/6/",{"title":""},["/posts/6/index.html"]],
-  ["v-6810dde4","/views/js/compiler.html",{"title":"编译器"},["/views/js/compiler","/views/js/compiler.md"]],
 ]
