@@ -6,8 +6,8 @@ modules: # 指定首页展示模块
   - Footer
   
 banner: # banner 模块的配置
-  heroText: 橘子海
-  tagline: 听橘子海，炫沙糖桔
+  heroText: 基百前端
+  tagline: 听基百前端，炫沙糖桔
   heroImage: /homeSnow.jpg
   heroImageStyle:
     maxWidth: 200px
@@ -17,8 +17,8 @@ banner: # banner 模块的配置
     # height: 450px
 
 bannerBrand: # bannerBrand 模块的配置
-  heroText: 橘子海
-  tagline: 听橘子海，炫沙糖桔
+  heroText: 前端笔记
+  tagline: 几百龙的前端记录
   heroImage: /homeSnow.jpg
   heroImageStyle:
     maxWidth: '200px'
