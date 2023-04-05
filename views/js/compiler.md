@@ -19,6 +19,9 @@
 - TypeScript
 - Eslint
 - Babel
+- jsx
+
+最终都会被转成相应的产物
   
 ## 编译器的基本过程
 
