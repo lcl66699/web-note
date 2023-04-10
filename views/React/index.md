@@ -1,6 +1,5 @@
 # 【讲义】React基础
 
-
 ## 简介
 
 React 是一个用于构建用户界面的 JAVASCRIPT 库，主要用于构建 UI，很多人认为 React 是 MVC 中的 V，起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。
