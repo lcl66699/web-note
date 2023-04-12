@@ -107,3 +107,16 @@ git push origin develop
 
 
 ```
+
+### 常见问题
+
+1. 远程新建一个分支 production-type-set ，本地没有 需要切到production-type-set
+这时候直接切`git checkout production-type-set`是会报错的
+```git
+runnumb@h 标准版 % git checkout production-type-set
+error: pathspec 'production-type-set' did not match any file(s) known to git
+```
+#### 解决方法
+1. 首先我们看一下远程分支情况：`git branch -a`
+2. 在这里没有看到我们想要的分支,先获取所有分支 `git fetch`
+3. 这时在切到`git checkout production-type-set`即可
