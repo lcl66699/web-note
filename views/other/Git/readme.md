@@ -86,28 +86,63 @@
 4. `git stash clear` 删除所有保存
 
 
-## 我的git提交步骤
+## 我的git提交名模式
 
-```git
+#### 第一种
+>远程仓库有两个，一个是自己的，一个是公司的,公司的仓库是fork来的，所以你的远程仓库其实有两个 
+注：可通过 `git remote -v `查看
+
+步骤如下
+```bash
 git clone 自己的仓库地址.git
 git remote add company 公司的仓库地址.git
 
 //写完代码
 git stash save
-git pull company develop
+git pull company develop //先拉取公司仓库的dev分支
 git stash pop
 
 // 有冲突解决冲突，解决完成后
 git add . 
 git commit -m '提交的信息'
-git push origin develop   
+git push origin develop //提到自己远程的仓库的分支  
 
 //提交到自己的仓库后，在gitlab上操作->与公司仓库进行合并
+```
+这种的相对比较规范性，因为主仓库的commit会更精华简介性，因为你在本地可能有无数次的commit，会导致仓库臃肿
 
+#### 第二种
+>远程仓库只有一个，主要通过分支管理，有一个主分支，如dev，还有其他的分支，包括属于自己的分支名，或以某个功能开发模块命名的分支等等
+步骤如下
 
+```bash
+git clone 自己的仓库地址.git
+
+//创建分支
+git checkout -b 分支名
+//在编译器上发布分支
+
+//然后在自己的分支下开发，开发完成后需要合并到dev分支上
+
+//拉取远程最新的分支
+git pull origin dev
+//解决冲突（此时在自己的分支名下）
+//解决好后，提到自己的远程分支
+git push origin 分支名
+
+//最后做合并操作，这里的合并可有至少多种方法
+
+# 1. 命令行合并
+# 来到自己的dev分支下，合并你开发的分支名 
+git merge 分支名 
+# 提交到远程仓库主分支dev
+git push origin dev
+
+# 1. 去gitlab做合并请求操作
+通过网页端 做合并请求，可能会有审核人审核，包括权限等等问题
+通过后你的代码就合并到主分支上了
 
 ```
-
 ### 常见问题
 
 1. 远程新建一个分支 production-type-set ，本地没有 需要切到production-type-set
