@@ -5,7 +5,7 @@ import recoTheme from 'vuepress-theme-reco'
 export default defineUserConfig({
   base: "/", //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   // base: '/vuepress-blog/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
-  title: '基百前端',
+  title: '几百前端',
   description: 'Just playing around',
   theme: recoTheme({
     componentsDir: './showHtml/demo',

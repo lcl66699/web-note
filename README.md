@@ -1,3 +1,11 @@
+<!--
+ * @Author: liuchenglong 768206581@qq.com
+ * @Date: 2023-01-16 16:07:46
+ * @LastEditors: liuchenglong 768206581@qq.com
+ * @LastEditTime: 2023-04-13 19:35:45
+ * @FilePath: /code-test/numbrun/README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 ---
 home: true
 modules: # 指定首页展示模块
@@ -6,8 +14,8 @@ modules: # 指定首页展示模块
   - Footer
   
 banner: # banner 模块的配置
-  heroText: 基百前端
-  tagline: 听基百前端，炫沙糖桔
+  heroText: 几百前端
+  tagline: 几百龙的前端记录
   heroImage: /homeSnow.jpg
   heroImageStyle:
     maxWidth: 200px
