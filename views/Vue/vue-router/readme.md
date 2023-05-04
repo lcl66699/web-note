@@ -38,7 +38,7 @@ hash 的出现,他有以下⼏种特性：
 1. url 中的 hash 值只是客⼾端/浏览器端的⼀种状态，向服务器发送请求的时候，hash 部分的值不 会携带。 
 2. hash 值的更改，并不会导致页面的刷新
 3. hash 值的更改，会在浏览器的访问历史中增加记录，所以我们可以通过浏览器的回退、前进按钮 控制 hash 的切换 
-4. hash 值的更改，会触发 hashchange 事件 
+4. hash 值的更改，会触发 hashchange 事件（window.onhashchange()）
 
 ⽐如https://www.baidu.com/#/hash1, 改变#后面的内容并不会导致页面刷新，⽽且会触发 hashchange 事件。 
 
