@@ -9,7 +9,7 @@ export default defineUserConfig({
   dest:'docs',
   /**是否在开发服务器启动后打开浏览器 */
   open:true,
-  title: '几百前端',
+  title: '几百前端', 
   description: 'Just playing around',
   theme: recoTheme({
     componentsDir: './showHtml/demo',
