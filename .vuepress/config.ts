@@ -3,8 +3,8 @@ import type { DefaultThemeOptions } from 'vuepress'
 import recoTheme from 'vuepress-theme-reco'
 
 export default defineUserConfig({
-  // base: "/", //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
-  base: '/web-note/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  base: "/", //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
+  // base: '/web-note/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   /**指定 vuepress build 命令的输出目录。 */
   dest:'docs',
   /**是否在开发服务器启动后打开浏览器 */
