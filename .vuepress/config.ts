@@ -6,10 +6,10 @@ export default defineUserConfig({
   base: "/", //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   // base: '/web-note/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   /**指定 vuepress build 命令的输出目录。 */
-  dest:'docs',
+  // dest: 'docs/',
   /**是否在开发服务器启动后打开浏览器 */
-  open:true,
-  title: '几百前端', 
+  open: true,
+  title: '几百前端',
   description: 'Just playing around',
   theme: recoTheme({
     componentsDir: './showHtml/demo',
@@ -68,7 +68,7 @@ export default defineUserConfig({
       // react
       "/views/React/": [""],
       // react
-      "/views/angular/": ["angular.md","rxjs.md"],
+      "/views/angular/": ["angular.md", "rxjs.md"],
       "/views/other/Git/": [""],
       "/views/other/performance/": [""],
       "/views/other/web-safe/": [""],
