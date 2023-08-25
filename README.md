@@ -8,7 +8,7 @@ modules: # 指定首页展示模块
 banner: # banner 模块的配置
   heroText: 几百前端
   tagline: 几百龙的前端记录
-  heroImage: /homeSnow.jpg
+  heroImage: /homepage.jpg
   heroImageStyle:
     maxWidth: 200px
     margin: 0 auto 2rem
@@ -19,7 +19,7 @@ banner: # banner 模块的配置
 bannerBrand: # bannerBrand 模块的配置
   heroText: 前端笔记
   tagline: 几百龙的前端记录
-  heroImage: /homeSnow.jpg
+  heroImage: /homepage.jpg
   heroImageStyle:
     maxWidth: '200px'
     width: '100%'
@@ -28,7 +28,7 @@ bannerBrand: # bannerBrand 模块的配置
     borderRadius: '1rem'
   bgImage: '/bg.svg'
   buttons:
-    - { text: 一键 内卷 →, link: '/views/js/' }
+    - { text: 点我搬砖 →, link: '/views/js/' }
     # - { text: Default, link: '/docs/style-default-api/introduce', type: 'plain' }
 
 isShowTitleInHome: true
@@ -42,14 +42,15 @@ features:
 - title: 未来
   details: 吸引更多的朋友参与到开发中来，继续强大功能。 
 
-footer:
-  # - record: 域名备案文案
-  # - recordLink: 域名备案地址
-  # - cyberSecurityRecord: 公安备案文案
-  # - cyberSecurityLink: 公安备案地址 
-  - startYear: 2021 
+footer: # 底部模块的配置
+  # record: 域名备案文案
+  # recordLink: 域名备案地址
+  # cyberSecurityRecord: 公安备案
+  # cyberSecurityLink: https://beian.miit.gov.cn/#/Integrated/index
+  startYear: 2020
 ---
 
+<!-- MdContent -->
 ## 快速开始
 
 **npx**

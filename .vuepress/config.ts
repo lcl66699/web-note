@@ -126,8 +126,8 @@ export default defineUserConfig({
       },
       { text: "nodejs", link: "/views/nodejs/" },
       { text: "算法", link: "/views/Algorithm/" },
-      { text: "软考", link: "/views/examination/" },
-      { text: "个人空间", link: "https://blog.numb.run/" },
+      // { text: "软考", link: "/views/examination/" },
+      // { text: "个人空间", link: "https://blog.numb.run/" },
       {
         text: "其他",
         children: [
@@ -188,9 +188,8 @@ export default defineUserConfig({
           type: 'text',
           content: `
           <ul>
-            <li><a style='color:#4954E6;' target="_blank" href="https://blog.numb.run/#/welcome">个人空间<a/></li>
             <li><a style='color:#4954E6;' target="_blan4k" href="https://gitee.com/numbrun">gitee<a/></li>
-            <li><a style='color:#4954E6;' target="_blank" href="https://blog.csdn.net/qq_38594056?type=blog">我的CSDN<a/></li>
+            <li><a style='color:#4954E6;' target="_blank" href="https://blog.csdn.net/qq_38594056?type=blog">CSDN<a/></li>
           </ul>`,
           style: 'font-size: 14px;'
         },

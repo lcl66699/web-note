@@ -1,24 +1,32 @@
 export const pagesData = {
   // path: /
   "v-8daa1a0e": () => import(/* webpackChunkName: "v-8daa1a0e" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/index.html.js").then(({ data }) => data),
+  // path: /readme-tell.html
+  "v-01c2ff62": () => import(/* webpackChunkName: "v-01c2ff62" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/readme-tell.html.js").then(({ data }) => data),
   // path: /views/demo.html
   "v-7d88425c": () => import(/* webpackChunkName: "v-7d88425c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/demo.html.js").then(({ data }) => data),
+  // path: /views/React/
+  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
+  // path: /views/React/
+  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/Algorithm/
   "v-3fb5c60c": () => import(/* webpackChunkName: "v-3fb5c60c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Algorithm/index.html.js").then(({ data }) => data),
-  // path: /views/Http/
-  "v-3292d5e6": () => import(/* webpackChunkName: "v-3292d5e6" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Http/index.html.js").then(({ data }) => data),
-  // path: /views/React/
-  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
-  // path: /views/React/
-  "v-005056ea": () => import(/* webpackChunkName: "v-005056ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/index.html.js").then(({ data }) => data),
   // path: /views/angular/angular.html
   "v-d52d0c04": () => import(/* webpackChunkName: "v-d52d0c04" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/angular/angular.html.js").then(({ data }) => data),
   // path: /views/angular/rxjs.html
   "v-baa0d87a": () => import(/* webpackChunkName: "v-baa0d87a" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/angular/rxjs.html.js").then(({ data }) => data),
+  // path: /views/Http/
+  "v-3292d5e6": () => import(/* webpackChunkName: "v-3292d5e6" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Http/index.html.js").then(({ data }) => data),
   // path: /views/engineering/
   "v-b75cd794": () => import(/* webpackChunkName: "v-b75cd794" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/engineering/index.html.js").then(({ data }) => data),
   // path: /views/examination/
   "v-4ad6a9d0": () => import(/* webpackChunkName: "v-4ad6a9d0" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/examination/index.html.js").then(({ data }) => data),
+  // path: /views/other/webpack.html
+  "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
+  // path: /views/other/qianduanmianshichangkaojishuwentizongjie.html
+  "v-bfea8db0": () => import(/* webpackChunkName: "v-bfea8db0" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/前端面试常考技术问题总结.html.js").then(({ data }) => data),
+  // path: /views/nodejs/
+  "v-37b6ec6c": () => import(/* webpackChunkName: "v-37b6ec6c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/nodejs/index.html.js").then(({ data }) => data),
   // path: /views/js/BOM.html
   "v-eb100d76": () => import(/* webpackChunkName: "v-eb100d76" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/js/BOM.html.js").then(({ data }) => data),
   // path: /views/js/Es6.html
@@ -41,14 +49,6 @@ export const pagesData = {
   "v-bca6fbe8": () => import(/* webpackChunkName: "v-bca6fbe8" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/js/index.html.js").then(({ data }) => data),
   // path: /views/js/this.html
   "v-1a98706f": () => import(/* webpackChunkName: "v-1a98706f" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/js/this.html.js").then(({ data }) => data),
-  // path: /views/nodejs/
-  "v-37b6ec6c": () => import(/* webpackChunkName: "v-37b6ec6c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/nodejs/index.html.js").then(({ data }) => data),
-  // path: /views/other/webpack.html
-  "v-683d3365": () => import(/* webpackChunkName: "v-683d3365" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/webpack.html.js").then(({ data }) => data),
-  // path: /views/other/qianduanmianshichangkaojishuwentizongjie.html
-  "v-bfea8db0": () => import(/* webpackChunkName: "v-bfea8db0" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/前端面试常考技术问题总结.html.js").then(({ data }) => data),
-  // path: /views/Algorithm/js-algorithm/
-  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/React/react-mid/
   "v-a9d28642": () => import(/* webpackChunkName: "v-a9d28642" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/React/react-mid/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vue-cli/
@@ -65,6 +65,8 @@ export const pagesData = {
   "v-611d7c02": () => import(/* webpackChunkName: "v-611d7c02" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vue3/index.html.js").then(({ data }) => data),
   // path: /views/Vue/vuex/
   "v-611d6b4c": () => import(/* webpackChunkName: "v-611d6b4c" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Vue/vuex/index.html.js").then(({ data }) => data),
+  // path: /views/Algorithm/js-algorithm/
+  "v-1c8689ea": () => import(/* webpackChunkName: "v-1c8689ea" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/Algorithm/js-algorithm/index.html.js").then(({ data }) => data),
   // path: /views/other/Git/
   "v-89cffcd4": () => import(/* webpackChunkName: "v-89cffcd4" */"/Users/runnumb/code-test/numbrun/.vuepress/.temp/pages/views/other/Git/index.html.js").then(({ data }) => data),
   // path: /views/other/message/

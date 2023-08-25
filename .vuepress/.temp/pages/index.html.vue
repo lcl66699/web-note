@@ -1,4 +1,5 @@
-<template><div><h2 id="快速开始" tabindex="-1"><a class="header-anchor" href="#快速开始" aria-hidden="true">#</a> 快速开始</h2>
+<template><div><!-- MdContent -->
+<h2 id="快速开始" tabindex="-1"><a class="header-anchor" href="#快速开始" aria-hidden="true">#</a> 快速开始</h2>
 <p><strong>npx</strong></p>
 <div class="language-bash ext-sh line-numbers-mode"><pre v-pre class="language-bash"><code><span class="token comment"># 初始化，并选择 2.x</span>
 npx @vuepress-reco/theme-cli init
