@@ -7,6 +7,15 @@ export default defineUserConfig({
   // base: '/web-note/', //目标地址是：https://openhacking.github.io/vuepress-template/，所以需要配置base地址后缀
   /**指定 vuepress build 命令的输出目录。 */
   // dest: 'docs/',
+
+  head: [
+    //	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9768010798351723" vcrossorigin="anonymous"></script>
+    ['script', {
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9768010798351723',
+      vcrossorigin: 'anonymous',
+      'async': 'async',
+    }]
+  ],
   /**是否在开发服务器启动后打开浏览器 */
   open: true,
   title: '几百前端',

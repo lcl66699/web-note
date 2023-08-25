@@ -1,1 +1,1 @@
-export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"en-US\",\"title\":\"几百前端\",\"description\":\"Just playing around\",\"head\":[],\"locales\":{}}")
+export const siteData = JSON.parse("{\"base\":\"/\",\"lang\":\"en-US\",\"title\":\"几百前端\",\"description\":\"Just playing around\",\"head\":[[\"script\",{\"src\":\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9768010798351723\",\"vcrossorigin\":\"anonymous\",\"async\":\"async\"}]],\"locales\":{}}")
