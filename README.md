@@ -7,7 +7,7 @@ modules: # 指定首页展示模块
   
 banner: # banner 模块的配置
   heroText: 几百前端
-  tagline: 几百龙的前端记录
+  tagline: 几百块的前端记录
   heroImage: /homepage.jpg
   heroImageStyle:
     maxWidth: 200px
@@ -18,7 +18,7 @@ banner: # banner 模块的配置
 
 bannerBrand: # bannerBrand 模块的配置
   heroText: 前端笔记
-  tagline: 几百龙的前端记录
+  tagline: 几百块的前端记录
   heroImage: /homepage.jpg
   heroImageStyle:
     maxWidth: '200px'
@@ -43,8 +43,8 @@ features:
   details: 吸引更多的朋友参与到开发中来，继续强大功能。 
 
 footer: # 底部模块的配置
-  # record: 域名备案文案
-  # recordLink: 域名备案地址
+  record: 黑ICP备20003708号-1
+  recordLink: https://beian.miit.gov.cn/
   # cyberSecurityRecord: 公安备案
   # cyberSecurityLink: https://beian.miit.gov.cn/#/Integrated/index
   startYear: 2020
